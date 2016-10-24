@@ -4,23 +4,29 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.dto.BorderDTO;
+import model.dto.CashHistoryDTO;
 import model.dto.HistoryDTO;
 import model.dto.MemoDTO;
+import model.dto.TradeDTO;
 import model.dto.UserDTO;
 
 public interface ItemMarketDAO {
 
 	/**
 	 * 1. 로그인
+	 * 1 - 로그인, 0 - 로그인실패
 	 */
+	int login(String id, String pwd) throws SQLException;
 	
 	/**
 	 * 2. 회원가입
+	 * 1 - 가입, 0 - 가입실패
 	 */
+	int signUp(UserDTO userInfo) throws SQLException;
 	
 	/**
 	 * 3. 프로필
-	 * 이름, 연락처, 메일, 지역, 신용등급, 마일리지
+	 * ID, 이름, 연락처, 메일, 지역, 신용등급, 마일리지
 	 */
 	UserDTO getProfile(String id) throws SQLException;
 	
@@ -31,9 +37,15 @@ public interface ItemMarketDAO {
 	HistoryDTO myHistory(String id) throws SQLException;
 	
 	/**
-	 * 5. 마일리지 내역
+	 * 5. 마일리지 내역 출력
+	 * 충전날짜, 사용한날짜, 남은 마일리지
 	 */
+	CashHistoryDTO selectAllCashHistory(String id) throws SQLException;
 	
+	/**
+	 * 6. 마일리지 충전
+	 */
+	int addCash(String id, int cash) throws SQLException;
 	
 	/**
 	 * 6. 검색
@@ -60,15 +72,50 @@ public interface ItemMarketDAO {
 	BorderDTO read(int borderNum) throws SQLException;
 	
 	/**
-	 * 10. 구매 or 제시
+	 * 10. 구매자 마일리지를 중개자에게
+	 * 10, 11, 12, 13순서로 commit, rollback
 	 */
-	int buy(String id, int money, BorderDTO border) throws SQLException;
+	int sendCashAgency(String id, int money) throws SQLException;
 	
 	/**
-	 * 11. 거래진행내역
+	 * 11. 중개자 마일리지를 구매자에게 받은만큼 증가
 	 */
+	int receiveCashAgency(int money) throws SQLException;
 	
 	/**
-	 * 11. 구매완료
+	 * 12. 게시물의 거래 진행상황을 진행중 또는 거래완료로 변경
 	 */
+	int borderStateChange(BorderDTO border) throws SQLException;
+	
+	/**
+	 * 13. 거래진행내역 추가
+	 */
+	int trading(String id, int money, BorderDTO border) throws SQLException;
+	
+	/**
+	 * 14. 거래진행내역 검색
+	 */
+	List<TradeDTO> selectByIdTrade(String id) throws SQLException;
+	
+	/**
+	 * 15. 해당 게시물에 대한 거래진행내역 검색
+	 */
+	TradeDTO selectByBorderTrade(int borderNum) throws SQLException;
+	
+	/**
+	 * 16. 중개소 마일리지를 판매자에게
+	 * 15, 16, 17, 12, 18순서로 commit 또는 rollback
+	 */
+	int sendCashSeller(String id, int money) throws SQLException;
+	
+	/**
+	 * 17. 중개소의 마일리지 감소
+	 */
+	int receiveCashSeller(int money) throws SQLException;
+	
+	/**
+	 * 18. 구매완료 진행내역에 삭제
+	 */
+	int complete(String id, int money, BorderDTO border) throws SQLException;
+	
 }

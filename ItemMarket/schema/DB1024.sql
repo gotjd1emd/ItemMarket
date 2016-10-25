@@ -27,7 +27,6 @@ insert into userinfo (id,tel,email,location,cash) values ('lll','01013133535','l
 
 
 select * from  userinfo; 
-
   
 --시퀀스 준비
 grant create sequence to lee;   --(생성 계정 대입 )
@@ -163,7 +162,8 @@ insert into cash_history (id,itemName,mileage,saveDate) values ('bbb','갤럭시S6'
 insert into cash_history (id,itemName,mileage,saveDate) values ('ccc','T-100',900,'2016-10-25'); 
 
 
-select * from cash_history;
+select * from cash_History;
+
 
 drop table myhistory;
 drop table img_Border;

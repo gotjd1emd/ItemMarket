@@ -70,44 +70,7 @@ insert into borderInfo (id,border_number,content,itemName,money,dayDate,category
 insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('iii',borderInfo_seq.nextval,'▶택배가능합니다.◀','텀블러',3300,sysdate,'생활/가정','커피','구매대기중');
 
 
-
-
-
 select * from borderInfo;
-
-
---나의 구매 내역 ,구매 정보   // itemName 추가 ,content 삭제
-create table myHistory(
-  dayDate date not null, -- 결제 날짜
-  seller constraint seller_fk references userinfo(id), -- 판매자 
-  buyer constraint buyer_fk references userinfo(id),  -- 구매자
-  category varchar2(30) constraint category_fk REFERENCES borderInfo(category),    -- 카테고리 분류  
-  sub_Category varchar2(30) constraint subCategory_fk REFERENCES borderInfo(sub_Category),   -- 서브 카테고리 분류 
-  itemName varchar(40) constraint myhistory_itemName_fk references borderinfo(itemName),
-  money number(7) not null    --구매액 
-); 
-    insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'aaa','bbb','디지털/가전제품','휴대폰','갤럭시S6',10000);
-    insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'bbb','ccc','스포츠','alton','T-100',20000);
-    insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'ccc','ddd','의류','청바지','CalvinKlein',30000);
-    insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'eee','fff','악세서리','기타','목도리',5000);
-    insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'fff','hhh','악세서리','기타','선글라스',40000);
-    insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'hhh','iii','디지털/가전제품','컴퓨터','외장하드',20000);
-    insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'iii','ggg','생활/가정','커피','텀블러',7000);
---drop table myhistory;
-select * from myhistory;
-
-
---데이터 준비
---insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'aaa','bbb','가전제품','휴대폰','노트4',33000);
---insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'bbb','ccc','스포츠','블랙캣','alton',22000);
---insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'ccc','eee','의류','청바지','Diesel',44000);
-  
-
-
-select * from myhistory;
-
---delete from myhistory;
-
 
 --이미지 게시판 
 create table img_Border( 
@@ -152,21 +115,22 @@ select * from messenger;
 
 
 --상호간 필요한 정보 
-create table trading (
+create table trade_history (
 
   buyer constraint  trading_Buyer_fk references userInfo(id), -- 구매자 
   seller constraint trading_Seller_fk references userInfo(id),  -- 판매자
   itemName constraint trading_itemName_fk references borderInfo(itemName),
   cash number(7),  -- 지불액
   border_number constraint trading_bordernumber_fk references borderinfo(border_number) primary key, --글 게시 번호
-  daydate date not null -- 날짜 
+  daydate date not null, -- 날짜 
+  trade_state varcher2
   
 );
 
---  insert into trading (buyer,seller,itemName,cash,border_number,daydate) values ('fff', 'aaa','갤럭시S6',2000,1,'2016-10-24');
---  insert into trading (buyer,seller,itemName,cash,border_number,daydate) values ('ddd', 'bbb','T-100',3000,2,'2016-10-24');
---  insert into trading (buyer,seller,itemName,cash,border_number,daydate) values ('eee', 'ccc','CalvinKlein',4400,3,'2016-10-24');  
---  drop table trading;
+--  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate) values ('fff', 'aaa','갤럭시S6',2000,1,'2016-10-24');
+--  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate) values ('ddd', 'bbb','T-100',3000,2,'2016-10-24');
+--  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate) values ('eee', 'ccc','CalvinKlein',4400,3,'2016-10-24');  
+--  drop table trade_history;
 
 
 
@@ -174,14 +138,14 @@ create table trading (
 --  border Info 검색후 border-number 숫자를 변경해 주세요                                               										  --  ▼
 select * from borderInfo;                                                                                 --  ▼
                                                                                                           --  ▼
-insert into  trading (buyer,seller,itemName,cash,border_number,daydate) values ('aaa','ddd','갤럭시S6',120000,21,sysdate);
-insert into  trading (buyer,seller,itemName,cash,border_number,daydate) values ('bbb','fff','T-100',200000,22,sysdate);
-insert into  trading (buyer,seller,itemName,cash,border_number,daydate) values ('ccc','ggg','CalvinKlein',30000,23,sysdate);
-insert into  trading (buyer,seller,itemName,cash,border_number,daydate) values ('eee','hhh','목도리',4000,42,sysdate);
+insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate) values ('aaa','ddd','갤럭시S6',120000,21,sysdate);
+insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate) values ('bbb','fff','T-100',200000,22,sysdate);
+insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate) values ('ccc','ggg','CalvinKlein',30000,23,sysdate);
+insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate) values ('eee','hhh','목도리',4000,42,sysdate);
 
 
 
-  select * from trading;
+  select * from trade_history;
 
 
 --cash_history table   id, 구매내역 
@@ -189,7 +153,8 @@ create table cash_History (
   id varchar2(20) constraint cash_History_id_fk references userinfo  (id),  -- id 
   itemName varchar2(20) constraint cash_History_itemName_fk references borderInfo(itemName),  -- 물품 이름
   mileage number(6), -- 마일리지
-  saveDate date not null -- 마일리지 적립일(최종구입일or상태=구매완료시점) 
+  saveDate date not null, -- 마일리지 적립일(최종구입일or상태=구매완료시점) 
+  current_cash number
   
 );
 
@@ -205,7 +170,7 @@ drop table img_Border;
 drop table messenger;
 drop table borderInfo;
 drop table userInfo;
-drop table trading;
+drop table trade_history;
 drop table cash_History;
 
 commit;

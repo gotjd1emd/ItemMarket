@@ -46,7 +46,7 @@ public interface ItemMarketDAO {
 	/**
 	 * 6. 마일리지 충전
 	 */
-	int addCash(String id, int cash) throws SQLException;
+	int addCash(String id, int cash, int currentCash, String itemName) throws SQLException;
 	
 	/**
 	 * 6. 검색
@@ -72,6 +72,13 @@ public interface ItemMarketDAO {
 	 */
 	BorderDTO read(int borderNum) throws SQLException;
 	
+	/**
+	 * 구매 시작메소드
+	 * @param id
+	 * @param money
+	 * @param border
+	 * @throws SQLException
+	 */
 	void accountTransfer(String id, int money, BorderDTO border) throws SQLException;
 	/**
 	 * 10. 구매자 마일리지를 중개자에게
@@ -119,5 +126,12 @@ public interface ItemMarketDAO {
 	 * 18. 구매완료 진행내역에 삭제
 	 */
 	int complete(String id, int money, BorderDTO border) throws SQLException;
+	
+	/**
+	 * 거래중 마일리지 내역 추가
+	 * 
+	 */
+	int updateCashHistory(String id, String itemName, int money, int currentCash) throws SQLException;
+	
 	
 }

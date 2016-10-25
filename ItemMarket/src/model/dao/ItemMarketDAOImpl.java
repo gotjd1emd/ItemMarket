@@ -156,8 +156,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	
 	
 	@Override
-	public int addCash(String id, int cash) throws SQLException {
-		
+	public int addCash(String id, int cash, int currentCash, String itemName) throws SQLException {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 	
@@ -466,6 +466,12 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 	@Override
 	public int complete(String id, int money, BorderDTO border) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateCashHistory(String id, String itemName, int money, int currentCash) throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}

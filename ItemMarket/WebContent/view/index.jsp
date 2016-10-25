@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Null의 중고나라</title>
   	<link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="<c:url value="/"/>style/css.css">
 </head>

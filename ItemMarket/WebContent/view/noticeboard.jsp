@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Null의 중고나라</title>
       <link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="<c:url value="/"/>style/css.css">
 	<style>
@@ -31,7 +31,7 @@
 <header>
 		<div class="menu">	
 			<ul>
-				<li><a href="/index.html">Null의 중고나라</a></li>
+				<li><a href="<c:url value='/view/'/>index.jsp">Null의 중고나라</a></li>
 				<li>회원가입</li>
 				<li>로그인</li>
 			</ul>
@@ -126,6 +126,11 @@
 	<link rel="stylesheet" href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">
 	<script type="text/javascript" src="<c:url value="/"/>jquery/smoothscroll-for-websites-master/SmoothScroll.js"></script>
 	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery.js"></script>
+	<script type="text/javascript">
+	$(".noticeboardsubmit button").click(function(){
+		document.location.href="<c:url value="/view/"/>board.jsp"
+	});
+	</script>
 </body>
 </html>
 

@@ -2,9 +2,6 @@ $(document).ready(function(){
 	var list = $(".bg img");
 	var count = 0;
 	var img = $(".mainimg img").attr("src");
-	$("select").change(function(){
-		alert($(this).val())
-	});
 	$(".category ul li").click(function(){
 		$(".sub_category ul").fadeIn("slow");
 		$(".searchmain").animate({top : '45%'});
@@ -17,11 +14,11 @@ $(document).ready(function(){
 			minHeight : 400,
 
 			show : {
-				effect :"fade",
+				effect :"slide",
 				duration: 1000
 			},
 			hide : {
-				effect:"fade",
+				effect:"slide",
 				duration: 1000
 			}
 		});	
@@ -31,21 +28,25 @@ $(document).ready(function(){
 			minHeight : 500,
 
 			show : {
-				effect :"fade",
+				effect :"slide",
 				duration: 1000
 			},
 			hide : {
-				effect:"fade",
+				effect:"slide",
 				duration: 1000
 			}
 		});	
 		$(".sub_category ul").fadeOut("slow");
 		$(".searchmain").animate({top : '50%'});
 	});
+	$(".sub_category ul li").click(function(){ //임시로 주소갑 줌
+		document.location.href="noticeboard.jsp";
+	});
+	
 	/* index bg */
 	function banner(){
 		list.eq(count).fadeOut(1500);
-		//console.log(count)
+		
 		if(++count>list.length-1){
 			count=0;
 		}
@@ -78,31 +79,41 @@ $(document).ready(function(){
 
 	 });*/
 	
-	
-	/* noticeboard -> select */
-	$(".noticeboardsubmit button").click(function(){
-		document.location.href="select.jsp"
-	});
-
-	/* select.html */
-	
-	$(".selectsub span").click(function(){
+	/* select dialog */
+	var maincategory = null;
+	var subcategory = null;
+	$(".selectsub img").toggle(function(){
+		$(".dialog").attr("title",$(this).attr("alt"))
+		$(".dialog").dialog({
+			minWidth : 600 ,
+			minHeight : 500,
+			show : {
+				effect : "slide",
+				duration : 1000
+			}	
+		});
+	},function(){
 		
-			
 	});
-
-
-
-	/* Explanation slide */
-	$(".mainEx button:last-child()").click(function(){
-		document.location.href="noticeboard.jsp"
+	$(".dialog img").click(function(){
+		
+	});
+	/* border file input create */
+	var file=""n ;
+	$(".imgs img").click(function(){
+		file +="<li><input type='file' name='fileName'></li>"
+		$(".imgs ul").html(file);
 	});
 	
+	
+	/* Explanation slide */
 	 time();
 	 if($(".subimg ul li img").length-1 < 3){
 	 	$(".subimg ul .down").css({"display" :"none"});
 	 }
-	});
+	
+	
+});
 
 
 var imgs = $(".mainimg img");
@@ -113,7 +124,7 @@ var timer2 = null;
 
 
 function move(){
-	console.log(1);
+	
 	$(imgs[sno]).animate({"left":"100%"},1500,function(){
 		$(this).css({"left":"-100%"},1000);
 	});
@@ -139,7 +150,7 @@ function slide(a){
 		type = no<sno?"left":"right"; 
 	}
 
-	console.log(sno,no);
+
 
 	var leftVal = type =="left"?100:-100;
 

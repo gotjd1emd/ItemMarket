@@ -147,11 +147,29 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		}  		
 		return historyDTO;
 	}
-
+	
+	/**
+	 * 5. 마일리지 내역 출력
+	 * 충전날짜, 사용한날짜, 남은 마일리지
+	 */
 	@Override
 	public CashHistoryDTO selectAllCashHistory(String id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+				Connection con = null;
+				PreparedStatement ps = null;
+				ResultSet rs = null;
+				CashHistoryDTO dto = null;
+				try{
+					con = DbUtil.getConnection();
+					ps=con.prepareStatement("select * from cash_History where id = ?");
+					ps.setString(1, id);
+					rs = ps.executeQuery();
+					while(rs.next()){
+						dto = new CashHistoryDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+					}
+				}finally{
+					DbUtil.dbClose(con,ps,rs);
+				}
+				return dto;
 	}
 	
 	
@@ -216,11 +234,33 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	
 		return list;
 	}
-
+	
+	/**
+	 * 7. 메신저함
+	 * 받은사람, 보내는사람, 내용
+	 */
 	@Override
 	public List<MemoDTO> memobox(String id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+				Connection con = null;
+				PreparedStatement ps = null;
+				ResultSet rs = null;
+				List<MemoDTO> list = new ArrayList<>();
+				
+				try{
+					con = DbUtil.getConnection();
+					ps = con.prepareStatement("select * from messenger where sender = ? or receiver = ?");
+					ps.setString(1, id);
+					ps.setString(2, id);
+					rs = ps.executeQuery();
+					while(rs.next()){
+						list.add(new MemoDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+					}
+				}finally{
+					DbUtil.dbClose(con,ps,rs);
+				}
+				
+				return list;
+		
 	}
 
 	/**

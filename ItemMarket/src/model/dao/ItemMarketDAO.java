@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -71,26 +72,27 @@ public interface ItemMarketDAO {
 	 */
 	BorderDTO read(int borderNum) throws SQLException;
 	
+	void accountTransfer(String id, int money, BorderDTO border) throws SQLException;
 	/**
 	 * 10. 구매자 마일리지를 중개자에게
 	 * 10, 11, 12, 13순서로 commit, rollback
 	 */
-	int sendCashAgency(String id, int money) throws SQLException;
+	int sendCashAgency(Connection con,String id, int money) throws SQLException;
 	
 	/**
 	 * 11. 중개자 마일리지를 구매자에게 받은만큼 증가
 	 */
-	int receiveCashAgency(int money) throws SQLException;
+	int receiveCashAgency(Connection con,int money) throws SQLException;
 	
 	/**
 	 * 12. 게시물의 거래 진행상황을 진행중 또는 거래완료로 변경
 	 */
-	int borderStateChange(BorderDTO border) throws SQLException;
+	int borderStateChange(Connection con,BorderDTO border) throws SQLException;
 	
 	/**
 	 * 13. 거래진행내역 추가
 	 */
-	int trading(String id, int money, BorderDTO border) throws SQLException;
+	int trading(Connection con,String id, int money, BorderDTO border) throws SQLException;
 	
 	/**
 	 * 14. 거래진행내역 검색

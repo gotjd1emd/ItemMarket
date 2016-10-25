@@ -8,4 +8,64 @@ public class TradeDTO {
 	 private int cash;
 	 private String borderNumber;
 	 private String dayDate;
+	
+	 public TradeDTO(String buyer, String seller, String itemName, int cash, String borderNumber, String dayDate) {
+		super();
+		this.buyer = buyer;
+		this.seller = seller;
+		this.itemName = itemName;
+		this.cash = cash;
+		this.borderNumber = borderNumber;
+		this.dayDate = dayDate;
+	}
+
+	public String getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(String buyer) {
+		this.buyer = buyer;
+	}
+
+	public String getSeller() {
+		return seller;
+	}
+
+	public void setSeller(String seller) {
+		this.seller = seller;
+	}
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	public int getCash() {
+		return cash;
+	}
+
+	public void setCash(int cash) {
+		this.cash = cash;
+	}
+
+	public String getBorderNumber() {
+		return borderNumber;
+	}
+
+	public void setBorderNumber(String borderNumber) {
+		this.borderNumber = borderNumber;
+	}
+
+	public String getDayDate() {
+		return dayDate;
+	}
+
+	public void setDayDate(String dayDate) {
+		this.dayDate = dayDate;
+	}
+	 
+	 
 }

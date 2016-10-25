@@ -86,9 +86,6 @@ create table myHistory(
   itemName varchar(40) constraint myhistory_itemName_fk references borderinfo(itemName),
   money number(7) not null    --구매액 
 ); 
---ㅡmyhistory 데이터 추가했습니다.
-
-
     insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'aaa','bbb','디지털/가전제품','휴대폰','갤럭시S6',10000);
     insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'bbb','ccc','스포츠','alton','T-100',20000);
     insert into myHistory (dayDate,seller,buyer,category,sub_Category,itemName,money) values (sysdate,'ccc','ddd','의류','청바지','CalvinKlein',30000);
@@ -110,15 +107,28 @@ select * from myhistory;
 select * from myhistory;
 
 --delete from myhistory;
-----이미지 게시판 
---create table img_Border( 
---   border_Number number(5) constraint img_Bordernumber_fk references borderinfo(border_Number),   -- borderinfo 게시번호 
---   img varchar2(20)  -- 이미지 
---);
-----데이터 준비
---insert into img_Border(border_Number,img) values (1, '이미지1.jpg');
---insert into img_Border(border_Number,img) values (2, '이미지2.jpg');
 
+
+--이미지 게시판 
+create table img_Border( 
+   border_Number number(5) constraint img_Bordernumber_fk references borderinfo(border_Number),   -- borderinfo 게시번호 
+  img varchar2(20)  -- 이미지 
+);
+
+
+--데이터 준비     
+
+--borderifo 검색후 border_Number 맞춰주세요~          
+select * from borderinfo;
+                                              --  ▼ 
+insert into img_Border(border_Number,img) values (21, '이미지1.jpg');
+insert into img_Border(border_Number,img) values (22, '이미지2.jpg');
+insert into img_Border(border_Number,img) values (23, '이미지3.jpg');
+insert into img_Border(border_Number,img) values (42, '이미지4.jpg');
+insert into img_Border(border_Number,img) values (45, '이미지5.jpg');
+insert into img_Border(border_Number,img) values (46, '이미지6.jpg');
+
+select * from img_Border;
 --drop  table img_Border;
 --select * from img_Border;
 
@@ -155,10 +165,22 @@ create table trading (
 
 --  insert into trading (buyer,seller,itemName,cash,border_number,daydate) values ('fff', 'aaa','갤럭시S6',2000,1,'2016-10-24');
 --  insert into trading (buyer,seller,itemName,cash,border_number,daydate) values ('ddd', 'bbb','T-100',3000,2,'2016-10-24');
---  insert into trading (buyer,seller,itemName,cash,border_number,daydate) values ('eee', 'ccc','CalvinKlein',4400,3,'2016-10-24');
--- 
-  
-drop table trading;
+--  insert into trading (buyer,seller,itemName,cash,border_number,daydate) values ('eee', 'ccc','CalvinKlein',4400,3,'2016-10-24');  
+--  drop table trading;
+
+
+
+
+--  border Info 검색후 border-number 숫자를 변경해 주세요                                               										  --  ▼
+select * from borderInfo;                                                                                 --  ▼
+                                                                                                          --  ▼
+insert into  trading (buyer,seller,itemName,cash,border_number,daydate) values ('aaa','ddd','갤럭시S6',120000,21,sysdate);
+insert into  trading (buyer,seller,itemName,cash,border_number,daydate) values ('bbb','fff','T-100',200000,22,sysdate);
+insert into  trading (buyer,seller,itemName,cash,border_number,daydate) values ('ccc','ggg','CalvinKlein',30000,23,sysdate);
+insert into  trading (buyer,seller,itemName,cash,border_number,daydate) values ('eee','hhh','목도리',4000,42,sysdate);
+
+
+
   select * from trading;
 
 

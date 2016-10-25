@@ -1,6 +1,7 @@
---사용자 정보
+--사용자 정보 //  password varchar2 추가 
 create table userinfo (
- id varchar2(20) not null constraint id_pk primary key,   -- 아이디
+ id varchar2(20) not null constraint id_pk primary key,-- 아이디
+ password varchar2(20) not null,
  tel varchar2(20) not null,   --전화번호(휴대폰)
  email varchar2(40), -- 이메일 주소 
  location varchar2(40) not null,  -- 거주지주소
@@ -10,7 +11,7 @@ create table userinfo (
 
 
 --기본 데이터
-insert into userinfo (id,tel,email,location,cash) values ('aaa','01003441366','awaynee@hanmail.net','서울시 금천구',190000);
+insert into userinfo (id,tel,email,location,cash) values ('aaa','01093441366','awaynee@hanmail.net','서울시 금천구',190000);
 
 insert into userinfo (id,tel,email,location,cash) values ('bbb','01011112222','bbbb@naver.com','서울시 구로구',90000);
 insert into userinfo (id,tel,email,location,cash) values ('ccc','01033334444','cccc@gmail.com','서울시 동작구',290000);

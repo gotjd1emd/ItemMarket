@@ -2,21 +2,30 @@ package model.dto;
 
 public class UserDTO {
 	private String id; 
+	private String password;
 	private String tel;
 	private String email;
 	private String location;
 	private int cash;
-	public UserDTO(String id, String tel, String email, String location, int cash) {
+	
+	
+	public UserDTO(String id, String password, String tel, String email, String location, int cash) {
 		super();
 		this.id = id;
+		this.password = password;
 		this.tel = tel;
 		this.email = email;
 		this.location = location;
 		this.cash = cash;
-		
 	}
 	public String getId() {
 		return id;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public void setId(String id) {
 		this.id = id;

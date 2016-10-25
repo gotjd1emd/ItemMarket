@@ -10,6 +10,22 @@
   <title>Document</title>
       <link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="<c:url value="/"/>style/css.css">
+	<style>
+		header .menu{width:100%;  position: relative; z-index: 3;}
+		header .menu ul{width:100%; height: 50px; text-align: center;  }
+		header .menu ul li{float:right; width:124px; height:50px; color:#000;  line-height: 50px; margin-left:3%; position: relative; overflow: hidden; cursor: pointer; border:1px solid #000;}
+		header .menu ul li:nth-child(1){float:left; border:none; font-size:36px; overflow: visible; width:270px;}
+		header .menu ul li:nth-child(1) a{text-decoration: none; color:inherit;}
+		header .menu ul li:nth-child(1)::before{display: none;}
+		header .menu ul li:nth-child(1)::after{display: none;}
+		
+		header .menu ul li::before{content: ""; width:100%; height: 5px; background:blue; float:left; position: absolute; top:0; left:-100%; transition: 0.4s; }
+		header .menu ul li::after{content: ""; width:100%; height: 5px; background:blue; float:left; position: absolute; bottom: 0; left:100%; transition: 0.4s; }
+
+		header .menu ul li:hover::before{content:"";  left:0px; }
+		header .menu ul li:hover::after{content:"";  left:0px; }
+
+	</style>
 </head>
 <body>
 <header>
@@ -43,42 +59,42 @@
 						<li>작성자 : <span>yonghyun08</span></li>
 						<li>제품 : <span>MacBook(맥북)</span></li>
 						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.html"><button>상세설명</button></a></li>
+						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
 					</ul>
 					<ul>
 						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
 						<li>작성자 : <span>yonghyun08</span></li>
 						<li>제품 : <span>MacBook(맥북)</span></li>
 						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.html"><button>상세설명</button></a></li>
+						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
 					</ul>
 					<ul>
 						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
 						<li>작성자 : <span>yonghyun08</span></li>
 						<li>제품 : <span>MacBook(맥북)</span></li>
 						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.html"><button>상세설명</button></a></li>
+						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
 					</ul>
 					<ul>
 						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
 						<li>작성자 : <span>yonghyun08</span></li>
 						<li>제품 : <span>MacBook(맥북)</span></li>
 						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.html"><button>상세설명</button></a></li>
+						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
 					</ul>
 					<ul>
 						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
 						<li>작성자 : <span>yonghyun08</span></li>
 						<li>제품 : <span>MacBook(맥북)</span></li>
 						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.html"><button>상세설명</button></a></li>
+						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
 					</ul>
 					<ul>
 						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
 						<li>작성자 : <span>yonghyun08</span></li>
 						<li>제품 : <span>MacBook(맥북)</span></li>
 						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.html"><button>상세설명</button></a></li>
+						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
 					</ul>
 					
 

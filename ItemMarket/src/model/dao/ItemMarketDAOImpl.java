@@ -37,9 +37,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			if(rs.next()){
 			 result =1;			
 			}
-		}catch(SQLException e){
-			e.printStackTrace();
-			
 		}finally{
 			DbUtil.dbClose(con, ps, rs);
 		}
@@ -69,9 +66,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		ps.setInt(6, userInfo.getCash());
 		
 		result = ps.executeUpdate();	
-		}catch(SQLException e){
-			
-			e.printStackTrace();
 		}finally{
 			DbUtil.dbClose(con, ps, null);
 			
@@ -100,9 +94,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 									  rs.getInt("cash"));
 				}
 			
-		}catch(SQLException e){
-			e.printStackTrace();
-
 		}finally{
 			
 			DbUtil.dbClose(con, ps, rs);
@@ -139,8 +130,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 						rs.getString("trade_state"));						
 			}
 			
-		}catch(SQLException e) {			
-			e.printStackTrace();
 		}finally {			
 			DbUtil.dbClose(con, ps, rs);
 		}  		
@@ -223,9 +212,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			} 
 				
 				
-		} catch(Exception e){
-			e.printStackTrace();
-			
 		}finally {
 			
 			DbUtil.dbClose(con, ps, rs);
@@ -313,8 +299,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 						rs.getString("itemName"),rs.getInt("money"), rs.getString("dayDate"), rs.getString("category"),
 						rs.getString("sub_category"), rs.getString("itemState"));
 			  	}
-		  }catch(SQLException sel){
-			  sel.printStackTrace();
 		  }finally{
 			  DbUtil.dbClose(con, ps, rs);
 		  }
@@ -436,8 +420,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			result = ps.executeUpdate();
 
 			con.setAutoCommit(true);//오토커밋을 true로다시변경
-		}catch(SQLException e){
-			e.printStackTrace();
 		}finally{
 			DbUtil.dbClose(con, ps, null);
 		  }
@@ -477,8 +459,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 				list.add(dto);
 			}
 			  
-		  }catch(SQLException e){
-			  e.printStackTrace();
 		  }finally{
 			  DbUtil.dbClose(con, ps, rs);
 		  }

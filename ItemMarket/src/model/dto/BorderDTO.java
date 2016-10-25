@@ -6,24 +6,25 @@ public class BorderDTO {
 	private String id; 
 	private String borderNumber;
 	private String content;
+	private String itemName;
 	private int money;
-	private String date;
-	private String imgName;
-
+	private String dayDate;
 	private String category;
 	private String subcategory;
+	private String itemState;
 	
-	public BorderDTO(String id, String borderNumber, String content, int money, String date, String imgName,
-			String category, String subcategory) {
+	public BorderDTO(String id, String borderNumber, String content, String itemName, int money, String dayDate,
+			String category, String subcategory, String itemState) {
 		super();
 		this.id = id;
 		this.borderNumber = borderNumber;
 		this.content = content;
+		this.itemName = itemName;
 		this.money = money;
-		this.date = date;
-		this.imgName = imgName;
+		this.dayDate = dayDate;
 		this.category = category;
 		this.subcategory = subcategory;
+		this.itemState = itemState;
 	}
 
 	public String getId() {
@@ -50,6 +51,14 @@ public class BorderDTO {
 		this.content = content;
 	}
 
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
 	public int getMoney() {
 		return money;
 	}
@@ -58,20 +67,12 @@ public class BorderDTO {
 		this.money = money;
 	}
 
-	public String getDate() {
-		return date;
+	public String getDayDate() {
+		return dayDate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getImgName() {
-		return imgName;
-	}
-
-	public void setImgName(String imgName) {
-		this.imgName = imgName;
+	public void setDayDate(String dayDate) {
+		this.dayDate = dayDate;
 	}
 
 	public String getCategory() {
@@ -89,6 +90,16 @@ public class BorderDTO {
 	public void setSubcategory(String subcategory) {
 		this.subcategory = subcategory;
 	}
+
+	public String getItemState() {
+		return itemState;
+	}
+
+	public void setItemState(String itemState) {
+		this.itemState = itemState;
+	}
+	
+	
 	
 	
 }

@@ -104,11 +104,9 @@ footer> .noticeboardsubmit>button:hover::after{content:"";  left:0px; }
 
 /* select */
 
-#selectmaim{width:100%; position: relative; }
+#selectmain{width:100%; height:100%; float:left position: relative; }
 #selectmain .selectsub{width:33.3%; height:317px; float:left; position: relative; cursor: pointer;}
 #selectmain .selectsub img{width:100%; height:100%; transition: 0.4s;}
-#selectmain .selectsub:nth-child(even){background:#000;}
-#selectmain .selectsub:nth-child(odd){ background:blue;}
 #selectmain .selectsub .sub_text{
 	bottom: 0;
 	width:100%;
@@ -121,6 +119,31 @@ footer> .noticeboardsubmit>button:hover::after{content:"";  left:0px; }
 	opacity: 0.8;
 	color:#fff;
 }
+
+.dialog{display:none; position: relative;}
+.dialog ul{width:100%; float:left; text-align: center; padding:0;}
+.dialog ul li{width:189px; height:200px; line-height:200px; background:#000;float:left;}
+
+/* board */
+
+#mainboard{width:100%:float:left; margin-top:50px; position:relative;}
+#mainboard form>ul{width:100%; }
+#mainboard form>ul li{float:left; height: 50px; line-height: 50px;}
+#mainboard form>ul li:nth-child(odd){width:20%; text-align:center; background:blue;}
+#mainboard form>ul li:nth-child(even){width:80%;float:left; background:#000;}
+#mainboard form>ul li:nth-child(13){background:red; height: 300px; line-height: 300px;}
+#mainboard form>ul li textarea{width:100%; float:left ; height: 300px;}
+#mainboard .imgs{width:100%; float:left; }
+#mainboard .imgs img{background: #FF0000; border:3px solid #ff0000; border-radius:20%; flaot:left}
+#mainboard .imgs ul{float:left;}
+#mainboard .imgs ul li{flaot:left}
+#mainboard .submit{width:100%; text-align: center; }
+#mainboard .submit input{width:180px; height:50px; background:#fff;  margin-top:30px; margin-bottom:30px;border:1px solid #000; margin-left:15px; }
+#mainboard .imgs{width:100%; height:150px; float:left; position:relative;}
+
+
+
+
 
 
 

@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Null의 중고나라</title>
   <link rel="stylesheet" href="<c:url value="/"/>style/css.css">
 </head>
 <body>
@@ -16,12 +16,12 @@
 	<section id = "selectmain">
 
 		<div class ="selectsub">	
-			<span><img src="<c:url value="/"/>image/Electronic.png" alt="전자제품">Electronic.html</span>
+			<img src="<c:url value="/"/>image/Electronic.png" alt="전자제품">
 			<div class="sub_text"><h1>전자제품</h1></div>
 		</div>
 
 		<div class="selectsub">
-			<span><img src="<c:url value="/"/>image/clothing.jpg" alt="의류">dd</span>
+			<img src="<c:url value="/"/>image/clothing.jpg" alt="의류">
 			<div class="sub_text"><h1>의류</h1></div>
 		</div>
 		<div class="selectsub">
@@ -42,10 +42,23 @@
 			<div class="sub_text"><h1>사무용품</h1></div>
 		</div>	
 
-
 	</div>
-	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-2.2.4.min.js"></script>
+	</section>
+    <script type="text/javascript" src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">
+	<script type="text/javascript" src="<c:url value="/"/>jquery/smoothscroll-for-websites-master/SmoothScroll.js"></script>
 	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery.js"></script>
+
+	<div class="dialog" title="전자제품">
+		<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		</ul>
+	</div>
+
+	
 </body>
 </html>
 

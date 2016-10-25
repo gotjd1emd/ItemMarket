@@ -29,7 +29,6 @@ insert into userinfo (id,password,tel,email,location,cash) values ('lll','1234',
 
 
 select * from  userinfo; 
-
   
 --시퀀스 준비
 grant create sequence to root;   --(생성 계정 대입 )
@@ -146,9 +145,9 @@ select * from trade_history;
 
 
 --cash_history table   id, 구매내역 -receiver 구매자 
-create table cash_History (
-  id varchar2(20) constraint cash_History_id_fk references userinfo  (id),  -- id 
-  itemName varchar2(20) constraint cash_History_itemName_fk references borderInfo(itemName),  -- 물품 이름
+create table cash_history (
+  id varchar2(20) constraint cash_history_id_fk references userinfo  (id),  -- id 
+  itemName varchar2(20) constraint cash_history_itemName_fk references borderInfo(itemName),  -- 물품 이름
   mileage number(6), -- 마일리지
   saveDate date not null, -- 마일리지 적립일(최종구입일or상태=구매완료시점) 
   current_cash number
@@ -167,6 +166,7 @@ insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('bb
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('ccc','텀블러',2000,'2016-10-25',190000); 
 
 select * from cash_history;
+
 
 drop table myhistory;
 drop table img_Border;

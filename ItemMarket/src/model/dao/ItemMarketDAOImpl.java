@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import model.dto.BorderDTO;
@@ -16,7 +17,6 @@ import util.DbUtil;
 
 public class ItemMarketDAOImpl implements ItemMarketDAO {
 
-	
 	//1. 로그인	
 	@Override
 	public int login(String id, String pwd) throws SQLException {
@@ -273,17 +273,16 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		try{
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into borderInfo values (?,?,?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("insert into borderInfo values (?,?,?,?,?,sysdate,?,?,?)");
 			
 			ps.setString(1, border.getId());
 			ps.setInt(2, border.getBorderNumber());
 			ps.setString(3, border.getContent());
 			ps.setString(4, border.getItemName());
 			ps.setInt(5, border.getMoney());
-			ps.setString(6, border.getDayDate());
-			ps.setString(7, border.getCategory());
-			ps.setString(8, border.getSubcategory());
-			ps.setString(9, border.getItemState());
+			ps.setString(6, border.getCategory());
+			ps.setString(7, border.getSubcategory());
+			ps.setString(8, border.getItemState());
 			
 			result = ps.executeUpdate();
 		}finally{
@@ -306,7 +305,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		  try{
 			  con = DbUtil.getConnection();
 			  ps = con.prepareStatement("select * from borderInfo where border_number=?");
-			  	ps.setString(1, Integer.toString(borderNum));
+			  	ps.setInt(1, borderNum);
 			  	rs = ps.executeQuery();
 			  	
 			  	if(rs.next()){
@@ -380,7 +379,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		 try{
 			      
-			  ps = con.prepareStatement("update trading set cash = (select cash from trading) + ?");
+			  ps = con.prepareStatement("update trade_history set cash = (select cash from trade_history) + ?");
 			  ps.setInt(1, money);
 			  result = ps.executeUpdate();
 			  
@@ -404,7 +403,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		 try{
 			
 			  ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
-			  ps.setString(1,"거래중" );
+			  ps.setString(1,"거래중");
 			  ps.setString(2, border.getId());
 			  result = ps.executeUpdate();
 			  
@@ -425,13 +424,14 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result = 0;
 		try{
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into myHistory values (sysdate,?,?,?,?,?,?)");
-			ps.setString(1, id);	//어떤게구매자인지
-			ps.setString(2, border.getId()); // 어떤게구매자인지
-			ps.setString(3, border.getCategory());
-			ps.setString(4,border.getSubcategory());
-			ps.setString(5, border.getItemName());
-			ps.setInt(6, border.getMoney());
+			ps = con.prepareStatement("insert into trade_history values (?,?,?,?,?,?,?)");
+			ps.setString(1, id);	//구매하는사람
+			ps.setString(2, border.getId()); // 파는사람
+			ps.setString(3, border.getItemName());
+			ps.setInt(4, border.getMoney());
+			ps.setInt(5, border.getBorderNumber());
+			ps.setString(6, border.getDayDate());
+			ps.setString(7, border.getItemState());
 			
 			result = ps.executeUpdate();
 
@@ -458,9 +458,10 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		  try{
 			con = DbUtil.getConnection();
 			//파는 사람 기준으로 찾는건지? 사는 
-			ps = con.prepareStatement("select * from trading where seller = ?");
+			ps = con.prepareStatement("select * from trade_history where seller = ? | buyer=?");
 			
 			ps.setString(1, id);
+			ps.setString(2, id);
 			
 			rs = ps.executeQuery();
 			
@@ -485,7 +486,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	  }
 
 	
-
 	@Override
 	public TradeHistoryDTO selectByBorderTrade(int borderNum) throws SQLException {
 		// TODO Auto-generated method stub

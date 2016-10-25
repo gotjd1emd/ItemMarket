@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>상세설명</title>
+	<title>Null의 중고나라</title>
 	<link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="<c:url value="/"/>style/css.css">
 </head>
@@ -63,7 +63,11 @@
 				<link rel="stylesheet" href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">
 				<script type="text/javascript" src="<c:url value="/"/>jquery/smoothscroll-for-websites-master/SmoothScroll.js"></script>
 				<script type="text/javascript" src="<c:url value="/"/>jquery/jquery.js"></script>
-
+				<script type="text/javascript">
+				$(".mainEx button:last-child()").click(function(){
+					document.location.href="<c:url value="/view/"/>noticeboard.jsp"
+				});
+				</script>
 			</body>
 			</html>
 

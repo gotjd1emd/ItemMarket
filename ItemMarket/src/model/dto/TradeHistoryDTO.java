@@ -1,15 +1,16 @@
 package model.dto;
 
-public class TradeDTO {
+public class TradeHistoryDTO {
 	//ㅎ현재거래중 trading 
 	private String buyer;
-	 private String seller;
-	 private String itemName;
-	 private int cash;
-	 private String borderNumber;
-	 private String dayDate;
-	
-	 public TradeDTO(String buyer, String seller, String itemName, int cash, String borderNumber, String dayDate) {
+	private String seller;
+	private String itemName;
+	private int cash;
+	private String borderNumber;
+	private String dayDate;
+	private String tradeState;
+
+	public TradeHistoryDTO(String buyer, String seller, String itemName, int cash, String borderNumber, String dayDate, String tradeState) {
 		super();
 		this.buyer = buyer;
 		this.seller = seller;
@@ -17,6 +18,7 @@ public class TradeDTO {
 		this.cash = cash;
 		this.borderNumber = borderNumber;
 		this.dayDate = dayDate;
+		this.tradeState = tradeState;
 	}
 
 	public String getBuyer() {
@@ -67,5 +69,11 @@ public class TradeDTO {
 		this.dayDate = dayDate;
 	}
 	 
-	 
+	public String getTradeState() {
+		return tradeState;
+	}
+
+	public void setTradeState(String tradeState) {
+		this.tradeState = tradeState;
+	}
 }

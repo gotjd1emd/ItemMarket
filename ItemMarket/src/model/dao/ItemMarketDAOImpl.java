@@ -9,9 +9,8 @@ import java.util.List;
 
 import model.dto.BorderDTO;
 import model.dto.CashHistoryDTO;
-import model.dto.HistoryDTO;
 import model.dto.MemoDTO;
-import model.dto.TradeDTO;
+import model.dto.TradeHistoryDTO;
 import model.dto.UserDTO;
 import util.DbUtil;
 
@@ -118,26 +117,26 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * 거래날짜, 구매자, 판매자, 거래내용
 	 */
 	@Override
-	public HistoryDTO myHistory(String id) throws SQLException {
+	public TradeHistoryDTO myHistory(String id) throws SQLException {
 		Connection con = null; 
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		HistoryDTO  historyDTO=null;
+		TradeHistoryDTO  tradeHistoryDTO=null;
 		
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("select * from myhistory");
+			ps = con.prepareStatement("select * from trade_history");
 			rs= ps.executeQuery();
 			if(rs.next()){				
-		/*HistoryDTO(String daydate, String seller, String buyer, String category, String subcategory, 
-						String itemName,int money*/
-				historyDTO = new HistoryDTO(    rs.getString("dayDate"), 
-												rs.getString("seller"),
-												rs.getString("buyer"), 
-												rs.getString("category"), 
-												rs.getString("sub_category"),
-												rs.getString("itemName"),
-												rs.getInt("money"));						
+		/*tradeHistoryDTO(String buyer, String seller, String itemName, int cash, int border_number, 
+						String daydate, String trade_state)*/
+				tradeHistoryDTO = new TradeHistoryDTO(rs.getString("buyer"), 
+						rs.getString("seller"), 
+						rs.getString("itemName"), 
+						rs.getInt("cash"),
+						rs.getString("border_number"), 
+						rs.getString("daydate"),
+						rs.getString("trade_state"));						
 			}
 			
 		}catch(SQLException e) {			
@@ -145,7 +144,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		}finally {			
 			DbUtil.dbClose(con, ps, rs);
 		}  		
-		return historyDTO;
+		return tradeHistoryDTO;
 	}
 	
 	/**
@@ -196,7 +195,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		try {
 			
 		/* 	
-		 * String id, String borderNumber, String content, String itemName, int money, String dayDate,
+		 * String id, int borderNumber, String content, String itemName, int money, String dayDate,
 		 * String category, String subcategory, String itemState 
 		 */
 		
@@ -210,7 +209,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 				while(rs.next()){
 					
 					list.add(new BorderDTO(rs.getString("id"), 
-											rs.getString("border_number"), 
+											rs.getInt("border_number"), 
 											rs.getString("content"), 
 											rs.getString("itemName"),
 											rs.getInt("money"), 
@@ -277,7 +276,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			ps = con.prepareStatement("insert into borderInfo values (?,?,?,?,?,?,?,?,?)");
 			
 			ps.setString(1, border.getId());
-			ps.setString(2, border.getBorderNumber());
+			ps.setInt(2, border.getBorderNumber());
 			ps.setString(3, border.getContent());
 			ps.setString(4, border.getItemName());
 			ps.setInt(5, border.getMoney());
@@ -311,7 +310,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			  	rs = ps.executeQuery();
 			  	
 			  	if(rs.next()){
-			  			border = new BorderDTO(rs.getString("id"), rs.getString("border_number"),rs.getString("content"),
+			  			border = new BorderDTO(rs.getString("id"), rs.getInt("border_number"),rs.getString("content"),
 						rs.getString("itemName"),rs.getInt("money"), rs.getString("dayDate"), rs.getString("category"),
 						rs.getString("sub_category"), rs.getString("itemState"));
 			  	}
@@ -450,11 +449,11 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * 14. 거래진행내역 검색
 	 */
 	@Override
-	public List<TradeDTO> selectByIdTrade(String id) throws SQLException {
+	public List<TradeHistoryDTO> selectByIdTrade(String id) throws SQLException {
 		  Connection con = null;
 		  PreparedStatement ps = null;
 		  ResultSet rs = null;
-		  List<TradeDTO> list = new ArrayList<>();
+		  List<TradeHistoryDTO> list = new ArrayList<>();
 		  
 		  try{
 			con = DbUtil.getConnection();
@@ -466,12 +465,13 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
-				TradeDTO dto = new TradeDTO(rs.getString("buyer"), 
+				TradeHistoryDTO dto = new TradeHistoryDTO(rs.getString("buyer"), 
 						rs.getString("seller"), 
 						rs.getString("itemName"), 
 						rs.getInt("cash"),
 						rs.getString("border_number"), 
-						rs.getString("daydate"));
+						rs.getString("daydate"),
+						rs.getString("trade_state"));
 				
 				list.add(dto);
 			}
@@ -487,7 +487,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	
 
 	@Override
-	public TradeDTO selectByBorderTrade(int borderNum) throws SQLException {
+	public TradeHistoryDTO selectByBorderTrade(int borderNum) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

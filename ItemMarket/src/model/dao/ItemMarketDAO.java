@@ -6,9 +6,8 @@ import java.util.List;
 
 import model.dto.BorderDTO;
 import model.dto.CashHistoryDTO;
-import model.dto.HistoryDTO;
 import model.dto.MemoDTO;
-import model.dto.TradeDTO;
+import model.dto.TradeHistoryDTO;
 import model.dto.UserDTO;
 
 public interface ItemMarketDAO {
@@ -35,7 +34,7 @@ public interface ItemMarketDAO {
 	 * 4. 거래내역
 	 * 거래날짜, 구매자, 판매자, 거래내용
 	 */
-	HistoryDTO myHistory(String id) throws SQLException;
+	TradeHistoryDTO myHistory(String id) throws SQLException;
 	
 	/**
 	 * 5. 마일리지 내역 출력
@@ -104,12 +103,12 @@ public interface ItemMarketDAO {
 	/**
 	 * 14. 거래진행내역 검색
 	 */
-	List<TradeDTO> selectByIdTrade(String id) throws SQLException;
+	List<TradeHistoryDTO> selectByIdTrade(String id) throws SQLException;
 	
 	/**
 	 * 15. 해당 게시물에 대한 거래진행내역 검색
 	 */
-	TradeDTO selectByBorderTrade(int borderNum) throws SQLException;
+	TradeHistoryDTO selectByBorderTrade(int borderNum) throws SQLException;
 	
 	/**
 	 * 16. 중개소 마일리지를 판매자에게

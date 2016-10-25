@@ -4,7 +4,7 @@ package model.dto;
 
 public class BorderDTO {
 	private String id; 
-	private String borderNumber;
+	private int borderNumber;
 	private String content;
 	private String itemName;
 	private int money;
@@ -13,7 +13,7 @@ public class BorderDTO {
 	private String subcategory;
 	private String itemState;
 	
-	public BorderDTO(String id, String borderNumber, String content, String itemName, int money, String dayDate,
+	public BorderDTO(String id, int borderNumber, String content, String itemName, int money, String dayDate,
 			String category, String subcategory, String itemState) {
 		super();
 		this.id = id;
@@ -35,11 +35,11 @@ public class BorderDTO {
 		this.id = id;
 	}
 
-	public String getBorderNumber() {
+	public int getBorderNumber() {
 		return borderNumber;
 	}
 
-	public void setBorderNumber(String borderNumber) {
+	public void setBorderNumber(int borderNumber) {
 		this.borderNumber = borderNumber;
 	}
 

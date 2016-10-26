@@ -48,17 +48,20 @@
 		</section>
 		<div class="category" title="카테고리">
 			<ul>
-			<li>큰 카테고리1</li>
-			<li>큰 카테고리2</li>
-			<li>큰 카테고리3</li>
-			<li>큰 카테고리4</li>
-			<li>큰 카테고리5</li>
-			<li>큰 카테고리6</li>
-			<li>큰 카테고리7</li>
-			<li>큰 카테고리8</li>
+			<li><img src="<c:url value="/"/>image/Electronic.png" alt="전자제품">
+			<div class="sub_text"><h4>전자제품</h4></div></li>
+			<li><img src="<c:url value="/"/>image/clothing.jpg" alt="의류">
+			<div class="sub_text"><h4>의류</h4></div></li>
+			<li><img src="<c:url value="/"/>image/stuff.jpeg" alt="생활">
+			<div class="sub_text"><h4>의류</h4></div></li>
+			<li><img src="<c:url value="/"/>image/furniture.jpg" alt="가구">
+			<div class="sub_text"><h4>가구</h1></div></li>
+			<li><img src="<c:url value="/"/>image/Medical.jpg" alt="의료 , 의학">
+			<div class="sub_text"><h4>의료 , 의약</h4></div></li>
+			<li><img src="<c:url value="/"/>image/Office Supplies.jpg" alt="사무용품">
+			<div class="sub_text"><h4>사무용품</h4></div></li>
 			</ul>
 		</div>
-		
 
 	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>

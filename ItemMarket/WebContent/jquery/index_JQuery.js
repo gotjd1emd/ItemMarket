@@ -67,7 +67,7 @@
 		subCategory = "&subCategory="+$(this).text();
 	}));
 	$(".glyphicon.glyphicon-search").click(function(){ //임시로 주소갑 줌
-		document.location.href="../front?command=search"+category+subCategory+"&word="+$("[type=text]").val();
+		document.location.href="../front?command=search"+category+subCategory+"&word="+$("[type=text]").val()+"&page=1";
 	});
 
 	

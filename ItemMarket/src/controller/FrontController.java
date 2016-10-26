@@ -50,7 +50,7 @@ public class FrontController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String key = request.getParameter("command");
-		
+		System.out.println("key : " + key);
 		Action action = map.get(key);
 		action.execute(request, response);
 	}

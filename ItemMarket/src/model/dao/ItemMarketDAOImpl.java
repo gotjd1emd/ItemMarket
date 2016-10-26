@@ -206,7 +206,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * select * from borderinfo where category = ? and sub_category= ?" 
 	 */
 	@Override
-	public List<BorderDTO> search(String word, String category, String subCategory) throws SQLException {
+	public List<BorderDTO> search(String word, String category, String subCategory, int page) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null; 
@@ -218,17 +218,26 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		 * String id, int borderNumber, String content, String itemName, int money, String dayDate,
 		 * String category, String subcategory, String itemState 
 		 */
-		
 			con= DbUtil.getConnection();
 			if(word==null) {
-				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ?");
+				ps = con.prepareStatement("select * from (select ROWNUM num, id, border_number, content, "
+						+ "itemName, money, dayDate, category, sub_Category, itemState from borderinfo "
+						+ "where category = ? and sub_category = ? order by daydate desc) "
+						+ "where num BETWEEN ? and ?");
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
+				ps.setInt(3, (page-1)*9+1);
+				ps.setInt(4, page*9);
 			}else {
-				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ? and itemName like ?");
+				ps = con.prepareStatement("select * from (select ROWNUM num, id, border_number, content, "
+						+ "itemName, money, dayDate, category, sub_Category, itemState from borderinfo "
+						+ "where category = ? and sub_category = ? and itemName like ? order by daydate desc) "
+						+ "where num BETWEEN ? and ?");
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
 				ps.setString(3, "%"+word+"%");
+				ps.setInt(4, (page-1)*9+1);
+				ps.setInt(5, page*9);
 			}
 			rs  = ps.executeQuery();
 
@@ -245,7 +254,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 						rs.getString("itemState")
 						));
 			} 
-				
+			
 		}finally {
 			
 			DbUtil.dbClose(con, ps, rs);

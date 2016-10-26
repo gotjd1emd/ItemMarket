@@ -151,10 +151,23 @@ public class ItemMarketService {
 		int result = 0;
 		try{
 			result = dao.write(borderDTO);
-			result = dao.imgWrite(borderDTO.getBorderNumber());
 		}catch(Exception e){
 			e.printStackTrace();
 			return 0;
+		}
+		return result;
+	}
+	
+	/**
+	 * 8. 글쓰기
+	 * 이미지를 넣기 위한 메소드
+	 * */
+	public static int imgWrite(int borderNumber , String imgName){
+		int result = 0;
+		try {
+			result = marketDAO.imgWrite(borderNumber, imgName);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return result;
 	}

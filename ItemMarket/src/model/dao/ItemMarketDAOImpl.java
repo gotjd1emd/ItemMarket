@@ -316,18 +316,11 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * 이미지를 넣기 위한 메소드
 	 * */
 	@Override
-	public int imgWrite(int borderNumber) throws Exception {
+	public int imgWrite(int borderNumber , String imgName) throws Exception {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		HttpServletRequest request = null;
-		int maxSize = 1024*1024*100;
-		String encoding = "UTF-8";
-		String saveDir = request.getServletContext().getRealPath("/image");
-		MultipartRequest m = null;
 		try{
-			m = new MultipartRequest(request, saveDir, maxSize, encoding, new DefaultFileRenamePolicy());
-			String imgName = saveDir + m.getFilesystemName("file");
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement("insert into img_border values (?,?)");
 			ps.setInt(1, borderNumber);

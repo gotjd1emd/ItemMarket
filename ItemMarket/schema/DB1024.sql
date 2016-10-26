@@ -46,11 +46,11 @@ id varchar2(20) not null constraint border_id_fk references userinfo(id), -- use
 border_number number(5) constraint bordernumber_pk primary key,  -- borderinfo 참조
 content varchar2(30), -- 글 
 
-itemName varchar(40) constraint borderinfo_unique unique,
+itemName varchar(40) ,
 money number(7),  --금액 제시 
 dayDate date not null,  -- 올린 날짜 
-category varchar2(30) not null CONSTRAINT borderinfo_category_unique unique,    --카테고리 분류 
-sub_category varchar2(30) not null CONSTRAINT borderinfo_sub_category_unique unique,-- 서브 카테고리 분류
+category varchar2(30) not null ,    --카테고리 분류 
+sub_category varchar2(30) not null ,-- 서브 카테고리 분류
 itemState varchar2(20) 
 
 );
@@ -68,7 +68,20 @@ insert into borderInfo (id,border_number,content,itemName,money,dayDate,category
 --insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('ggg',borderInfo_seq.nextval,'▶▶빠른 연락◀◀','골프채',1000,sysdate,'스포츠','골프','구매대기중');
 --insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('hhh',borderInfo_seq.nextval,'▶▶초저가판매◀◀','외장하드',44000,sysdate,'디지털/가전제품','컴퓨터','구매대기중');
 insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('iii',borderInfo_seq.nextval,'▶택배가능합니다.◀','텀블러',3300,sysdate,'생활/가정','커피','구매대기중');
-
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S1',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S2',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S3',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S4',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S5',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S6',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S7',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S8',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S9',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S10',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S11',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S12',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S13',1000,sysdate,'전자제품','휴대폰','구매대기중');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S14',1000,sysdate,'전자제품','휴대폰','구매대기중');
 
 select * from borderInfo;
 

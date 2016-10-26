@@ -241,7 +241,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 						rs.getString("sub_Category"),
 						rs.getString("itemState")
 						));
-				System.out.println(list.get(0).getItemName());
 			} 
 				
 		}finally {

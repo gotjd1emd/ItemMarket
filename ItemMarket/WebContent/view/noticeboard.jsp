@@ -31,7 +31,7 @@
 <header>
 		<div class="menu">	
 			<ul>
-				<li><a href="<c:url value='/view/'/>index.jsp"><div class="icon"><img src="" alt="icon"></div></a></li>
+				<li><a href="<c:url value='/view/'/>index.jsp"><div class="icon"><img src="<c:url value='/'/>/image/icon.png" alt="icon"></div></a></li>
 				<li>회원가입</li>
 				<li>로그인</li>
 			</ul>
@@ -52,7 +52,7 @@
 		</header>
 		<section id="board">
 			<div class="container">
-				<div class="boardtitle">00 카테고리</div>
+				<div class="boardtitle">${requestScope.subCategory } 카테고리</div>
 				<div class="noticeboard">
 				<c:forEach var='list' items="${requestScope.list }">
 					<ul>
@@ -67,23 +67,25 @@
 				</div>
 			</div>
 		</section>
-		<ul class="pagination">
-			<li>
-				<a href="#" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-				</a>
-			</li>
-			<li class="active"><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li>
-				<a href="#" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				</a>
-			</li>
-		</ul>
+		<nav aria-label="Page navigation">
+			<ul class="pagination">
+				<li>
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li class="active"><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
 		<footer>
 			<div class="noticeboardsubmit"><button type="button">게시물 올리기</button></div>
 		</footer>

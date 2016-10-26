@@ -54,50 +54,15 @@
 			<div class="container">
 				<div class="boardtitle">00 카테고리</div>
 				<div class="noticeboard">
+				<c:forEach var='list' items="${requestScope.list }">
 					<ul>
 						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
-						<li>작성자 : <span>yonghyun08</span></li>
-						<li>제품 : <span>MacBook(맥북)</span></li>
-						<li>가격 : <span>0원</span></li>
+						<li>작성자 : <span>${list.id }</span></li>
+						<li>제품 : <span>${list.itemName }</span></li>
+						<li>가격 : <span>${list.money }원</span></li>
 						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
 					</ul>
-					<ul>
-						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
-						<li>작성자 : <span>yonghyun08</span></li>
-						<li>제품 : <span>MacBook(맥북)</span></li>
-						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
-					</ul>
-					<ul>
-						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
-						<li>작성자 : <span>yonghyun08</span></li>
-						<li>제품 : <span>MacBook(맥북)</span></li>
-						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
-					</ul>
-					<ul>
-						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
-						<li>작성자 : <span>yonghyun08</span></li>
-						<li>제품 : <span>MacBook(맥북)</span></li>
-						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
-					</ul>
-					<ul>
-						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
-						<li>작성자 : <span>yonghyun08</span></li>
-						<li>제품 : <span>MacBook(맥북)</span></li>
-						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
-					</ul>
-					<ul>
-						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
-						<li>작성자 : <span>yonghyun08</span></li>
-						<li>제품 : <span>MacBook(맥북)</span></li>
-						<li>가격 : <span>0원</span></li>
-						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
-					</ul>
-					
-
+				</c:forEach>
 				</div>
 			</div>
 		</section>

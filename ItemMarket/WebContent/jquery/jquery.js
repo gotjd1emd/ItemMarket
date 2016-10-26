@@ -142,22 +142,13 @@ $(document).ready(function(){
 		}
 		
 	});
-<<<<<<< HEAD
-	/* border file input create */
-	var file="" ;
-	$(".imgs img").click(function(){
-		file +="<li><input type='file' name='fileName'></li>"
-=======
-	
-	
-	
+
 	/* board file input create */
 	var file="";
 	var filenum = 0;
 	$(".imgs .imgbtn img").click(function(){
 		file +="<li><input type='file' name='fileName"+filenum+"'></li>"
 		filenum++;
->>>>>>> origin/master
 		$(".imgs ul").html(file);
 	});
 	

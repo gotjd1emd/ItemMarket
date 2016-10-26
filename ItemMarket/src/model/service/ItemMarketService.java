@@ -139,7 +139,6 @@ public class ItemMarketService {
 		
 		return list;
 	}
-<<<<<<< HEAD
 	
 	/**
 	 * 8. 글쓰기
@@ -157,8 +156,6 @@ public class ItemMarketService {
 		}
 		return result;
 	}
-=======
-
 	
 	/**
 	 * 9. 글읽기
@@ -176,8 +173,4 @@ public class ItemMarketService {
 		return border;
 	}
 
-	
-	
-
->>>>>>> origin/master
 }

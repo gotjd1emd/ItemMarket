@@ -15,7 +15,7 @@ public class SelectTrade implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String id = request.getParameter("id");
 		
 		List<TradeHistoryDTO> tradelist = ItemMarketService.myHistory(id);

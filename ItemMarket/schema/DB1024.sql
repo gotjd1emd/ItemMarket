@@ -131,16 +131,16 @@ drop table trade_history;
 
 --상호간 필요한 정보 
 create table trade_history (
-
   buyer constraint  trading_Buyer_fk references userInfo(id), -- 구매자 
   seller constraint trading_Seller_fk references userInfo(id),  -- 판매자
-  itemName constraint trading_itemName_fk references borderInfo(itemName),
+  itemName varchar2(20),
   cash number(7),  -- 지불액
   border_number constraint trading_bordernumber_fk references borderinfo(border_number) primary key, --글 게시 번호
   daydate date not null, -- 날짜 
   trade_state varchar2(40)
   
 );
+
 --  border Info 검색후 border-number 숫자를 변경해 주세요                                               										  
 select * from borderInfo;    
 select * from trade_history;
@@ -160,7 +160,7 @@ select * from trade_history;
 --cash_history table   id, 구매내역 -receiver 구매자 
 create table cash_history (
   id varchar2(20) constraint cash_history_id_fk references userinfo  (id),  -- id 
-  itemName varchar2(20) constraint cash_history_itemName_fk references borderInfo(itemName),  -- 물품 이름
+  itemName varchar2(20),  -- 물품 이름
   mileage number(6), -- 마일리지
   saveDate date not null, -- 마일리지 적립일(최종구입일or상태=구매완료시점) 
   current_cash number

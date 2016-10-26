@@ -113,32 +113,38 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * 거래날짜, 구매자, 판매자, 거래내용
 	 */
 	@Override
-	public TradeHistoryDTO myHistory(String id) throws SQLException {
+	public List<TradeHistoryDTO> myHistory(String id) throws SQLException {
 		Connection con = null; 
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		TradeHistoryDTO  tradeHistoryDTO=null;
+		List<TradeHistoryDTO>  tradelist = new ArrayList<>(); 
 		
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("select * from trade_history");
+			// id에 따라 구매내역, 판매 내역 모두 출력하도록 한다.
+			ps = con.prepareStatement("select * from trade_history where buyer=? or seller=?");
+			ps.setString(1, id);
+			ps.setString(2, id);
+			
 			rs= ps.executeQuery();
-			if(rs.next()){				
+			while(rs.next()){				
 		/*tradeHistoryDTO(String buyer, String seller, String itemName, int cash, int border_number, 
 						String daydate, String trade_state)*/
-				tradeHistoryDTO = new TradeHistoryDTO(rs.getString("buyer"), 
+				TradeHistoryDTO tradeHistoryDTO = new TradeHistoryDTO(rs.getString("buyer"), 
 						rs.getString("seller"), 
 						rs.getString("itemName"), 
 						rs.getInt("cash"),
 						rs.getString("border_number"), 
 						rs.getString("daydate"),
-						rs.getString("trade_state"));						
+						rs.getString("trade_state"));
+				
+				tradelist.add(tradeHistoryDTO);
 			}
 			
 		}finally {			
 			DbUtil.dbClose(con, ps, rs);
 		}  		
-		return tradeHistoryDTO;
+		return tradelist;
 	}
 	
 	/**
@@ -146,31 +152,52 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * 충전날짜, 사용한날짜, 남은 마일리지
 	 */
 	@Override
-	public CashHistoryDTO selectAllCashHistory(String id) throws SQLException {
+	public List<CashHistoryDTO> selectAllCashHistory(String id) throws SQLException {
 				Connection con = null;
 				PreparedStatement ps = null;
 				ResultSet rs = null;
-				CashHistoryDTO dto = null;
+				List<CashHistoryDTO> cashlist = new ArrayList<>(); 
+				
 				try{
 					con = DbUtil.getConnection();
 					ps=con.prepareStatement("select * from cash_History where id = ?");
 					ps.setString(1, id);
 					rs = ps.executeQuery();
 					while(rs.next()){
-						dto = new CashHistoryDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+						CashHistoryDTO cashHistoryDTO = new CashHistoryDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4),rs.getInt(5));
+					
+						cashlist.add(cashHistoryDTO);
 					}
 				}finally{
 					DbUtil.dbClose(con,ps,rs);
 				}
-				return dto;
+				return cashlist;
 	}
 	
+	/**
+	 * 6. 마일리지 충전
+	 */
+	public int addCash(String id, int cash) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result=0;
 	
-	@Override
-	public int addCash(String id, int cash, int currentCash, String itemName) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		try{
+			con = DbUtil.getConnection();
+			
+			ps=con.prepareStatement("update userinfo set cash = (select cash from userinfo where id=?) + ? where id=?");
+			ps.setString(1, id);
+			ps.setInt(2, cash);
+			ps.setString(3, id);
+
+			result = ps.executeUpdate();
+		
+		}finally{
+			DbUtil.dbClose(con, ps, null);
+		}
+		return result;
+}
+	
 	
 	/**
 	 * 6. 검색
@@ -185,7 +212,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		ResultSet rs = null; 
 		List<BorderDTO>  list = new ArrayList<>();
 		
-		
 		try {
 			
 		/* 	
@@ -194,28 +220,32 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		 */
 		
 			con= DbUtil.getConnection();
-			ps =con.prepareStatement("select * from borderinfo where category = "+word+ "| sub_category ="+word);
-			ps.setString(1, category);
-			ps.setString(2, subCategory);
+			if(word==null) {
+				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ?");
+				ps.setString(1, category);
+				ps.setString(2, subCategory);
+			}else {
+				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ? itemName = ?");
+				ps.setString(1, category);
+				ps.setString(2, subCategory);
+				ps.setString(3, "%"+word+"%");
+			}
 			rs  = ps.executeQuery();
-			
-			if(word==rs.getString("itemName")){	
-				while(rs.next()){
-					
-					list.add(new BorderDTO(rs.getString("id"), 
-											rs.getInt("border_number"), 
-											rs.getString("content"), 
-											rs.getString("itemName"),
-											rs.getInt("money"), 
-											rs.getString("dayDate"), 
-											rs.getString("category"), 
-											rs.getString("sub_Category"),
-											rs.getString("itemState")
-											));
-					
-				}
+
+			while(rs.next()){
+
+				list.add(new BorderDTO(rs.getString("id"), 
+						rs.getInt("border_number"), 
+						rs.getString("content"), 
+						rs.getString("itemName"),
+						rs.getInt("money"), 
+						rs.getString("dayDate"), 
+						rs.getString("category"), 
+						rs.getString("sub_Category"),
+						rs.getString("itemState")
+						));
+
 			} 
-				
 				
 		}finally {
 			

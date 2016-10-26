@@ -34,18 +34,18 @@ public interface ItemMarketDAO {
 	 * 4. 거래내역
 	 * 거래날짜, 구매자, 판매자, 거래내용
 	 */
-	TradeHistoryDTO myHistory(String id) throws SQLException;
+	List<TradeHistoryDTO> myHistory(String id) throws SQLException;
 	
 	/**
 	 * 5. 마일리지 내역 출력
 	 * 충전날짜, 사용한날짜, 남은 마일리지
 	 */
-	CashHistoryDTO selectAllCashHistory(String id) throws SQLException;
+	List<CashHistoryDTO> selectAllCashHistory(String id) throws SQLException;
 	
 	/**
 	 * 6. 마일리지 충전
 	 */
-	int addCash(String id, int cash, int currentCash, String itemName) throws SQLException;
+	int addCash(String id, int cash) throws SQLException;
 	
 	/**
 	 * 6. 검색

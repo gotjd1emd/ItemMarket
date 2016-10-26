@@ -34,7 +34,7 @@ public interface ItemMarketDAO {
 	 * 4. 거래내역
 	 * 거래날짜, 구매자, 판매자, 거래내용
 	 */
-	TradeHistoryDTO myHistory(String id) throws SQLException;
+	List<TradeHistoryDTO> myHistory(String id) throws SQLException;
 	
 	/**
 	 * 5. 마일리지 내역 출력

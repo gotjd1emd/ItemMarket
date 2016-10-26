@@ -108,32 +108,38 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * 거래날짜, 구매자, 판매자, 거래내용
 	 */
 	@Override
-	public TradeHistoryDTO myHistory(String id) throws SQLException {
+	public List<TradeHistoryDTO> myHistory(String id) throws SQLException {
 		Connection con = null; 
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		TradeHistoryDTO  tradeHistoryDTO=null;
+		List<TradeHistoryDTO>  tradelist = new ArrayList<>(); 
 		
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("select * from trade_history");
+			// id에 따라 구매내역, 판매 내역 모두 출력하도록 한다.
+			ps = con.prepareStatement("select * from trade_history where buyer=? or seller=?");
+			ps.setString(1, id);
+			ps.setString(2, id);
+			
 			rs= ps.executeQuery();
-			if(rs.next()){				
+			while(rs.next()){				
 		/*tradeHistoryDTO(String buyer, String seller, String itemName, int cash, int border_number, 
 						String daydate, String trade_state)*/
-				tradeHistoryDTO = new TradeHistoryDTO(rs.getString("buyer"), 
+				TradeHistoryDTO tradeHistoryDTO = new TradeHistoryDTO(rs.getString("buyer"), 
 						rs.getString("seller"), 
 						rs.getString("itemName"), 
 						rs.getInt("cash"),
 						rs.getString("border_number"), 
 						rs.getString("daydate"),
-						rs.getString("trade_state"));						
+						rs.getString("trade_state"));
+				
+				tradelist.add(tradeHistoryDTO);
 			}
 			
 		}finally {			
 			DbUtil.dbClose(con, ps, rs);
 		}  		
-		return tradeHistoryDTO;
+		return tradelist;
 	}
 	
 	/**
@@ -160,7 +166,9 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 				return dto;
 	}
 	
-	
+	/**
+	 * 6. 마일리지 충전
+	 */
 	@Override
 	public int addCash(String id, int cash, int currentCash, String itemName) throws SQLException {
 		// TODO Auto-generated method stub

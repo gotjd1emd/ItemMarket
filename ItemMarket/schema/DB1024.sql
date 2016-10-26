@@ -31,10 +31,10 @@ insert into userinfo (id,password,tel,email,location,cash) values ('lll','1234',
 select * from  userinfo; 
   
 --시퀀스 준비
-grant create sequence to root;   --(생성 계정 대입 )
+grant create sequence to scott;   --(생성 계정 대입 )
 
 --시퀀스생성
-create sequence borderinfo_seq;  --(테이블_seq)
+create sequence borderInfo_seq;  --(테이블_seq)
 
 --borderinfo_seq.nextval 적용컬럼에 대입--
 

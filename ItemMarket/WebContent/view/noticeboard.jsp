@@ -42,7 +42,7 @@
 			</div> -->
 			<div class="search">
 				<ul>
-					<li><input tpye="tetx" name="search"></li>
+					<li><input type="text" name="search" value="${requestScope.word }"></li>
 					<li><span class="glyphicon glyphicon-search"></span>
 					</ul>
 				</div>
@@ -52,7 +52,9 @@
 		</header>
 		<section id="board">
 			<div class="container">
-				<div class="boardtitle">${requestScope.subCategory } 카테고리</div>
+				<div class="boardtitle">${requestScope.category } > ${requestScope.subCategory } 카테고리</div>
+				<input type='hidden' value='${requestScope.category }' name='category'/>
+				<input type='hidden' value='${requestScope.subCategory }' name='subCategory'/>
 				<div class="noticeboard">
 				<c:forEach var='list' items="${requestScope.list }">
 					<ul>
@@ -60,7 +62,7 @@
 						<li>작성자 : <span>${list.id }</span></li>
 						<li>제품 : <span>${list.itemName }</span></li>
 						<li>가격 : <span>${list.money }원</span></li>
-						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
+						<li><a href="view/Explanation.jsp"><button>상세설명</button></a></li>
 					</ul>
 				</c:forEach>
 

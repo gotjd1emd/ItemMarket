@@ -18,10 +18,13 @@ public class Search implements Action {
 		String word = request.getParameter("word");
 		String category = request.getParameter("category");
 		String subCategory = request.getParameter("subCategory");
+		String page = request.getParameter("page");
 
 		List<BorderDTO> list = ItemMarketService.search(word, category, subCategory);
 		
 		request.setAttribute("list", list);
+		request.setAttribute("word", word);
+		request.setAttribute("category", category);
 		request.setAttribute("subCategory", subCategory);
 		request.getRequestDispatcher("view/noticeboard.jsp").forward(request, response);
 	}

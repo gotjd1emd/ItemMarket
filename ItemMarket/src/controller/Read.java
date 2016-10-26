@@ -19,7 +19,6 @@ public class Read implements Action {
 		BorderDTO border = ItemMarketService.read(Integer.parseInt(borderNumber));
 		
 		request.setAttribute("border", border);
-		request.getRequestDispatcher("view/noticeboard.jsp").forward(request, response);
 	}
 
 }

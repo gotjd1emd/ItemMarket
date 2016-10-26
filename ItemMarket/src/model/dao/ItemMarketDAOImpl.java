@@ -225,7 +225,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
 			}else {
-				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ? itemName = ?");
+				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ? and itemName like ?");
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
 				ps.setString(3, "%"+word+"%");
@@ -233,7 +233,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			rs  = ps.executeQuery();
 
 			while(rs.next()){
-
+				
 				list.add(new BorderDTO(rs.getString("id"), 
 						rs.getInt("border_number"), 
 						rs.getString("content"), 
@@ -244,7 +244,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 						rs.getString("sub_Category"),
 						rs.getString("itemState")
 						));
-
+				System.out.println(list.get(0).getItemName());
 			} 
 				
 		}finally {

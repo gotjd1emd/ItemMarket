@@ -71,14 +71,7 @@ public interface ItemMarketDAO {
 	 */
 	BorderDTO read(int borderNum) throws SQLException;
 	
-	/**
-	 * 구매 시작메소드
-	 * @param id
-	 * @param money
-	 * @param border
-	 * @throws SQLException
-	 */
-	void accountTransfer(String id, int money, BorderDTO border) throws SQLException;
+	
 	/**
 	 * 10. 구매자 마일리지를 중개자에게
 	 * 10, 11, 12, 13순서로 commit, rollback
@@ -87,6 +80,7 @@ public interface ItemMarketDAO {
 	
 	/**
 	 * 11. 중개자 마일리지를 구매자에게 받은만큼 증가
+	 * 중개자는 user_info의 admin으로 추가한다.
 	 */
 	int receiveCashAgency(Connection con,int money) throws SQLException;
 	

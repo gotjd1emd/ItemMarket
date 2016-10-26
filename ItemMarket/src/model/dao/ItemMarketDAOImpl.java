@@ -336,28 +336,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		  return border;
 	  }
 	
-	/**
-	 * 10-13을 실행하는 메소드 (하나의 connection으로 연결한다.)
-	 * 	 
-	 * */
-	@Override
-	public void accountTransfer(String id, int money, BorderDTO border) throws SQLException {
-		Connection con= null;
-		try{
-			con = DbUtil.getConnection();
-			con.setAutoCommit(false);
-			
-			sendCashAgency(con, id, money);
-			receiveCashAgency(con, money);
-			borderStateChange(con, border);
-			trading(con, id, money, border);
-			
-			con.commit(); // 성공
-		}catch(SQLException e){
-			con.rollback();
-		}
-		
-	}
 	
 	/**
 	 * 10. 구매자 마일리지를 중개자에게
@@ -384,6 +362,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 	/**
 	 * 11. 중개자 마일리지를 구매자에게 받은만큼 증가
+	 * 중개자는 user_info의 admin으로 추가한다.
 	 */
 	@Override
 	public int receiveCashAgency(Connection con,int money) throws SQLException {
@@ -393,8 +372,9 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		 try{
 			      
-			  ps = con.prepareStatement("update trade_history set cash = (select cash from trade_history) + ?");
+			  ps = con.prepareStatement("update userinfo set cash = (select cash from userinfo where id='admin') + ? where id='admin'");
 			  ps.setInt(1, money);
+			  
 			  result = ps.executeUpdate();
 			  
 		   }finally{

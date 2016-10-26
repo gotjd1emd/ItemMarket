@@ -140,7 +140,23 @@ public class ItemMarketService {
 		
 		return list;
 	}
-
+	
+	/**
+	 * 8. 글쓰기
+	 * 이미지, 지역, 금액, 글내용, id
+	 */
+	public static int write(BorderDTO borderDTO){
+		ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
+		int result = 0;
+		try{
+			result = dao.write(borderDTO);
+			result = dao.imgWrite(borderDTO.getBorderNumber());
+		}catch(Exception e){
+			e.printStackTrace();
+			return 0;
+		}
+		return result;
+	}
 	
 	/**
 	 * 9. 글읽기
@@ -180,11 +196,20 @@ public class ItemMarketService {
 		}catch(SQLException e){
 			con.rollback(); // 실패
 		}
-		
 	}
 
-	
-	
-	
-
+	/**
+	 * 14. 거래진행내역 검색
+	 */
+	public static List<TradeHistoryDTO> selectByIdTrade(String id) {
+		List<TradeHistoryDTO> tradelist = null;
+		
+		try {
+			
+			tradelist = marketDAO.selectByIdTrade(id);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return tradelist;
+	}
 }

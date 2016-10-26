@@ -483,7 +483,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		  try{
 			con = DbUtil.getConnection();
 			//파는 사람 기준으로 찾는건지? 사는 
-			ps = con.prepareStatement("select * from trade_history where seller = ? | buyer=?");
+			ps = con.prepareStatement("select * from trade_history where seller = ? or buyer=?");
 			
 			ps.setString(1, id);
 			ps.setString(2, id);

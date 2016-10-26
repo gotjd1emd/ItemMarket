@@ -66,6 +66,12 @@ public interface ItemMarketDAO {
 	int write(BorderDTO border) throws SQLException;
 	
 	/**
+	 * 8. 글쓰기
+	 * 이미지를 넣기 위한 메소드
+	 * */
+	int imgWrite(int borderNumber) throws Exception;
+	
+	/**
 	 * 9. 글읽기
 	 * 이미지, 지역, 금액, 글내용, id
 	 */

@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import model.dto.BorderDTO;
 import model.dto.CashHistoryDTO;
 import model.dto.MemoDTO;
@@ -276,6 +281,34 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		}
 		return result;
 	}
+	
+	/**
+	 * 8. 글쓰기
+	 * 이미지를 넣기 위한 메소드
+	 * */
+	@Override
+	public int imgWrite(int borderNumber) throws Exception {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		HttpServletRequest request = null;
+		int maxSize = 1024*1024*100;
+		String encoding = "UTF-8";
+		String saveDir = request.getServletContext().getRealPath("/image");
+		MultipartRequest m = null;
+		try{
+			m = new MultipartRequest(request, saveDir, maxSize, encoding, new DefaultFileRenamePolicy());
+			String imgName = saveDir + m.getFilesystemName("file");
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement("insert into img_border values (?,?)");
+			ps.setInt(1, borderNumber);
+			ps.setString(2, imgName);
+			result = ps.executeUpdate();
+		}finally{
+			DbUtil.dbClose(con, ps, null);
+		}
+		return result;
+	}
 
 	/**
 	 * 9. 글읽기
@@ -495,6 +528,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 
 
 

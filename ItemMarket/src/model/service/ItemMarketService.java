@@ -9,9 +9,54 @@ import model.dao.ItemMarketDAOImpl;
 import model.dto.BorderDTO;
 import model.dto.TradeHistoryDTO;
 import model.dto.MemoDTO;
+import model.dto.UserDTO;
 
 
 public class ItemMarketService {
+	private static ItemMarketDAOImpl marketDAO = new ItemMarketDAOImpl();
+	/**
+	 * 1. 로그인
+	 * 1 - 로그인, 0 - 로그인실패
+	 */
+	public static int login(String id, String pwd){
+		int result =0;
+		try{
+		 result =   marketDAO.login(id, pwd);
+		}catch(SQLException e){		
+			e.printStackTrace();
+		}return result;
+	};
+	
+	/**
+	 * 2. 회원가입
+	 * 1 - 가입, 0 - 가입실패
+	 */
+	public static int signUp(UserDTO userInfo){
+		int result = 0; 
+
+		try{
+			 result = marketDAO.signUp(userInfo);
+		}catch (SQLException e){
+			e.printStackTrace(); 
+		}
+		return result;
+		}
+	
+	/**
+	 * 3. 프로필
+	 * ID, 이름, 연락처, 메일, 지역, 신용등급, 마일리지
+	 */
+	public static UserDTO getProfile(String id){
+		UserDTO  userDTO  = new UserDTO();
+		try{			
+			userDTO= marketDAO.getProfile(id);				
+		}catch(SQLException e){		
+			e.printStackTrace();
+		}
+		return userDTO;
+	};
+	
+	
 	/**
 	 * 4. 거래내역
 	 * 거래날짜, 구매자, 판매자, 거래내용

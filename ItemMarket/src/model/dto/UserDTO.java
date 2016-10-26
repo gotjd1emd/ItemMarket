@@ -18,6 +18,9 @@ public class UserDTO {
 		this.location = location;
 		this.cash = cash;
 	}
+	public UserDTO() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getId() {
 		return id;
 	}

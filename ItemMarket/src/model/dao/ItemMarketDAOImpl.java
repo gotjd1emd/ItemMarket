@@ -114,6 +114,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 */
 	@Override
 	public List<TradeHistoryDTO> myHistory(String id) throws SQLException {
+		//id 거래 결과가 없으면 어떻게 처리??????
 		Connection con = null; 
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -134,7 +135,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 						rs.getString("seller"), 
 						rs.getString("itemName"), 
 						rs.getInt("cash"),
-						rs.getString("border_number"), 
+						rs.getInt("border_number"), 
 						rs.getString("daydate"),
 						rs.getString("trade_state"));
 				
@@ -167,7 +168,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 						CashHistoryDTO cashHistoryDTO = new CashHistoryDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4),rs.getInt(5));
 					
 						cashlist.add(cashHistoryDTO);
-					}
+				}
 				}finally{
 					DbUtil.dbClose(con,ps,rs);
 				}
@@ -380,17 +381,15 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		PreparedStatement ps = null;
 		int result=0;
 		
-		 try{
-			 ps = con.prepareStatement("update userinfo set cash=(select cash from userinfo where id=?)-? where id=?");
-			 ps.setString(1, id);
-			 ps.setInt(2, money);
-			 ps.setString(3, id);
-			  
-			 result = ps.executeUpdate();
-		 }finally{
-			 DbUtil.dbClose(con, ps, null);
-		 }
-		   return result;
+		 
+		 ps = con.prepareStatement("update userinfo set cash=(select cash from userinfo where id=?)-? where id=?");
+		 ps.setString(1, id);
+		 ps.setInt(2, money);
+		 ps.setString(3, id);
+		  
+		 result = ps.executeUpdate();
+		 
+		 return result;
 	}
 
 	/**
@@ -403,22 +402,16 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		PreparedStatement ps = null;
 		int result=0;
 		
-		 try{
-			      
-			  ps = con.prepareStatement("update userinfo set cash = (select cash from userinfo where id='admin') + ? where id='admin'");
-			  ps.setInt(1, money);
-			  
-			  result = ps.executeUpdate();
-			  
-		   }finally{
-			   DbUtil.dbClose(con, ps, null);
-		   }
-		   
-		   return result;
+		ps = con.prepareStatement("update userinfo set cash = (select cash from userinfo where id='admin') + ? where id='admin'");
+		ps.setInt(1, money);
+	  
+		result = ps.executeUpdate();
+  
+		return result;
 	}
 
 	/**
-	 * 12. 게시물의 거래 진행상황을 진행중 / 거래완료로 변경
+	 * 12-1. 게시물의 거래 진행상황을 진행중으로 변경 (거래내역에서 보여줄 것!!!- seller 기준 다 바뀜.)
 	 * 10번이 들어가기전에 borderStateChange를 해서 진행중으로 바꾸고, 버튼이 눌러지면 거래완료로 변경
 	 */
 	@Override
@@ -427,18 +420,30 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		PreparedStatement ps = null;
 		int result=0;
 		
-		 try{
-			
-			  ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
-			  ps.setString(1,"거래중");
-			  ps.setString(2, border.getId());
-			  result = ps.executeUpdate();
+	  ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
+	  ps.setString(1,"거래중");
+	  ps.setString(2, border.getId());
+	  result = ps.executeUpdate();
+	  
+	  return result;
+	}
+	
+	/**
+	 * 12-2. 게시물의 거래 진행상황을 진행중으로 변경 (게시판에서 보여줄 것!!! - 어차피 위에서 )
+	 * 10번이 들어가기전에 borderStateChange를 해서 진행중으로 바꾸고, 버튼이 눌러지면 거래완료로 변경
+	 */
+	@Override
+	public int tradeStateChange(Connection con, TradeHistoryDTO trade) throws SQLException {
+		
+		PreparedStatement ps = null;
+		int result=0;
+
+		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
+		ps.setString(1,"거래중");
+		ps.setString(2, trade.getSeller());
+		result = ps.executeUpdate();
 			  
-		   }finally{
-			   DbUtil.dbClose(con, ps, null);
-		   }
-		   
-		   return result;
+		return result;
 	}
 
 	/**
@@ -449,94 +454,138 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		PreparedStatement ps= null;
 		int result = 0;
-		try{
-			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into trade_history values (?,?,?,?,?,?,?)");
-			ps.setString(1, id);	//구매하는사람
-			ps.setString(2, border.getId()); // 파는사람
-			ps.setString(3, border.getItemName());
-			ps.setInt(4, border.getMoney());
-			ps.setInt(5, border.getBorderNumber());
-			ps.setString(6, border.getDayDate());
-			ps.setString(7, border.getItemState());
-			
-			result = ps.executeUpdate();
 
-			con.setAutoCommit(true);//오토커밋을 true로다시변경
-		}finally{
-			DbUtil.dbClose(con, ps, null);
-		  }
+		con = DbUtil.getConnection();
+		ps = con.prepareStatement("insert into trade_history values (?,?,?,?,?,?,?)");
+		ps.setString(1, id);	//구매하는사람
+		ps.setString(2, border.getId()); // 파는사람
+		ps.setString(3, border.getItemName());
+		ps.setInt(4, border.getMoney());
+		ps.setInt(5, border.getBorderNumber());
+		ps.setString(6, border.getDayDate());
+		ps.setString(7, border.getItemState());
+			
+		result = ps.executeUpdate();
+
 		return result;
 		
 	}
 	
 	/**
-	 * 14. 거래진행내역 검색
+	 * 15. 해당 게시물에 대한 거래진행내역 검색
 	 */
 	@Override
-	public List<TradeHistoryDTO> selectByIdTrade(String id) throws SQLException {
-		  Connection con = null;
-		  PreparedStatement ps = null;
-		  ResultSet rs = null;
-		  List<TradeHistoryDTO> list = new ArrayList<>();
+	public TradeHistoryDTO selectByBorderTrade(Connection con, int borderNumber) throws SQLException {
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		TradeHistoryDTO tradeHistoryDTO=null;
+		
+		ps = con.prepareStatement("select * from trade_history where border_number=?");
+		ps.setInt(1, borderNumber);
+		rs = ps.executeQuery();
+		
+		if(rs.next()){
+			tradeHistoryDTO = new TradeHistoryDTO(rs.getString("buyer"), rs.getString("seller"), rs.getString("itemName"), 
+					rs.getInt("cash"), rs.getInt("borderNumber"), rs.getString("dayDate"), rs.getString("tradeState"));
+		}
+		
+		
+		return tradeHistoryDTO;
+	}
+
+	/**
+	 * 16. 중개소 마일리지를 판매자에게
+	 * 15, 16, 17, 18순서로 commit 또는 rollback
+	 */
+	@Override
+	public int sendCashSeller(Connection con, String id, int money) throws SQLException {
+		
+		PreparedStatement ps = null;
+		int result=0;
+		
+		 ps = con.prepareStatement("update userinfo set cash=(select cash from userinfo where id=?)+? where id=?");
+		 ps.setString(1, id);
+		 ps.setInt(2, money);
+		 ps.setString(3, id);
 		  
-		  try{
-			con = DbUtil.getConnection();
-			//파는 사람 기준으로 찾는건지? 사는 
-			ps = con.prepareStatement("select * from trade_history where seller = ? or buyer=?");
-			
-			ps.setString(1, id);
-			ps.setString(2, id);
-			
-			rs = ps.executeQuery();
-			
-			while(rs.next()){
-				TradeHistoryDTO dto = new TradeHistoryDTO(rs.getString("buyer"), 
-						rs.getString("seller"), 
-						rs.getString("itemName"), 
-						rs.getInt("cash"),
-						rs.getString("border_number"), 
-						rs.getString("daydate"),
-						rs.getString("trade_state"));
-				
-				list.add(dto);
-			}
-			  
-		  }finally{
-			  DbUtil.dbClose(con, ps, rs);
-		  }
-		  return list;
-	  }
-
+		 result = ps.executeUpdate();
 	
-	@Override
-	public TradeHistoryDTO selectByBorderTrade(int borderNum) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		 return result;
 	}
 
+	/**
+	 * 17. 중개소의 마일리지 감소
+	 */
 	@Override
-	public int sendCashSeller(String id, int money) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int receiveCashSeller(Connection con, int money) throws SQLException {
+		
+		PreparedStatement ps = null;
+		int result=0;
+		
+		 
+		ps = con.prepareStatement("update userinfo set cash = (select cash from userinfo where id='admin') - ? where id='admin'");
+		ps.setInt(1, money);
+		  
+		result = ps.executeUpdate();
+			  
+		return result;
 	}
 
+	/**
+	 * 18-1. 구매완료 ..  (게시판내역에서 보여줄 것!!!)
+	 */
 	@Override
-	public int receiveCashSeller(int money) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int completeBorder(Connection con, BorderDTO border) throws SQLException {
+		
+		PreparedStatement ps = null;
+		int result=0;
+		
+		ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
+		ps.setString(1,"거래완료");
+		ps.setString(2, border.getId());
+		result = ps.executeUpdate();
+
+		return result;
+	}
+	
+	/**
+	 * 18-2. 구매완료 ..  (거래내역에서 보여줄 것!!!- seller 기준 다 바뀜.)
+	 */
+	@Override
+	public int completeTrade(Connection con, TradeHistoryDTO trade) throws SQLException {
+		
+		PreparedStatement ps = null;
+		int result=0;
+		
+		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
+		ps.setString(1,"거래완료");
+		ps.setString(2, trade.getSeller());
+		result = ps.executeUpdate();
+			  
+		return result;
 	}
 
+	/**
+	 * 19. 거래중 마일리지 내역 추가
+	 * 
+	 */
 	@Override
-	public int complete(String id, int money, BorderDTO border) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int updateCashHistory(Connection con, String id, String itemName, int money, int currentCash) throws SQLException {
+		
+		PreparedStatement ps= null;
+		int result = 0;
+		
+		con = DbUtil.getConnection();
+		ps = con.prepareStatement("insert into cash_history values (?,?,?,sysdate,?)");
+		ps.setString(1, id);	//구매하는사람
+		ps.setString(2, itemName); // 파는사람
+		ps.setInt(3, money);
+		ps.setInt(4, currentCash);
+		
+		result = ps.executeUpdate();
 
-	@Override
-	public int updateCashHistory(String id, String itemName, int money, int currentCash) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return result;
 	}
 
 	

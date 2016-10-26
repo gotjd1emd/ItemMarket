@@ -91,46 +91,52 @@ public interface ItemMarketDAO {
 	int receiveCashAgency(Connection con,int money) throws SQLException;
 	
 	/**
-	 * 12. 게시물의 거래 진행상황을 진행중 또는 거래완료로 변경
+	 * 12-1. 게시물의 거래 진행상황을 진행중 또는 거래완료로 변경(게시판에서 보여줄것)
 	 */
 	int borderStateChange(Connection con,BorderDTO border) throws SQLException;
+	
+	/**
+	 * 12-2. 게시물의 거래 진행상황을 진행중 또는 거래완료로 변경(거래내역에서 보여줄것)
+	 */
+	int tradeStateChange(Connection con,TradeHistoryDTO trade) throws SQLException;
 	
 	/**
 	 * 13. 거래진행내역 추가
 	 */
 	int trading(Connection con,String id, int money, BorderDTO border) throws SQLException;
 	
-	/**
-	 * 14. 거래진행내역 검색
-	 */
-	List<TradeHistoryDTO> selectByIdTrade(String id) throws SQLException;
 	
 	/**
 	 * 15. 해당 게시물에 대한 거래진행내역 검색
 	 */
-	TradeHistoryDTO selectByBorderTrade(int borderNum) throws SQLException;
+	TradeHistoryDTO selectByBorderTrade(Connection con, int borderNumber) throws SQLException;
 	
 	/**
 	 * 16. 중개소 마일리지를 판매자에게
 	 * 15, 16, 17, 12, 18순서로 commit 또는 rollback
 	 */
-	int sendCashSeller(String id, int money) throws SQLException;
+	int sendCashSeller(Connection con, String id, int money) throws SQLException;
 	
 	/**
 	 * 17. 중개소의 마일리지 감소
 	 */
-	int receiveCashSeller(int money) throws SQLException;
+	int receiveCashSeller(Connection con, int money) throws SQLException;
 	
 	/**
-	 * 18. 구매완료 진행내역에 삭제
+	 * 18-1. 구매완료 진행내역에 삭제
 	 */
-	int complete(String id, int money, BorderDTO border) throws SQLException;
+	int completeBorder(Connection con,BorderDTO border) throws SQLException;
+	/**
+	 * 18-2. 구매완료 진행내역에 삭제(거래내역에서 )
+	 */
+	int completeTrade(Connection con,TradeHistoryDTO trade) throws SQLException;
+	
 	
 	/**
 	 * 거래중 마일리지 내역 추가
 	 * 
 	 */
-	int updateCashHistory(String id, String itemName, int money, int currentCash) throws SQLException;
+	int updateCashHistory(Connection con, String id, String itemName, int money, int currentCash) throws SQLException;
 	
 	
 }

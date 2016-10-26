@@ -1,6 +1,7 @@
 package model.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -181,8 +182,9 @@ public class ItemMarketService {
 	 * 2) 중개자의 마일리지는 증가하며 
 	 * 3) 거래 상태가 변하고
 	 * */
-	public static void accountTransfer(String id, int money, BorderDTO border) throws SQLException {
+	public static void accountTransfer(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
 		Connection con= null;
+	
 		try{
 			con = DbUtil.getConnection();
 			con.setAutoCommit(false);
@@ -190,26 +192,45 @@ public class ItemMarketService {
 			marketDAO.sendCashAgency(con, id, money);
 			marketDAO.receiveCashAgency(con, money);
 			marketDAO.borderStateChange(con, border);
+			marketDAO.tradeStateChange(con, trade);
 			marketDAO.trading(con, id, money, border);
 			
+			con.setAutoCommit(true);//오토커밋을 true로다시변경
 			con.commit(); // 성공
 		}catch(SQLException e){
 			con.rollback(); // 실패
+		}finally{
+			con.close();
 		}
 	}
 
+
 	/**
-	 * 14. 거래진행내역 검색
-	 */
-	public static List<TradeHistoryDTO> selectByIdTrade(String id) {
-		List<TradeHistoryDTO> tradelist = null;
-		
-		try {
+	 * 15-18을 실행하는 메소드 (하나의 connection으로 연결한다.)
+	 * 거래중에서 거래완료로 바뀌는 과정 
+	 * @throws SQLException 
+	 * */
+	public static void transferComplete(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
+		Connection con = null;
+		try{
+			con = DbUtil.getConnection();
+			con.setAutoCommit(false);
 			
-			tradelist = marketDAO.selectByIdTrade(id);
-		}catch(SQLException e) {
-			e.printStackTrace();
+			int currentCash = marketDAO.getProfile(id).getCash();
+			marketDAO.selectByBorderTrade(con, border.getBorderNumber());
+			marketDAO.sendCashSeller(con, id, money);
+			marketDAO.receiveCashSeller(con, money);
+			
+			marketDAO.completeBorder(con, border);
+			marketDAO.completeTrade(con, trade);
+			marketDAO.updateCashHistory(con, id, border.getItemName(), money, currentCash);
+			
+			con.setAutoCommit(true);//오토커밋을 true로다시변경
+			con.commit(); // 성공
+		}catch(SQLException e){
+			con.rollback(); // 실패
+		}finally{
+			con.close();
 		}
-		return tradelist;
 	}
 }

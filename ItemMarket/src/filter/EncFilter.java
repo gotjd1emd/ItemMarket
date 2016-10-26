@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebInitParam;
  * Servlet Filter implementation class EncFilter
  */
 @WebFilter(
-		urlPatterns = { "/*" }, 
+		urlPatterns = { "/front" }, 
 		initParams = { 
 				@WebInitParam(name = "encoding", value = "utf-8")
 		})

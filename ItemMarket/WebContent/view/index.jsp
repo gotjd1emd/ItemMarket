@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Null의 중고나라</title>
+  <title>ItemMarket</title>
   	<link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="<c:url value="/"/>style/css.css">
 </head>
@@ -27,7 +27,7 @@
 
 	</header>
 	<section id="search">
-		<h1>Null중고나라</h1>
+		<h1>ItemMarket</h1>
 
 		<div class="searchmain">
 			<ul>
@@ -66,7 +66,7 @@
 	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">
-	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery.js"></script>
+	<script type="text/javascript" src="<c:url value="/"/>jquery/index_JQuery.js"></script>
 </body>
 </html>
 

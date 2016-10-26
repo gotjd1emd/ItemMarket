@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Null의 중고나라</title>
+<title>ItemMarket</title>
 <link rel="stylesheet"
 	href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 <link rel="stylesheet" href="<c:url value="/"/>style/css.css">
@@ -33,7 +33,9 @@
 				<li><textarea name="content"></textarea></li>
 			</ul>
 			<div class="imgs">
+		
 			<div class="imgbtn">
+			<span>이미지</span>
 			<img src="<c:url value="/"/>image/plus.png" alt="plus">
 			</div>
 			<ul></ul>
@@ -79,7 +81,7 @@
 	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">
 	<script type="text/javascript" src="<c:url value="/"/>jquery/smoothscroll-for-websites-master/SmoothScroll.js"></script>
-	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery.js"></script>
+	<script type="text/javascript" src="<c:url value="/"/>jquery/board_JQuery.js"></script>
 	<script type="text/javascript">
 		function checkValid(){
 			if($("input[name=bigcategory").val() == ""){
@@ -94,8 +96,10 @@
 				alert("판매 방식을 선택해주세요");
 				return false;
 				}
-			
 			}
+		$("input[value=취소]").click(function(){
+				document.location.href="<c:url value='/'/>view/noticeboard.jsp";
+		});
 	</script>
 </body>
 </html>

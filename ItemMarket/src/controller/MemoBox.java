@@ -20,8 +20,6 @@ public class MemoBox implements Action {
 		System.out.println("memobox : " + memobox);
 		request.setAttribute("memobox", memobox);
 		
-		
-		
 	}
 
 }

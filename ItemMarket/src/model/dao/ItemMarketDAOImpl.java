@@ -23,20 +23,20 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 	//1. ·Î±×ÀÎ	
 	@Override
-	public int login(String id, String pwd) throws SQLException {
+	public int login(String id, String password) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		int result = 0;
 		UserDTO userDTO = null;
-		String sql = " select * from userinfo where id = ? and pwd = ?";
+		String sql = " select * from userinfo where id = ? and password = ?";
 		//String sql = "select id,pw,tel from usertable where id = ? & pwd = ? ";
 		
 		try{
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
-			ps.setString(2, pwd);
+			ps.setString(2, password);
 			rs= ps.executeQuery();
 			if(rs.next()){
 			 result =1;			

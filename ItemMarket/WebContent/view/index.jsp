@@ -138,6 +138,7 @@ function checkValid(){
 		<!-- 로그인 dialog -->
 		<div class="logindialog" title="로그인">
 		<section id="loginform">
+			<form name="login" action="../front?command=login" method="post">
 			<ul>
 				<li>아이디</li><li> <input type="text" name="id" placeholder="아이디를 입력해주세요"></li>
 				<li>비밀번호</li><li><input type="password" name="password" placeholder="비밀번호를 입력해주세요"></li>		
@@ -145,6 +146,7 @@ function checkValid(){
 			<div class="loginsubmit">
 				<input type="submit" value="로그인">
 			</div>
+			</form>
 		 </section>
 		</div>
 		

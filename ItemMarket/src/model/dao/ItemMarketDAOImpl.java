@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import model.dto.BorderDTO;
 import model.dto.CashHistoryDTO;
 import model.dto.MemoDTO;
@@ -147,33 +152,52 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * 충전날짜, 사용한날짜, 남은 마일리지
 	 */
 	@Override
-	public CashHistoryDTO selectAllCashHistory(String id) throws SQLException {
+	public List<CashHistoryDTO> selectAllCashHistory(String id) throws SQLException {
 				Connection con = null;
 				PreparedStatement ps = null;
 				ResultSet rs = null;
-				CashHistoryDTO dto = null;
+				List<CashHistoryDTO> cashlist = new ArrayList<>(); 
+				
 				try{
 					con = DbUtil.getConnection();
 					ps=con.prepareStatement("select * from cash_History where id = ?");
 					ps.setString(1, id);
 					rs = ps.executeQuery();
 					while(rs.next()){
-						dto = new CashHistoryDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+						CashHistoryDTO cashHistoryDTO = new CashHistoryDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4),rs.getInt(5));
+					
+						cashlist.add(cashHistoryDTO);
 					}
 				}finally{
 					DbUtil.dbClose(con,ps,rs);
 				}
-				return dto;
+				return cashlist;
 	}
 	
 	/**
 	 * 6. 마일리지 충전
 	 */
-	@Override
-	public int addCash(String id, int cash, int currentCash, String itemName) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int addCash(String id, int cash) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result=0;
+	
+		try{
+			con = DbUtil.getConnection();
+			
+			ps=con.prepareStatement("update userinfo set cash = (select cash from userinfo where id=?) + ? where id=?");
+			ps.setString(1, id);
+			ps.setInt(2, cash);
+			ps.setString(3, id);
+
+			result = ps.executeUpdate();
+		
+		}finally{
+			DbUtil.dbClose(con, ps, null);
+		}
+		return result;
+}
+	
 	
 	/**
 	 * 6. 검색
@@ -201,7 +225,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
 			}else {
-				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ? itemName = ?");
+				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ? and itemName like ?");
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
 				ps.setString(3, "%"+word+"%");
@@ -209,7 +233,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			rs  = ps.executeQuery();
 
 			while(rs.next()){
-
+				
 				list.add(new BorderDTO(rs.getString("id"), 
 						rs.getInt("border_number"), 
 						rs.getString("content"), 
@@ -220,7 +244,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 						rs.getString("sub_Category"),
 						rs.getString("itemState")
 						));
-
+				System.out.println(list.get(0).getItemName());
 			} 
 				
 		}finally {
@@ -281,6 +305,34 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			ps.setString(7, border.getSubcategory());
 			ps.setString(8, border.getItemState());
 			
+			result = ps.executeUpdate();
+		}finally{
+			DbUtil.dbClose(con, ps, null);
+		}
+		return result;
+	}
+	
+	/**
+	 * 8. 글쓰기
+	 * 이미지를 넣기 위한 메소드
+	 * */
+	@Override
+	public int imgWrite(int borderNumber) throws Exception {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		HttpServletRequest request = null;
+		int maxSize = 1024*1024*100;
+		String encoding = "UTF-8";
+		String saveDir = request.getServletContext().getRealPath("/image");
+		MultipartRequest m = null;
+		try{
+			m = new MultipartRequest(request, saveDir, maxSize, encoding, new DefaultFileRenamePolicy());
+			String imgName = saveDir + m.getFilesystemName("file");
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement("insert into img_border values (?,?)");
+			ps.setInt(1, borderNumber);
+			ps.setString(2, imgName);
 			result = ps.executeUpdate();
 		}finally{
 			DbUtil.dbClose(con, ps, null);
@@ -506,6 +558,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 
 
 

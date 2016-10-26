@@ -1,25 +1,27 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.dto.MemoDTO;
+import model.dto.UserDTO;
 import model.service.ItemMarketService;
 
-public class MemoBox implements Action {
+public class GetProfile implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session	 = request.getSession();
 		String id = request.getParameter("id");
+			
+		ItemMarketService marketService = new ItemMarketService();
+		UserDTO userProfile = new  UserDTO(); 
+		userProfile =	marketService.getProfile(id);
 		
-		List<MemoDTO> memobox = ItemMarketService.memobox(id);
-		System.out.println("memobox : " + memobox);
-		request.setAttribute("memobox", memobox);
-		
+		session.setAttribute("userProfile", userProfile);
 	}
 
 }

@@ -99,7 +99,7 @@ $(document).ready(function(){
 		
 	});
 	/* border file input create */
-	var file=""n ;
+	var file="" ;
 	$(".imgs img").click(function(){
 		file +="<li><input type='file' name='fileName'></li>"
 		$(".imgs ul").html(file);

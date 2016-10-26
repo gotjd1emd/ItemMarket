@@ -6,13 +6,15 @@ public class CashHistoryDTO {
 	private String itemName;
 	private int mileage;
 	private String saveDate;
+	private int currentCash;
 	
-	public CashHistoryDTO(String id, String itemName, int mileage, String saveDate) {
+	public CashHistoryDTO(String id, String itemName, int mileage, String saveDate, int currentCash) {
 		super();
 		this.id = id;
 		this.itemName = itemName;
 		this.mileage = mileage;
 		this.saveDate = saveDate;
+		this.currentCash = currentCash;
 	}
 	public String getId() {
 		return id;
@@ -37,6 +39,12 @@ public class CashHistoryDTO {
 	}
 	public void setSaveDate(String saveDate) {
 		this.saveDate = saveDate;
+	}
+	public int getCurrentCash() {
+		return currentCash;
+	}
+	public void setCurrentCash(int currentCash) {
+		this.currentCash = currentCash;
 	}
 	
 	

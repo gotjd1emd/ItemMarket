@@ -147,33 +147,52 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * 충전날짜, 사용한날짜, 남은 마일리지
 	 */
 	@Override
-	public CashHistoryDTO selectAllCashHistory(String id) throws SQLException {
+	public List<CashHistoryDTO> selectAllCashHistory(String id) throws SQLException {
 				Connection con = null;
 				PreparedStatement ps = null;
 				ResultSet rs = null;
-				CashHistoryDTO dto = null;
+				List<CashHistoryDTO> cashlist = new ArrayList<>(); 
+				
 				try{
 					con = DbUtil.getConnection();
 					ps=con.prepareStatement("select * from cash_History where id = ?");
 					ps.setString(1, id);
 					rs = ps.executeQuery();
 					while(rs.next()){
-						dto = new CashHistoryDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+						CashHistoryDTO cashHistoryDTO = new CashHistoryDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4),rs.getInt(5));
+					
+						cashlist.add(cashHistoryDTO);
 					}
 				}finally{
 					DbUtil.dbClose(con,ps,rs);
 				}
-				return dto;
+				return cashlist;
 	}
 	
 	/**
 	 * 6. 마일리지 충전
 	 */
-	@Override
-	public int addCash(String id, int cash, int currentCash, String itemName) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public int addCash(String id, int cash) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result=0;
+	
+		try{
+			con = DbUtil.getConnection();
+			
+			ps=con.prepareStatement("update userinfo set cash = (select cash from userinfo where id=?) + ? where id=?");
+			ps.setString(1, id);
+			ps.setInt(2, cash);
+			ps.setString(3, id);
+
+			result = ps.executeUpdate();
+		
+		}finally{
+			DbUtil.dbClose(con, ps, null);
+		}
+		return result;
+}
+	
 	
 	/**
 	 * 6. 검색

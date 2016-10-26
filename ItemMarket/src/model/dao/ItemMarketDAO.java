@@ -40,12 +40,12 @@ public interface ItemMarketDAO {
 	 * 5. 마일리지 내역 출력
 	 * 충전날짜, 사용한날짜, 남은 마일리지
 	 */
-	CashHistoryDTO selectAllCashHistory(String id) throws SQLException;
+	List<CashHistoryDTO> selectAllCashHistory(String id) throws SQLException;
 	
 	/**
 	 * 6. 마일리지 충전
 	 */
-	int addCash(String id, int cash, int currentCash, String itemName) throws SQLException;
+	int addCash(String id, int cash) throws SQLException;
 	
 	/**
 	 * 6. 검색

@@ -7,6 +7,7 @@ import java.util.List;
 import model.dao.ItemMarketDAO;
 import model.dao.ItemMarketDAOImpl;
 import model.dto.BorderDTO;
+import model.dto.CashHistoryDTO;
 import model.dto.TradeHistoryDTO;
 import model.dto.MemoDTO;
 import model.dto.UserDTO;
@@ -73,6 +74,38 @@ public class ItemMarketService {
 		}
 		return tradelist;
 	}
+	
+	/**
+	 * 5. 마일리지 내역 출력
+	 * 충전날짜, 사용한날짜, 남은 마일리지
+	 * select * from cash_History where id = ?
+	 */
+	public static List<CashHistoryDTO> selectAllCashHistory(String id) {
+		List<CashHistoryDTO> cashlist = null;
+		try{
+			ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
+			cashlist = dao.selectAllCashHistory(id);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return cashlist;
+	}
+	
+	/**
+	 * 6. 마일리지 충전
+	 * 사용자 정보 id에 따라 매개변수인 cash를 받아 수정한다.
+	 */
+	public static int addCash(String id, int cash) {
+		ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
+		int result=0;
+		try {
+			result=dao.addCash(id, cash);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	/**
 	 * 6. 검색
 	 * 게시물
@@ -123,5 +156,8 @@ public class ItemMarketService {
 		}
 		return border;
 	}
+
+	
+	
 
 }

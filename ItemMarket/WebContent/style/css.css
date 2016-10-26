@@ -126,30 +126,30 @@ footer> .noticeboardsubmit>button:hover::after{content:"";  left:0px; }
 #mainboard form>ul li:nth-child(2) input{width:50%; height:100%; float:left; border:none; text-align:center;}
 #mainboard form ul li input[name=sale]{width:50%; height: 100%; flaot:left border:none; text-align:center;}
 #mainboard form>ul li>input[type=number]{width:100%; height: 100%; border:none;}
-#mainboard form>ul li>input[type=button]{width:50%; float:left; border-right:1px solid #18FFFF; }
+#mainboard form>ul li>input[type=button]{width:50%; float:left; border:none; border-right:1px solid #FF8F00; background:#FFD54F; color:#FF8F00; }
 #mainboard form>ul li span{width:50%; height100%; float:left; text-align:center}
-#mainboard form>ul li:nth-child(odd){width:20%; text-align:center; background:#84FFFF; border:1px solid #18FFFF; font-weight: bold; }
-#mainboard form>ul li:nth-child(even){width:80%;float:left; background:#fff; border:1px solid #18FFFF;}
-#mainboard form>ul li:nth-child(13){background:#84FFFF; border-right:1px solid #18FFFF; height: 410px; line-height: 300px;}
+#mainboard form>ul li:nth-child(odd){width:20%; text-align:center; background:#FFD54F; border:1px solid #FF8F00; color:#FF8F00; font-weight: bold; }
+#mainboard form>ul li:nth-child(even){width:80%;float:left; background:#fff; border:1px solid #FF8F00;}
+#mainboard form>ul li:nth-child(13){background:#FFD54F; color:#FF8F00; border-right:1px solid #FF8F00; height: 410px; line-height: 410px;}
 #mainboard form>ul li:nth-child(14){border:none;}
-#mainboard form>ul li textarea{width:100%; padding:0; float:right; height: 300px; border-left:1px solid #18FFFF; border-top:1px solid #18FFFF; border-right:1px solid #18FFFF;}
+#mainboard form>ul li textarea{width:100%; padding:0; float:right; height: 300px; }
 #mainboard .imgs{width:100%; height:150px; float:left;  }
-#mainboard .imgs .imgbtn span{width:50%; float:left; line-height:97px; text-align:center; border-right:1px solid #18FFFF; background:#84FFFF; font-weight: bold;}
-#mainboard .imgs .imgbtn{width:20%;float:left; height: 97px; border-left:1px solid #18FFFF; border-bottom:1px solid #18FFFF; background:#fff; }
-#mainboard .imgs .imgbtn img{background: #FF0000; border:3px solid #ff0000; border-radius:20%; text-align:center; margin-left:10px; margin-top:10px;}
-#mainboard .imgs ul{width:80%; float:left;  border-left:1px solid #18FFFF; border-right:1px solid #18FFFF; border-bottom:1px solid #18FFFF; border-top:1px solid #18FFFF; height:97px; overflow: scroll; background: #fff;}
+#mainboard .imgs .imgbtn span{width:50%; float:left; line-height:97px; text-align:center; border-right:1px solid #FF8F00; background:#FFD54F; color:#FF8F00;font-weight: bold;}
+#mainboard .imgs .imgbtn{width:20%;float:left; height: 97px; border-left:1px solid #FF8F00; border-bottom:1px solid #FF8F00; background:#FFD54F; }
+#mainboard .imgs .imgbtn img{background: #FF0000; border:3px solid #FF0000; border-radius:20%; text-align:center; margin-left:10px; margin-top:10px;}
+#mainboard .imgs ul{width:80%; float:left;  border-left:1px solid #FF8F00; border-right:1px solid #FF8F00; border-bottom:1px solid #FF8F00; border-top:1px solid #FF8F00; height:97px; overflow: scroll; background: #fff;}
 #mainboard .imgs ul li{float:left}
 #mainboard .submit{width:100%; float:left; text-align: center; }
 #mainboard .submit input{width:180px; height:50px;   margin-top:30px; margin-bottom:30px;border:1px solid #000; background:inherit; color:#000; margin-left:15px; } 
 
 .saledialog{display:none; width:100%; float:left}
 .saledialog ul{width:100%; float:left ; text-align: center;}
-.saledialog ul li{width:180px ;height:200px; line-height:200px; cursor:pointer; border:1px solid #fff; background:#000; color:#fff;float:left;  }
+.saledialog ul li{width:200px ;height:200px; line-height:200px; cursor:pointer; border:1px solid #fff; background:#000; color:#fff;float:left;  }
 
 
 .bigcategory{width:	100%; height: 100%; float:left; position: relative; display:none;}
 .bigcategory ul{text-align:center;  padding: 0;}
-.bigcategory ul li{width:180px; height: 200px; line-height:200px; border:1px solid #fff;  float:left;  color:#fff; background:#000; cursor:pointer; }
+.bigcategory ul li{width:195px; height: 200px; line-height:200px; border:1px solid #fff;  float:left;  color:#fff; background:#000; cursor:pointer; }
 
 /* memberup dialog */
 .memberupdialog{display:none;}
@@ -172,13 +172,13 @@ footer> .noticeboardsubmit>button:hover::after{content:"";  left:0px; }
 /* login dialog */
 .logindialog{display:none;}
 
-#loginform{width:100%; height: 100%; float:left; position: relative;}
+#loginform{width:100%; height: 100%; float:left; position: relative; padding:.5em  1em;}
 #loginform ul li:nth-child(1){margin-top:0;}
 #loginform ul li:nth-child(2){margin-top:0;}
 #loginform ul li{float:left; margin-top:20px;}
-#loginform ul li:nth-child(odd){width:20%;}
+#loginform ul li:nth-child(odd){width:20%; text-align: center; background: #FFD54F; border:1px solid #FF8F00; color:#FF8F00; line-height:38px;}
 #loginform ul li:nth-child(even){width:80%;}
-#loginform ul li input{width:100%; height: 40px;}
+#loginform ul li input{width:100%; height: 40px; background:#FFD54F; border:1px solid #FF8F00;}
 #loginform .loginsubmit{width:100%; height:40px; float:left}
 #loginform .loginsubmit input[type=submit]{width:100%; height: 100%;}
 

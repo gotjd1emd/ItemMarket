@@ -42,4 +42,20 @@ public class ItemMarketService {
 		
 		return list;
 	}
+	
+	/**
+	 * 9. 글읽기
+	 * 이미지, 지역, 금액, 글내용, id
+	 */
+	public static BorderDTO read(int borderNum) {
+		BorderDTO border = null;
+		
+		try {
+			ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
+			border = dao.read(borderNum);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return border;
+	}
 }

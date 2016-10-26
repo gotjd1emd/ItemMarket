@@ -36,15 +36,12 @@
 		<div class="searchmain">
 			<ul>
 				<li><input type="text"></li>
-				<li><span class="glyphicon glyphicon-search"></span></li>
-				<li><span id="sub">카테고리</span></li>
-			</ul>
-			<div class="sub_category">
-				<ul>
-					<li>test1</li>
-					<li>test2</li>
-					<li>test3</li>
-					<li>test4</li>
+				<li><span class="glyphicon glyphicon-search" ></span></li>
+					<li><span id="sub">카테고리</span></li>
+				</ul>
+				<div class="sub_category" >
+					<ul>
+
 
 				</ul>
 			</div>

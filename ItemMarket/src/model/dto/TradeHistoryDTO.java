@@ -6,11 +6,11 @@ public class TradeHistoryDTO {
 	private String seller;
 	private String itemName;
 	private int cash;
-	private String borderNumber;
+	private int borderNumber;
 	private String dayDate;
 	private String tradeState;
 
-	public TradeHistoryDTO(String buyer, String seller, String itemName, int cash, String borderNumber, String dayDate, String tradeState) {
+	public TradeHistoryDTO(String buyer, String seller, String itemName, int cash, int borderNumber, String dayDate, String tradeState) {
 		super();
 		this.buyer = buyer;
 		this.seller = seller;
@@ -53,11 +53,11 @@ public class TradeHistoryDTO {
 		this.cash = cash;
 	}
 
-	public String getBorderNumber() {
+	public int getBorderNumber() {
 		return borderNumber;
 	}
 
-	public void setBorderNumber(String borderNumber) {
+	public void setBorderNumber(int borderNumber) {
 		this.borderNumber = borderNumber;
 	}
 

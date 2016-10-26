@@ -1,5 +1,7 @@
 package model.service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,7 @@ import model.dto.CashHistoryDTO;
 import model.dto.TradeHistoryDTO;
 import model.dto.MemoDTO;
 import model.dto.UserDTO;
+import util.DbUtil;
 
 
 public class ItemMarketService {
@@ -67,8 +70,7 @@ public class ItemMarketService {
 		List<TradeHistoryDTO> tradelist = null;
 		
 		try{
-			ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
-			tradelist = dao.myHistory(id);
+			tradelist = marketDAO.myHistory(id);
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -83,8 +85,8 @@ public class ItemMarketService {
 	public static List<CashHistoryDTO> selectAllCashHistory(String id) {
 		List<CashHistoryDTO> cashlist = null;
 		try{
-			ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
-			cashlist = dao.selectAllCashHistory(id);
+			
+			cashlist = marketDAO.selectAllCashHistory(id);
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -96,10 +98,10 @@ public class ItemMarketService {
 	 * 사용자 정보 id에 따라 매개변수인 cash를 받아 수정한다.
 	 */
 	public static int addCash(String id, int cash) {
-		ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
+		
 		int result=0;
 		try {
-			result=dao.addCash(id, cash);
+			result=marketDAO.addCash(id, cash);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -173,4 +175,62 @@ public class ItemMarketService {
 		return border;
 	}
 
+
+	/**
+	 * 10-13을 실행하는 메소드 (하나의 connection으로 연결한다.)
+	 * 거래가 되면, 1)거래자의 마일리지가 감소되고
+	 * 2) 중개자의 마일리지는 증가하며 
+	 * 3) 거래 상태가 변하고
+	 * */
+	public static void accountTransfer(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
+		Connection con= null;
+	
+		try{
+			con = DbUtil.getConnection();
+			con.setAutoCommit(false);
+			
+			marketDAO.sendCashAgency(con, id, money);
+			marketDAO.receiveCashAgency(con, money);
+			marketDAO.borderStateChange(con, border);
+			marketDAO.tradeStateChange(con, trade);
+			marketDAO.trading(con, id, money, border);
+			
+			con.setAutoCommit(true);//오토커밋을 true로다시변경
+			con.commit(); // 성공
+		}catch(SQLException e){
+			con.rollback(); // 실패
+		}finally{
+			con.close();
+		}
+	}
+
+
+	/**
+	 * 15-18을 실행하는 메소드 (하나의 connection으로 연결한다.)
+	 * 거래중에서 거래완료로 바뀌는 과정 
+	 * @throws SQLException 
+	 * */
+	public static void transferComplete(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
+		Connection con = null;
+		try{
+			con = DbUtil.getConnection();
+			con.setAutoCommit(false);
+			
+			int currentCash = marketDAO.getProfile(id).getCash();
+			marketDAO.selectByBorderTrade(con, border.getBorderNumber());
+			marketDAO.sendCashSeller(con, id, money);
+			marketDAO.receiveCashSeller(con, money);
+			
+			marketDAO.completeBorder(con, border);
+			marketDAO.completeTrade(con, trade);
+			marketDAO.updateCashHistory(con, id, border.getItemName(), money, currentCash);
+			
+			con.setAutoCommit(true);//오토커밋을 true로다시변경
+			con.commit(); // 성공
+		}catch(SQLException e){
+			con.rollback(); // 실패
+		}finally{
+			con.close();
+		}
+	}
 }

@@ -20,5 +20,5 @@ public class Read implements Action {
 		
 		request.setAttribute("border", border);
 	}
-
+	
 }

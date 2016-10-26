@@ -60,13 +60,13 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		try{
 		con= DbUtil.getConnection();
 		//UserDTO(String id, String password, String tel, String email, String location, int cash)
-		ps= con.prepareStatement("insert into (id,password,tell,email,location,cash) values (?,?,?,?,?,?)");
+		ps= con.prepareStatement("insert into userinfo values (?,?,?,?,?,?)");
 		
 		ps.setString(1, userInfo.getId());
 		ps.setString(2,	userInfo.getPassword());
 		ps.setString(3, userInfo.getTel());
 		ps.setString(4, userInfo.getEmail());
-		ps.setString(5, userInfo.getEmail());
+		ps.setString(5, userInfo.getLocation());
 		ps.setInt(6, userInfo.getCash());
 		
 		result = ps.executeUpdate();	

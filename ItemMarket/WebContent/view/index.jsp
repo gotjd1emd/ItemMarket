@@ -12,7 +12,34 @@
 <link rel="stylesheet"
 	href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 <link rel="stylesheet" href="<c:url value="/"/>style/css.css">
+<script>
+function checkValid(){
+	var f= window.document.signForm;
+	
+	if(f.id.value==""){
+		alert("아이디를 입력해주세요.");
+		f.id.focus();
+		return false;
+	}
+	if(f.password.value==""){
+		alert("비밀번호를 입력해주세요.");
+		f.id.focus();
+		return false;
+	}
+	if(f.tel.value==""){
+		alert("전화번호를 입력해주세요.");
+		f.id.focus();
+		return false;
+	}
+	
+	if(f.addr.value==""){
+		alert("주소를 입력해주세요.");
+		f.id.focus();
+		return false;
+	}
+}
 
+</script>
 </head>
 <body>
 	<div class="bg">
@@ -87,7 +114,7 @@
 	<div class="memberupdialog" title="회원가입">
 		<section id="memberup">
 				<div class="memberupform">
-					<form action="" method="">
+					<form name="signForm" action="../front?command=signup" method="post" onSubmit='return checkValid()'>
 						<ul>
 							<li>아이디</li>
 							<li><input type="text" name="id" placeholder="아이디를 입력해주세요"><span class="check"></span></li>

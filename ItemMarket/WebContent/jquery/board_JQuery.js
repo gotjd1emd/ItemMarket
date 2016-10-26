@@ -4,7 +4,7 @@ $(document).ready(function(){
 	$("form ul li input[value=판매방식]").click(function(){
 		
 			$(".saledialog").dialog({
-				minWidth :650,
+				minWidth :410,
 				modal : true,
 				show : {
 					effect : "slide",
@@ -19,8 +19,8 @@ $(document).ready(function(){
 			});
 	});
 	
-	$(".saledialog ul li img").click(function(){
-		$("form ul li input[name=sale]").attr("value",$(this).attr("alt"));
+	$(".saledialog ul li").click(function(){
+		$("form ul li input[name=sale]").attr("value",$(this).text());
 		$(".saledialog").dialog("close");
 	});
 	

@@ -3,7 +3,10 @@ html,body{height: 100%}
 
 /* body{width: 100%; height: 100%; background:#000; background-image:url("/image/bg.jpg");background-position:top center; background-repeat:no-repeat; z-index: 1;}
 body::before{width: 100%; height: 100%; float:left;  background:#000; opacity: 0.7; content: ""; position: absolute; z-index: -100;} */
+
 .ui-widget-overlay{background:#000}	
+.ui-dialog{padding:0;}
+.ui-dialog .ui-dialog-content{padding:0;}
 
 .container{width:978px; position: relative;}
 
@@ -48,7 +51,7 @@ header .search ul li:nth-child(2){padding-left:15px;	}
 .category{width:100%; height: 100%; float:left; position: relative; display:none; z-index:1111;}
 .category ul{text-align:center;  padding: 0;}
 .category ul li{width:33%; height: 250px; line-height: 250px; float:left; border:none; color:#fff; cursor:pointer; transition: 0.4s; position: relative;}
-.category ul li img{width:100%; height:250px;}
+.category ul li img{width:100%; height:230px;}
 .category ul li .sub_text{
 	bottom: 0;
 	width:100%;
@@ -127,7 +130,7 @@ footer> .noticeboardsubmit>button:hover::after{content:"";  left:0px; }
 #mainboard form>ul li span{width:50%; height100%; float:left; text-align:center}
 #mainboard form>ul li:nth-child(odd){width:20%; text-align:center; background:#84FFFF; border:1px solid #18FFFF; font-weight: bold; }
 #mainboard form>ul li:nth-child(even){width:80%;float:left; background:#fff; border:1px solid #18FFFF;}
-#mainboard form>ul li:nth-child(13){background:#84FFFF; border-right:1px solid #18FFFF; height: 300px; line-height: 300px;}
+#mainboard form>ul li:nth-child(13){background:#84FFFF; border-right:1px solid #18FFFF; height: 410px; line-height: 300px;}
 #mainboard form>ul li:nth-child(14){border:none;}
 #mainboard form>ul li textarea{width:100%; padding:0; float:right; height: 300px; border-left:1px solid #18FFFF; border-top:1px solid #18FFFF; border-right:1px solid #18FFFF;}
 #mainboard .imgs{width:100%; height:150px; float:left;  }
@@ -140,19 +143,9 @@ footer> .noticeboardsubmit>button:hover::after{content:"";  left:0px; }
 #mainboard .submit input{width:180px; height:50px;   margin-top:30px; margin-bottom:30px;border:1px solid #000; background:inherit; color:#000; margin-left:15px; } 
 
 .saledialog{display:none; width:100%; float:left}
-.saledialog ul{width:100%; float:left}
-.saledialog ul li{width:50%;float:left}
-.saledialog ul li .sub_text {
-	position:relative;
-	width:300px;
-	height: 300px;
-	float:left;
-	text-align:center;
-	background : #000;
-	color:#fff;
-	border-right:1px solid #fff;
-}
-.saledialog ul li .sub_text h4{width:100%;line-height:280px; }
+.saledialog ul{width:100%; float:left ; text-align: center;}
+.saledialog ul li{width:180px ;height:200px; line-height:200px; cursor:pointer; border:1px solid #fff; background:#000; color:#fff;float:left;  }
+
 
 .bigcategory{width:	100%; height: 100%; float:left; position: relative; display:none;}
 .bigcategory ul{text-align:center;  padding: 0;}
@@ -161,7 +154,7 @@ footer> .noticeboardsubmit>button:hover::after{content:"";  left:0px; }
 /* memberup dialog */
 .memberupdialog{display:none;}
 #memberup{width:100%; height: 100%; float:left;  }
-#memberup .memberupform{width:100%;float:left;} 
+#memberup .memberupform{width:100%;float:left; padding:.5em 1em;} 
 #memberup .memberupform form{width:100%; float:left}
 #memberup .memberupform form ul{width:100%; float:left;}
 #memberup .memberupform form ul li{float:left; border:none; height: 50px;}

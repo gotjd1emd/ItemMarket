@@ -70,29 +70,24 @@
 	</div>
 	<div class="saledialog" title="판매방식">
 		<ul>
-			<li>
-				<div class="sub_text">
-					<h4>직거래</h4>
-				</div></li>
-			<li>
-				<div class="sub_text">
-					<h4>택배</h4>
-				</div></li>
+			<li>직거래</li>
+			<li>택배</li>
 		</ul>
 	</div>
 
 
 
-	<script type="text/javascript"
-		src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript"
-		src="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
-	<script type="text/javascript"
-		src="<c:url value="/"/>jquery/smoothscroll-for-websites-master/SmoothScroll.js"></script>
-	<script type="text/javascript"
-		src="<c:url value="/"/>jquery/board_JQuery.js"></script>
+	<script type="text/javascript"src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript"src="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+	<script type="text/javascript"src="<c:url value="/"/>jquery/smoothscroll-for-websites-master/SmoothScroll.js"></script>
+	<script type="text/javascript"src="<c:url value="/"/>jquery/board_JQuery.js"></script>
+	<script type="text/javascript" src="<c:url value="/"/>jquery/tinymce/js/tinymce/tinymce.min.js"></script>
 
 	<script type="text/javascript">
+		tinymce.init({
+	    selector: "textarea",
+	    language : 'ko_KR',
+		 });
 		function checkValid() {
 			if ($("input[name=bigcategory").val() == "") {
 				alert("카테고리를 선택해주세요");

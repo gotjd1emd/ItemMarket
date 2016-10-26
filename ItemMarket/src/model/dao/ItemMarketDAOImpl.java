@@ -188,7 +188,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		ResultSet rs = null; 
 		List<BorderDTO>  list = new ArrayList<>();
 		
-		
 		try {
 			
 		/* 	
@@ -197,28 +196,32 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		 */
 		
 			con= DbUtil.getConnection();
-			ps =con.prepareStatement("select * from borderinfo where category = "+word+ "| sub_category ="+word);
-			ps.setString(1, category);
-			ps.setString(2, subCategory);
+			if(word==null) {
+				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ?");
+				ps.setString(1, category);
+				ps.setString(2, subCategory);
+			}else {
+				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ? itemName = ?");
+				ps.setString(1, category);
+				ps.setString(2, subCategory);
+				ps.setString(3, "%"+word+"%");
+			}
 			rs  = ps.executeQuery();
-			
-			if(word==rs.getString("itemName")){	
-				while(rs.next()){
-					
-					list.add(new BorderDTO(rs.getString("id"), 
-											rs.getInt("border_number"), 
-											rs.getString("content"), 
-											rs.getString("itemName"),
-											rs.getInt("money"), 
-											rs.getString("dayDate"), 
-											rs.getString("category"), 
-											rs.getString("sub_Category"),
-											rs.getString("itemState")
-											));
-					
-				}
+
+			while(rs.next()){
+
+				list.add(new BorderDTO(rs.getString("id"), 
+						rs.getInt("border_number"), 
+						rs.getString("content"), 
+						rs.getString("itemName"),
+						rs.getInt("money"), 
+						rs.getString("dayDate"), 
+						rs.getString("category"), 
+						rs.getString("sub_Category"),
+						rs.getString("itemState")
+						));
+
 			} 
-				
 				
 		}finally {
 			

@@ -8,6 +8,8 @@ import model.dao.ItemMarketDAO;
 import model.dao.ItemMarketDAOImpl;
 import model.dto.BorderDTO;
 import model.dto.TradeHistoryDTO;
+import model.dto.MemoDTO;
+
 
 public class ItemMarketService {
 	/**
@@ -44,5 +46,20 @@ public class ItemMarketService {
 		return list;
 	}
 
-	
+	/**
+	 * 7. 메신저함
+	 * 받은사람, 보내는사람, 내용
+	 */
+	public static List<MemoDTO> memobox(String id){
+		List<MemoDTO> list = new ArrayList<>();
+		ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
+		try{
+			list = dao.memobox(id);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
 }

@@ -1,4 +1,4 @@
-*{padding:0; margin:0 auto; list-style:none; font-family: "留묒�怨좊뵓"}
+*{padding:0; margin:0 auto; list-style:none; font-family: "맑은고딕"}
 html,body{height: 100%}
 
 /* body{width: 100%; height: 100%; background:#000; background-image:url("/image/bg.jpg");background-position:top center; background-repeat:no-repeat; z-index: 1;}
@@ -7,7 +7,7 @@ body::before{width: 100%; height: 100%; float:left;  background:#000; opacity: 0
 
 .container{width:978px; position: relative;}
 
-.bg{width:100%; height:100%; float:left; position:absolute;  }
+.bg{width:100%; height:100%; float:left; position:absolute; z-index:-3;  }
 .bg::before{width: 100%; height: 100%; float:left;  background:#000; opacity: 0.7;  content: ""; position: absolute; z-index:2;}
 .bg img{width:100%; height:100%; float:left; position: absolute;}
 .bg img:nth-child(1){z-index:1;}
@@ -46,7 +46,7 @@ header .search ul li:nth-child(2){padding-left:15px;	}
 #search .sub_category ul li:nth-child(1){background:#0000ff; color:#fff;}
 #search .sub_category ul li:hover{background: #0000ff}
 
-.category{width:100%; height: 100%; float:left; position: relative; display:none;}
+.category{width:100%; height: 100%; float:left; position: relative; display:none; z-index:1111;}
 .category ul{text-align:center;  padding: 0;}
 .category ul li{width:33%; height: 250px; line-height: 250px; float:left; border:none; color:#fff; cursor:pointer; transition: 0.4s; position: relative;}
 .category ul li img{width:100%; height:250px;}
@@ -116,7 +116,8 @@ footer> .noticeboardsubmit>button:hover::after{content:"";  left:0px; }
 
 /* board */
 
-#mainboard{width:100%:float:left; margin-top:50px; position:relative;}
+#mainboard{width:100%:float:left; position:relative;}
+#mainboard form{margin-top:100px; width:100%; height: 100%;}
 #mainboard form>ul{width:100%; }
 #mainboard form>ul li{float:left; height: 50px; line-height: 50px;}
 #mainboard form>ul li>input[type=text]{width:100%; height: 100%; border:none;}
@@ -127,16 +128,17 @@ footer> .noticeboardsubmit>button:hover::after{content:"";  left:0px; }
 #mainboard form>ul li span{width:50%; height100%; float:left; text-align:center}
 #mainboard form>ul li:nth-child(odd){width:20%; text-align:center; background:#84FFFF; border:1px solid #18FFFF; font-weight: bold; }
 #mainboard form>ul li:nth-child(even){width:80%;float:left; background:#fff; border:1px solid #18FFFF;}
-#mainboard form>ul li:nth-child(13){background:#84FFFF; height: 300px; line-height: 300px;}
-#mainboard form>ul li textarea{width:100%; float:left ; height: 300px; border:1px solid #18FFFF;}
+#mainboard form>ul li:nth-child(13){background:#84FFFF; border-right:1px solid #18FFFF; height: 300px; line-height: 300px;}
+#mainboard form>ul li:nth-child(14){border:none;}
+#mainboard form>ul li textarea{width:100%; padding:0; float:right; height: 300px; border-left:1px solid #18FFFF; border-top:1px solid #18FFFF; border-right:1px solid #18FFFF;}
 #mainboard .imgs{width:100%; height:150px; float:left;  }
 #mainboard .imgs .imgbtn span{width:50%; float:left; line-height:97px; text-align:center; border-right:1px solid #18FFFF; background:#84FFFF; font-weight: bold;}
-#mainboard .imgs .imgbtn{width:20%;float:left; height: 97px; border-left:1px solid #18FFFF; border-bottom:1px solid #18FFFF; }
+#mainboard .imgs .imgbtn{width:20%;float:left; height: 97px; border-left:1px solid #18FFFF; border-bottom:1px solid #18FFFF; background:#fff; }
 #mainboard .imgs .imgbtn img{background: #FF0000; border:3px solid #ff0000; border-radius:20%; text-align:center; margin-left:10px; margin-top:10px;}
-#mainboard .imgs ul{width:80%; float:left;  border-left:1px solid #18FFFF; border-right:1px solid #18FFFF; border-bottom:1px solid #18FFFF; height:97px; overflow: scroll; }
+#mainboard .imgs ul{width:80%; float:left;  border-left:1px solid #18FFFF; border-right:1px solid #18FFFF; border-bottom:1px solid #18FFFF; border-top:1px solid #18FFFF; height:97px; overflow: scroll; background: #fff;}
 #mainboard .imgs ul li{float:left}
 #mainboard .submit{width:100%; float:left; text-align: center; }
-#mainboard .submit input{width:180px; height:50px;  background:#fff;  margin-top:30px; margin-bottom:30px;border:1px solid #000; margin-left:15px; } 
+#mainboard .submit input{width:180px; height:50px;   margin-top:30px; margin-bottom:30px;border:1px solid #000; background:inherit; color:#000; margin-left:15px; } 
 
 .saledialog{display:none; width:100%; float:left}
 .saledialog ul li{width:50%;float:left}
@@ -168,8 +170,40 @@ footer> .noticeboardsubmit>button:hover::after{content:"";  left:0px; }
 	color:#fff;
 }
 
+/* memberup dialog */
+.memberupdialog{display:none;}
+#memberup{width:100%; height: 100%; float:left;  }
+#memberup .memberupform{width:100%;float:left;} 
+#memberup .memberupform form{width:100%; float:left}
+#memberup .memberupform form ul{width:100%; float:left;}
+#memberup .memberupform form ul li{float:left; border:none; height: 50px;}
+#memberup .memberupform form ul li:nth-child(odd){width:20%; color:#FF8F00; border:1px solid #FF8F00; background:#FFD54F;
+ text-align: center; line-height: 50px; }
+#memberup .memberupform form ul li:nth-child(even){width:80%;}
+#memberup .memberupform form ul li:nth-child(2) input{width:80%; border:none; border-left:1px solid #FF8F00; border-top:1px solid #FF8F00; border-bottom:1px solid #FF8F00; }
+#memberup .memberupform form ul li input{width:100%;height: 100%;float:left; background:#FFD54F;  border:1px solid #FF8F00;}
+#memberup .memberupform form ul li .check{width:20%; height: 100%; float:left; background:#FFD54F; border-right:1px solid #FF8F00; border-top:1px solid #FF8F00; border-bottom:1px solid #FF8F00 }
+#memberup .memberupform .memberupsubmit{width:100%; float:left; text-align:center;}
+#memberup .memberupform .memberupsubmit input{width:120px; height: 40px; background:#FFD54F; border:1px solid #FF8F00; color:#FF8F00; text-align: center;}
 
+.dialogopacity{width:100%; height: 100%; display:none; background:rgba(0,0,0,0.5); z-index: 1000; top:0; left:0; position: fixed;}
 
+/* login dialog */
+.logindialog{display:none;}
+
+#loginform{width:100%; height: 100%; float:left; position: relative;}
+#loginform ul li:nth-child(1){margin-top:0;}
+#loginform ul li:nth-child(2){margin-top:0;}
+#loginform ul li{float:left; margin-top:20px;}
+#loginform ul li:nth-child(odd){width:20%;}
+#loginform ul li:nth-child(even){width:80%;}
+#loginform ul li input{width:100%; height: 40px;}
+#loginform .loginsubmit{width:100%; height:40px; float:left}
+#loginform .loginsubmit input[type=submit]{width:100%; height: 100%;}
+
+.ui-widget-overlay{background:#000}	
+	
+	
 
 
 

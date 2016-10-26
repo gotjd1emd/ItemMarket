@@ -13,7 +13,9 @@
 <link rel="stylesheet" href="<c:url value="/"/>style/css.css">
 </head>
 <body>
+
 	<section id="mainboard">
+		
 		<div class="container">
 		<form action="" method="get" onSubmit="return checkValid()" enctype="multipart/form-data" >
 			<ul>
@@ -30,7 +32,7 @@
 				<li>연락처</li>
 				<li><input type="text" name="phone" placeholder="연락천를 입력해주세요"></li>
 				<li>설명</li>
-				<li><textarea name="content"></textarea></li>
+				<li> <textarea name="content"></textarea> </li>
 			</ul>
 			<div class="imgs">
 		
@@ -76,12 +78,15 @@
 		</li>
 		</ul>
 	</div>
+	
+
 
 	 <script type="text/javascript" src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 	<link rel="stylesheet" href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">
 	<script type="text/javascript" src="<c:url value="/"/>jquery/smoothscroll-for-websites-master/SmoothScroll.js"></script>
 	<script type="text/javascript" src="<c:url value="/"/>jquery/board_JQuery.js"></script>
+
 	<script type="text/javascript">
 		function checkValid(){
 			if($("input[name=bigcategory").val() == ""){

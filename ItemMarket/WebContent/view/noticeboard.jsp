@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <title>ItemMarket</title>
-      <link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
+     <link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="<c:url value="/"/>style/css.css">
 	<style>
 		header .menu{width:100%;  position: relative; z-index: 3;}

@@ -1,11 +1,11 @@
---사용자 정보 //  password varchar2 추가 
+	--사용자 정보 //  password varchar2 추가 
 create table userinfo (
  id varchar2(20) not null constraint id_pk primary key,-- 아이디
  password varchar2(20) not null,
  tel varchar2(20) not null,   --전화번호(휴대폰)
  email varchar2(40), -- 이메일 주소 
  location varchar2(40) not null,  -- 거주지주소
- cash number(7)  -- 선금액 정보
+ cash number(7)  -- 마일리지 정보
  
 );
 

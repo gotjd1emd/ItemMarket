@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %> 
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,35 +8,18 @@
   <title>ItemMarket</title>
      <link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="<c:url value="/"/>style/css.css">
+
 	<style>
 		header .menu{width:100%;  position: relative; z-index: 3;}
 		header .menu ul{width:100%; height: 50px; text-align: center;  }
 		header .menu ul li{float:right; width:124px; height:50px; color:#000;  line-height: 50px; margin-left:3%; position: relative; overflow: hidden; cursor: pointer; border:1px solid #000; transition:0.4s;}
 		header .menu ul li:hover{background:#000; color:#fff;}
-
-		/* header .menu ul li:nth-child(1)::before{display: none;}
-		header .menu ul li:nth-child(1)::after{display: none;}
-		
-		header .menu ul li::before{content: ""; width:100%; height: 5px; background:blue; float:left; position: absolute; top:0; left:-100%; transition: 0.4s; }
-		header .menu ul li::after{content: ""; width:100%; height: 5px; background:blue; float:left; position: absolute; bottom: 0; left:100%; transition: 0.4s; }
-
-		header .menu ul li:hover::before{content:"";  left:0px; }
-		header .menu ul li:hover::after{content:"";  left:0px; } */
-
+		.container{margin-top:150px;}
 	</style>
+		<jsp:include page="header.jsp"></jsp:include>
 </head>
 <body>
-<header>
 
-		<div class="menu">
-			<div class="container">
-		<a href="<c:url value='/view/'/>index.jsp"><div class="icon"><img src="<c:url value='/'/>/image/icon.png" alt="icon"></div></a>
-		</div>
-			<ul>	
-				<li>회원가입</li>
-				<li>로그인</li>
-			</ul>
-		</div> 
 		<div class="container">
 			<!-- <div class="icon">
 				<a href="/index.html"><h1>Null중고나라</h1></a>
@@ -52,7 +33,7 @@
 			</div>
 
 
-		</header>
+	
 		<section id="board">
 			<div class="container">
 

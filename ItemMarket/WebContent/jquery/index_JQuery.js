@@ -84,8 +84,33 @@
 		banner();
 	},3000);
 	
+	/* 프로필 animate */
+	$(document).on("click",".menu ul li:nth-child(3)",function(){
+		$(".profilemenu").animate({"right":"0"},1500);
+		$(".menu").delay(700).animate({"right":"350px"},1500);
+		$("#search").delay(700).animate({"left":"38%"},1500);
+	});
+	
+	/* 로그인 dialog */
+   $(document).on("click",".menu ul li:nth-child(1)",function(){
+	   	$(".logindialog").dialog({
+	   		minWidth : 500,
+	   		minHeight : 300 ,
+	   		modal : true ,
+	   		show : {
+	   			effect : "slide",
+	   			duration : 1000
+	   		},
+	   		hide : {
+	   			effect : "slide",
+	   			duration : 1000
+	   		}
+	   		
+	   	});
+   });
+		
 	/* 회원가입 dialog */
-	$(document).on("click",".menu ul li:nth-child(1)",function(){
+	$(document).on("click",".menu ul li:nth-child(2)",function(){
 		
 		$(".memberupdialog").dialog({
 			minWidth : 600,
@@ -106,23 +131,7 @@
 		$(".memberupdialog").dialog("close");
 	});
 	
-	/* 로그인 dialog */
-   $(document).on("click",".menu ul li:nth-child(2)",function(){
-	   	$(".logindialog").dialog({
-	   		minWidth : 500,
-	   		minHeight : 300 ,
-	   		modal : true ,
-	   		show : {
-	   			effect : "slide",
-	   			duration : 1000
-	   		},
-	   		hide : {
-	   			effect : "slide",
-	   			duration : 1000
-	   		}
-	   		
-	   	});
-   });
+	
    
 });
 	

@@ -15,25 +15,29 @@ body::before{width: 100%; height: 100%; float:left;  background:#000; opacity: 0
 .bg img{width:100%; height:100%; float:left; position: absolute;}
 .bg img:nth-child(1){z-index:1;}
 
-header .menu{width:100%;  padding:50px; position: relative; z-index: 3;}
-header .menu ul{width:100%; height: 50px; text-align: center;  }
-header .menu ul li{float:right; width:124px; height:50px; color:#fff;  line-height: 50px; margin-left:3%; position: relative; overflow: hidden; cursor: pointer; border:1px solid #fff;}
-/* header .menu ul li::before{content: ""; width:100%; height: 5px; background:blue; float:left; position: absolute; top:0; left:-100%; transition: 0.4s; }
-header .menu ul li::after{content: ""; width:100%; height: 5px; background:blue; float:left; position: absolute; bottom: 0; left:100%; transition: 0.4s; }
+/* header */
+header .menu{width:100%; height:50px; background:#fff; position: absolute; z-index: 5; top:0; right:0;}
+header .menu ul{float:right }
+header .menu ul li{float:left; width:124px;  color:#000;  line-height: 50px; position: relative;  cursor: pointer;	}
 
-header .menu ul li:hover::before{content:"";  left:0px; }
-header .menu ul li:hover::after{content:"";  left:0px; }
- */
 header .icon{width: 143px; float:left;}
 header .icon a{text-decoration:none; color: inherit; float:left; }
 
-header .search ul{margin-top:50px; float:right;}
-header .search ul li{float:left;}
-header .search ul li:nth-child(2){padding-left:15px;	}
+
+#profile{width:100%; height:100%; float:left; position: relative; overflow: hidden; }
+#profile .profilemenu{width:350px; height: 100%; background:#FFD54F; float:right; z-index:5; position: absolute; top:0 ; right:-100%;}
+#profile .profilemenu ul li{text-align:center; line-height:50px; border-bottom:1px solid #FF8F00; color:#FF8F00;}
+#profile .profilemenu img{border-radius:100%; padding-top:20px; border:1px solid #ff8f00}
+#profile form ul{width:700px; height:300px; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); margin-top:50px;}
+#profile form ul li{float:left}
+#profile form ul li:nth-child(odd){width:20%; background: #FFD54F; border:1px solid #FF8F00; color:#FF8F00; line-height:38px;}
+#profile form ul li:nth-child(even){width:70%;}
+#profile ul li input{width:100%; height: 40px; background:#ffd54f; border:1px solid #ff8f00;} 
+
 
 
 /* index */
-#search{ width:100%; height: 70%; float:left; position: relative; z-index:3;}
+#search{ width:100%; height: 70%;position: absolute; top:55%; left:50%; transform:translate(-50%,-50%); z-index:3;}
 #search h1{ text-align: center; padding-top: 5%; color:#fff; font-weight: bold; font-size:46px;}
 #search .searchmain{position:absolute;top:50%; left:50%; transform:translate(-50%,-50%);}
 #search .searchmain>ul{ border:1px solid #999999; height: 32px; line-height: 28px;  width:500px; }
@@ -60,10 +64,9 @@ header .search ul li:nth-child(2){padding-left:15px;	}
 
 
 #board{width:100%;float:left; position: relative; z-index: 3; }
-#board .boardtitle{width:100%; height:50px; line-height: 50px; font-size:30px; font-weight:bold; text-align: center; background: #000; color:#fff;}
+#board .boardtitle{width:100%; height:50px; line-height: 50px; font-size:30px; font-weight:bold; text-align: center; background: #000; color:#fff; padding:0;}
 #board .noticeboard ul{float:left; margin:1%; border:3px solid #f9f9f9;  margin:0;}
-#board .noticeboard ul li{text-align: center; font-size:24px; color:#000; padding:5px;}
-#board .noticeboard ul li>img{width:300px; height: 200px;}
+#board .noticeboard ul li{text-align: center;  font-size:24px; color:#000;}
 #board .noticeboard ul a{text-decoration: none; color: #fff;}
 #board .noticeboard ul li:nth-child(3){font-weight: bold;}
 
@@ -71,6 +74,8 @@ header .search ul li:nth-child(2){padding-left:15px;	}
 #board .noticeboard ul li:nth-child(5) button{border:none; background:inherit; width: 100%; height: 100%; padding:5px;}
 #board .noticeboard ul li:nth-child(5):hover{background: #000;}
 
+.search ul{float:right}
+.search ul li{float:left}
 
 .pagination{position: relative; left:50%; transform:translate(-50%,0);}
 
@@ -178,10 +183,9 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #loginform ul li:nth-child(even){width:80%;}
 #loginform ul li input{width:100%; height: 40px; background:#FFD54F; border:1px solid #FF8F00;}
 #loginform .loginsubmit{width:100%; height:40px; float:left}
-#loginform .loginsubmit input[type=submit]{width:100%; height: 100%;}
+#loginform .loginsubmit input[type=submit]{width:100%; height: 100%; background:#FFD54F; border:1px solid #FF8F00; color:#FF8F00; text-align: center; margin-top:50px; }
 
 
-	
 	
 
 

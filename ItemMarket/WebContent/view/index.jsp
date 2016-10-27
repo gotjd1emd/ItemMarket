@@ -7,11 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>ItemMarket</title>
-<link rel="stylesheet"
-		href="<c:url value="/"/>jquery/jquery-ui-	1.11.4.custom/jquery-ui.min.css">
-<link rel="stylesheet"
-	href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
+<link rel="stylesheet"	href="<c:url value="/"/>jquery/jquery-ui-	1.11.4.custom/jquery-ui.min.css">
+<link rel="stylesheet"	href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 <link rel="stylesheet" href="<c:url value="/"/>style/css.css">
+<jsp:include page="header.jsp"></jsp:include>
 <script>
 function checkValid(){
 	var f= window.document.signForm;
@@ -46,17 +45,6 @@ function checkValid(){
 		<img src="<c:url value="/"/>image/bg.jpg" alt="bg1"><img
 			src="<c:url value="/"/>image/bg2.jpg" alt="bg2">
 	</div>
-	
-		<header>
-
-		<div class="menu">
-	
-			<ul>
-				<li>회원가입</li>
-				<li>로그인</li>
-			</ul>
-		</div>
-	</header>
 	<section id="search">
 		<h1>ItemMarket</h1>
 
@@ -100,7 +88,7 @@ function checkValid(){
 							<li>비밀번호</li>
 							<li><input type="password" name="password" placeholder="비밀번호를 입력해주세요"></li>
 							<li>전화번호</li>
-							<li><input type="text" name="tel" placeholder="전화번호를 입력해주세요"></li>
+							<li><input type="tel" name="tel" placeholder="전화번호를 입력해주세요"></li>
 							<li>이메일</li>
 							<li><input type="email" name="email" placeholder="이메일을 입력해주세요"></li>
 							<li>주소</li>

@@ -16,15 +16,16 @@
 </head>
 <body>
 
-	<section id="mainboard">
+	
 
 		<div class="container">
-			<form action="../front?command=write" method="post" onSubmit="return checkValid()"
+			<section id="mainboard">
+			<form name="write" action="../front?command=write" method="post" onSubmit="return checkValid()"
 				enctype="multipart/form-data">
 				<ul>
 					<li>카테고리</li>
 					<li><input type="button" value="카테고리"><input
-						type="text" name="category" value="" readonly="readonly"></li>
+						type="text" name="category" readonly="readonly"></li>
 					<li>서브카테고리</li>
 					<li></li>
 					<li>제품</li>
@@ -49,15 +50,16 @@
 					</div>
 					<ul></ul>
 				</div>
-				<div class="submit">
+				<div class="submit">  
 
 					<input type="submit" value="확인"> <input type="button"
 						value="취소">
 
 				</div>
 			</form>
+			</section>
 		</div>
-	</section>
+	
 	<div class="bigcategory" title="카테고리">
 		<ul>
 			<li>전자제품</li>

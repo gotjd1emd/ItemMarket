@@ -15,8 +15,8 @@ public class SignUp implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ItemMarketService marketService = new ItemMarketService();
+		
 		String id  =request.getParameter("id");
-		System.out.println(id);
 		String password =request.getParameter("password");
 		String tel =request.getParameter("tel");
 		String email  =request.getParameter("email");

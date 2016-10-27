@@ -43,7 +43,7 @@
 
 		$(".category").dialog({
 			minWidth : 600,
-			minHeight : 500,
+			minHeight : 400,
 			modal : true ,
 
 			show : {

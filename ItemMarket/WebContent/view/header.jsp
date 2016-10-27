@@ -70,9 +70,9 @@
 				<form name="login" action="../front?command=login" method="post">
 					<ul>
 						<li>아이디</li>
-						<li><input type="text" name="id" placeholder="아이디를 입력해주세요"></li>
+						<li><input type="text" id="id" name="id" placeholder="아이디를 입력해주세요"></li>
 						<li>비밀번호</li>
-						<li><input type="password" name="password"
+						<li><input type="password" id="password" name="password"
 							placeholder="비밀번호를 입력해주세요"></li>
 					</ul>
 					<div class="loginsubmit">

@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dto.UserDTO;
 import model.service.ItemMarketService;
@@ -20,21 +21,22 @@ public class Login implements Action {
 		response.setContentType("text/html;charset=utf-8");
 		try {
 			//response.setContentType("");
-		GetProfile getProfile = new GetProfile();
-		String id  = request.getParameter("id");
-		
+		String id  = request.getParameter("id");	
+		System.out.println(id);
 		String password = request.getParameter("password");
-		//int result= 0 ;
-		//ItemMarketService marketService = new ItemMarketService();
-		
-		//result  = marketService.login(id, password);
-		//if(result==1){
-			//getProfile.execute(request, response);
-		//}
-		
+	System.out.println(password);
+		request.getSession().setAttribute("id", id);
+				
 		PrintWriter out = response.getWriter();
 		if(ItemMarketService.login(id, password)>0){
-			response.sendRedirect("view/index.jsp");
+			System.out.println("정보가 일치합니다.");
+			
+			UserDTO userProfile = ItemMarketService.getProfile(id);
+			request.getSession().setAttribute("userProfile", userProfile);
+			
+			if(userProfile!=null){
+				response.sendRedirect("view/index.jsp");
+			}
 		}else{
 			out.println("<script>");
 			out.println("alert('가입되지 않았습니다.')");
@@ -42,6 +44,7 @@ public class Login implements Action {
 			out.println("</script>");
 				throw new Exception("회원정보가 없습니다.");
 		}
+		
 		}catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -159,5 +159,36 @@
 		});
 	});
 
+	$(".loginsubmit input[value=로그인]").click(function(){
+		 var userId = $("#id").val();
+         
+         alert(userId);
+		$(".logindialog").hide();
+		
+		$.ajax({
+			type : "get",
+			dataType : "text",
+			
+			success : function(result) {
+				alert("ajax");
+				$('.profilemenu').append("성공");
+					/*$('.profilemenu').append("<ul>"+
+						"<li><img src='<c:url value='/'/>image/player.png' alt='myimg'>"+
+						"<li>아이디 : <span>" + userId + "</span></li>"+
+						"<li>마일리지 : <span>" + items.cash + "원</span></li>"+
+						"<li>전화번호 : <span>" + items.tel + "</span></li>"+
+						"<li>이메일 : <span>" + items.email + "</span></li>"+
+						"<li>마일리지내역확인</li>"+
+						"<li>프로필수정</li></ul>"
+					);*/
+				
+			},
+			error : function(err) {
+				console.log("err : " + err);
+
+			}
+		});
+	});
+	
 });
 	

@@ -19,7 +19,7 @@
 	<section id="mainboard">
 
 		<div class="container">
-			<form action="" method="get" onSubmit="return checkValid()"
+			<form action="../front?command=write" method="get" onSubmit="return checkValid()"
 				enctype="multipart/form-data">
 				<ul>
 					<li>카테고리</li>

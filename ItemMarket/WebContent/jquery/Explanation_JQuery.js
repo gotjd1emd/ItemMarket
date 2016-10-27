@@ -20,9 +20,7 @@
 $(document).ready(function(){
 	/* Explanation slide */
 	 time();
-	 if($(".subimg ul li img").length-1 < 3){
-	 	$(".subimg ul .down").css({"display" :"none"});
-	 }
+	 condition();
 });
 	
 	
@@ -78,23 +76,37 @@ function slide(a){
 
 /* subslide 집에서 할거 */
 
-/*var subimgs = $(".subimg ul li img");
-var subsno = 0;
-var sublast = subimgs.length-1;
+var subimgs = $(".subimg ul li");
+var count = 0;
+var max = subimgs.length-3;
+function condition(){
 
+	if(count == 0){
+		$(".subimg .up").hide();
+		$(".subimg .down").show();
+	}
+	if(count >= 1 && count <max){
+		$(".subimg .up").show();
+		$(".subimg .down").show();
+	}
+	
+	if(count>=max){
+		$(".subimg .down").hide();
+	}
+}
 $(".subimg .down").click(function(){
-		$(".subimg .up").css({"display":"block"});
-		$(".subimg ul").animate({"bottom":"15%"},1500);
+		if($(".subimg ul").is(":animated"))return;
+		$(".subimg ul").animate({"top":"+=-100px"},1500);
+		count++;
+		condition();
+		
 });
 $(".subimg .up").click(function(){
-	subsno++;
-	if(subsno>sublast)subsno=0;
-	if(subsno == 0){
-	$(this).css({"display":"none"});
-	}
-	$(".subimg ul").animate({"top":"5%"},1500);
+	if($(".subimg ul").is(":animated"))return;
+	$(".subimg ul").animate({"top":"+=100px"},1500);
+	count--;
+	condition();
 });
 
 
 
-*/

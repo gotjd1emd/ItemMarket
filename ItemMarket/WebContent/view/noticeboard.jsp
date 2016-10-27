@@ -13,25 +13,28 @@
 	<style>
 		header .menu{width:100%;  position: relative; z-index: 3;}
 		header .menu ul{width:100%; height: 50px; text-align: center;  }
-		header .menu ul li{float:right; width:124px; height:50px; color:#000;  line-height: 50px; margin-left:3%; position: relative; overflow: hidden; cursor: pointer; border:1px solid #000;}
-		header .menu ul li:nth-child(1){float:left; border:none; font-size:36px; overflow: visible; width:270px;}
-		header .menu ul li:nth-child(1) a{text-decoration: none; color:inherit;}
-		header .menu ul li:nth-child(1)::before{display: none;}
+		header .menu ul li{float:right; width:124px; height:50px; color:#000;  line-height: 50px; margin-left:3%; position: relative; overflow: hidden; cursor: pointer; border:1px solid #000; transition:0.4s;}
+		header .menu ul li:hover{background:#000; color:#fff;}
+
+		/* header .menu ul li:nth-child(1)::before{display: none;}
 		header .menu ul li:nth-child(1)::after{display: none;}
 		
 		header .menu ul li::before{content: ""; width:100%; height: 5px; background:blue; float:left; position: absolute; top:0; left:-100%; transition: 0.4s; }
 		header .menu ul li::after{content: ""; width:100%; height: 5px; background:blue; float:left; position: absolute; bottom: 0; left:100%; transition: 0.4s; }
 
 		header .menu ul li:hover::before{content:"";  left:0px; }
-		header .menu ul li:hover::after{content:"";  left:0px; }
+		header .menu ul li:hover::after{content:"";  left:0px; } */
 
 	</style>
 </head>
 <body>
 <header>
-		<div class="menu">	
-			<ul>
-				<li><a href="<c:url value='/view/'/>index.jsp"><div class="icon"><img src="<c:url value='/'/>/image/icon.png" alt="icon"></div></a></li>
+
+		<div class="menu">
+			<div class="container">
+		<a href="<c:url value='/view/'/>index.jsp"><div class="icon"><img src="<c:url value='/'/>/image/icon.png" alt="icon"></div></a>
+		</div>
+			<ul>	
 				<li>회원가입</li>
 				<li>로그인</li>
 			</ul>
@@ -42,7 +45,7 @@
 			</div> -->
 			<div class="search">
 				<ul>
-					<li><input tpye="tetx" name="search"></li>
+					<li><input type="text" name="search" value="${requestScope.word }"></li>
 					<li><span class="glyphicon glyphicon-search"></span>
 					</ul>
 				</div>
@@ -52,7 +55,9 @@
 		</header>
 		<section id="board">
 			<div class="container">
-				<div class="boardtitle">${requestScope.subCategory } 카테고리</div>
+				<div class="boardtitle">${requestScope.category } ${requestScope.subCategory } 카테고리</div>
+				<input type='hidden' value='${requestScope.category }' name='category'/>
+				<input type='hidden' value='${requestScope.subCategory }' name='subCategory'/>
 				<div class="noticeboard">
 				<c:forEach var='list' items="${requestScope.list }">
 					<ul>
@@ -60,7 +65,7 @@
 						<li>작성자 : <span>${list.id }</span></li>
 						<li>제품 : <span>${list.itemName }</span></li>
 						<li>가격 : <span>${list.money }원</span></li>
-						<li><a href="Explanation.jsp"><button>상세설명</button></a></li>
+						<li><a href="view/Explanation.jsp"><button>상세설명</button></a></li>
 					</ul>
 				</c:forEach>
 

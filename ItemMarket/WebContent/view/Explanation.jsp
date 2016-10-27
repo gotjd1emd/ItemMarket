@@ -14,7 +14,7 @@
 <body>
 	<section id ="main">
 		<div class="subimg">
-			<span class="up"></span>
+			<span class="up"><img src="<c:url value="/"/>image/arrowup.png" alt="ArrowUp"></span>
 			<ul>
 			
 				<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="samplemacbook" onClick="slide(1)"></li>
@@ -25,7 +25,7 @@
 				<li><img src="<c:url value="/"/>image/samplemacbook4.jpg" alt="samplemacbook4" onClick="slide(4)"></li> 	
 				
 			</ul>
-			<span class="down"></span>
+			<span class="down"><img src="<c:url value="/"/>image/arrowdown.png" alt="ArrowDown"></span>
 
 		</div>
 		<div class="mainimg">

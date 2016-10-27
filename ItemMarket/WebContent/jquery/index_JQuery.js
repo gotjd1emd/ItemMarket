@@ -67,7 +67,7 @@
 		subCategory = "&subCategory="+$(this).text();
 	}));
 	$(".glyphicon.glyphicon-search").click(function(){ //임시로 주소갑 줌
-		document.location.href="../front?command=search"+category+subCategory+"&word="+$("[type=text]").val();
+		document.location.href="../front?command=search"+category+subCategory+"&word="+$("[type=text]").val()+"&page=1";
 	});
 
 	
@@ -83,10 +83,10 @@
 	var timer =setInterval(function(){
 		banner();
 	},3000);
+	
+	/* 회원가입 dialog */
 	$(document).on("click",".menu ul li:nth-child(1)",function(){
 		
-	
-		$(".memberupdialog").css({"z-index":"1001"});
 		$(".memberupdialog").dialog({
 			minWidth : 600,
 			minHeight : 300,
@@ -106,6 +106,7 @@
 		$(".memberupdialog").dialog("close");
 	});
 	
+	/* 로그인 dialog */
    $(document).on("click",".menu ul li:nth-child(2)",function(){
 	   	$(".logindialog").dialog({
 	   		minWidth : 500,
@@ -122,4 +123,6 @@
 	   		
 	   	});
    });
+   
 });
+	

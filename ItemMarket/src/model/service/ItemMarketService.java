@@ -114,12 +114,12 @@ public class ItemMarketService {
 	 * 
 	 * select * from borderinfo where category = ? and sub_category= ?" 
 	 */
-	public static List<BorderDTO> search(String word, String category, String subCategory) {
+	public static List<BorderDTO> search(String word, String category, String subCategory, int page) {
 		List<BorderDTO> list = null;
 		
 		try {
 			ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
-			list = dao.search(word, category, subCategory);
+			list = dao.search(word, category, subCategory, page);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

@@ -51,7 +51,7 @@ public interface ItemMarketDAO {
 	 * 6. 검색
 	 * 게시물
 	 */
-	List<BorderDTO> search(String word, String category, String subCategory) throws SQLException;
+	List<BorderDTO> search(String word, String category, String subCategory, int page) throws SQLException;
 	
 	/**
 	 * 7. 메신저함

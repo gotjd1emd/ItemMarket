@@ -7,11 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 import model.dto.BorderDTO;
 import model.dto.CashHistoryDTO;
 import model.dto.MemoDTO;
@@ -23,20 +18,20 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 	//1. ·Î±×ÀÎ	
 	@Override
-	public int login(String id, String pwd) throws SQLException {
+	public int login(String id, String password) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		int result = 0;
 		UserDTO userDTO = null;
-		String sql = " select * from userinfo where id = ? and pwd = ?";
+		String sql = " select * from userinfo where id = ? and password = ?";
 		//String sql = "select id,pw,tel from usertable where id = ? & pwd = ? ";
 		
 		try{
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, id);
-			ps.setString(2, pwd);
+			ps.setString(2, password);
 			rs= ps.executeQuery();
 			if(rs.next()){
 			 result =1;			
@@ -60,13 +55,13 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		try{
 		con= DbUtil.getConnection();
 		//UserDTO(String id, String password, String tel, String email, String location, int cash)
-		ps= con.prepareStatement("insert into (id,password,tell,email,location,cash) values (?,?,?,?,?,?)");
+		ps= con.prepareStatement("insert into userinfo values (?,?,?,?,?,?)");
 		
 		ps.setString(1, userInfo.getId());
 		ps.setString(2,	userInfo.getPassword());
 		ps.setString(3, userInfo.getTel());
 		ps.setString(4, userInfo.getEmail());
-		ps.setString(5, userInfo.getEmail());
+		ps.setString(5, userInfo.getLocation());
 		ps.setInt(6, userInfo.getCash());
 		
 		result = ps.executeUpdate();	
@@ -206,7 +201,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * select * from borderinfo where category = ? and sub_category= ?" 
 	 */
 	@Override
-	public List<BorderDTO> search(String word, String category, String subCategory) throws SQLException {
+	public List<BorderDTO> search(String word, String category, String subCategory, int page) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null; 
@@ -218,17 +213,26 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		 * String id, int borderNumber, String content, String itemName, int money, String dayDate,
 		 * String category, String subcategory, String itemState 
 		 */
-		
 			con= DbUtil.getConnection();
 			if(word==null) {
-				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ?");
+				ps = con.prepareStatement("select * from (select ROWNUM num, id, border_number, content, "
+						+ "itemName, money, dayDate, category, sub_Category, itemState from borderinfo "
+						+ "where category = ? and sub_category = ? order by daydate desc) "
+						+ "where num BETWEEN ? and ?");
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
+				ps.setInt(3, (page-1)*9+1);
+				ps.setInt(4, page*9);
 			}else {
-				ps = con.prepareStatement("select * from borderinfo where category = ? and sub_category = ? and itemName like ?");
+				ps = con.prepareStatement("select * from (select ROWNUM num, id, border_number, content, "
+						+ "itemName, money, dayDate, category, sub_Category, itemState from borderinfo "
+						+ "where category = ? and sub_category = ? and itemName like ? order by daydate desc) "
+						+ "where num BETWEEN ? and ?");
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
 				ps.setString(3, "%"+word+"%");
+				ps.setInt(4, (page-1)*9+1);
+				ps.setInt(5, page*9);
 			}
 			rs  = ps.executeQuery();
 
@@ -245,7 +249,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 						rs.getString("itemState")
 						));
 			} 
-				
+			
 		}finally {
 			
 			DbUtil.dbClose(con, ps, rs);

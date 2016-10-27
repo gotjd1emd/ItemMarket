@@ -9,7 +9,7 @@
 		$(".sub_category ul").fadeIn("slow");
 		$(".searchmain").animate({top : '45%'});
 		$(".category").dialog("close");
-		category = $("img:first-child", $(this)).attr("alt");
+		category =  $(this).text();
 		if(category == "전자제품") {
 			$(".sub_category ul").empty();
 			$(".sub_category ul").append("<li>컴퓨터</li>");

@@ -159,6 +159,7 @@
 		});
 	});
 
+	/*
 	$(".loginsubmit input[value=로그인]").click(function(){
 		 var userId = $("#id").val();
          
@@ -172,7 +173,7 @@
 			success : function(result) {
 				alert("ajax");
 				$('.profilemenu').append("성공");
-					/*$('.profilemenu').append("<ul>"+
+					$('.profilemenu').append("<ul>"+
 						"<li><img src='<c:url value='/'/>image/player.png' alt='myimg'>"+
 						"<li>아이디 : <span>" + userId + "</span></li>"+
 						"<li>마일리지 : <span>" + items.cash + "원</span></li>"+
@@ -180,7 +181,7 @@
 						"<li>이메일 : <span>" + items.email + "</span></li>"+
 						"<li>마일리지내역확인</li>"+
 						"<li>프로필수정</li></ul>"
-					);*/
+					);
 				
 			},
 			error : function(err) {
@@ -189,6 +190,8 @@
 			}
 		});
 	});
+	계속 삽질한 결과, 로그인 정보는 session으로 저장하기 때문에, sessionScope으로 불러와서 충분히 바뀔수잇다..?
+	*/
 	
 });
 	

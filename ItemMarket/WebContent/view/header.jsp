@@ -21,10 +21,10 @@
 			<ul>
 				<li><img src="<c:url value="/"/>image/player.png" alt="myimg"><span
 					class="glyphicon glyphicon-remove"></span></li>
-				<li>아이디 : <span></span></li>
-				<li>마일리지 : <span></span></li>
-				<li>전화번호 : <span></span></li>
-				<li>이메일 : <span></span></li>
+				<li>아이디 : <span>${sessionScope.id}</span></li>
+				<li>마일리지 : ${sessionScope.userProfile.cash}<span></span></li>
+				<li>전화번호 : <span> ${sessionScope.userProfile.tel}</span></li>
+				<li>이메일 : <span> ${sessionScope.userProfile.email}</span></li>
 				<li>거래내역확인</li>
 				<li>마일리지거래내역</li>
 				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp">프로필수정</a></li>

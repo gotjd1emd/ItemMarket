@@ -20,11 +20,10 @@ public class Login implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		response.setContentType("text/html;charset=utf-8");
 		try {
-			//response.setContentType("");
+
 		String id  = request.getParameter("id");	
-		System.out.println(id);
 		String password = request.getParameter("password");
-	System.out.println(password);
+	
 		request.getSession().setAttribute("id", id);
 				
 		PrintWriter out = response.getWriter();
@@ -38,6 +37,8 @@ public class Login implements Action {
 				response.sendRedirect("view/index.jsp");
 			}
 		}else{
+			//혹시 로그인 되있는거 다 만료시키기.
+			request.getSession().invalidate();
 			out.println("<script>");
 			out.println("alert('가입되지 않았습니다.')");
 			out.println("history.back()");

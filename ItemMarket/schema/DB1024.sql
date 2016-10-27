@@ -133,11 +133,11 @@ drop table trade_history;
 create table trade_history (
   buyer constraint  trading_Buyer_fk references userInfo(id), -- 구매자 
   seller constraint trading_Seller_fk references userInfo(id),  -- 판매자
-  itemName varchar2(20),
+  itemName varchar2(20), -- 제품이름
   cash number(7),  -- 지불액
   border_number constraint trading_bordernumber_fk references borderinfo(border_number) primary key, --글 게시 번호
   daydate date not null, -- 날짜 
-  trade_state varchar2(40)
+  trade_state varchar2(40) -- 거래 진행 상황
   
 );
 
@@ -161,9 +161,9 @@ select * from trade_history;
 create table cash_history (
   id varchar2(20) constraint cash_history_id_fk references userinfo  (id),  -- id 
   itemName varchar2(20),  -- 물품 이름
-  mileage number(6), -- 마일리지
+  mileage number(6), -- 마일리지 - 후 충전 판매 구매 
   saveDate date not null, -- 마일리지 적립일(최종구입일or상태=구매완료시점) 
-  current_cash number
+  current_cash number -- 거래 당시 잔액 
   
 );
 

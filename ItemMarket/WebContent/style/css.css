@@ -24,20 +24,21 @@ header .icon{width: 143px; float:left;}
 header .icon a{text-decoration:none; color: inherit; float:left; }
 
 
-#profile{width:100%; height:100%; float:left; position: relative; overflow: hidden; }
-#profile .profilemenu{width:350px; height: 100%; background:#FFD54F; float:right; z-index:5; position: absolute; top:0 ; right:-100%;}
-#profile .profilemenu ul li{text-align:center; line-height:50px; border-bottom:1px solid #FF8F00; color:#FF8F00;}
+#profile{width:100%; height:100%; float:left; position: absolute; overflow: hidden;}
+#profile .profilemenu{width:350px; height: 100%; background:#FFD54F; float:right; z-index:5; position: absolute; top:0 ; right:-350px; }
+#profile .profilemenu ul li{text-align:center; line-height:50px; border-bottom:1px solid #FF8F00; color:#FF8F00; transition:0.4s;}
+#profile .profilemenu ul li:nth-child(1) span{top:0; left:0; position: absolute; padding:10px	}
+#profile .profilemenu ul li:hover{background:#FFCA28;}
 #profile .profilemenu img{border-radius:100%; padding-top:20px; border:1px solid #ff8f00}
 #profile form ul{width:700px; height:300px; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); margin-top:50px;}
-#profile form ul li{float:left}
+#profile form ul li{float:left; }
 #profile form ul li:nth-child(odd){width:20%; background: #FFD54F; border:1px solid #FF8F00; color:#FF8F00; line-height:38px;}
 #profile form ul li:nth-child(even){width:70%;}
 #profile ul li input{width:100%; height: 40px; background:#ffd54f; border:1px solid #ff8f00;} 
 
 
-
 /* index */
-#search{ width:100%; height: 70%;position: absolute; top:55%; left:50%; transform:translate(-50%,-50%); z-index:3;}
+#search{ width:100%; height: 70%; position:absolute; top:55%; left:50%; transform:translate(-50%,-50%); z-index:3;}
 #search h1{ text-align: center; padding-top: 5%; color:#fff; font-weight: bold; font-size:46px;}
 #search .searchmain{position:absolute;top:50%; left:50%; transform:translate(-50%,-50%);}
 #search .searchmain>ul{ border:1px solid #999999; height: 32px; line-height: 28px;  width:500px; }
@@ -74,6 +75,7 @@ header .icon a{text-decoration:none; color: inherit; float:left; }
 #board .noticeboard ul li:nth-child(5) button{border:none; background:inherit; width: 100%; height: 100%; padding:5px;}
 #board .noticeboard ul li:nth-child(5):hover{background: #000;}
 
+.search{margin-top:150px;}
 .search ul{float:right}
 .search ul li{float:left}
 
@@ -110,8 +112,8 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #main .mainEx h1:nth-child(1){margin-top:60px;}
 #main .mainEx h1{text-align: center;}
 #main .mainEx ul{text-align: center;}
-#main .mainEx button{width:124px; height: 50px; border:none; background:inherit; border:1px solid #000; transition: 0.4s;} 
-#main .mainEx button:nth-child(5){margin-left:25%;}
+#main .mainEx button{width:124px; height: 50px; border:none; background:inherit; border:1px solid #000;  transition: 0.4s;} 
+ #main .mainEx button:nth-child(5){margin-left:25%;} 
 #main .mainEx button:hover{background: #000; color:#fff;}
 #main .content{width:100%; height: 500px; float:left ; margin-top:35px; overflow:scroll; box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5); }
 #main .content h1{text-align: center;}
@@ -184,6 +186,66 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #loginform ul li input{width:100%; height: 40px; background:#FFD54F; border:1px solid #FF8F00;}
 #loginform .loginsubmit{width:100%; height:40px; float:left}
 #loginform .loginsubmit input[type=submit]{width:100%; height: 100%; background:#FFD54F; border:1px solid #FF8F00; color:#FF8F00; text-align: center; margin-top:50px; }
+
+/* 거래내역 dialog */
+
+.Transactions{display:none;}
+#Transactionsfrom{ width:100%; height: 100%; float:left;   position: relative;}
+#Transactionsfrom ul{width:100%; height:30px; text-align:center;}
+#Transactionsfrom ul:nth-child(1){box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5);}
+
+#Transactionsfrom ul li{width:15%; height:30px;float:left}
+#Transactionsfrom ul li:nth-child(5){width:10%;}
+
+/* 마일리지 거래내역 dialog */
+.Mileagetransactions{display:none}
+
+#Mileagetransactionsform{width:100%; height: 100%; float:left ; position: relative;}
+#Mileagetransactionsform ul{width:100%; height: 30px; text-align: center;}
+#Mileagetransactionsform ul:nth-child(1){box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5);}
+#Mileagetransactionsform ul li{width:20%; height: 30px; float:left}
+
+/* ModifyInformation */
+
+#memberform{ width:700px; padding-top:100px; padding-bottom:100px; padding-left:50px; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+
+#memberform .memberupdate{
+	width:300px;
+	height: 200px;
+	line-height:200px;
+	border-radius:5%;
+	text-align:center;
+	background:#FFD54F;
+	border:1px solid #FF8F00;
+	color:#FF8F00;
+	box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5);
+	float:left;
+	margin-right:50px;
+	transition:0.4s;
+	cursor:pointer;
+}
+#memberform .memberupdate:hover{
+	background:#FFCA28;
+}
+
+#memberform .memberdrop{
+	width:300px;
+	height: 200px;
+	line-height:200px;
+	border-radius:5%;
+	text-align:center;
+	background:#FFD54F;
+	border:1px solid #FF8F00;
+	color:#FF8F00;
+	box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5);
+	float:left;
+	transition:0.4s;
+	cursor:pointer;
+}
+
+#memberform .memberdrop:hover{
+	background:#FFCA28;
+}
 
 
 	

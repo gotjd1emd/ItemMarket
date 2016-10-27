@@ -1,4 +1,6 @@
 	$(document).ready(function(){
+		
+	
 
 	var list = $(".bg img");
 	var count = 0;
@@ -86,9 +88,18 @@
 	
 	/* 프로필 animate */
 	$(document).on("click",".menu ul li:nth-child(3)",function(){
+		/*메인 animate*/
 		$(".profilemenu").animate({"right":"0"},1500);
-		$(".menu").delay(700).animate({"right":"350px"},1500);
-		$("#search").delay(700).animate({"left":"38%"},1500);
+		$(".menu ul li").animate({"right":"350px"},1500);
+		$("#search").animate({"left":"38%"},1500);
+		
+		/*게시판 animate*/
+		
+	});
+	$(document).on("click",".profilemenu ul li:nth-child(1) span",function(){
+		$(".profilemenu").animate({"right":"-350px"},1500);
+		$(".menu ul li").animate({"right":"0"},1500);
+		$("#search").animate({"left":"50%"},1500)	;
 	});
 	
 	/* 로그인 dialog */
@@ -131,7 +142,25 @@
 		$(".memberupdialog").dialog("close");
 	});
 	
-	
-   
+	/* 거래내역 dialog */
+	$(document).on("click",".profilemenu ul li:nth-child(6)",function(){
+			$(".Transactions").dialog({
+				minWidth : 1070,
+				minHeight : 530,
+				modal : true,
+			});
+	});
+	/* 마일리지 거래내역 */
+	$(document).on("click",".profilemenu ul li:nth-child(7)",function(){
+		$(".Mileagetransactions").dialog({
+				minWidth: 1070,
+	 			minHeight : 530,
+				modal : true,
+		});
+	});
+	/* 정보수정 이동 */
+	$(".profilemenu ul li:nth-child(8)").click(function(){
+		document.location.href="<c:url value="/"/>view/ModifyInformation.jsp "
+	});
 });
 	

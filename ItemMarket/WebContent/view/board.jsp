@@ -27,7 +27,7 @@
 					<li><input type="button" value="카테고리"><input
 						type="text" name="category" readonly="readonly"></li>
 					<li>서브카테고리</li>
-					<li></li>
+					<li name="radio"></li>
 					<li>제품</li>
 					<li><input type="text" name="title" placeholder="제품을 입력해주세요"
 						required></li>

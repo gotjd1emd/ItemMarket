@@ -54,6 +54,12 @@ public interface ItemMarketDAO {
 	List<BorderDTO> search(String word, String category, String subCategory, int page) throws SQLException;
 	
 	/**
+	 * 6-1. 검색 행 개수
+	 * 페이지수 구하기
+	 */
+	int pageNumber(String word, String category, String subCategory) throws SQLException;
+	
+	/**
 	 * 7. 메신저함
 	 * 받은사람, 보내는사람, 내용
 	 */

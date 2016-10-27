@@ -259,6 +259,46 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
+	 * 6-1. 검색 행 개수
+	 * 페이지 수 구하기
+	 */
+	@Override
+	public int pageNumber(String word, String category, String subCategory) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null; 
+		int rowNumber = 0; 
+
+		try {
+
+			con= DbUtil.getConnection();
+			if(word==null) {
+				ps = con.prepareStatement("select count(num) as row_num from (select ROWNUM num from borderinfo "
+						+ "where category = ? and sub_category = ?)");
+				ps.setString(1, category);
+				ps.setString(2, subCategory);
+			}else {
+				ps = con.prepareStatement("select count(num) as row_num from (select ROWNUM num from borderinfo "
+						+ "where category = ? and sub_category = ? and itemName like ?)");
+				ps.setString(1, category);
+				ps.setString(2, subCategory);
+				ps.setString(3, "%"+word+"%");
+			}
+			rs  = ps.executeQuery();
+
+			if(rs.next()) {
+				rowNumber = rs.getInt("row_num");
+			}
+			
+		}finally {
+			
+			DbUtil.dbClose(con, ps, rs);
+		}
+	
+		return rowNumber;
+	}
+	
+	/**
 	 * 7. 메신저함
 	 * 받은사람, 보내는사람, 내용
 	 */

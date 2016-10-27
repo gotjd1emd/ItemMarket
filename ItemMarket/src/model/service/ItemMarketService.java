@@ -118,13 +118,28 @@ public class ItemMarketService {
 		List<BorderDTO> list = null;
 		
 		try {
-			ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
-			list = dao.search(word, category, subCategory, page);
+			list = marketDAO.search(word, category, subCategory, page);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
+	
+	/**
+	 * 6-1. 검색 행 개수
+	 * 페이지 수 구하기
+	 */
+	public static int pageNumber(String word, String category, String subCategory) {
+		int rowNumber = 0;
+		
+		try {
+			rowNumber = marketDAO.pageNumber(word, category, subCategory);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return rowNumber;
+	}
+
 
 	/**
 	 * 7. 메신저함

@@ -18,7 +18,12 @@
 		회원 탈퇴
 	</div>
 </div>
-
+	<script type="text/javascript"  src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+		$(document).on("click",".memberupdate",function(){
+			document.location.href="MemberUpdate.jsp";
+		});
+		</script>
 </body>
 </html>
 

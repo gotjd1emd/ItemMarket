@@ -158,9 +158,6 @@
 				modal : true,
 		});
 	});
-	/* 정보수정 이동 */
-	$(".profilemenu ul li:nth-child(8)").click(function(){
-		document.location.href="<c:url value="/"/>view/ModifyInformation.jsp "
-	});
+
 });
 	

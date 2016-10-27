@@ -27,7 +27,7 @@
 				<li>이메일 : <span></span></li>
 				<li>거래내역확인</li>
 				<li>마일리지거래내역</li>
-				<li>프로필수정</li>
+				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp">프로필수정</a></li>
 			</ul>
 		</div>
 	</section>

@@ -177,6 +177,7 @@ insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('dd
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('eee','CalvinKlein',44,'2016-10-25',485600); 
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('bbb','∏Òµµ∏Æ',1200,'2016-10-25',170000);
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('ccc','≈“∫Ì∑Ø',2000,'2016-10-25',190000); 
+insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('bbb','≈“∫Ì∑Ø',23000,'2016-10-25',320000); 
 
 select * from cash_history;
 

@@ -97,6 +97,8 @@
 		/*게시판 animate*/
 		
 	});
+	
+	
 	$(document).on("click",".profilemenu ul li:nth-child(1) span",function(){
 		if($(".profilemenu").is(":animated"))return;
 		$(".profilemenu").animate({"right":"-350px"},1500);
@@ -159,9 +161,11 @@
 			dataType : "json",
 			
 			success : function(result) {
-	
+				$('.Transactions section').empty();
+				$('.Transactions section').append("<ul><li>구매자</li><li>판매자</li><li>물품이름</li><li>지불액</li>"+
+						"<li>글번호</li><li>날짜</li><li>거래진행상황</li></ul>");
 				$.each(result, function(index, items) {
-					$('.Transactions section ul').append("<ul>"+
+					$('.Transactions section').append("<ul>"+
 						"<li><span>" + items.buyer + "</span></li>"+
 						"<li><span>" + items.seller + "</span></li>"+
 						"<li><span>" + items.itemName + "</span></li>"+
@@ -182,14 +186,37 @@
 	/* 마일리지 거래내역 */
 	$(document).on("click",".profilemenu ul li:nth-child(7)",function(){
 		
-		
 		$(".Mileagetransactions").dialog({
-				minWidth: 1070,
-	 			minHeight : 530,
-				modal : true,
+			minWidth : 1070,
+			minHeight : 530,
+			modal : true,
 		});
 		
-		
+		$.ajax({
+			url:"../front?command=selectCash",
+			type : "get",
+			dataType : "json",
+			
+			success : function(result) {
+				$('.Mileagetransactions section').empty();
+				$('.Mileagetransactions section').append("<ul><li>아이디</li><li>물품이름</li><li>마일리지</li>"+
+				+"<li>거래 당시 잔액</li><li>날짜</li></ul>");
+				
+				$.each(result, function(index, items) {
+					$('.Mileagetransactions section').append("<ul>"+
+						"<li><span>" + items.id + "</span></li>"+
+						"<li><span>" + items.itemName + "</span></li>"+
+						"<li><span>" + items.mileage + "</span></li>"+
+						"<li><span>" + items.currentCash + "</span></li>"+
+						"<li><span>" + items.saveDate + "</span></li></ul>"
+					);  
+				});	
+			},
+			error : function(err) {
+				console.log("err : " + err);
+
+			}
+		});
 	});
 });
 	

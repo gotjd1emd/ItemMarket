@@ -111,8 +111,6 @@
 					<li><span>${tradelist.tradeState}</span></li>
 				</ul>
 			</c:forEach>
-
-	
 		</section>
 	</div>
 
@@ -125,41 +123,16 @@
 				<li>거래 당시 잔액</li>
 				<li>날짜</li>
 			</ul>
-			<ul>
-				<li>JinYongHyeon</li>
-				<li>MacBook</li>
-				<li>1000</li>
-				<li>999999999</li>
-				<li>2016-10-27</li>
-			</ul>
-			<ul>
-				<li>JinYongHyeon</li>
-				<li>MacBook</li>
-				<li>1000</li>
-				<li>999999999</li>
-				<li>2016-10-27</li>
-			</ul>
-			<ul>
-				<li>JinYongHyeon</li>
-				<li>MacBook</li>
-				<li>1000</li>
-				<li>999999999</li>
-				<li>2016-10-27</li>
-			</ul>
-			<ul>
-				<li>JinYongHyeon</li>
-				<li>MacBook</li>
-				<li>1000</li>
-				<li>999999999</li>
-				<li>2016-10-27</li>
-			</ul>
-			<ul>
-				<li>JinYongHyeon</li>
-				<li>MacBook</li>
-				<li>1000</li>
-				<li>999999999</li>
-				<li>2016-10-27</li>
-			</ul>
+			
+			<c:forEach var='list' items="${requestScope.cashlist}">
+				<ul>
+					<li><span>${cashlist.id}</span></li>
+					<li><span>${cashlist.itemName}</span> </li>
+					<li><span>${cashlist.mileage}</span></li>
+					<li><span>${cashlist.saveDate}</span></li>
+					<li><span>${cashlist.currentCash}</span></li>
+				</ul>
+			</c:forEach>
 		</section>
 	</div>
 	<script type="text/javascript">

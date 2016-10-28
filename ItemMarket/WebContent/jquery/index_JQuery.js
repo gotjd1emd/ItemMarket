@@ -11,7 +11,7 @@
 		$(".sub_category ul").fadeIn("slow");
 		$(".searchmain").animate({top : '45%'});
 		$(".category").dialog("close");
-		category =  $(this).text();
+		category = $(this).text();
 		if(category == "전자제품") {
 			$(".sub_category ul").empty();
 			$(".sub_category ul").append("<li>컴퓨터</li>");
@@ -69,7 +69,7 @@
 		subCategory = "&subCategory="+$(this).text();
 	}));
 	$(".glyphicon.glyphicon-search").click(function(){ //임시로 주소갑 줌
-		document.location.href="../front?command=search"+category+subCategory+"&word="+$("[type=text]").val()+"&page=1";
+		document.location.href="../front?command=search"+category+subCategory+"&word="+$("[type=text]").val()+"&page=0";
 	});
 
 	

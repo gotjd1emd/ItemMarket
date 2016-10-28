@@ -70,9 +70,12 @@ $(document).ready(function(){
 	var file="";
 	var filenum = 0;
 	$(".imgs .imgbtn img").click(function(){
-		file +="<li><input type='file' name='fileName"+filenum+"'></li>"
+		if(filenum<6){
 		filenum++;
-		$(".imgs ul").html(file);
+		$(".imgs ul").append("<li><input type='file' name='fileName"+filenum+"'></li>");
+		}else{
+		alert("6개가 최대입니다.")
+		}
 	});
 	
 	

@@ -629,7 +629,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		PreparedStatement ps = null;
 		int result = 0;
 		try{
-			ps = con.prepareStatement("delete * from userinfo where id =? and password =?");
+			ps = con.prepareStatement("delete from userinfo where id =? and password =?");
 			ps.setString(1, id);
 			ps.setString(2, pw);
 			result = ps.executeUpdate();

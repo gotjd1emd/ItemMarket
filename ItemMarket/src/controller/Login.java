@@ -21,7 +21,7 @@ public class Login implements Action {
 		response.setContentType("text/html;charset=utf-8");
 		try {
 
-		String id  = request.getParameter("id");	
+		String id  = request.getParameter("id");		
 		String password = request.getParameter("password");
 	
 		request.getSession().setAttribute("id", id);

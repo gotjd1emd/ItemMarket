@@ -42,7 +42,7 @@ create sequence borderInfo_seq;  --(테이블_seq)
 --전체 게시판  // trade 변수 대신에 itemName 추가 , itemState 물품 상태변수 추가 
 create table borderinfo(
 
-id varchar2(20) not null constraint border_id_fk references userinfo(id), -- userinfo 참조
+id varchar2(20) not null constraint border_id_fk references userinfo(id) on delete cascade, -- userinfo 참조
 border_number number(5) constraint bordernumber_pk primary key,  -- borderinfo 참조
 content varchar2(30), -- 글 
 
@@ -112,8 +112,8 @@ select * from img_Border;
 
 -- 메신저 에 필요한 테이블 
 create table  messenger(
-  sender varchar2(20) not null constraint  sender_fk references userinfo(id),  --메시지 보내는 사람 
-  receiver varchar2(20) not null constraint receiver_fk references userinfo(id),  -- 받는 사람
+  sender varchar2(20) not null constraint  sender_fk references userinfo(id) on delete cascade,  --메시지 보내는 사람 
+  receiver varchar2(20) not null constraint receiver_fk references userinfo(id) on delete cascade,  -- 받는 사람
   content varchar2(30),
   dayDate date not null
 
@@ -131,8 +131,8 @@ drop table trade_history;
 
 --상호간 필요한 정보 
 create table trade_history (
-  buyer constraint  trading_Buyer_fk references userInfo(id), -- 구매자 
-  seller constraint trading_Seller_fk references userInfo(id),  -- 판매자
+  buyer constraint  trading_Buyer_fk references userInfo(id) on delete cascade, -- 구매자 
+  seller constraint trading_Seller_fk references userInfo(id) on delete cascade,  -- 판매자
   itemName varchar2(20), -- 제품이름
   cash number(7),  -- 지불액
   border_number constraint trading_bordernumber_fk references borderinfo(border_number) primary key, --글 게시 번호
@@ -159,7 +159,7 @@ select * from trade_history;
 
 --cash_history table   id, 구매내역 -receiver 구매자 
 create table cash_history (
-  id varchar2(20) constraint cash_history_id_fk references userinfo  (id),  -- id 
+  id varchar2(20) constraint cash_history_id_fk references userinfo(id) on delete cascade,  -- id 
   itemName varchar2(20),  -- 물품 이름
   mileage number(6), -- 마일리지 - 후 충전 판매 구매 
   saveDate date not null, -- 마일리지 적립일(최종구입일or상태=구매완료시점) 

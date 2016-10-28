@@ -638,6 +638,43 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		}
 		return result;
 	}
+	/**
+	 * 21. 유저 계정 수정
+	 * */
+	@Override
+	public int userUpdate(String id , String email, String tel, String location) throws SQLException {
+		Connection con = DbUtil.getConnection();
+		PreparedStatement ps = null;
+		int result =0;
+		try{
+			ps= con.prepareStatement("update userinfo set email = ? , tel = ? , location = ? where id = ?");
+			ps.setString(1,email);
+			ps.setString(2,tel);
+			ps.setString(3,location);
+			ps.setString(4,id);
+			result = ps.executeUpdate();
+		}finally{
+			DbUtil.dbClose(con, ps, null);
+		}
+		return result;
+	}
+
+	@Override
+	public int userPasswordUpdate(String id, String password, String newPassword) throws SQLException {
+		Connection con =DbUtil.getConnection();
+		PreparedStatement ps= null;
+		int result = 0;
+		try{
+			ps = con.prepareStatement("update userinfo set password = ? where id = ? and password = ?");
+			ps.setString(1, newPassword);
+			ps.setString(2, id);
+			ps.setString(3, password);
+			result = ps.executeUpdate();
+		}finally{
+			DbUtil.dbClose(con, ps, null);
+		}
+		return result;
+	}
 	
 
 

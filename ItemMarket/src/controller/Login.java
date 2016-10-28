@@ -23,7 +23,7 @@ public class Login implements Action {
 
 		String id  = request.getParameter("id");		
 		String password = request.getParameter("password");
-	
+		
 		request.getSession().setAttribute("id", id);
 				
 		PrintWriter out = response.getWriter();

@@ -135,8 +135,8 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #mainboard form>ul li span{width:50%; height100%; float:left; text-align:center}
 #mainboard form>ul li:nth-child(odd){width:20%; text-align:center; background:#FFD54F; border:1px solid #FF8F00; color:#FF8F00; font-weight: bold; }
 #mainboard form>ul li:nth-child(even){width:80%;float:left; background:#fff; border:1px solid #FF8F00;}
-#mainboard form>ul li:nth-child(13){background:#FFD54F; color:#FF8F00; border-right:1px solid #FF8F00; height: 410px; line-height: 410px;}
-#mainboard form>ul li:nth-child(14){border:none;}
+#mainboard form>ul li:nth-child(12){background:#FFD54F; color:#FF8F00; border-right:1px solid #FF8F00; height: 410px; line-height: 410px;}
+#mainboard form>ul li:nth-child(13){border:none;}
 #mainboard form>ul li textarea{width:100%; padding:0; float:right; height: 300px; }
 #mainboard .imgs{width:100%; height:150px; float:left;  }
 #mainboard .imgs .imgbtn span{width:50%; float:left; line-height:97px; text-align:center; border-right:1px solid #FF8F00; background:#FFD54F; color:#FF8F00;font-weight: bold;}
@@ -258,7 +258,9 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #passwordCheckform p{text-align:center;}
 #passwordCheckform {width:100%; text-align: center; margin-top:30px;}
 #passwordCheckform input{height:30px; }
-#passwordCheckform input[type=submit]{width:120px; height:30px; background: #FFD54F; border:1px solid #FF8F00; color:#FF8F00;  }
+#passwordCheckform #updateform{margin-top:30px;}
+#passwordCheckform #deleteform{margin-top:30px;}
+#passwordCheckform input[type=button]{width:120px; height:30px; background: #FFD54F; border:1px solid #FF8F00; color:#FF8F00;  }
 
 
 /* MeberUpdate */
@@ -270,9 +272,8 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 .privacy ul li input{width:100%; float:left; height: 50px; border:none; } 
 .privacy .memberupdatesubmit{width:100%; float:left; margin-top:30px; }
 .privacy .memberupdatesubmit input[type=button]{width:150px; height: 50px; background:#ffd54f; color:#FF8F00; border:1px solid #FF8F00; transition:0.4s; cursor:pointer;}
-.privacy .memberupdatesubmit input[type=submit]{width:150px; height: 50px; background:#ffd54f; color:#FF8F00; border:1px solid #FF8F00;  margin-right:40px; transition:0.4s; cursor:pointer;}
+.privacy .memberupdatesubmit input:first-child{width:150px; height: 50px; background:#ffd54f; color:#FF8F00; border:1px solid #FF8F00;  margin-right:40px; transition:0.4s; cursor:pointer;}
 .privacy .memberupdatesubmit input[type=button]:hover{background:#FFCA28;}
-.privacy .memberupdatesubmit input[type=submit]:hover{background:#FFCA28;}
 
 .passwordchage{width:60%; height: 400px; float:left; text-align: center; position: absolute; top: 400px;  left:50%; transform:translate(-50%);}
 .passwordchage h3{width:100% ;  margin-top:30px; border:1px solid #ff8f00; height: 40px; background:#ffd54f; color:#FF8F00; line-height: 40px;}
@@ -288,9 +289,9 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 .passwordchage ul li ul li input{width:100%; float:left; height: 50px; border:none; } 
 .passwordchage .passwordchagesubmit{width:100%; float:left; margin-top:30px; }
 .passwordchage .passwordchagesubmit input[type=button]{width:150px; height: 50px; background:#ffd54f; color:#FF8F00; border:1px solid #FF8F00; transition:0.4s; cursor:pointer;}
-.passwordchage .passwordchagesubmit input[type=submit]{width:150px; height: 50px; background:#ffd54f; color:#FF8F00; border:1px solid #FF8F00;  margin-right:40px; transition:0.4s; cursor:pointer;}
+.passwordchage .passwordchagesubmit input:first-child{width:150px; height: 50px; background:#ffd54f; color:#FF8F00; border:1px solid #FF8F00;  margin-right:40px; transition:0.4s; cursor:pointer;}
 .passwordchage .passwordchagesubmit input[type=button]:hover{background:#FFCA28;}
-.passwordchage .passwordchagesubmit input[type=submit]:hover{background:#FFCA28;}
+
 
 
 

@@ -274,4 +274,30 @@ public class ItemMarketService {
 		}
 		return result;
 	}
+	/**
+	 * 21. 유정 계정 수정
+	 * */
+	public static int userUpdate(String id , String email,String tel,String location){
+		int result =0;
+		try{
+			result = marketDAO.userUpdate(id, email, tel, location);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**
+	 * 22. 유정 비밀번호 변경
+	 * */
+	public static int userPasswordUpdate(String id , String password, String newPassword){
+		int result = 0;
+		System.out.println(id + password + newPassword);
+		try{
+			result = marketDAO.userPasswordUpdate(id, password, newPassword);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

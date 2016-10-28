@@ -2,29 +2,24 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.service.ItemMarketService;
 
-public class UserDelete implements Action {
+public class UserPasswordUpdate implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=utf-8");
-		request.setCharacterEncoding("utf-8");
-	
-		String id = request.getParameter("id");
-		String pw = request.getParameter("password");
-		System.out.println(id+"  :  "+pw);
-		int result = ItemMarketService.userDelete(id, pw);
+		String id =request.getParameter("checkid");
+		String password=  request.getParameter("password");
+		String newPassword = request.getParameter("newpassword");
+		
+		int result = ItemMarketService.userPasswordUpdate(id, password, newPassword);
 		PrintWriter out = response.getWriter();
 		out.println(result);
-				
 	}
 
 }

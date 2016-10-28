@@ -34,9 +34,6 @@
 					<li>가격</li>
 					<li><input type="number" name="price" placeholder="가격을 입력해주세요"
 						required></li>
-					<li>판매방식</li>
-					<li><input type="button" value="판매방식"><input
-						type="text" name="sale" value="" readonly="readonly"></li>
 					<li>연락처</li>
 					<li><input type="text" name="phone" placeholder="연락천를 입력해주세요"></li>
 					<li>설명</li>

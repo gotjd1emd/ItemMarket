@@ -149,4 +149,14 @@ public interface ItemMarketDAO {
 	 * */
 	int userDelete(String id, String pw) throws SQLException;
 	
+	/**
+	 * 유저 수정
+	 * */
+	int userUpdate(String id , String email, String tel, String location) throws SQLException;
+	
+	/**
+	 * 유저 비밀번호 수정
+	 * */
+	int userPasswordUpdate(String id, String password , String newPassword) throws SQLException;
+
 }

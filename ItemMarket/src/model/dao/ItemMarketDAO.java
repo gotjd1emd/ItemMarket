@@ -6,6 +6,7 @@ import java.util.List;
 
 import model.dto.BorderDTO;
 import model.dto.CashHistoryDTO;
+import model.dto.ImageDTO;
 import model.dto.MemoDTO;
 import model.dto.TradeHistoryDTO;
 import model.dto.UserDTO;
@@ -83,7 +84,11 @@ public interface ItemMarketDAO {
 	 */
 	BorderDTO read(int borderNum) throws SQLException;
 	
-	
+	/**
+	 * 8. 글읽기
+	 * 이미지를 받아오기 위한 메소드
+	 * */
+	List<ImageDTO> imgRead(int borderNum) throws Exception;
 	/**
 	 * 10. 구매자 마일리지를 중개자에게
 	 * 10, 11, 12, 13순서로 commit, rollback
@@ -148,6 +153,8 @@ public interface ItemMarketDAO {
 	 * 유저 계정 탈퇴
 	 * */
 	int userDelete(String id, String pw) throws SQLException;
+
+	
 	
 	/**
 	 * 유저 수정

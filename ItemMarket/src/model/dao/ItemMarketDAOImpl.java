@@ -9,6 +9,7 @@ import java.util.List;
 
 import model.dto.BorderDTO;
 import model.dto.CashHistoryDTO;
+import model.dto.ImageDTO;
 import model.dto.MemoDTO;
 import model.dto.TradeHistoryDTO;
 import model.dto.UserDTO;
@@ -404,7 +405,33 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		  return border;
 	  }
 	
-	
+	/**
+	 * 8. 글읽기
+	 * 이미지를 받아오기 위한 메소드
+	 * */
+	@Override
+	public List<ImageDTO> imgRead(int borderNum) throws Exception {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<ImageDTO>  imagelist = new ArrayList<>();
+		try{
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement("select * from img_Border where border_number=?");
+
+			ps.setInt(1, borderNum);
+			rs = ps.executeQuery();
+			
+			while(rs.next()){
+				ImageDTO imageDTO = new ImageDTO(rs.getInt(1), rs.getString(2));
+			
+				imagelist.add(imageDTO);
+		}
+		}finally{
+			DbUtil.dbClose(con, ps, null);
+		}
+		return imagelist;
+	}
 	/**
 	 * 10. 구매자 마일리지를 중개자에게
 	 * 10, 11, 12, 13순서로 commit, rollback

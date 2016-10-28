@@ -40,7 +40,6 @@ public class AccountTransfer implements Action {
 
 		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, id, itemName, cash, borderNumber, dayDate, itemState);
 		 
-		
 		try {
 			ItemMarketService.accountTransfer(id,cash,border,trade);
 		} catch (SQLException e) {

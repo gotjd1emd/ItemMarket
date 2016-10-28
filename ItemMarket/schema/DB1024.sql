@@ -88,7 +88,7 @@ select * from borderInfo;
 --이미지 게시판 
 create table img_Border( 
    border_Number number(5) constraint img_Bordernumber_fk references borderinfo(border_Number),   -- borderinfo 게시번호 
-  img varchar2(40)  -- 이미지 
+  img varchar2(200)  -- 이미지 
 );
 
 --drop table img_border;

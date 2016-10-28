@@ -14,16 +14,13 @@
 <body>
 	<section id ="main">
 		<div class="subimg">
-			<span class="up"><img src="<c:url value="/"/>image/arrowup.png" alt="ArrowUp"></span>
+			<span class="up"><img src="<c:url value="/"/>image/arrowup.png" alt="ArrowUp">
+			</span>
 			<ul>
-			
-				<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="samplemacbook" onClick="slide(1)"></li>
-				<li><img src="<c:url value="/"/>image/samplemacbook2.jpg" alt="samplemacbook2" onClick="slide(2)" ></li>
-				<li><img src="<c:url value="/"/>image/samplemacbook3.jpg" alt="samplemacbook3" onClick="slide(3)"></li>
-				<li><img src="<c:url value="/"/>image/samplemacbook4.jpg" alt="samplemacbook4" onClick="slide(4)"></li>
-				<li><img src="<c:url value="/"/>image/samplemacbook4.jpg" alt="samplemacbook4" onClick="slide(4)"></li>
-				<li><img src="<c:url value="/"/>image/samplemacbook4.jpg" alt="samplemacbook4" onClick="slide(4)"></li> 	
+				<c:forEach var="imagelist" items="${requestScope.imagelist}" varStatus="index">
 				
+					<li><img src="<c:url value="/"/>${imagelist.img}" alt="${index.index}" onClick="slide(${index.index})"></li>
+				</c:forEach>
 			</ul>
 			<span class="down"><img src="<c:url value="/"/>image/arrowdown.png" alt="ArrowDown"></span>
 
@@ -38,16 +35,15 @@
 			<h1>&lt상품정보&gt</h1>
 			<ul>
 				<li hidden></li>
-				<li>제품 : <span>MacBook</span></li>
-				<li>가격 : <span>0원</span>
-					<li>등록날짜 : <span>2016-10-24</span>		
-						<li>판매 방식 : <span>직거래</span>
+				<li>제품 : <span>${border.itemName}</span></li>
+				<li>가격 : <span>${border.money}원</span>
+				<li>등록날짜 : <span>${border.dayDate}</span>		
 						</ul>	
 						<h1>&lt판매자 정보&gt</h1>
 						<ul>
-							<li>아이디 : <span>JinYongHyeon</span></li>
-							<li>판매지역 : <span>판매지역</span></li>
-							<li>연락처 : <span>010-1234-5678</span> </li>
+							<li>아이디 : <span>${user.id}</span></li>
+							<li>판매지역 : <span>${user.location}</span></li>
+							<li>연락처 : <span>${user.tel}</span> </li>
 						</ul>
 						
 						<button type="button">구매하기</button>
@@ -55,7 +51,7 @@
 
 					</div>
 					<div class="content">
-						<h1>Content설명구간</h1>
+						<h1>${border.content}</h1>
 					</div>
 				</section>
 				<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>

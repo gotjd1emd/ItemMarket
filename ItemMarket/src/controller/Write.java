@@ -20,7 +20,7 @@ public class Write implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String id = (String) request.getSession().getAttribute("id");
-		String saveDir="C:/image/";
+		String saveDir=request.getServletContext().getRealPath("/img");
 		
 		int maxSize=1024*1024*100; // 100M
 		String encoding="UTF-8";
@@ -50,8 +50,8 @@ public class Write implements Action {
 			        //전송된 file의 name속성(파라미터이름) 얻어오기
 			        String fileName=em.nextElement();
 			        
-			       savefilename=saveDir+m.getFilesystemName(fileName);
-			       System.out.println(borderDTO.getBorderNumber());
+			       savefilename="/img/"+m.getFilesystemName(fileName);
+			       System.out.println(savefilename);
 			       ItemMarketService.imgWrite(savefilename);
 			 }
 		

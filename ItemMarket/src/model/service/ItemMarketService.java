@@ -10,6 +10,7 @@ import model.dao.ItemMarketDAO;
 import model.dao.ItemMarketDAOImpl;
 import model.dto.BorderDTO;
 import model.dto.CashHistoryDTO;
+import model.dto.ImageDTO;
 import model.dto.TradeHistoryDTO;
 import model.dto.MemoDTO;
 import model.dto.UserDTO;
@@ -201,6 +202,23 @@ public class ItemMarketService {
 			e.printStackTrace();
 		}
 		return border;
+	}
+	
+	/**
+	 * 8. 이미지읽기
+	 * 이미지를 읽기 위한 메소드
+	 * */
+	public static List<ImageDTO> imgRead(int borderNum){
+
+		List<ImageDTO> list = null;
+		
+		try {
+			list = marketDAO.imgRead(borderNum);
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 

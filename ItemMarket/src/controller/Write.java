@@ -19,7 +19,7 @@ public class Write implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String saveDir=request.getServletContext().getRealPath("/images");
+		String saveDir=request.getServletContext().getRealPath("C:/images");
 		int maxSize=1024*1024*100; // 100M
 		String encoding="UTF-8";
 		

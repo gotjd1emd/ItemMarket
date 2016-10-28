@@ -75,7 +75,7 @@ public interface ItemMarketDAO {
 	 * 8. 글쓰기
 	 * 이미지를 넣기 위한 메소드
 	 * */
-	int imgWrite(int borderNumber, String imgName) throws Exception;
+	int imgWrite(String imgName) throws Exception;
 	
 	/**
 	 * 9. 글읽기

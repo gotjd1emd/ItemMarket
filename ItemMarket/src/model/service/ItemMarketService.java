@@ -177,10 +177,10 @@ public class ItemMarketService {
 	 * 8. 글쓰기
 	 * 이미지를 넣기 위한 메소드
 	 * */
-	public static int imgWrite(int borderNumber , String imgName){
+	public static int imgWrite(String imgName){
 		int result = 0;
 		try {
-			result = marketDAO.imgWrite(borderNumber, imgName);
+			result = marketDAO.imgWrite(imgName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

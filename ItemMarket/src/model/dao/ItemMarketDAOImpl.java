@@ -337,16 +337,15 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		try{
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into borderInfo values (?,?,?,?,?,sysdate,?,?,?)");
+			ps = con.prepareStatement("insert into borderInfo values (?,borderInfo_seq.nextval,?,?,?,sysdate,?,?,?)");
 			
 			ps.setString(1, border.getId());
-			ps.setInt(2, border.getBorderNumber());
-			ps.setString(3, border.getContent());
-			ps.setString(4, border.getItemName());
-			ps.setInt(5, border.getMoney());
-			ps.setString(6, border.getCategory());
-			ps.setString(7, border.getSubcategory());
-			ps.setString(8, border.getItemState());
+			ps.setString(2, border.getContent());
+			ps.setString(3, border.getItemName());
+			ps.setInt(4, border.getMoney());
+			ps.setString(5, border.getCategory());
+			ps.setString(6, border.getSubcategory());
+			ps.setString(7, border.getItemState());
 			
 			result = ps.executeUpdate();
 		}finally{
@@ -360,15 +359,15 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * 이미지를 넣기 위한 메소드
 	 * */
 	@Override
-	public int imgWrite(int borderNumber , String imgName) throws Exception {
+	public int imgWrite(String imgName) throws Exception {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
 		try{
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into img_border values (?,?)");
-			ps.setInt(1, borderNumber);
-			ps.setString(2, imgName);
+			ps = con.prepareStatement("insert into img_border values (borderInfo_seq.currval,?)");
+
+			ps.setString(1, imgName);
 			result = ps.executeUpdate();
 		}finally{
 			DbUtil.dbClose(con, ps, null);

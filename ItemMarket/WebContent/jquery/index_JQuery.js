@@ -199,8 +199,7 @@
 			
 			success : function(result) {
 				$('.Mileagetransactions section').empty();
-				$('.Mileagetransactions section').append("<ul><li>아이디</li><li>물품이름</li><li>마일리지</li>"+
-				+"<li>거래 당시 잔액</li><li>날짜</li></ul>");
+				$('.Mileagetransactions section').append("<ul><li>아이디</li><li>물품이름</li><li>마일리지</li><li>거래 당시 잔액</li><li>날짜</li></ul>");
 				
 				$.each(result, function(index, items) {
 					$('.Mileagetransactions section').append("<ul>"+

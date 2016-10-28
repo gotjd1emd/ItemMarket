@@ -13,6 +13,22 @@ public class BorderDTO {
 	private String subcategory;
 	private String itemState;
 	
+	public BorderDTO() {
+		super();
+	}
+	public BorderDTO(String id, String content, String itemName, int money, String dayDate, String category,
+			String subcategory, String itemState) {
+		super();
+		this.id = id;
+		this.content = content;
+		this.itemName = itemName;
+		this.money = money;
+		this.dayDate = dayDate;
+		this.category = category;
+		this.subcategory = subcategory;
+		this.itemState = itemState;
+	}
+
 	public BorderDTO(String id, int borderNumber, String content, String itemName, int money, String dayDate,
 			String category, String subcategory, String itemState) {
 		super();

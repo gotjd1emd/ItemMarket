@@ -19,8 +19,7 @@ public class SelectTrade implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = (String) request.getSession().getAttribute("id");
-		
-		System.out.println(id);
+
 		List<TradeHistoryDTO> tradelist = ItemMarketService.myHistory(id);
 		
 		request.setAttribute("tradelist", tradelist);

@@ -9,10 +9,12 @@
 <body>
 	<header>
 		<div class="menu">
+		<span class="logo"><a href="<c:url value="/"/>view/index.jsp">ItemMarket</a></span>
 			<ul>
 				<li>로그인</li>
 				<li>회원가입</li>
 				<li>프로필</li>
+				<li>로그아웃</li>
 			</ul>
 		</div>
 	</header>
@@ -31,6 +33,9 @@
 			</ul>
 		</div>
 	</section>
+
+	
+
 
 	<!-- 회원가입 dialog  -->
 

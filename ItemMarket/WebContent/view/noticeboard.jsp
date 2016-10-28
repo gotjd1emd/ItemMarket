@@ -18,7 +18,7 @@
 			<div class="search">
 				<ul>
 					<li><input type="text" name="search" value="${requestScope.word }"></li>
-					<li><span class="glyphicon glyphicon-search"></span>
+					<li><span class="glyphicon glyphicon-search"></span></li>
 					</ul>
 				</div>
 			</div>
@@ -80,9 +80,6 @@
 	<script type="text/javascript" src="<c:url value="/"/>jquery/smoothscroll-for-websites-master/SmoothScroll.js"></script>
 	<script type="text/javascript" src="<c:url value="/"/>jquery/noticeboard_JQuery.js"></script>
 	<script type="text/javascript" src="<c:url value="/"/>jquery/index_JQuery.js"></script>
-<!--
-
-//-->
 
 	<script type="text/javascript">
 	$(".noticeboardsubmit button").click(function(){

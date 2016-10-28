@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ItemMarket</title>
-<link rel="stylesheet"	href="<c:url value="/"/>jquery/jquery-ui-	1.11.4.custom/jquery-ui.min.css">
+<link rel="stylesheet"	href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">
 <link rel="stylesheet"	href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 <link rel="stylesheet" href="<c:url value="/"/>style/css.css">
 <jsp:include page="header.jsp"></jsp:include>
@@ -28,17 +28,15 @@
 			<ul>
 				<li><input type="text"></li>
 				<li><span class="glyphicon glyphicon-search" ></span></li>
-					<li><span id="sub">카테고리</span></li>
-				</ul>
-				<div class="sub_category" >
-					<ul>
-
-
-				</ul>
-			</div>
+				<li><span id="sub">카테고리</span></li>
+			</ul>
+		<div class="sub_category" >
+			<ul>
+			</ul>
 		</div>
+	</div>
+
 	</section>
-	
 	
 	<!-- 큰 카테고리 dialog  -->
 		<div class="category" title="카테고리">

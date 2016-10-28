@@ -88,6 +88,7 @@
 	
 	/* 프로필 animate */
 	$(document).on("click",".menu ul li:nth-child(3)",function(){
+		if($(".profilemenu").is(":animated"))return;
 		/*메인 animate*/
 		$(".profilemenu").animate({"right":"0"},1500);
 		$(".menu ul li").animate({"right":"350px"},1500);
@@ -97,6 +98,7 @@
 		
 	});
 	$(document).on("click",".profilemenu ul li:nth-child(1) span",function(){
+		if($(".profilemenu").is(":animated"))return;
 		$(".profilemenu").animate({"right":"-350px"},1500);
 		$(".menu ul li").animate({"right":"0"},1500);
 		$("#search").animate({"left":"50%"},1500)	;

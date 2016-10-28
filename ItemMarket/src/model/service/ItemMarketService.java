@@ -261,4 +261,17 @@ public class ItemMarketService {
 			con.close();
 		}
 	}
+	
+	/**
+	 * 20. À¯Àú °èÁ¤ Å»Åð 
+	 * */
+	public static int userDelete(String id, String pw){
+		int result =0;
+		try{
+		result= marketDAO.userDelete(id, pw);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

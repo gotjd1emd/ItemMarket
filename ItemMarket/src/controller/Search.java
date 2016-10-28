@@ -46,7 +46,7 @@ public class Search implements Action {
 					
 					request.getRequestDispatcher("view/noticeboard.jsp").forward(request, response);
 				}else {
-					System.out.println("itemName : " + list.get(0).getItemName());
+/*					System.out.println("itemName : " + list.get(0).getItemName());*/
 					PrintWriter out = response.getWriter();
 					JSONArray jsonArray = JSONArray.fromObject(list);
 					jsonArray.add(pageNumber);

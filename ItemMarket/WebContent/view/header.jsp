@@ -29,7 +29,7 @@
 				<li>이메일 : <span> ${sessionScope.userProfile.email}</span></li>
 				<li>거래내역확인</li>
 				<li>마일리지거래내역</li>
-				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp">프로필수정</a></li>
+				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp?id=${sessionScope.id}">프로필수정</a></li>
 			</ul>
 		</div>
 	</section>
@@ -50,7 +50,7 @@
 							class="check"></span></li>
 						<li>비밀번호</li>
 						<li><input type="password" name="password"
-							placeholder="비밀번호를 입력해주세요" required></li>
+							placeholder="비밀번호를 입력해주세요"></li>
 						<li>전화번호</li>
 						<li><input type="tel" name="tel" placeholder="전화번호를 입력해주세요"></li>
 						<li>이메일</li>

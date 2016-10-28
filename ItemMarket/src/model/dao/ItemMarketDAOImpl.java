@@ -622,7 +622,23 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 		return result;
 	}
-
+	/**
+	 * 20. À¯Àú °èÁ¤ Å»Åð
+	 * */
+	public int userDelete(String id, String pw) throws SQLException{
+		Connection con = DbUtil.getConnection();
+		PreparedStatement ps = null;
+		int result = 0;
+		try{
+			ps = con.prepareStatement("delete * from userinfo where id =? and password =?");
+			ps.setString(1, id);
+			ps.setString(2, pw);
+			result = ps.executeUpdate();
+		}finally{
+			DbUtil.dbClose(con, ps, null);
+		}
+		return result;
+	}
 	
 
 

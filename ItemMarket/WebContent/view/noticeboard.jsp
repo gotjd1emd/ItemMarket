@@ -41,6 +41,7 @@
 						<li><a href="view/Explanation.jsp"><button>상세설명</button></a></li>
 					</ul>
 				</c:forEach>
+	
 
 				</div>
 			</div>

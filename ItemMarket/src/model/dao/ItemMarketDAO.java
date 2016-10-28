@@ -144,5 +144,9 @@ public interface ItemMarketDAO {
 	 */
 	int updateCashHistory(Connection con, String id, String itemName, int money, int currentCash) throws SQLException;
 	
+	/**
+	 * À¯Àú °èÁ¤ Å»Åð
+	 * */
+	int userDelete(String id, String pw) throws SQLException;
 	
 }

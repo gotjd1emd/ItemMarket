@@ -146,20 +146,53 @@
 	
 	/* 거래내역 dialog */
 	$(document).on("click",".profilemenu ul li:nth-child(6)",function(){
-			$(".Transactions").dialog({
-				minWidth : 1070,
-				minHeight : 530,
-				modal : true,
-			});
+		
+		$(".Transactions").dialog({
+			minWidth : 1070,
+			minHeight : 530,
+			modal : true,
+		});
+		
+		$.ajax({
+			url:"../front?command=selectTrade",
+			type : "get",
+			dataType : "json",
+			
+			success : function(result) {
+	
+				$.each(result, function(index, items) {
+					$('.Transactions section ul').append("<ul>"+
+						"<li><span>" + items.buyer + "</span></li>"+
+						"<li><span>" + items.seller + "</span></li>"+
+						"<li><span>" + items.itemName + "</span></li>"+
+						"<li><span>" + items.cash + "</span></li>"+
+						"<li><span>" + items.borderNumber + "</span></li>"+
+						"<li><span>" + items.dayDate + "</span></li>"+
+						"<li><span>" + items.tradeState + "</span></li></ul>"
+					);  
+				});	
+			},
+			error : function(err) {
+				console.log("err : " + err);
+
+			}
 	});
+	});
+	
 	/* 마일리지 거래내역 */
 	$(document).on("click",".profilemenu ul li:nth-child(7)",function(){
+		
+		
 		$(".Mileagetransactions").dialog({
 				minWidth: 1070,
 	 			minHeight : 530,
 				modal : true,
 		});
+		
+		
 	});
+});
+	
 
 	/*
 	$(".loginsubmit input[value=로그인]").click(function(){
@@ -195,5 +228,5 @@
 	계속 삽질한 결과, 로그인 정보는 session으로 저장하기 때문에, sessionScope으로 불러와서 충분히 바뀔수잇다..?
 	*/
 	
-});
+
 	

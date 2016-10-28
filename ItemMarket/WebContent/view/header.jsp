@@ -100,34 +100,19 @@
 				<li>거래진행상황</li>
 			</ul>
 
-			<ul>
-				<li>진용현</li>
-				<li>진용현</li>
-				<li>MacBook</li>
-				<li>0</li>
-				<li>1</li>
-				<li>2016-10-27</li>
-				<li>거래완료</li>
-			</ul>
+			<c:forEach var='list' items="${requestScope.tradelist}">
+				<ul>
+					<li><span>${tradelist.buyer}</span></li>
+					<li><span>${tradelist.seller}</span> </li>
+					<li><span>${tradelist.itemName}</span></li>
+					<li><span>${tradelist.money}</span></li>
+					<li><span>${tradelist.borderNumber}</span></li>
+					<li><span>${tradelist.dayDate}</span></li>
+					<li><span>${tradelist.tradeState}</span></li>
+				</ul>
+			</c:forEach>
 
-			<ul>
-				<li>진용현</li>
-				<li>진용현</li>
-				<li>MacBook</li>
-				<li>0</li>
-				<li>1</li>
-				<li>2016-10-27</li>
-				<li>거래중</li>
-			</ul>
-			<ul>
-				<li>진용현</li>
-				<li>진용현</li>
-				<li>MacBook</li>
-				<li>0</li>
-				<li>1</li>
-				<li>2016-10-27</li>
-				<li>거래중</li>
-			</ul>
+	
 		</section>
 	</div>
 

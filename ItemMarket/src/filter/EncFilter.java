@@ -43,6 +43,7 @@ public class EncFilter implements Filter {
 
 		// pass the request along the filter chain
 		request.setCharacterEncoding(encoding);
+		response.setContentType("text/html;charset=utf-8");
 		chain.doFilter(request, response);
 	}
 

@@ -78,7 +78,7 @@
 					<li><select name="subcategory">
 					<option value="1">==서브카테고리==</option>
 					</select></li>
-					<li><input type="text" name="search" value="${requestScope.word }"></li>
+					<li><input type="text" name="search" value="${requestScope.word}"></li>
 					<li><span class="glyphicon glyphicon-search"></span></li>
 				</ul>
 			</div>

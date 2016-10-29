@@ -11,9 +11,6 @@ import javax.servlet.http.HttpSession;
 import model.dto.UserDTO;
 import model.service.ItemMarketService;
 
-
-
-
 public class Login implements Action {
 
 	@Override
@@ -23,12 +20,11 @@ public class Login implements Action {
 
 		String id  = request.getParameter("id");		
 		String password = request.getParameter("password");
-		
 		request.getSession().setAttribute("id", id);
 				
 		PrintWriter out = response.getWriter();
 		if(ItemMarketService.login(id, password)>0){
-			System.out.println("·Î±×ÀÎ ÇÏ¿´½À´Ï´Ù.");
+			System.out.println("ë¡œê·¸ì¸ í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			
 			UserDTO userProfile = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userProfile);
@@ -37,13 +33,14 @@ public class Login implements Action {
 				response.sendRedirect("view/index.jsp");
 			}
 		}else{
-			//·Î±×¾Æ¿ô..?
+		
+			//ë¡œê·¸ì•„ì›ƒ..?
 			request.getSession().invalidate();
 			out.println("<script>");
-			out.println("alert('·Î±×ÀÎÇÏÁö¾Ê¾Ò½À´Ï´Ù.')");
+			out.println("alert('ë¡œê·¸ì¸í•˜ì§€ì•Šì•˜ìŠµë‹ˆë‹¤.')");
 			out.println("history.back()");
 			out.println("</script>");
-				throw new Exception("·Î±×ÀÎ ¾ÈµÊ.");
+				throw new Exception("ë¡œê·¸ì¸ ì•ˆë¨.");
 		}
 		
 		}catch (Exception e) {

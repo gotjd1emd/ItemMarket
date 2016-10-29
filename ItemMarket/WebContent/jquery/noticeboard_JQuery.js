@@ -132,8 +132,10 @@ $(document).ready(function(){
 	}));
 	
 	/* 카탈로그 */
+	var category = "";
+	var subCategory = "";
+	
 	$(".search ul li select[name=category]").change(function(){
-		var category = "" ;
 		if($(".search ul li select[name=category]").val() == "전자제품"){
 			$(".search ul li select[name=subcategory]").empty();
 			$(".search ul li select[name=subcategory]").append("<option value='1'>==서브카테고리==</option>");
@@ -168,5 +170,13 @@ $(document).ready(function(){
 		}else if($(".search ul li select[name=category]").val() == "사무용품"){
 			
 		}
+		category = "&category="+$(this).val();
 	});
+		$(".search ul li select[name=subcategory]").change(function(){
+			subCategory = "&subCategory="+$(this).val();
+		});
+		
+		$(".glyphicon.glyphicon-search").click(function(){ //임시로 주소갑 줌
+			document.location.href="/ItemMarket/front?command=search"+category+subCategory+"&word="+$("[type=text]").val()+"&page=0";
+		});
 });

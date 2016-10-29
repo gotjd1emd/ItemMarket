@@ -91,6 +91,7 @@ function condition(){
 	}
 	
 	if(count>=max){
+		$(".subimg .up").show();
 		$(".subimg .down").hide();
 	}
 }

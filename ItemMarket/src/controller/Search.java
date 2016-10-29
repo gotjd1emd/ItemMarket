@@ -23,7 +23,9 @@ public class Search implements Action {
 				String category = request.getParameter("category");
 				String subCategory = request.getParameter("subCategory");
 				String page = request.getParameter("page");
+				String bordernumber= request.getParameter("bordernumber");
 				
+				System.out.println("번호 : "+bordernumber);
 				int pageNum = Integer.parseInt(page);
 				if(pageNum == 0) {
 					pageNum = 1;

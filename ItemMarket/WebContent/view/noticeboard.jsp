@@ -17,12 +17,11 @@
 
 		<section id="board">
 			<div class="container">
-
+				
 				<div class="boardtitle">${requestScope.category }  ${requestScope.subCategory } 카테고리</div>
 				<input type='hidden' value='${requestScope.category }' name='category'/>
 				<input type='hidden' value='${requestScope.subCategory }' name='subCategory'/>
 				<input type='hidden' value="<c:url value='/'/>" name='location'/>
-
 				<div class="noticeboard">
 				<c:forEach var='list' items="${requestScope.list}">
 					<ul>

@@ -296,16 +296,5 @@ public class ItemMarketService {
 		return userDTO;
 	}
 	
-	/**
-	 * 23
-	 * */
-	public static UserDTO userUpdateOnLoad(String id){
-		UserDTO  userDTO  = new UserDTO();
-		try{			
-			userDTO= marketDAO.userUpdateOnLoad(id);			
-		}catch(SQLException e){		
-			e.printStackTrace();
-		}
-		return userDTO;
-	}
+
 }

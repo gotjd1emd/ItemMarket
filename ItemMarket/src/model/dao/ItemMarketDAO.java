@@ -171,9 +171,6 @@ public interface ItemMarketDAO {
 	 * */
 	UserDTO userUpdateCheck(String id, String password) throws SQLException;
 	
-	/**
-	 * 23. 유저 업데이드 로드
-	 * */
-	UserDTO userUpdateOnLoad(String id)throws SQLException;
+
 	
 }

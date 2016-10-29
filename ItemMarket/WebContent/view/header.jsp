@@ -12,7 +12,7 @@
 		<span class="logo"><a href="<c:url value="/"/>view/index.jsp">ItemMarket</a></span>
 			<ul>
 			<c:choose>
-			<c:when test="${sessionScope.id == null}">
+			<c:when test="${sessionScope.userProfile.id == null}">
 				<li id="loginbtn">로그인</li>
 				<li id="sigupbtn">회원가입</li>
 			</c:when>
@@ -29,7 +29,7 @@
 			<ul>
 				<li><img src="<c:url value="/"/>image/player.png" alt="myimg"><span
 					class="glyphicon glyphicon-remove"></span></li>
-				<li>아이디 : <span>${sessionScope.id}</span></li>
+				<li>아이디 : <span>${sessionScope.userProfile.id}</span></li>
 				<li>마일리지 : ${sessionScope.userProfile.cash}<span></span></li>
 				<li>전화번호 : <span> ${sessionScope.userProfile.tel}</span></li>
 				<li>이메일 : <span> ${sessionScope.userProfile.email}</span></li>

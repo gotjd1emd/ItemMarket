@@ -177,6 +177,6 @@ $(document).ready(function(){
 		});
 		
 		$(".glyphicon.glyphicon-search").click(function(){ //임시로 주소갑 줌
-			document.location.href="/ItemMarket/front?command=search"+category+subCategory+"&word="+$("[type=text]").val()+"&page=0";
+			document.location.href="/ItemMarket/front?command=search"+category+subCategory+"&word="+$("input[name=search]").val()+"&page=0";
 		});
 });

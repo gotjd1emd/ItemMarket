@@ -25,7 +25,7 @@ public class Read implements Action {
 		BorderDTO border = ItemMarketService.read(Integer.parseInt(borderNumber));
 		request.setAttribute("border", border);
 		
-		//·Î±×ÀÎ ¾ÆÀÌµð ¹Þ±â
+		//ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Þ±ï¿½
 		String id = request.getParameter("id");
 		System.out.println(id);
 		UserDTO user = ItemMarketService.getProfile(id);
@@ -35,15 +35,15 @@ public class Read implements Action {
 		//2. 
 
 		List<ImageDTO> imagelist = ItemMarketService.imgRead(Integer.parseInt(borderNumber));
-		
+		String firstName="";
 		for(int i=0;i<imagelist.size();i++){
 			String imgName = imagelist.get(i).getImg();
-			System.out.println(imgName);
-			
+			System.out.println("imgName : "+imgName);
 		}
+		request.setAttribute("firstimg", firstName);
 		request.setAttribute("imagelist", imagelist);
 			
-		//»ó¼¼¼³¸íÀ¸·Î µé¾î°¡±â
+		//ï¿½ó¼¼¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½
 		request.getRequestDispatcher("view/Explanation.jsp").forward(request, response);		
 	}				
 }

@@ -421,7 +421,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			
 			while(rs.next()){
 				ImageDTO imageDTO = new ImageDTO(rs.getInt(1), rs.getString(2));
-			
+				System.out.println("imageDTO :"+ imageDTO);
 				imagelist.add(imageDTO);
 		}
 		}finally{
@@ -732,39 +732,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return userDTO;
 		
 	}
-	/**
-	 * 23. 유저 업데이드 로드
-	 * */
-
-	@Override
-	public UserDTO userUpdateOnLoad(String id) throws SQLException {
-		Connection con = DbUtil.getConnection();
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		UserDTO userDTO=null;
-		try{
-			con = DbUtil.getConnection();
-			System.out.println("id :"+ id);
-			ps= con.prepareStatement("select* from userinfo where id = ?" );
-			ps.setString(1, id);
-			
-			rs= ps.executeQuery();
-			if(rs.next()){
-				userDTO = new UserDTO(rs.getString("id"),
-									  rs.getString("password"),
-									  rs.getString("tel"), 
-									  rs.getString("email"),
-									  rs.getString("location"),
-									  rs.getInt("cash"));
-				}		
-		}finally{
-			DbUtil.dbClose(con, ps, rs);
-		}
-		
-		return userDTO;
 	
-	
-	}
-
 
 }

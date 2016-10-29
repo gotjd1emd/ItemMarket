@@ -15,7 +15,7 @@ public class UserUpdateOnLoad implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String id = request.getParameter("id");
-			UserDTO userData = ItemMarketService.userUpdateOnLoad(id);
+			UserDTO userData = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userData);
 			int checknumber = 0;
 			PrintWriter out = response.getWriter();

@@ -4,7 +4,6 @@
 
 	var list = $(".bg img");
 	var count = 0;
-	var img = $(".mainimg img").attr("src");
 	var subCategory = "";
 	var category = "";
 	$(".category ul li").click(function(){

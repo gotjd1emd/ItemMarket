@@ -26,8 +26,9 @@
 
 		</div>
 		<div class="mainimg">
+	
 			<c:forEach var="imagelist" items="${requestScope.imagelist}" varStatus="index">	
-					<li><img src="<c:url value="/"/>img/${imagelist.img}" alt="${index.index+1}" width=100%; height=417px;></li>
+					<img src="<c:url value="/"/>img/${imagelist.img}" alt="${index.index+1}" width=100%; height=417px;>
 			</c:forEach>
 		
 		</div>	
@@ -51,7 +52,8 @@
 
 					</div>
 					<div class="content">
-						<h1>${border.content}</h1>
+						<h1>설명</h1>
+						<h3>${border.content}</h3>
 					</div>
 				</section>
 				<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
@@ -61,7 +63,7 @@
 				<script type="text/javascript" src="<c:url value="/"/>jquery/Explanation_JQuery.js"></script>
 				<script type="text/javascript">
 				$(".mainEx button:last-child()").click(function(){
-					document.location.href="<c:url value="/view/"/>noticeboard.jsp"
+					document.location.href="<c:url value="/view/"/>index.jsp"
 				});
 				</script>
 			</body>

@@ -133,6 +133,7 @@ $(document).ready(function(){
 	
 	/* 카탈로그 */
 	$(".search ul li select[name=category]").change(function(){
+		var category = "" ;
 		if($(".search ul li select[name=category]").val() == "전자제품"){
 			$(".search ul li select[name=subcategory]").empty();
 			$(".search ul li select[name=subcategory]").append("<option value='1'>==서브카테고리==</option>");

@@ -62,7 +62,6 @@
 				</c:choose>
 				</c:forEach>
 			</ul>
-		</nav>
 			<div class="search">
 				<ul>
 					<li><select name="category">
@@ -81,6 +80,8 @@
 					<li><span class="glyphicon glyphicon-search"></span></li>
 				</ul>
 			</div>
+		</nav>
+			
 		<footer>
 	
 		<c:if test="${sessionScope.id != null}">

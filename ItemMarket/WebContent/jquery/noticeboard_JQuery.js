@@ -8,7 +8,8 @@ $(document).ready(function(){
 			data : {category:$('[name=category').val(),
 						subCategory:$('[name=subCategory').val(),
 						word:$('[name=search]').val(),
-						page:$(this).text()},
+						page:$(this).text()}
+				,
 			dataType : "json",
 			success : function(result) {
 				console.log("result : " + result);
@@ -18,11 +19,12 @@ $(document).ready(function(){
 				$.each(result, function(index, items) {
 					if((typeof items) == 'object') {
 					$('.noticeboard').append("<ul>"+
-						"<li><img src='"+$('[name=location]').val()+"image/sampleamcbook.jpg' alt='noticeboard'></li>"+
+						"<li><img src='"+$('[name=location]').val()+'img/' + items.mainImg +"'/></li>"+
 						"<li>작성자 : <span>" + items.id + "</span></li>"+
 						"<li>제품 : <span>" + items.itemName + "</span></li>"+
 						"<li>가격 : <span>" + items.money + "원</span></li>"+
-						"<li><a href='view/Explanation.jsp'><button>상세설명</button></a></li></ul>"
+						"<li><a href='"+$('[name=location]').val()+"/front?command=read&border_number="+items.borderNumber+"&id="+items.id+"'>" +
+								"<button>상세설명</button></a></li></ul>"
 					);
 					}else {
 						//alert(items);
@@ -57,11 +59,12 @@ $(document).ready(function(){
 				$.each(result, function(index, items) {
 					if((typeof items) == 'object') {
 						$('.noticeboard').append("<ul>"+
-							"<li><img src='"+$('[name=location]').val()+"image/sampleamcbook.jpg' alt='noticeboard'></li>"+
+							"<li><img src='"+$('[name=location]').val()+'img/' + items.mainImg +"'/></li>"+
 							"<li>작성자 : <span>" + items.id + "</span></li>"+
 							"<li>제품 : <span>" + items.itemName + "</span></li>"+
 							"<li>가격 : <span>" + items.money + "원</span></li>"+
-							"<li><a href='view/Explanation.jsp'><button>상세설명</button></a></li></ul>"
+							"<li><a href='"+$('[name=location]').val()+"/front?command=read&border_number="+items.borderNumber+"&id="+items.id+"'>" +
+							"<button>상세설명</button></a></li></ul>"
 						);
 					}else {
 						for(var i = pageNum; i <= items; i++) {
@@ -103,11 +106,12 @@ $(document).ready(function(){
 				$.each(result, function(index, items) {
 					if((typeof items) == 'object') {
 						$('.noticeboard').append("<ul>"+
-							"<li><img src='"+$('[name=location]').val()+"image/sampleamcbook.jpg' alt='noticeboard'></li>"+
+							"<li><img src='"+$('[name=location]').val()+'img/' + items.mainImg +"'/></li>"+
 							"<li>작성자 : <span>" + items.id + "</span></li>"+
 							"<li>제품 : <span>" + items.itemName + "</span></li>"+
 							"<li>가격 : <span>" + items.money + "원</span></li>"+
-							"<li><a href='view/Explanation.jsp'><button>상세설명</button></a></li></ul>"
+							"<li><a href='"+$('[name=location]').val()+"/front?command=read&border_number="+items.borderNumber+"&id="+items.id+"'>" +
+							"<button>상세설명</button></a></li></ul>"
 						);
 					}else {
 						for(var i = pageNum; i >= 0; i--) {

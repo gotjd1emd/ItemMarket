@@ -1,6 +1,6 @@
 	-- //  password varchar2 
 create table userinfo (
- id varchar2(20) not null constraint id_pk primary key,-- 아이디
+ id varchar2(20) not null constraint id_pk primary key,-- 
  password varchar2(20) not null,
  tel varchar2(20) not null,   --
  email varchar2(40), -- 
@@ -41,18 +41,18 @@ create sequence borderInfo_seq;  --
 
 
 
---전체 게시판  // trade 변수 대신에 itemName 추가 , itemState 물품 상태변수 추가 
+
 create table borderinfo(
 
-id varchar2(20) not null constraint border_id_fk references userinfo(id) on delete cascade, -- userinfo 참조
-border_number number(5) constraint bordernumber_pk primary key,  -- borderinfo 참조
-content varchar2(500), -- 글 
+id varchar2(20) not null constraint border_id_fk references userinfo(id) on delete cascade, -- userinfo 
+border_number number(5) constraint bordernumber_pk primary key,  -- borderinfo
+content varchar2(500), -- 
 
 itemName varchar(40) ,
-money number(7),  --금액 제시 
-dayDate date not null,  -- 올린 날짜 
-category varchar2(30) not null ,    --카테고리 분류 
-sub_category varchar2(30) not null ,-- 서브 카테고리 분류
+money number(7),  --
+dayDate date not null,  --
+category varchar2(30) not null ,    --
+sub_category varchar2(30) not null ,-- 
 itemState varchar2(30) 
 
 );
@@ -60,7 +60,7 @@ itemState varchar2(30)
 
 drop table borderInfo;
 
---데이터 준비
+
 insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S6',1000,sysdate,'디지털/가전제품','휴대폰','구매대기중');
 insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('bbb',borderInfo_seq.nextval,'▶▶당일처분급구◀◀','T-100',44000,sysdate,'스포츠','alton','구매대기중');
 insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('ccc',borderInfo_seq.nextval,'▶최저가 판매◀','CalvinKlein',3300,sysdate,'의류','청바지','구매대기중');
@@ -89,7 +89,7 @@ select * from borderInfo;
 
 
 create table img_Border( 
-   border_Number number(5) constraint img_Bordernumber_fk references borderinfo(border_Number) on delete cascade,   -- borderinfo 寃踰 
+   border_Number number(5) constraint img_Bordernumber_fk references borderinfo(border_Number) on delete cascade,   -- borderinfo 野꺜�혢혵甕걔�혱 
   img varchar2(200)  -- 
 );
 
@@ -99,11 +99,18 @@ create table img_Border(
 --borderifo border_Number        
 select * from borderinfo;
                                               -
-insert into img_Border(border_Number,img) values (1, '이미지1.jpg');
-insert into img_Border(border_Number,img) values (2, '이미지2.jpg');
-insert into img_Border(border_Number,img) values (3, '이미지3.jpg');
-insert into img_Border(border_Number,img) values (4, '이미지4.jpg');
-insert into img_Border(border_Number,img) values (7, '이미지5.jpg');
+<<<<<<< HEAD
+
+insert into img_Border(border_Number,img) values (1, 'samplemacbook.jpg');
+insert into img_Border(border_Number,img) values (2, 'samplemacbook2.jpg');
+insert into img_Border(border_Number,img) values (3, 'samplemacbook3.jpg');
+insert into img_Border(border_Number,img) values (4, 'samplemacbook4.jpg');
+insert into img_Border(border_Number,img) values (5, 'samplemacbook5.jpg');
+insert into img_Border(border_Number,img) values (6, 'sample6.jpg');
+insert into img_Border(border_Number,img) values (7, 'sample7.jpg');
+insert into img_Border(border_Number,img) values (8, 'sample8.jpg');
+insert into img_Border(border_Number,img) values (9, 'sample9.jpg');
+insert into img_Border(border_Number,img) values (10, 'sample10.jpg');
 
 
 select * from img_Border;
@@ -111,7 +118,7 @@ select * from img_Border;
 --select * from img_Border;
 
 
--- 메신지
+--
 create table  messenger(
   sender varchar2(20) not null constraint  sender_fk references userinfo(id) on delete cascade,  --
   receiver varchar2(20) not null constraint receiver_fk references userinfo(id) on delete cascade,  -- 
@@ -120,11 +127,17 @@ create table  messenger(
 
 );
 
---메신저 내용
+--
   insert into messenger (sender,receiver,content,dayDate) values ('bbb','ccc','조율합시다',sysdate);
   insert into messenger (sender,receiver,content,dayDate) values ('ddd','eee','조율합시다',sysdate);
   insert into messenger (sender,receiver,content,dayDate) values ('aaa','fff','조율합시다',sysdate);
-  
+
+select * from messenger;
+
+select * from trade_history;
+drop table trade_history;
+        										  
+select * from borderInfo;    
 select * from messenger;
 
 select * from trade_history;
@@ -142,16 +155,17 @@ create table trade_history (
   
 );
 
---  border Info 검색후 border-number 숫자를 변경해 주세                                      										  
+--  border Info 검색후 border-number 숫자를 변경해 주세요                                               										  
 select * from borderInfo;    
 select * from trade_history;
-                                                                                                                           --  
+                                                                                                                           --  ▼   
   insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'aaa','갤럭시S6',2000,1,'2016-10-24','거래완료');
   insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('ddd', 'bbb','T-100',3000,2,'2016-10-24','거래완료');
   insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('eee', 'ccc','CalvinKlein',4400,3,'2016-10-24','거래완료');                                                                               --  ▼
                                                                                                           --  ▼
   insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('bbb','eee','목도리',120000,4,sysdate,'거래완료');
   insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('ccc','iii','텀블러',200000,7,sysdate,'거래완료');
+
 --drop table borderinfo;
 
   select * from trade_history;
@@ -169,7 +183,6 @@ create table cash_history (
 
 
 
-
   select * from trade_history;
 
 
@@ -178,7 +191,6 @@ insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('dd
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('eee','CalvinKlein',44,'2016-10-25',485600); 
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('bbb','목도리',1200,'2016-10-25',170000);
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('ccc','텀블러',2000,'2016-10-25',190000); 
-insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('bbb','텀블러',23000,'2016-10-25',320000); 
 
 select * from cash_history;
 
@@ -192,5 +204,3 @@ drop table trade_history;
 drop table cash_History;
 
 commit;
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help

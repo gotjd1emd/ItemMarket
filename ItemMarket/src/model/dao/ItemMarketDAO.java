@@ -87,7 +87,7 @@ public interface ItemMarketDAO {
 	 * 9. 글읽기
 	 *  이미지를 넣기 위한 메소드
 	 */
-	List<ImageDTO> imgRead(int borderNum) throws Exception;
+	List<String> imgRead(int borderNum) throws Exception;
 
 	/**
 	 * 10. 구매자 마일리지를 중개자에게

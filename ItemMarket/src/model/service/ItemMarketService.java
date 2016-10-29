@@ -176,17 +176,17 @@ public class ItemMarketService {
 	/**
 	 * 8.
 	 * */
-	public static List<ImageDTO> imgRead(int borderNum){
+	public static List<String> imgRead(int borderNum){
 
-		List<ImageDTO> list = null;
+		List<String> imgList = null;
 		
 		try {
-			list = marketDAO.imgRead(borderNum);
+			imgList = marketDAO.imgRead(borderNum);
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return list;
+		return imgList;
 	}
 
 

@@ -24,6 +24,7 @@
 			</ul>
 		</div>
 	</header>
+	
 	<section id="profile">
 		<div class="profilemenu">
 			<ul>
@@ -79,7 +80,7 @@
 		<!-- 로그인 dialog -->
 		<div class="logindialog" title="로그인">
 			<section id="loginform">
-				<form name="login" action="<c:url value="/"/>front?command=login" method="post">
+				<form name="login" action="<c:url value="/"/>front?command=login" method="post" onSubmit='return logincheckValid()'>
 					<ul>
 						<li>아이디</li>
 						<li><input type="text" id="id" name="id" placeholder="아이디를 입력해주세요"></li>
@@ -172,6 +173,25 @@
 			if (f.addr.value == "") {
 				alert("주소를 입력해주세요.");
 				f.addr.focus();
+				return false;
+			}
+		}
+
+	</script>
+	
+	<script type="text/javascript">
+		function logincheckValid() {
+			var f = window.document.login;
+			console.log(f.id.value);
+			console.log(f.password.value);
+			if (f.id.value == "") {
+				alert("아이디를 입력해주세요.");
+				f.id.focus();
+				return false;
+			}
+			if (f.password.value == "") {
+				alert("비밀번호를 입력해주세요.");
+				f.pw.focus();
 				return false;
 			}
 		}

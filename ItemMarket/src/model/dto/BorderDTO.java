@@ -1,6 +1,6 @@
 package model.dto;
 
-
+import java.util.List;
 
 public class BorderDTO {
 	private String id; 
@@ -12,6 +12,8 @@ public class BorderDTO {
 	private String category;
 	private String subcategory;
 	private String itemState;
+	private String mainImg;
+	private List<String> imgList;
 	
 	public BorderDTO() {
 		super();
@@ -115,8 +117,19 @@ public class BorderDTO {
 		this.itemState = itemState;
 	}
 	
+	public String getMainImg() {
+		return mainImg;
+	}
+	public void setMainImg(String mainImg) {
+		this.mainImg = mainImg;
+	}
 	
-	
+	public List<String> getImgList() {
+		return imgList;
+	}
+	public void setImgList(List<String> imgList) {
+		this.imgList = imgList;
+	}
 	
 }
 

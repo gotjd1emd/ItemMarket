@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,15 +24,18 @@ public class SignUp implements Action {
 		String location =request.getParameter("addr"); 
 		int cash =Integer.parseInt(request.getParameter("cash")); 
 		UserDTO userInfo = new UserDTO(id,password,tel,email,location,cash);
-//new UserDTO(id, password, tel, email, location, cash);
-		//int result = 0;
-		//result = marketService.signUp(userInfo);				
-		//if (result==1){
-			//request.setAttribute("userInfo", userInfo);
-		//}
+		
+		PrintWriter out = response.getWriter();
+	
+		
 		if(marketService.signUp(userInfo)>0){
 			response.sendRedirect("view/index.jsp");
+		}else{
+			//로그아웃..?
+			request.getSession().invalidate();
+			out.println("<script>");
+			out.println("alert('회원가입을 하지 못했습니다.')");
+			out.println("</script>");
 		}
-	
 	}
 }

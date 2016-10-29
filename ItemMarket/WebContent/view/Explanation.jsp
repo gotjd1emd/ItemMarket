@@ -17,8 +17,8 @@
 			<span class="up"><img src="<c:url value="/"/>image/arrowup.png" alt="ArrowUp">
 			</span>
 			<ul>
-				<c:forEach var="imagelist" items="${requestScope.imagelist}" varStatus="index">			
-					<li><img src="<c:url value="/"/>img/${imagelist.img}" alt="${index.index+1}" onClick="slide(${index.index+1})"></li>
+				<c:forEach var="imagelist" items="${requestScope.border.imgList}" varStatus="index">			
+					<li><img src="<c:url value="/"/>img/${imagelist}" alt="${index.index+1}" onClick="slide(${index.index+1})"></li>
 				</c:forEach>
 	
 			</ul>
@@ -27,8 +27,8 @@
 		</div>
 		<div class="mainimg">
 	
-			<c:forEach var="imagelist" items="${requestScope.imagelist}" varStatus="index">	
-					<img src="<c:url value="/"/>img/${imagelist.img}" alt="${index.index+1}" width=100%; height=417px;>
+			<c:forEach var="imagelist" items="${requestScope.border.imgList}" varStatus="index">	
+					<img src="<c:url value="/"/>img/${imagelist}" alt="${index.index+1}" width=100%; height=417px;>
 			</c:forEach>
 		
 		</div>	

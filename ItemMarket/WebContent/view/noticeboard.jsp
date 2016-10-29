@@ -26,7 +26,8 @@
 				<div class="noticeboard">
 				<c:forEach var='list' items="${requestScope.list}">
 					<ul>
-						<li><img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="noticeboard"></li>
+					<li>
+						<img src="<c:url value="/"/>img/${imagelist[0].img}" alt="noticeboard"></li>
 						<li>작성자 : <span>${list.id }</span></li>
 						<li>제품 : <span>${list.itemName }</span></li>
 						<li>가격 : <span>${list.money }원</span></li>

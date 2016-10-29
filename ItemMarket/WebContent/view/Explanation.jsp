@@ -17,19 +17,19 @@
 			<span class="up"><img src="<c:url value="/"/>image/arrowup.png" alt="ArrowUp">
 			</span>
 			<ul>
-				<c:forEach var="imagelist" items="${requestScope.imagelist}" varStatus="index">
-				
-					<li><img src="<c:url value="/"/>${imagelist.img}" alt="${index.index}" onClick="slide(${index.index})"></li>
+				<c:forEach var="imagelist" items="${requestScope.imagelist}" varStatus="index">			
+					<li><img src="<c:url value="/"/>img/${imagelist.img}" alt="${index.index+1}" onClick="slide(${index.index+1})"></li>
 				</c:forEach>
+	
 			</ul>
 			<span class="down"><img src="<c:url value="/"/>image/arrowdown.png" alt="ArrowDown"></span>
 
 		</div>
 		<div class="mainimg">
-			<img src="<c:url value="/"/>image/sampleamcbook.jpg" alt="samplemacbook">
-			<img src="<c:url value="/"/>image/samplemacbook2.jpg" alt="samplemacbook2">
-			<img src="<c:url value="/"/>image/samplemacbook3.jpg" alt="samplemacbook3">
-			<img src="<c:url value="/"/>image/samplemacbook4.jpg" alt="samplemacbook4">
+			<c:forEach var="imagelist" items="${requestScope.imagelist}" varStatus="index">	
+					<li><img src="<c:url value="/"/>img/${imagelist.img}" alt="${index.index+1}" width=100%; height=417px;></li>
+			</c:forEach>
+		
 		</div>	
 		<div class="mainEx">
 			<h1>&lt상품정보&gt</h1>

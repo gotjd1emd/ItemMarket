@@ -11,10 +11,16 @@
 		<div class="menu">
 		<span class="logo"><a href="<c:url value="/"/>view/index.jsp">ItemMarket</a></span>
 			<ul>
-				<li>로그인</li>
-				<li>회원가입</li>
-				<li>프로필</li>
-				<li>로그아웃</li>
+			<c:choose>
+			<c:when test="${sessionScope.id == null}">
+				<li id="loginbtn">로그인</li>
+				<li id="sigupbtn">회원가입</li>
+			</c:when>
+			<c:otherwise>		
+				<li id="profilebtn">프로필</li>
+				<li id="logoutbtn">로그아웃</li>
+			</c:otherwise>	
+				</c:choose>
 			</ul>
 		</div>
 	</header>

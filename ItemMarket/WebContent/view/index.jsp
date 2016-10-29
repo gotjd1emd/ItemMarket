@@ -45,7 +45,7 @@
 		<li>의류</li>
 		<li>생활</li>
 		<li>가구</li>
-		<li>의류,의학</li>
+		<li>의료,의약</li>
 		<li>사무용품</li>
 		</ul>
 	</div>
@@ -53,9 +53,7 @@
 	<script type="text/javascript"  src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript"	src="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 	<script type="text/javascript"	src="<c:url value="/"/>jquery/index_JQuery.js"></script>
-	<script type="text/javascript">
-	
-	</script>
+
 </body>
 </html>
 

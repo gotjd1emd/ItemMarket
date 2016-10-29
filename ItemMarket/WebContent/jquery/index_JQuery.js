@@ -87,7 +87,7 @@
 	},3000);
 	
 	/* 프로필 animate */
-	$(document).on("click",".menu ul li:nth-child(3)",function(){
+	$(document).on("click",".menu ul #profilebtn",function(){
 		if($(".profilemenu").is(":animated"))return;
 		/*메인 animate*/
 		$(".profilemenu").animate({"right":"0"},1500);
@@ -107,7 +107,7 @@
 	});
 	
 	/* 로그인 dialog */
-   $(document).on("click",".menu ul li:nth-child(1)",function(){
+   $(document).on("click",".menu ul #loginbtn",function(){
 	   	$(".logindialog").dialog({
 	   		minWidth : 500,
 	   		minHeight : 300 ,
@@ -122,10 +122,10 @@
 	   		}
 	   		
 	   	});
-   });
+   }); //로그인 dialog끝
 		
 	/* 회원가입 dialog */
-	$(document).on("click",".menu ul li:nth-child(2)",function(){
+	$(document).on("click",".menu ul #sigupbtn",function(){
 		
 		$(".memberupdialog").dialog({
 			minWidth : 600,
@@ -140,8 +140,8 @@
 				duration : 1000
 			}
 		});
-	});
-
+	}); //회원가입 dialog 끝
+	
 	$(".memberupsubmit input[value=취소]").click(function(){
 		$(".memberupdialog").dialog("close");
 	});
@@ -181,7 +181,7 @@
 
 			}
 	});
-	});
+	}); // 거래내역 끝
 	
 	/* 마일리지 거래내역 */
 	$(document).on("click",".profilemenu ul li:nth-child(7)",function(){
@@ -216,7 +216,13 @@
 
 			}
 		});
+	}); // 마일리지 거래 내역 끝
+	
+	/*로그아웃 EVENT*/
+	$("#logoutbtn").click(function(){
+		document.location.href="/ItemMarket/front?command=logout"
 	});
+	
 });
 	
 

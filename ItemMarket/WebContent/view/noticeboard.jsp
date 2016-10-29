@@ -14,14 +14,6 @@
 </head>
 <body>
 
-		<div class="container">
-			<div class="search">
-				<ul>
-					<li><input type="text" name="search" value="${requestScope.word }"></li>
-					<li><span class="glyphicon glyphicon-search"></span></li>
-					</ul>
-				</div>
-			</div>
 
 		<section id="board">
 			<div class="container">
@@ -70,8 +62,29 @@
 				</c:forEach>
 			</ul>
 		</nav>
+			<div class="search">
+				<ul>
+					<li><select name="category">
+					<option value="1">==카테고리==</option>
+					<option value="전자제품">전자제품</option>
+					<option value="의류">의류</option>	
+					<option value="생활">생활</option>	
+					<option value="가구">가구</option>	
+					<option value="의료,의약">의료,의약</option>	
+					<option value="사무용품">사무용품</option>								
+					</select></li>
+					<li><select name="subcategory">
+					<option value="1">==서브카테고리==</option>
+					</select></li>
+					<li><input type="text" name="search" value="${requestScope.word }"></li>
+					<li><span class="glyphicon glyphicon-search"></span></li>
+				</ul>
+			</div>
 		<footer>
+	
+		<c:if test="${sessionScope.id != null}">
 			<div class="noticeboardsubmit"><button type="button">게시물 올리기</button></div>
+		</c:if>
 		</footer>
 	
 				

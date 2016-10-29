@@ -99,11 +99,17 @@ create table img_Border(
 --borderifo border_Number        
 select * from borderinfo;
                                               -
-insert into img_Border(border_Number,img) values (1, '이미지1.jpg');
-insert into img_Border(border_Number,img) values (2, '이미지2.jpg');
-insert into img_Border(border_Number,img) values (3, '이미지3.jpg');
-insert into img_Border(border_Number,img) values (4, '이미지4.jpg');
-insert into img_Border(border_Number,img) values (7, '이미지5.jpg');
+
+insert into img_Border(border_Number,img) values (1, 'samplemacbook.jpg');
+insert into img_Border(border_Number,img) values (2, 'samplemacbook2.jpg');
+insert into img_Border(border_Number,img) values (3, 'samplemacbook3.jpg');
+insert into img_Border(border_Number,img) values (4, 'samplemacbook4.jpg');
+insert into img_Border(border_Number,img) values (5, 'samplemacbook5.jpg');
+insert into img_Border(border_Number,img) values (6, 'sample6.jpg');
+insert into img_Border(border_Number,img) values (7, 'sample7.jpg');
+insert into img_Border(border_Number,img) values (8, 'sample8.jpg');
+insert into img_Border(border_Number,img) values (9, 'sample9.jpg');
+insert into img_Border(border_Number,img) values (10, 'sample10.jpg');
 
 
 select * from img_Border;

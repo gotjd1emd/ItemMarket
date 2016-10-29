@@ -38,8 +38,6 @@ public class Read implements Action {
 		
 		for(int i=0;i<imagelist.size();i++){
 			String imgName = imagelist.get(i).getImg();
-			System.out.println(imgName);
-			
 		}
 		request.setAttribute("imagelist", imagelist);
 			

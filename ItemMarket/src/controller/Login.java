@@ -40,7 +40,7 @@ public class Login implements Action {
 			//로그아웃..?
 			request.getSession().invalidate();
 			out.println("<script>");
-			out.println("alert('로그인하지않았습니다.')");
+			out.println("alert('아이디와 비번이 일치하지 않습니다.')");
 			out.println("history.back()");
 			out.println("</script>");
 				throw new Exception("로그인 안됨.");

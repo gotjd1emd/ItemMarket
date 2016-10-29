@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.dto.BorderDTO;
+import model.dto.ImageDTO;
 import model.service.ItemMarketService;
 import net.sf.json.JSONArray;
 
@@ -30,6 +32,22 @@ public class Search implements Action {
 				}
 				
 				List<BorderDTO> list = ItemMarketService.search(word, category, subCategory, pageNum);
+				List<ImageDTO> imagelist= new ArrayList<>();
+				String[] image= new String[10];
+				
+				for(int num=0;num<list.size();num++){
+					imagelist = ItemMarketService.imgRead(list.get(num).getBorderNumber());
+					
+					for(int i=0;i<imagelist.size();i++){
+						String imgName = imagelist.get(i).getImg();
+						System.out.println(imgName);
+						//image.
+						//System.out.println(image.get(i));
+					}
+				}
+				
+				
+				
 				int rowNumber = ItemMarketService.pageNumber(word, category, subCategory);
 				int pageNumber = rowNumber/9;
 				
@@ -39,6 +57,7 @@ public class Search implements Action {
 				
 				if(Integer.parseInt(page) < 1) {
 					request.setAttribute("list", list);
+					request.setAttribute("imagelist", imagelist);
 					request.setAttribute("word", word);
 					request.setAttribute("category", category);
 					request.setAttribute("subCategory", subCategory);
@@ -51,6 +70,10 @@ public class Search implements Action {
 					JSONArray jsonArray = JSONArray.fromObject(list);
 					jsonArray.add(pageNumber);
 					out.println(jsonArray);
+					
+					JSONArray jsonArray2 = JSONArray.fromObject(imagelist);
+					out.println(jsonArray2);
+					
 				}
 			}
 

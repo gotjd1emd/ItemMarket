@@ -23,16 +23,14 @@ public class Read implements Action {
 		border.setImgList(imgList);
 		request.setAttribute("border", border);
 		
-		//ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Þ±ï¿½
+		//ÆÇ¸ÅÀå Á¤º¸¸¦ ¾ò±â À§ÇØ ÇÊ¿äÇÑ °Í 
 		String id = request.getParameter("id");
 		System.out.println(id);
 		UserDTO user = ItemMarketService.getProfile(id);
 		
 		request.setAttribute("user", user);
-		
-		//2. 
 
-		//ï¿½ó¼¼¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½
+		//»ó¼¼¼³¸íÀ¸·Î ÀÌµ¿.
 		request.getRequestDispatcher("view/Explanation.jsp").forward(request, response);		
 	}				
 }

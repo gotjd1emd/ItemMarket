@@ -17,7 +17,7 @@ import util.DbUtil;
 
 public class ItemMarketDAOImpl implements ItemMarketDAO {
 
-	//1. ë¡œê·¸ì¸
+	//1. ·Î±×ÀÎ
 	@Override
 	public int login(String id, String password) throws SQLException {
 		Connection con = null;
@@ -45,8 +45,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 2. íšŒì›ê°€ì…
-	 * 1 - ê°€ì…, 0 - ê°€ì…ì‹¤íŒ¨
+	 * 2. È¸¿ø°¡ÀÔ
+	 * 1 - °¡ÀÔ, 0 - °¡ÀÔ½ÇÆĞ
 	 */
 	@Override
 	public int signUp(UserDTO userInfo) throws SQLException {
@@ -104,8 +104,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	
 	
 	/**
-	 * 4. ê±°ë˜ë‚´ì—­
-	 * ê±°ë˜ë‚ ì§œ, êµ¬ë§¤ì, íŒë§¤ì, ê±°ë˜ë‚´ìš©
+	 * 4. °Å·¡³»¿ª
+	 * °Å·¡³¯Â¥, ±¸¸ÅÀÚ, ÆÇ¸ÅÀÚ, °Å·¡³»¿ë
 	 */
 	@Override
 	public List<TradeHistoryDTO> myHistory(String id) throws SQLException {
@@ -144,8 +144,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 5. ë§ˆì¼ë¦¬ì§€ ë‚´ì—­ ì¶œë ¥
-	 * ì¶©ì „ë‚ ì§œ, ì‚¬ìš©í•œë‚ ì§œ, ë‚¨ì€ ë§ˆì¼ë¦¬ì§€
+	 * 5. ¸¶ÀÏ¸®Áö ³»¿ª Ãâ·Â
+	 * ÃæÀü³¯Â¥, »ç¿ëÇÑ³¯Â¥, ³²Àº ¸¶ÀÏ¸®Áö
 	 */
 	@Override
 	public List<CashHistoryDTO> selectAllCashHistory(String id) throws SQLException {
@@ -171,7 +171,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 6. ë§ˆì¼ë¦¬ì§€ ì¶©ì „
+	 * 6. ¸¶ÀÏ¸®Áö ÃæÀü
 	 */
 	public int addCash(String id, int cash) throws SQLException {
 		Connection con = null;
@@ -298,8 +298,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 7. ë©”ì‹ ì €í•¨
-	 * ë°›ì€ì‚¬ëŒ, ë³´ë‚´ëŠ”ì‚¬ëŒ, ë‚´ìš©
+	 * 7. ¸Ş½ÅÀúÇÔ
+	 * ¹ŞÀº»ç¶÷, º¸³»´Â»ç¶÷, ³»¿ë
 	 */
 	@Override
 	public List<MemoDTO> memobox(String id) throws SQLException {
@@ -326,8 +326,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 8. ê¸€ì“°ê¸°
-	 * ì´ë¯¸ì§€, ì§€ì—­, ê¸ˆì•¡, ê¸€ë‚´ìš©, id
+	 * 8. ±Û¾²±â
+	 * ÀÌ¹ÌÁö, Áö¿ª, ±İ¾×, ±Û³»¿ë, id
 	 */
 	@Override
 	public int write(BorderDTO border) throws SQLException {
@@ -354,8 +354,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 8. ê¸€ì“°ê¸°
-	 * ì´ë¯¸ì§€
+	 * 8. ±Û¾²±â
+	 * ÀÌ¹ÌÁö
 	 */
 	@Override
 	public int imgWrite(String imgName) throws Exception {
@@ -375,8 +375,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 9. ê¸€ì½ê¸°
-	 * ì´ë¯¸ì§€, ì§€ì—­, ê¸ˆì•¡, ê¸€ë‚´ìš©, id
+	 * 9. ±ÛÀĞ±â
+	 * ÀÌ¹ÌÁö, Áö¿ª, ±İ¾×, ±Û³»¿ë, id
 	 */
 	@Override
 	public BorderDTO read(int borderNum) throws SQLException {
@@ -424,10 +424,10 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 				ImageDTO imageDTO = new ImageDTO(rs.getInt(1), rs.getString(2));
 				System.out.println("imageDTO :"+ imageDTO);
-				imagelist.add(imageDTO);
+				imgList.add(rs.getString("img"));
 		}
 
-				imgList.add(rs.getString("img"));
+				
 
 		}finally{
 			DbUtil.dbClose(con, ps, null);
@@ -435,8 +435,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return imgList;
 	}
 	/**
-	 * 10. êµ¬ë§¤ì ë§ˆì¼ë¦¬ì§€ë¥¼ ì¤‘ê°œìì—ê²Œ
-	 * 10, 11, 12, 13ìˆœì„œë¡œ commit, rollback
+	 * 10. ±¸¸ÅÀÚ ¸¶ÀÏ¸®Áö¸¦ Áß°³ÀÚ¿¡°Ô
+	 * 10, 11, 12, 13¼ø¼­·Î commit, rollback
 	 */
 	@Override
 	public int sendCashAgency(Connection con, String id, int money) throws SQLException {
@@ -457,8 +457,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 
 	/**
-	 * 11. ì¤‘ê°œì ë§ˆì¼ë¦¬ì§€ë¥¼ êµ¬ë§¤ìì—ê²Œ ë°›ì€ë§Œí¼ ì¦ê°€
-	 * ì¤‘ê°œìëŠ” user_infoì˜ adminìœ¼ë¡œ ì¶”ê°€í•œë‹¤.
+	 * 11. Áß°³ÀÚ ¸¶ÀÏ¸®Áö¸¦ ±¸¸ÅÀÚ¿¡°Ô ¹ŞÀº¸¸Å­ Áõ°¡
+	 * Áß°³ÀÚ´Â user_infoÀÇ adminÀ¸·Î Ãß°¡ÇÑ´Ù.
 	 */
 	@Override
 	public int receiveCashAgency(Connection con,int money) throws SQLException {
@@ -475,7 +475,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 12-1. ê²Œì‹œë¬¼ì˜ ê±°ë˜ ì§„í–‰ìƒí™©ì„ ì§„í–‰ì¤‘ ë˜ëŠ” ê±°ë˜ì™„ë£Œë¡œ ë³€ê²½(ê²Œì‹œíŒì—ì„œ ë³´ì—¬ì¤„ê²ƒ)
+	 * 12-1. °Ô½Ã¹°ÀÇ °Å·¡ ÁøÇà»óÈ²À» ÁøÇàÁß ¶Ç´Â °Å·¡¿Ï·á·Î º¯°æ(°Ô½ÃÆÇ¿¡¼­ º¸¿©ÁÙ°Í)
 	 */
 	@Override
 	public int borderStateChange(Connection con,BorderDTO border) throws SQLException {
@@ -484,7 +484,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 	  ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
-	  ps.setString(1,"ê±°ë˜ì§„í–‰ì¤‘");
+	  ps.setString(1,"°Å·¡ÁøÇàÁß");
 	  ps.setString(2, border.getId());
 	  result = ps.executeUpdate();
 	  
@@ -492,7 +492,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 12-2. ê²Œì‹œë¬¼ì˜ ê±°ë˜ ì§„í–‰ìƒí™©ì„ ì§„í–‰ì¤‘ ë˜ëŠ” ê±°ë˜ì™„ë£Œë¡œ ë³€ê²½(ê±°ë˜ë‚´ì—­ì—ì„œ ë³´ì—¬ì¤„ê²ƒ)
+	 * 12-2. °Ô½Ã¹°ÀÇ °Å·¡ ÁøÇà»óÈ²À» ÁøÇàÁß ¶Ç´Â °Å·¡¿Ï·á·Î º¯°æ(°Å·¡³»¿ª¿¡¼­ º¸¿©ÁÙ°Í)
 	 */
 	@Override
 	public int tradeStateChange(Connection con, TradeHistoryDTO trade) throws SQLException {
@@ -501,7 +501,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 
 		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
-		ps.setString(1,"ê±°ë˜ì§„í–‰ì¤‘");
+		ps.setString(1,"°Å·¡ÁøÇàÁß");
 		ps.setString(2, trade.getSeller());
 		result = ps.executeUpdate();
 			  
@@ -509,7 +509,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 13. ê±°ë˜ì§„í–‰ë‚´ì—­ ì¶”ê°€
+	 * 13. °Å·¡ÁøÇà³»¿ª Ãß°¡
 	 */
 	@Override
 	public int trading(Connection con, String id, int money, BorderDTO border) throws SQLException {
@@ -519,8 +519,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 		con = DbUtil.getConnection();
 		ps = con.prepareStatement("insert into trade_history values (?,?,?,?,?,?,?)");
-		ps.setString(1, id);	//ì•„ì´ë””
-		ps.setString(2, border.getId()); // ì•„ì´ë””
+		ps.setString(1, id);	//¾ÆÀÌµğ
+		ps.setString(2, border.getId()); // ¾ÆÀÌµğ
 		ps.setString(3, border.getItemName());
 		ps.setInt(4, border.getMoney());
 		ps.setInt(5, border.getBorderNumber());
@@ -534,7 +534,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 15. í•´ë‹¹ ê²Œì‹œë¬¼ì— ëŒ€í•œ ê±°ë˜ì§„í–‰ë‚´ì—­ ê²€ìƒ‰
+	 * 15. ÇØ´ç °Ô½Ã¹°¿¡ ´ëÇÑ °Å·¡ÁøÇà³»¿ª °Ë»ö
 	 */
 	@Override
 	public TradeHistoryDTO selectByBorderTrade(Connection con, int borderNumber) throws SQLException {
@@ -557,8 +557,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 16. ì¤‘ê°œì†Œ ë§ˆì¼ë¦¬ì§€ë¥¼ íŒë§¤ìì—ê²Œ
-	 * 15, 16, 17, 12, 18ìˆœì„œë¡œ commit ë˜ëŠ” rollback
+	 * 16. Áß°³¼Ò ¸¶ÀÏ¸®Áö¸¦ ÆÇ¸ÅÀÚ¿¡°Ô
+	 * 15, 16, 17, 12, 18¼ø¼­·Î commit ¶Ç´Â rollback
 	 */
 	@Override
 	public int sendCashSeller(Connection con, String id, int money) throws SQLException {
@@ -577,7 +577,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 17. ì¤‘ê°œì†Œì˜ ë§ˆì¼ë¦¬ì§€ ê°ì†Œ
+	 * 17. Áß°³¼ÒÀÇ ¸¶ÀÏ¸®Áö °¨¼Ò
 	 */
 	@Override
 	public int receiveCashSeller(Connection con, int money) throws SQLException {
@@ -595,7 +595,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 18-1. êµ¬ë§¤ì™„ë£Œ ì§„í–‰ë‚´ì—­ì— ì‚­ì œ
+	 * 18-1. ±¸¸Å¿Ï·á ÁøÇà³»¿ª¿¡ »èÁ¦
 	 */
 	@Override
 	public int completeBorder(Connection con, BorderDTO border) throws SQLException {
@@ -604,7 +604,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 		ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
-		ps.setString(1,"ê±°ë˜ì™„ë£Œ");
+		ps.setString(1,"°Å·¡¿Ï·á");
 		ps.setString(2, border.getId());
 		result = ps.executeUpdate();
 
@@ -612,7 +612,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 18-2. êµ¬ë§¤ì™„ë£Œ ì§„í–‰ë‚´ì—­ì— ì‚­ì œ(ê±°ë˜ë‚´ì—­ì—ì„œ )
+	 * 18-2. ±¸¸Å¿Ï·á ÁøÇà³»¿ª¿¡ »èÁ¦(°Å·¡³»¿ª¿¡¼­ )
 	 */
 	@Override
 	public int completeTrade(Connection con, TradeHistoryDTO trade) throws SQLException {
@@ -621,7 +621,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
-		ps.setString(1,"ê±°ë˜ì™„ë£Œ");
+		ps.setString(1,"°Å·¡¿Ï·á");
 		ps.setString(2, trade.getSeller());
 		result = ps.executeUpdate();
 			  
@@ -629,7 +629,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * ê±°ë˜ì¤‘ ë§ˆì¼ë¦¬ì§€ ë‚´ì—­ ì¶”ê°€
+	 * °Å·¡Áß ¸¶ÀÏ¸®Áö ³»¿ª Ãß°¡
 	 * 
 	 */
 	@Override
@@ -640,8 +640,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		con = DbUtil.getConnection();
 		ps = con.prepareStatement("insert into cash_history values (?,?,?,sysdate,?)");
-		ps.setString(1, id);	//ì•„ì´ë””
-		ps.setString(2, itemName); // ë¬¼ê±´ì´ë¦„
+		ps.setString(1, id);	//¾ÆÀÌµğ
+		ps.setString(2, itemName); // ¹°°ÇÀÌ¸§
 		ps.setInt(3, money);
 		ps.setInt(4, currentCash);
 		
@@ -650,7 +650,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return result;
 	}
 	/**
-	 * 20. ì‚¬ìš©ìì •ë³´ì‚­ì œ
+	 * 20. »ç¿ëÀÚÁ¤º¸»èÁ¦
 	 * */
 	public int userDelete(String id, String pw) throws SQLException{
 		Connection con = DbUtil.getConnection();
@@ -667,7 +667,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return result;
 	}
 	/**
-	 * 21.ì‚¬ìš©ìì •ë³´ ìˆ˜ì •
+	 * 21.»ç¿ëÀÚÁ¤º¸ ¼öÁ¤
 	 * */
 	@Override
 	public int userUpdate(String id , String email, String tel, String location) throws SQLException {
@@ -704,7 +704,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return result;
 	}
 	/**
-	 * 22. ì‚¬ìš©ì ì •ë³´ ìˆ˜ì •
+	 * 22. »ç¿ëÀÚ Á¤º¸ ¼öÁ¤
 	 * */
 
 	@Override

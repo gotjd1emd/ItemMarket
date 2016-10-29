@@ -27,7 +27,7 @@ public class Search implements Action {
 				String page = request.getParameter("page");
 				String bordernumber= request.getParameter("bordernumber");
 				
-				System.out.println("ë²ˆí˜¸ : "+bordernumber);
+				System.out.println("¹øÈ£ : "+bordernumber);
 				int pageNum = Integer.parseInt(page);
 				if(pageNum == 0) {
 					pageNum = 1;

@@ -1,4 +1,4 @@
-*{padding:0; margin:0 auto; list-style:none; font-family: "ë§‘ì€ê³ ë”•"}
+*{padding:0; margin:0 auto; list-style:none; font-family: "¸¼Àº°íµñ"}
 html,body{height: 100%}
 
 .ui-widget-overlay{background:#000}	
@@ -25,7 +25,7 @@ header .menu ul li:hover::after{right:0;}
 header .icon{width: 143px; float:left;}
 header .icon a{text-decoration:none; color: inherit; float:left; }
 
-/* ì¹´í…Œë¡œê¸°  dialog */
+/* Ä«Å×·Î±â  dialog */
 .category{width:	100%; height: 100%; float:left; position: relative; display:none;}
 .category ul{text-align:center;  padding: 0;}
 .category ul li{width:195px; height: 200px; line-height:200px; border:1px solid #FF8F00;  float:left;  color:#FF8F00; background:#FFD54F; cursor:pointer; transition:0.4s;  font-weight: bold;}
@@ -190,7 +190,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #loginform .loginsubmit{width:100%; height:40px; float:left}
 #loginform .loginsubmit input[type=submit]{width:100%; height: 100%; background:#FFD54F; border:1px solid #FF8F00; color:#FF8F00; text-align: center; margin-top:50px; }
 
-/* ê±°ë˜ ë‚´ì—­ dialog */
+/* °Å·¡ ³»¿ª dialog */
 
 .Transactions{display:none;}
 #Transactionsfrom{ width:100%; height: 100%; float:left;   position: relative;}
@@ -200,7 +200,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #Transactionsfrom ul li{width:15%; height:30px;float:left}
 #Transactionsfrom ul li:nth-child(5){width:10%;}
 
-/* ë§ˆì¼ë¦¬ì§€ ë‚´ì—­ dialog */
+/* ¸¶ÀÏ¸®Áö ³»¿ª dialog */
 .Mileagetransactions{display:none}
 
 #Mileagetransactionsform{width:100%; height: 100%; float:left ; position: relative;}
@@ -250,7 +250,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 	background:#FFCA28;
 }
 
-/* ë¹„ë°€ë²ˆí˜¸ í™•ì¸ dialog */
+/* ºñ¹Ğ¹øÈ£ È®ÀÎ dialog */
 .passwordCheck{display:none;}
 .userDelete{display:none;}
 #passwordCheckform{width:100%; height: 100%; float:left; position: relative; }

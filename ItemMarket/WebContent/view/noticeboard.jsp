@@ -62,6 +62,8 @@
 				</c:choose>
 				</c:forEach>
 			</ul>
+				</nav>
+		<div class="container">
 			<div class="search">
 				<ul>
 					<li><select name="category">
@@ -80,7 +82,8 @@
 					<li><span class="glyphicon glyphicon-search"></span></li>
 				</ul>
 			</div>
-		</nav>
+			</div>
+	
 			
 		<footer>
 	

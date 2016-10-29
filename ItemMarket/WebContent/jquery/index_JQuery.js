@@ -142,6 +142,7 @@
 		});
 	}); //회원가입 dialog 끝
 	
+	
 	$(".memberupsubmit input[value=취소]").click(function(){
 		$(".memberupdialog").dialog("close");
 	});

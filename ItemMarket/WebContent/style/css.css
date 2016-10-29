@@ -25,7 +25,7 @@ header .menu ul li:hover::after{right:0;}
 header .icon{width: 143px; float:left;}
 header .icon a{text-decoration:none; color: inherit; float:left; }
 
-/* 큰 카테고리 dialog */
+/* 카테로기  dialog */
 .category{width:	100%; height: 100%; float:left; position: relative; display:none;}
 .category ul{text-align:center;  padding: 0;}
 .category ul li{width:195px; height: 200px; line-height:200px; border:1px solid #FF8F00;  float:left;  color:#FF8F00; background:#FFD54F; cursor:pointer; transition:0.4s;  font-weight: bold;}
@@ -188,7 +188,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #loginform .loginsubmit{width:100%; height:40px; float:left}
 #loginform .loginsubmit input[type=submit]{width:100%; height: 100%; background:#FFD54F; border:1px solid #FF8F00; color:#FF8F00; text-align: center; margin-top:50px; }
 
-/* 거래내역 dialog */
+/* 거래 내역 dialog */
 
 .Transactions{display:none;}
 #Transactionsfrom{ width:100%; height: 100%; float:left;   position: relative;}
@@ -198,7 +198,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #Transactionsfrom ul li{width:15%; height:30px;float:left}
 #Transactionsfrom ul li:nth-child(5){width:10%;}
 
-/* 마일리지 거래내역 dialog */
+/* 마일리지 내역 dialog */
 .Mileagetransactions{display:none}
 
 #Mileagetransactionsform{width:100%; height: 100%; float:left ; position: relative;}
@@ -248,7 +248,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 	background:#FFCA28;
 }
 
-/* 정보수정 비밀번호 확인 dialog */
+/* 비밀번호 확인 dialog */
 .passwordCheck{display:none;}
 .userDelete{display:none;}
 #passwordCheckform{width:100%; height: 100%; float:left; position: relative; }

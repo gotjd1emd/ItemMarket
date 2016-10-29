@@ -40,10 +40,10 @@ public class ActionMappingListener implements ServletContextListener {
 		String fileName = application.getInitParameter("action");
 		
 		Map<String, Action> map = new HashMap<>();
-		System.out.println("contextlistener 시작");
+		System.out.println("contextlistener ����");
 		
-		//properties를 읽어오는 전용 클래스
-		ResourceBundle rb = ResourceBundle.getBundle(fileName);//classes 폴더 기준으로 확장자 생략
+		//properties
+		ResourceBundle rb = ResourceBundle.getBundle(fileName);//classes 
 		
 		for(String key : rb.keySet()) {
 			String className = rb.getString(key);

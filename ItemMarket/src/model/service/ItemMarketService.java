@@ -19,10 +19,7 @@ import util.DbUtil;
 
 public class ItemMarketService {
 	private static ItemMarketDAOImpl marketDAO = new ItemMarketDAOImpl();
-	/**
-	 * 1. 로그인
-	 * 1 - 로그인, 0 - 로그인실패
-	 */
+	
 	public static int login(String id, String pwd){
 		int result =0;
 		try{
@@ -32,10 +29,6 @@ public class ItemMarketService {
 		}return result;
 	};
 	
-	/**
-	 * 2. 회원가입
-	 * 1 - 가입, 0 - 가입실패
-	 */
 	public static int signUp(UserDTO userInfo){
 		int result = 0; 
 
@@ -47,10 +40,6 @@ public class ItemMarketService {
 		return result;
 		}
 	
-	/**
-	 * 3. 프로필
-	 * ID, 이름, 연락처, 메일, 지역, 신용등급, 마일리지
-	 */
 	public static UserDTO getProfile(String id){
 		UserDTO  userDTO  = new UserDTO();
 		try{			
@@ -62,11 +51,6 @@ public class ItemMarketService {
 	};
 	
 	
-	/**
-	 * 4. 거래내역
-	 * 거래날짜, 구매자, 판매자, 거래내용
-	 * select * from trade_history where buyer=? or seller=?
-	 */
 	public static List<TradeHistoryDTO> myHistory(String id) {
 		List<TradeHistoryDTO> tradelist = null;
 		
@@ -78,11 +62,6 @@ public class ItemMarketService {
 		return tradelist;
 	}
 	
-	/**
-	 * 5. 마일리지 내역 출력
-	 * 충전날짜, 사용한날짜, 남은 마일리지
-	 * select * from cash_History where id = ?
-	 */
 	public static List<CashHistoryDTO> selectAllCashHistory(String id) {
 		List<CashHistoryDTO> cashlist = null;
 		try{
@@ -94,10 +73,6 @@ public class ItemMarketService {
 		return cashlist;
 	}
 	
-	/**
-	 * 6. 마일리지 충전
-	 * 사용자 정보 id에 따라 매개변수인 cash를 받아 수정한다.
-	 */
 	public static int addCash(String id, int cash) {
 		
 		int result=0;
@@ -110,8 +85,7 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 6. 검색
-	 * 게시물
+	 * 6. 
 	 * 
 	 * select * from borderinfo where category = ? and sub_category= ?" 
 	 */
@@ -127,8 +101,7 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 6-1. 검색 행 개수
-	 * 페이지 수 구하기
+	 * 6-1.
 	 */
 	public static int pageNumber(String word, String category, String subCategory) {
 		int rowNumber = 0;
@@ -143,8 +116,7 @@ public class ItemMarketService {
 
 
 	/**
-	 * 7. 메신저함
-	 * 받은사람, 보내는사람, 내용
+	 * 7. 
 	 */
 	public static List<MemoDTO> memobox(String id){
 		List<MemoDTO> list = new ArrayList<>();
@@ -159,8 +131,7 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 8. 글쓰기
-	 * 이미지, 지역, 금액, 글내용, id
+	 * 8.
 	 */
 	public static int write(BorderDTO borderDTO){
 		ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
@@ -175,8 +146,7 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 8. 글쓰기
-	 * 이미지를 넣기 위한 메소드
+	 * 8.
 	 * */
 	public static int imgWrite(String imgName){
 		int result = 0;
@@ -189,8 +159,7 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 9. 글읽기
-	 * 이미지, 지역, 금액, 글내용, id
+	 * 9. 
 	 */
 	public static BorderDTO read(int borderNum) {
 		BorderDTO border = null;
@@ -205,8 +174,7 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 8. 이미지읽기
-	 * 이미지를 읽기 위한 메소드
+	 * 8.
 	 * */
 	public static List<ImageDTO> imgRead(int borderNum){
 
@@ -223,10 +191,7 @@ public class ItemMarketService {
 
 
 	/**
-	 * 10-13을 실행하는 메소드 (하나의 connection으로 연결한다.)
-	 * 거래가 되면, 1)거래자의 마일리지가 감소되고
-	 * 2) 중개자의 마일리지는 증가하며 
-	 * 3) 거래 상태가 변하고
+	 * 10-13
 	 * */
 	public static void accountTransfer(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
 		Connection con= null;
@@ -241,10 +206,10 @@ public class ItemMarketService {
 			marketDAO.tradeStateChange(con, trade);
 			marketDAO.trading(con, id, money, border);
 			
-			con.setAutoCommit(true);//오토커밋을 true로다시변경
-			con.commit(); // 성공
+			con.setAutoCommit(true);//�ڵ�Ŀ�Լ�������
+			con.commit(); // ����
 		}catch(SQLException e){
-			con.rollback(); // 실패
+			con.rollback(); // öȸ
 		}finally{
 			con.close();
 		}
@@ -252,8 +217,7 @@ public class ItemMarketService {
 
 
 	/**
-	 * 15-18을 실행하는 메소드 (하나의 connection으로 연결한다.)
-	 * 거래중에서 거래완료로 바뀌는 과정 
+	 * 15-18
 	 * @throws SQLException 
 	 * */
 	public static void transferComplete(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
@@ -271,17 +235,17 @@ public class ItemMarketService {
 			marketDAO.completeTrade(con, trade);
 			marketDAO.updateCashHistory(con, id, border.getItemName(), money, currentCash);
 			
-			con.setAutoCommit(true);//오토커밋을 true로다시변경
-			con.commit(); // 성공
+			con.setAutoCommit(true);//�ڵ�Ŀ�Լ�������
+			con.commit(); // ����
 		}catch(SQLException e){
-			con.rollback(); // 실패
+			con.rollback(); // öȸ
 		}finally{
 			con.close();
 		}
 	}
 	
 	/**
-	 * 20. 유저 계정 탈퇴 
+	 * 20.
 	 * */
 	public static int userDelete(String id, String pw){
 		int result =0;
@@ -293,7 +257,7 @@ public class ItemMarketService {
 		return result;
 	}
 	/**
-	 * 21. 유정 계정 수정
+	 * 21.
 	 * */
 	public static int userUpdate(String id , String email,String tel,String location){
 		int result =0;
@@ -306,7 +270,7 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 22. 유정 비밀번호 변경
+	 * 22. 
 	 * */
 	public static int userPasswordUpdate(String id , String password, String newPassword){
 		int result = 0;
@@ -320,7 +284,7 @@ public class ItemMarketService {
 	}
 
 	/**
-	 * 23. 유저 비밀번호 체크 + 업데이트 갑 가져오기
+	 * 23. 
 	 * */
 	public static UserDTO userUpdateCheck(String id , String password){
 		UserDTO  userDTO  = new UserDTO();

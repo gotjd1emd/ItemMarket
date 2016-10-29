@@ -28,7 +28,7 @@ public class Login implements Action {
 				
 		PrintWriter out = response.getWriter();
 		if(ItemMarketService.login(id, password)>0){
-			System.out.println("ì •ë³´ê°€ ì¼ì¹˜í•©ë‹ˆë‹¤.");
+			System.out.println("·Î±×ÀÎ ÇÏ¿´½À´Ï´Ù.");
 			
 			UserDTO userProfile = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userProfile);
@@ -37,13 +37,13 @@ public class Login implements Action {
 				response.sendRedirect("view/index.jsp");
 			}
 		}else{
-			//í˜¹ì‹œ ë¡œê·¸ì¸ ë˜ìˆëŠ”ê±° ë‹¤ ë§Œë£Œì‹œí‚¤ê¸°.
+			//·Î±×¾Æ¿ô..?
 			request.getSession().invalidate();
 			out.println("<script>");
-			out.println("alert('ê°€ì…ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.')");
+			out.println("alert('·Î±×ÀÎÇÏÁö¾Ê¾Ò½À´Ï´Ù.')");
 			out.println("history.back()");
 			out.println("</script>");
-				throw new Exception("íšŒì›ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.");
+				throw new Exception("·Î±×ÀÎ ¾ÈµÊ.");
 		}
 		
 		}catch (Exception e) {

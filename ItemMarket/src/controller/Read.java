@@ -19,21 +19,20 @@ public class Read implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 상품정보를 받기 위해 필요한 것
 		
 		String borderNumber = request.getParameter("border_number");
 		
 		BorderDTO border = ItemMarketService.read(Integer.parseInt(borderNumber));
 		request.setAttribute("border", border);
 		
-		//판매장 정보를 얻기 위해 필요한 것 
+		//�α��� ���̵� �ޱ�
 		String id = request.getParameter("id");
 		System.out.println(id);
 		UserDTO user = ItemMarketService.getProfile(id);
 		
 		request.setAttribute("user", user);
 		
-		//2. 저장폴더의 실제 경로를 얻어오기
+		//2. 
 
 		List<ImageDTO> imagelist = ItemMarketService.imgRead(Integer.parseInt(borderNumber));
 		
@@ -44,7 +43,7 @@ public class Read implements Action {
 		}
 		request.setAttribute("imagelist", imagelist);
 			
-		//상세설명으로 이동.
+		//�󼼼������� ����
 		request.getRequestDispatcher("view/Explanation.jsp").forward(request, response);		
 	}				
 }

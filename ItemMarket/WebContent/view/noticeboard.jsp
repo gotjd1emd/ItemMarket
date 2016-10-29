@@ -69,6 +69,8 @@
 				</c:choose>
 				</c:forEach>
 			</ul>
+				</nav>
+		<div class="container">
 			<div class="search">
 				<ul>
 					<li><select name="category">
@@ -83,11 +85,12 @@
 					<li><select name="subcategory">
 					<option value="1">==서브카테고리==</option>
 					</select></li>
-					<li><input type="text" name="search" value="${requestScope.word }"></li>
+					<li><input type="text" name="search" value="${requestScope.word}"></li>
 					<li><span class="glyphicon glyphicon-search"></span></li>
 				</ul>
 			</div>
-		</nav>
+			</div>
+	
 			
 		<footer>
 	

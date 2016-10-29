@@ -1,6 +1,6 @@
 	-- //  password varchar2 
 create table userinfo (
- id varchar2(20) not null constraint id_pk primary key,-- ¾ÆÀÌµğ
+ id varchar2(20) not null constraint id_pk primary key,-- 
  password varchar2(20) not null,
  tel varchar2(20) not null,   --
  email varchar2(40), -- 
@@ -13,19 +13,19 @@ select * from userinfo;
 drop table userinfo;
 
 --
-insert into userinfo (id,password,tel,email,location,cash) values ('aaa','1234','01093441366','awaynee@hanmail.net','¼­¿ï½Ã ±İÃµ±¸',190000);
-insert into userinfo (id,password,tel,email,location,cash) values ('bbb','1234','01011112222','bbbb@naver.com','¼­¿ï½Ã ±¸·Î±¸',90000);
-insert into userinfo (id,password,tel,email,location,cash) values ('ccc','1234','01033334444','cccc@gmail.com','¼­¿ï½Ã µ¿ÀÛ±¸',290000);
-insert into userinfo (id,password,tel,email,location,cash) values ('ddd','1234','01055556666','dddd@hanmail.net','¼­¿ï½Ã °­³²±¸',390000);
-insert into userinfo (id,password,tel,email,location,cash) values ('eee','1234','01077778888','eeee@naver.com','¼­¿ï½Ã °­µ¿±¸',490000);
-insert into userinfo (id,password,tel,email,location,cash) values ('fff','1234','01088889999','ffff@gmail.com','¼­¿ï½Ã ´©¿ø±¸',590000);
+insert into userinfo (id,password,tel,email,location,cash) values ('aaa','1234','01093441366','awaynee@hanmail.net','ì„œìš¸ì‹œ ê¸ˆì²œêµ¬',190000);
+insert into userinfo (id,password,tel,email,location,cash) values ('bbb','1234','01011112222','bbbb@naver.com','ì„œìš¸ì‹œ êµ¬ë¡œêµ¬',90000);
+insert into userinfo (id,password,tel,email,location,cash) values ('ccc','1234','01033334444','cccc@gmail.com','ì„œìš¸ì‹œ ë™ì‘êµ¬',290000);
+insert into userinfo (id,password,tel,email,location,cash) values ('ddd','1234','01055556666','dddd@hanmail.net','ì„œìš¸ì‹œ ê°•ë‚¨êµ¬',390000);
+insert into userinfo (id,password,tel,email,location,cash) values ('eee','1234','01077778888','eeee@naver.com','ì„œìš¸ì‹œ ê°•ë™êµ¬',490000);
+insert into userinfo (id,password,tel,email,location,cash) values ('fff','1234','01088889999','ffff@gmail.com','ì„œìš¸ì‹œ ëˆ„ì›êµ¬',590000);
 
-insert into userinfo (id,password,tel,email,location,cash) values ('ggg','1234','01023234545','ggg@hanmail.net','¼­¿ï½Ã ¼­´ë¹®±¸',670000);
-insert into userinfo (id,password,tel,email,location,cash) values ('hhh','1234','01012122323','hhh@naver.com','¼­¿ï½Ã °­¼­±¸',350000);
-insert into userinfo (id,password,tel,email,location,cash) values ('iii','1234','01045456767','iii@gmail.com','¼­¿ï½Ã Áß±¸',210000);
-insert into userinfo (id,password,tel,email,location,cash) values ('jjj','1234','01078784343','jjj@hanmail.net','¼­¿ï½Ã Áß¶û±¸',750000);
-insert into userinfo (id,password,tel,email,location,cash) values ('kkk','1234','01087879898','kkk@naver.com','¼­¿ï½Ã ¼­ÃÊ±¸',640000);
-insert into userinfo (id,password,tel,email,location,cash) values ('lll','1234','01013133535','lll@gmail.com','¼­¿ï½Ã °ü¾Ç±¸',180000);
+insert into userinfo (id,password,tel,email,location,cash) values ('ggg','1234','01023234545','ggg@hanmail.net','ì„œìš¸ì‹œ ì„œëŒ€ë¬¸êµ¬',670000);
+insert into userinfo (id,password,tel,email,location,cash) values ('hhh','1234','01012122323','hhh@naver.com','ì„œìš¸ì‹œ ê°•ì„œêµ¬',350000);
+insert into userinfo (id,password,tel,email,location,cash) values ('iii','1234','01045456767','iii@gmail.com','ì„œìš¸ì‹œ ì¤‘êµ¬',210000);
+insert into userinfo (id,password,tel,email,location,cash) values ('jjj','1234','01078784343','jjj@hanmail.net','ì„œìš¸ì‹œ ì¤‘ë‘êµ¬',750000);
+insert into userinfo (id,password,tel,email,location,cash) values ('kkk','1234','01087879898','kkk@naver.com','ì„œìš¸ì‹œ ì„œì´ˆêµ¬',640000);
+insert into userinfo (id,password,tel,email,location,cash) values ('lll','1234','01013133535','lll@gmail.com','ì„œìš¸ì‹œ ê´€ì•…êµ¬',180000);
 
 
 
@@ -41,55 +41,55 @@ create sequence borderInfo_seq;  --
 
 
 
---ÀüÃ¼ °Ô½ÃÆÇ  // trade º¯¼ö ´ë½Å¿¡ itemName Ãß°¡ , itemState ¹°Ç° »óÅÂº¯¼ö Ãß°¡ 
+
 create table borderinfo(
 
-id varchar2(20) not null constraint border_id_fk references userinfo(id), -- userinfo ÂüÁ¶
-border_number number(5) constraint bordernumber_pk primary key,  -- borderinfo ÂüÁ¶
-content varchar2(30), -- ±Û 
+id varchar2(20) not null constraint border_id_fk references userinfo(id) on delete cascade, -- userinfo 
+border_number number(5) constraint bordernumber_pk primary key,  -- borderinfo
+content varchar2(500), -- 
 
 itemName varchar(40) ,
-money number(7),  --±İ¾× Á¦½Ã 
-dayDate date not null,  -- ¿Ã¸° ³¯Â¥ 
-category varchar2(30) not null ,    --Ä«Å×°í¸® ºĞ·ù 
-sub_category varchar2(30) not null ,-- ¼­ºê Ä«Å×°í¸® ºĞ·ù
-itemState varchar2(20) 
+money number(7),  --
+dayDate date not null,  --
+category varchar2(30) not null ,    --
+sub_category varchar2(30) not null ,-- 
+itemState varchar2(30) 
 
 );
 
 
 drop table borderInfo;
 
---µ¥ÀÌÅÍ ÁØºñ
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS6',1000,sysdate,'µğÁöÅĞ/°¡ÀüÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('bbb',borderInfo_seq.nextval,'¢º¢º´çÀÏÃ³ºĞ±Ş±¸¢¸¢¸','T-100',44000,sysdate,'½ºÆ÷Ã÷','alton','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('ccc',borderInfo_seq.nextval,'¢ºÃÖÀú°¡ ÆÇ¸Å¢¸','CalvinKlein',3300,sysdate,'ÀÇ·ù','Ã»¹ÙÁö','±¸¸Å´ë±âÁß');
 
---insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('ddd',borderInfo_seq.nextval,'¢º±¸¸ÅÀÚÃ£½À´Ï´Ù¢¸','skirt',1000,sysdate,'ÀÇ·ù','¿©¼ºÀÇ·ù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('eee',borderInfo_seq.nextval,'¢º°­µ¿±¸ »ç½Ã´ÂºĞ!¢¸','¸ñµµ¸®',44000,sysdate,'¾Ç¼¼¼­¸®','±âÅ¸','±¸¸Å´ë±âÁß');
---insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('fff',borderInfo_seq.nextval,'¢ºÁ÷Á¢Ã£¾Æ°©´Ï´Ù.¢¸','¼±±Û¶ó½º',3300,sysdate,'¾Ç¼¼¼­¸®','±âÅ¸','±¸¸Å´ë±âÁß');
---insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('ggg',borderInfo_seq.nextval,'¢º¢ººü¸¥ ¿¬¶ô¢¸¢¸','°ñÇÁÃ¤',1000,sysdate,'½ºÆ÷Ã÷','°ñÇÁ','±¸¸Å´ë±âÁß');
---insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('hhh',borderInfo_seq.nextval,'¢º¢ºÃÊÀú°¡ÆÇ¸Å¢¸¢¸','¿ÜÀåÇÏµå',44000,sysdate,'µğÁöÅĞ/°¡ÀüÁ¦Ç°','ÄÄÇ»ÅÍ','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('iii',borderInfo_seq.nextval,'¢ºÅÃ¹è°¡´ÉÇÕ´Ï´Ù.¢¸','ÅÒºí·¯',3300,sysdate,'»ıÈ°/°¡Á¤','Ä¿ÇÇ','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS1',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS2',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS3',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS4',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS5',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS6',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS7',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS8',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS9',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS10',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS11',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS12',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS13',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
-insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'¢º¢º±Ş¸Å¢¸¢¸','°¶·°½ÃS14',1000,sysdate,'ÀüÀÚÁ¦Ç°','ÈŞ´ëÆù','±¸¸Å´ë±âÁß');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS6',1000,sysdate,'ë””ì§€í„¸/ê°€ì „ì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('bbb',borderInfo_seq.nextval,'â–¶â–¶ë‹¹ì¼ì²˜ë¶„ê¸‰êµ¬â—€â—€','T-100',44000,sysdate,'ìŠ¤í¬ì¸ ','alton','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('ccc',borderInfo_seq.nextval,'â–¶ìµœì €ê°€ íŒë§¤â—€','CalvinKlein',3300,sysdate,'ì˜ë¥˜','ì²­ë°”ì§€','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+
+--insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('ddd',borderInfo_seq.nextval,'â–¶êµ¬ë§¤ìì°¾ìŠµë‹ˆë‹¤â—€','skirt',1000,sysdate,'ì˜ë¥˜','ì—¬ì„±ì˜ë¥˜','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('eee',borderInfo_seq.nextval,'â–¶ê°•ë™êµ¬ ì‚¬ì‹œëŠ”ë¶„!â—€','ëª©ë„ë¦¬',44000,sysdate,'ì•…ì„¸ì„œë¦¬','ê¸°íƒ€','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+--insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('fff',borderInfo_seq.nextval,'â–¶ì§ì ‘ì°¾ì•„ê°‘ë‹ˆë‹¤.â—€','ì„ ê¸€ë¼ìŠ¤',3300,sysdate,'ì•…ì„¸ì„œë¦¬','ê¸°íƒ€','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+--insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('ggg',borderInfo_seq.nextval,'â–¶â–¶ë¹ ë¥¸ ì—°ë½â—€â—€','ê³¨í”„ì±„',1000,sysdate,'ìŠ¤í¬ì¸ ','ê³¨í”„','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+--insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('hhh',borderInfo_seq.nextval,'â–¶â–¶ì´ˆì €ê°€íŒë§¤â—€â—€','ì™¸ì¥í•˜ë“œ',44000,sysdate,'ë””ì§€í„¸/ê°€ì „ì œí’ˆ','ì»´í“¨í„°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('iii',borderInfo_seq.nextval,'â–¶íƒë°°ê°€ëŠ¥í•©ë‹ˆë‹¤.â—€','í…€ë¸”ëŸ¬',3300,sysdate,'ìƒí™œ/ê°€ì •','ì»¤í”¼','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS1',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS2',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS3',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS4',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS5',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS6',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS7',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS8',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS9',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS10',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS11',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS12',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS13',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
+insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'â–¶â–¶ê¸‰ë§¤â—€â—€','ê°¤ëŸ­ì‹œS14',1000,sysdate,'ì „ìì œí’ˆ','íœ´ëŒ€í°','êµ¬ë§¤ëŒ€ê¸°ì¤‘');
 select * from borderInfo;
 
 
 create table img_Border( 
-   border_Number number(5) constraint img_Bordernumber_fk references borderinfo(border_Number),   -- borderinfo ê²Œì‹œë²ˆí˜¸ 
+   border_Number number(5) constraint img_Bordernumber_fk references borderinfo(border_Number) on delete cascade,   -- borderinfo é‡êºœï¿½í˜¢í˜µç”•ê±”ï¿½í˜± 
   img varchar2(200)  -- 
 );
 
@@ -99,6 +99,7 @@ create table img_Border(
 --borderifo border_Number        
 select * from borderinfo;
                                               -
+<<<<<<< HEAD
 
 insert into img_Border(border_Number,img) values (1, 'samplemacbook.jpg');
 insert into img_Border(border_Number,img) values (2, 'samplemacbook2.jpg');
@@ -117,7 +118,7 @@ select * from img_Border;
 --select * from img_Border;
 
 
--- ¸Ş½ÅÁö
+--
 create table  messenger(
   sender varchar2(20) not null constraint  sender_fk references userinfo(id) on delete cascade,  --
   receiver varchar2(20) not null constraint receiver_fk references userinfo(id) on delete cascade,  -- 
@@ -126,65 +127,70 @@ create table  messenger(
 
 );
 
---¸Ş½ÅÀú ³»¿ë
-  insert into messenger (sender,receiver,content,dayDate) values ('bbb','ccc','Á¶À²ÇÕ½Ã´Ù',sysdate);
-  insert into messenger (sender,receiver,content,dayDate) values ('ddd','eee','Á¶À²ÇÕ½Ã´Ù',sysdate);
-  insert into messenger (sender,receiver,content,dayDate) values ('aaa','fff','Á¶À²ÇÕ½Ã´Ù',sysdate);
-  
+--
+  insert into messenger (sender,receiver,content,dayDate) values ('bbb','ccc','ì¡°ìœ¨í•©ì‹œë‹¤',sysdate);
+  insert into messenger (sender,receiver,content,dayDate) values ('ddd','eee','ì¡°ìœ¨í•©ì‹œë‹¤',sysdate);
+  insert into messenger (sender,receiver,content,dayDate) values ('aaa','fff','ì¡°ìœ¨í•©ì‹œë‹¤',sysdate);
+
+select * from messenger;
+
+select * from trade_history;
+drop table trade_history;
+        										  
+select * from borderInfo;    
 select * from messenger;
 
 select * from trade_history;
 drop table trade_history;
 
---»óÈ£°£ ÇÊ¿äÇÑ Á¤º¸ 
+--ìƒí˜¸ê°„ í•„ìš”í•œ ì •ë³´ 
 create table trade_history (
-  buyer constraint  trading_Buyer_fk references userInfo(id), -- ±¸¸ÅÀÚ 
-  seller constraint trading_Seller_fk references userInfo(id),  -- ÆÇ¸ÅÀÚ
-  itemName varchar2(20), -- Á¦Ç°ÀÌ¸§
-  cash number(7),  -- ÁöºÒ¾×
-  border_number constraint trading_bordernumber_fk references borderinfo(border_number) primary key, --±Û °Ô½Ã ¹øÈ£
-  daydate date not null, -- ³¯Â¥ 
-  trade_state varchar2(40) -- °Å·¡ ÁøÇà »óÈ²
+  buyer constraint  trading_Buyer_fk references userInfo(id), -- êµ¬ë§¤ì 
+  seller constraint trading_Seller_fk references userInfo(id),  -- íŒë§¤ì
+  itemName varchar2(20), -- ì œí’ˆì´ë¦„
+  cash number(7),  -- ì§€ë¶ˆì•¡
+  border_number constraint trading_bordernumber_fk references borderinfo(border_number) primary key, --ê¸€ ê²Œì‹œ ë²ˆí˜¸
+  daydate date not null, -- ë‚ ì§œ 
+  trade_state varchar2(40) -- ê±°ë˜ ì§„í–‰ ìƒí™©
   
 );
 
---  border Info °Ë»öÈÄ border-number ¼ıÀÚ¸¦ º¯°æÇØ ÁÖ¼¼                                      										  
+--  border Info ê²€ìƒ‰í›„ border-number ìˆ«ìë¥¼ ë³€ê²½í•´ ì£¼ì„¸ìš”                                               										  
 select * from borderInfo;    
 select * from trade_history;
-                                                                                                                           --  
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'aaa','°¶·°½ÃS6',2000,1,'2016-10-24','°Å·¡¿Ï·á');
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('ddd', 'bbb','T-100',3000,2,'2016-10-24','°Å·¡¿Ï·á');
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('eee', 'ccc','CalvinKlein',4400,3,'2016-10-24','°Å·¡¿Ï·á');                                                                               --  ¡å
-                                                                                                          --  ¡å
-  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('bbb','eee','¸ñµµ¸®',120000,4,sysdate,'°Å·¡¿Ï·á');
-  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('ccc','iii','ÅÒºí·¯',200000,7,sysdate,'°Å·¡¿Ï·á');
+                                                                                                                           --  â–¼   
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'aaa','ê°¤ëŸ­ì‹œS6',2000,1,'2016-10-24','ê±°ë˜ì™„ë£Œ');
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('ddd', 'bbb','T-100',3000,2,'2016-10-24','ê±°ë˜ì™„ë£Œ');
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('eee', 'ccc','CalvinKlein',4400,3,'2016-10-24','ê±°ë˜ì™„ë£Œ');                                                                               --  â–¼
+                                                                                                          --  â–¼
+  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('bbb','eee','ëª©ë„ë¦¬',120000,4,sysdate,'ê±°ë˜ì™„ë£Œ');
+  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('ccc','iii','í…€ë¸”ëŸ¬',200000,7,sysdate,'ê±°ë˜ì™„ë£Œ');
+
 --drop table borderinfo;
 
   select * from trade_history;
 
 
---cash_history table   id, ±¸¸Å³»¿ª -receiver ±¸¸ÅÀÚ 
+--cash_history table   id, êµ¬ë§¤ë‚´ì—­ -receiver êµ¬ë§¤ì 
 create table cash_history (
   id varchar2(20) constraint cash_history_id_fk references userinfo  (id),  -- id 
-  itemName varchar2(20),  -- ¹°Ç° ÀÌ¸§
-  mileage number(6), -- ¸¶ÀÏ¸®Áö - ÈÄ ÃæÀü ÆÇ¸Å ±¸¸Å 
-  saveDate date not null, -- ¸¶ÀÏ¸®Áö Àû¸³ÀÏ(ÃÖÁ¾±¸ÀÔÀÏor»óÅÂ=±¸¸Å¿Ï·á½ÃÁ¡) 
-  current_cash number -- °Å·¡ ´ç½Ã ÀÜ¾× 
+  itemName varchar2(20),  -- ë¬¼í’ˆ ì´ë¦„
+  mileage number(6), -- ë§ˆì¼ë¦¬ì§€ - í›„ ì¶©ì „ íŒë§¤ êµ¬ë§¤ 
+  saveDate date not null, -- ë§ˆì¼ë¦¬ì§€ ì ë¦½ì¼(ìµœì¢…êµ¬ì…ì¼orìƒíƒœ=êµ¬ë§¤ì™„ë£Œì‹œì ) 
+  current_cash number -- ê±°ë˜ ë‹¹ì‹œ ì”ì•¡ 
   
 );
-
 
 
 
   select * from trade_history;
 
 
-insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('fff','°¶·°½ÃS6',20,'2016-10-25',588000); 
+insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('fff','ê°¤ëŸ­ì‹œS6',20,'2016-10-25',588000); 
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('ddd','T-100',30,'2016-10-25',287000); 
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('eee','CalvinKlein',44,'2016-10-25',485600); 
-insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('bbb','¸ñµµ¸®',1200,'2016-10-25',170000);
-insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('ccc','ÅÒºí·¯',2000,'2016-10-25',190000); 
-insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('bbb','ÅÒºí·¯',23000,'2016-10-25',320000); 
+insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('bbb','ëª©ë„ë¦¬',1200,'2016-10-25',170000);
+insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('ccc','í…€ë¸”ëŸ¬',2000,'2016-10-25',190000); 
 
 select * from cash_history;
 

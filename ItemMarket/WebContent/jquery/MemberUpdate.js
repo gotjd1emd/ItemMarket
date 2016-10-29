@@ -9,11 +9,28 @@ $(document).ready(function(){
 				if(result <=0){
 					alert("수정이 실패하였습니다.");
 				}else{
-					document.location.href="index.jsp";
+					$.ajax({
+		
+						url: "../front?command=userUpdateOnLoad",
+						type : "post",
+						data : "id="+$("#updateform ul li input[name=id]").val(),
+						dataType :"text",
+						success: function(result){
+							if(result <= 0){
+								alert("수정이 실패하였습니다.");
+							}else{
+								document.location.href="index.jsp"
+							}
+						},
+						error : function(err){
+							
+						}
+					});
+				
 				}
 			},
 			error: function(err){
-				
+				console.log(err);
 			}
 		});
 	});//수정 이벤트 마지막 부분

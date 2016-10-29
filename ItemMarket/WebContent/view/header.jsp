@@ -34,6 +34,7 @@
 				<li>마일리지 : ${sessionScope.userProfile.cash}<span></span></li>
 				<li>전화번호 : <span> ${sessionScope.userProfile.tel}</span></li>
 				<li>이메일 : <span> ${sessionScope.userProfile.email}</span></li>
+				<li>주소 : <span>${sessionScope.userProfile.location}</span></li>
 				<li>거래내역확인</li>
 				<li>마일리지거래내역</li>
 				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp?id=${sessionScope.id}">프로필수정</a></li>

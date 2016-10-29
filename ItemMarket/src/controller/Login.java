@@ -11,9 +11,6 @@ import javax.servlet.http.HttpSession;
 import model.dto.UserDTO;
 import model.service.ItemMarketService;
 
-
-
-
 public class Login implements Action {
 
 	@Override
@@ -23,12 +20,11 @@ public class Login implements Action {
 
 		String id  = request.getParameter("id");		
 		String password = request.getParameter("password");
-		
 		request.getSession().setAttribute("id", id);
 				
 		PrintWriter out = response.getWriter();
 		if(ItemMarketService.login(id, password)>0){
-			System.out.println("로그인 하였습니다.");
+			System.out.println("삽입 됨.");
 			
 			UserDTO userProfile = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userProfile);
@@ -37,13 +33,15 @@ public class Login implements Action {
 				response.sendRedirect("view/index.jsp");
 			}
 		}else{
-			//로그아웃..?
+		
+			
 			request.getSession().invalidate();
 			out.println("<script>");
 			out.println("alert('아이디와 비번이 일치하지 않습니다.')");
+
 			out.println("history.back()");
 			out.println("</script>");
-				throw new Exception("로그인 안됨.");
+
 		}
 		
 		}catch (Exception e) {

@@ -13,7 +13,6 @@
 	 <h3>개인정보 수정</h3>
 	 <form name="updateform" id="updateform" method="updateform">
 	 <input type="password" name="checkpass" value="${sessionScope.userProfile.password}" hidden >
-
 	<ul>
 	<li>아이디</li>
 	<li><input type="text" name="id" readonly="readonly" value="${sessionScope.userProfile.id}" ></li>

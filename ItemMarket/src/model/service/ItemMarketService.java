@@ -206,8 +206,8 @@ public class ItemMarketService {
 			marketDAO.tradeStateChange(con, trade);
 			marketDAO.trading(con, id, money, border);
 			
-			con.setAutoCommit(true);//ÀÚµ¿Ä¿¹Ô¼³Á¤ÇØÁ¦
-			con.commit(); // Àü¼Û
+			con.setAutoCommit(true);//ï¿½Úµï¿½Ä¿ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			con.commit(); // ï¿½ï¿½ï¿½ï¿½
 		}catch(SQLException e){
 			con.rollback(); // Ã¶È¸
 		}finally{
@@ -235,8 +235,8 @@ public class ItemMarketService {
 			marketDAO.completeTrade(con, trade);
 			marketDAO.updateCashHistory(con, id, border.getItemName(), money, currentCash);
 			
-			con.setAutoCommit(true);//ÀÚµ¿Ä¿¹Ô¼³Á¤ÇØÁ¦
-			con.commit(); // Àü¼Û
+			con.setAutoCommit(true);//ï¿½Úµï¿½Ä¿ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			con.commit(); // ï¿½ï¿½ï¿½ï¿½
 		}catch(SQLException e){
 			con.rollback(); // Ã¶È¸
 		}finally{
@@ -245,7 +245,7 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 20.
+	 * 19.
 	 * */
 	public static int userDelete(String id, String pw){
 		int result =0;
@@ -257,7 +257,7 @@ public class ItemMarketService {
 		return result;
 	}
 	/**
-	 * 21.
+	 * 20.
 	 * */
 	public static int userUpdate(String id , String email,String tel,String location){
 		int result =0;
@@ -270,7 +270,7 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 22. 
+	 * 21. 
 	 * */
 	public static int userPasswordUpdate(String id , String password, String newPassword){
 		int result = 0;
@@ -284,12 +284,25 @@ public class ItemMarketService {
 	}
 
 	/**
-	 * 23. 
+	 * 22. 
 	 * */
 	public static UserDTO userUpdateCheck(String id , String password){
 		UserDTO  userDTO  = new UserDTO();
 		try{			
 			userDTO= marketDAO.userUpdateCheck(id, password);			
+		}catch(SQLException e){		
+			e.printStackTrace();
+		}
+		return userDTO;
+	}
+	
+	/**
+	 * 23
+	 * */
+	public static UserDTO userUpdateOnLoad(String id){
+		UserDTO  userDTO  = new UserDTO();
+		try{			
+			userDTO= marketDAO.userUpdateOnLoad(id);			
 		}catch(SQLException e){		
 			e.printStackTrace();
 		}

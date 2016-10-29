@@ -1,6 +1,4 @@
 	$(document).ready(function(){
-		
-	
 
 	var list = $(".bg img");
 	var count = 0;
@@ -67,7 +65,8 @@
 		$(this).css({color:"#fff", background:"#0000ff"});
 		subCategory = "&subCategory="+$(this).text();
 	}));
-	$(".glyphicon.glyphicon-search").click(function(){ //임시로 주소갑 줌
+
+	$(".searchmain .glyphicon.glyphicon-search").click(function(){ //임시로 주소갑 줌
 		document.location.href="../front?command=search"+category+subCategory+"&word="+$("[type=text]").val()+"&page=0";
 	});
 
@@ -147,7 +146,7 @@
 	});
 	
 	/* 거래내역 dialog */
-	$(document).on("click",".profilemenu ul li:nth-child(6)",function(){
+	$(document).on("click",".profilemenu ul li:nth-child(7)",function(){
 		
 		$(".Transactions").dialog({
 			minWidth : 1070,
@@ -184,7 +183,7 @@
 	}); // 거래내역 끝
 	
 	/* 마일리지 거래내역 */
-	$(document).on("click",".profilemenu ul li:nth-child(7)",function(){
+	$(document).on("click",".profilemenu ul li:nth-child(8)",function(){
 		
 		$(".Mileagetransactions").dialog({
 			minWidth : 1070,

@@ -24,21 +24,15 @@
 				<input type='hidden' value="<c:url value='/'/>" name='location'/>
 
 				<div class="noticeboard">
-				<c:forEach var='list' items="${requestScope.list}">
+				<c:forEach var='list' items="${requestScope.list}" varStatus="index">
 					<ul>
-					
-					<c:forEach var="imagelist" items="${requestScope.imagelist}" varStatus="index">
 						<li>
-							
-							<img src="<c:url value='/'/>img/${imagelist.img}" alt="${index.index+1}">
-						
+							<img src="<c:url value='/'/>img/${list.mainImg}" />
 						</li>
-					</c:forEach>	
 						<li>작성자 : <span> ${list.borderNumber}</span> </li>
 						<li>제품 : <span>${list.itemName }</span></li>
 						<li>가격 : <span>${list.money }원</span></li>
 						<li><a href="<c:url value="/"/>/front?command=read&border_number=${list.borderNumber}&id=${list.id}"><button>상세설명</button></a></li>
-					
 					</ul>
 				</c:forEach>
 	

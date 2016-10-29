@@ -1,17 +1,13 @@
 package controller;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.dto.BorderDTO;
-import model.dto.ImageDTO;
 import model.dto.UserDTO;
 import model.service.ItemMarketService;
 
@@ -23,9 +19,11 @@ public class Read implements Action {
 		String borderNumber = request.getParameter("border_number");
 		
 		BorderDTO border = ItemMarketService.read(Integer.parseInt(borderNumber));
+		List<String> imgList = ItemMarketService.imgRead(Integer.parseInt(borderNumber));
+		border.setImgList(imgList);
 		request.setAttribute("border", border);
 		
-		//·Î±×ÀÎ ¾ÆÀÌµð ¹Þ±â
+		//ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Þ±ï¿½
 		String id = request.getParameter("id");
 		System.out.println(id);
 		UserDTO user = ItemMarketService.getProfile(id);
@@ -34,14 +32,9 @@ public class Read implements Action {
 		
 		//2. 
 
-		List<ImageDTO> imagelist = ItemMarketService.imgRead(Integer.parseInt(borderNumber));
 		
-		for(int i=0;i<imagelist.size();i++){
-			String imgName = imagelist.get(i).getImg();
-		}
-		request.setAttribute("imagelist", imagelist);
-			
-		//»ó¼¼¼³¸íÀ¸·Î µé¾î°¡±â
+		
+		//ï¿½ó¼¼¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½
 		request.getRequestDispatcher("view/Explanation.jsp").forward(request, response);		
 	}				
 }

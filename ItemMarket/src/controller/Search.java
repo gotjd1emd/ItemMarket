@@ -32,21 +32,13 @@ public class Search implements Action {
 				}
 				
 				List<BorderDTO> list = ItemMarketService.search(word, category, subCategory, pageNum);
-				List<ImageDTO> imagelist= new ArrayList<>();
-				String[] image= new String[10];
 				
-				for(int num=0;num<list.size();num++){
-					imagelist = ItemMarketService.imgRead(list.get(num).getBorderNumber());
-					
-					for(int i=0;i<imagelist.size();i++){
-						String imgName = imagelist.get(i).getImg();
-						System.out.println(imgName);
-						//image.
-						//System.out.println(image.get(i));
-					}
+				for(int index=0;index<list.size();index++){
+					List<String> imgList = ItemMarketService.imgRead(list.get(index).getBorderNumber());
+					list.get(index).setMainImg(imgList.get(0));
+					list.get(index).setImgList(imgList);
+					System.out.println("mainImg : " + list.get(index).getMainImg());
 				}
-				
-				
 				
 				int rowNumber = ItemMarketService.pageNumber(word, category, subCategory);
 				int pageNumber = rowNumber/9;
@@ -57,7 +49,6 @@ public class Search implements Action {
 				
 				if(Integer.parseInt(page) < 1) {
 					request.setAttribute("list", list);
-					request.setAttribute("imagelist", imagelist);
 					request.setAttribute("word", word);
 					request.setAttribute("category", category);
 					request.setAttribute("subCategory", subCategory);
@@ -70,9 +61,6 @@ public class Search implements Action {
 					JSONArray jsonArray = JSONArray.fromObject(list);
 					jsonArray.add(pageNumber);
 					out.println(jsonArray);
-					
-					JSONArray jsonArray2 = JSONArray.fromObject(imagelist);
-					out.println(jsonArray2);
 					
 				}
 			}

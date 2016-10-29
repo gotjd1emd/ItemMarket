@@ -40,7 +40,7 @@ public class ActionMappingListener implements ServletContextListener {
 		String fileName = application.getInitParameter("action");
 		
 		Map<String, Action> map = new HashMap<>();
-		System.out.println("contextlistener ½ÃÀÛ");
+		System.out.println("contextlistener ì‹œìž‘");
 		
 		//properties
 		ResourceBundle rb = ResourceBundle.getBundle(fileName);//classes 

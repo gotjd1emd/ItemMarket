@@ -407,11 +407,12 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * 8.
 	 * */
 	@Override
-	public List<ImageDTO> imgRead(int borderNum) throws Exception {
+	public List<String> imgRead(int borderNum) throws Exception {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<ImageDTO>  imagelist = new ArrayList<>();
+		List<String> imgList = new ArrayList<>();
+		
 		try{
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement("select * from img_Border where border_number=?");
@@ -420,14 +421,12 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
-				ImageDTO imageDTO = new ImageDTO(rs.getInt(1), rs.getString(2));
-			
-				imagelist.add(imageDTO);
-		}
+				imgList.add(rs.getString("img"));
+			}
 		}finally{
 			DbUtil.dbClose(con, ps, null);
 		}
-		return imagelist;
+		return imgList;
 	}
 	/**
 	 * 10. 구매자 마일리지를 중개자에게

@@ -28,6 +28,7 @@ insert into userinfo (id,password,tel,email,location,cash) values ('kkk','1234',
 insert into userinfo (id,password,tel,email,location,cash) values ('lll','1234','01013133535','lll@gmail.com','서울시 관악구',180000);
 
 
+
 select * from  userinfo; 
   
 --시퀀스 준비
@@ -84,6 +85,7 @@ insert into borderInfo (id,border_number,content,itemName,money,dayDate,category
 insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S14',1000,sysdate,'전자제품','휴대폰','구매대기중');
 
 select * from borderInfo;
+
 
 --이미지 게시판 
 create table img_Border( 

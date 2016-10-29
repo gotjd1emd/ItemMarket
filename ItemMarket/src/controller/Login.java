@@ -28,7 +28,7 @@ public class Login implements Action {
 				
 		PrintWriter out = response.getWriter();
 		if(ItemMarketService.login(id, password)>0){
-			System.out.println("Á¤º¸°¡ ÀÏÄ¡ÇÕ´Ï´Ù.");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Õ´Ï´ï¿½.");
 			
 			UserDTO userProfile = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userProfile);
@@ -37,13 +37,13 @@ public class Login implements Action {
 				response.sendRedirect("view/index.jsp");
 			}
 		}else{
-			//È¤½Ã ·Î±×ÀÎ µÇÀÖ´Â°Å ´Ù ¸¸·á½ÃÅ°±â.
+			//È¤ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö´Â°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½.
 			request.getSession().invalidate();
 			out.println("<script>");
-			out.println("alert('°¡ÀÔµÇÁö ¾Ê¾Ò½À´Ï´Ù.')");
+			out.println("alert('ï¿½ï¿½ï¿½Ôµï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.')");
 			out.println("history.back()");
 			out.println("</script>");
-				throw new Exception("È¸¿øÁ¤º¸°¡ ¾ø½À´Ï´Ù.");
+				throw new Exception("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		}
 		
 		}catch (Exception e) {

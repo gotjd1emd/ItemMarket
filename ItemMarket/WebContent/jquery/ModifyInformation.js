@@ -39,20 +39,20 @@ $(document).on("click",".passwordCheck #passwordCheckform input[type=button]",fu
 		alert("비밀번호가 공백입니다.")
 	}else{
 		$.ajax	({
-			url: "../front?command=login",
+			url: "../front?command=updateCheck",
 			type : "post",
 			data : $("#updateform").serialize(),
 			dataType : "text",
 			success : function(result){
-				if(result <= 0){
+				if(result <=0){
 					alert("비밀번호가 맞지 않습니다");
 				}else{
-					$(".privacy ul li input[name=id]").val("asd");
-					document.location.href="MemberUpdate.jsp"
+					document.location.href="MemberUpdate.jsp";		
+					
 				}
 				
 			},
-			error : function(err){console.log(err)},
+			error : function(err){console.log(err)}
 			
 		});
 	}

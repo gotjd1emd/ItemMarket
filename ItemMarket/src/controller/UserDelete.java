@@ -22,6 +22,9 @@ public class UserDelete implements Action {
 		String pw = request.getParameter("password");
 		System.out.println(id+"  :  "+pw);
 		int result = ItemMarketService.userDelete(id, pw);
+		if(result != 0){
+			request.getSession().invalidate();
+		}
 		PrintWriter out = response.getWriter();
 		out.println(result);
 				

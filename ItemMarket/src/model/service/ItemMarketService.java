@@ -20,8 +20,8 @@ import util.DbUtil;
 public class ItemMarketService {
 	private static ItemMarketDAOImpl marketDAO = new ItemMarketDAOImpl();
 	/**
-	 * 1. ·Î±×ÀÎ
-	 * 1 - ·Î±×ÀÎ, 0 - ·Î±×ÀÎ½ÇÆĞ
+	 * 1. ï¿½Î±ï¿½ï¿½ï¿½
+	 * 1 - ï¿½Î±ï¿½ï¿½ï¿½, 0 - ï¿½Î±ï¿½ï¿½Î½ï¿½ï¿½ï¿½
 	 */
 	public static int login(String id, String pwd){
 		int result =0;
@@ -33,8 +33,8 @@ public class ItemMarketService {
 	};
 	
 	/**
-	 * 2. È¸¿ø°¡ÀÔ
-	 * 1 - °¡ÀÔ, 0 - °¡ÀÔ½ÇÆĞ
+	 * 2. È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * 1 - ï¿½ï¿½ï¿½ï¿½, 0 - ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½
 	 */
 	public static int signUp(UserDTO userInfo){
 		int result = 0; 
@@ -48,8 +48,8 @@ public class ItemMarketService {
 		}
 	
 	/**
-	 * 3. ÇÁ·ÎÇÊ
-	 * ID, ÀÌ¸§, ¿¬¶ôÃ³, ¸ŞÀÏ, Áö¿ª, ½Å¿ëµî±Ş, ¸¶ÀÏ¸®Áö
+	 * 3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ID, ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½ï¿½Ã³, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Å¿ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½
 	 */
 	public static UserDTO getProfile(String id){
 		UserDTO  userDTO  = new UserDTO();
@@ -63,8 +63,8 @@ public class ItemMarketService {
 	
 	
 	/**
-	 * 4. °Å·¡³»¿ª
-	 * °Å·¡³¯Â¥, ±¸¸ÅÀÚ, ÆÇ¸ÅÀÚ, °Å·¡³»¿ë
+	 * 4. ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½Å·ï¿½ï¿½ï¿½Â¥, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ç¸ï¿½ï¿½ï¿½, ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * select * from trade_history where buyer=? or seller=?
 	 */
 	public static List<TradeHistoryDTO> myHistory(String id) {
@@ -79,8 +79,8 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 5. ¸¶ÀÏ¸®Áö ³»¿ª Ãâ·Â
-	 * ÃæÀü³¯Â¥, »ç¿ëÇÑ³¯Â¥, ³²Àº ¸¶ÀÏ¸®Áö
+	 * 5. ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¥, ï¿½ï¿½ï¿½ï¿½Ñ³ï¿½Â¥, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½
 	 * select * from cash_History where id = ?
 	 */
 	public static List<CashHistoryDTO> selectAllCashHistory(String id) {
@@ -95,8 +95,8 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 6. ¸¶ÀÏ¸®Áö ÃæÀü
-	 * »ç¿ëÀÚ Á¤º¸ id¿¡ µû¶ó ¸Å°³º¯¼öÀÎ cash¸¦ ¹Ş¾Æ ¼öÁ¤ÇÑ´Ù.
+	 * 6. ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ idï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ cashï¿½ï¿½ ï¿½Ş¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 */
 	public static int addCash(String id, int cash) {
 		
@@ -110,8 +110,8 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 6. °Ë»ö
-	 * °Ô½Ã¹°
+	 * 6. ï¿½Ë»ï¿½
+	 * ï¿½Ô½Ã¹ï¿½
 	 * 
 	 * select * from borderinfo where category = ? and sub_category= ?" 
 	 */
@@ -127,8 +127,8 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 6-1. °Ë»ö Çà °³¼ö
-	 * ÆäÀÌÁö ¼ö ±¸ÇÏ±â
+	 * 6-1. ï¿½Ë»ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
 	 */
 	public static int pageNumber(String word, String category, String subCategory) {
 		int rowNumber = 0;
@@ -143,8 +143,8 @@ public class ItemMarketService {
 
 
 	/**
-	 * 7. ¸Ş½ÅÀúÇÔ
-	 * ¹ŞÀº»ç¶÷, º¸³»´Â»ç¶÷, ³»¿ë
+	 * 7. ï¿½Ş½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
 	 */
 	public static List<MemoDTO> memobox(String id){
 		List<MemoDTO> list = new ArrayList<>();
@@ -159,8 +159,8 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 8. ±Û¾²±â
-	 * ÀÌ¹ÌÁö, Áö¿ª, ±İ¾×, ±Û³»¿ë, id
+	 * 8. ï¿½Û¾ï¿½ï¿½ï¿½
+	 * ï¿½Ì¹ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½İ¾ï¿½, ï¿½Û³ï¿½ï¿½ï¿½, id
 	 */
 	public static int write(BorderDTO borderDTO){
 		ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
@@ -175,8 +175,8 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 8. ±Û¾²±â
-	 * ÀÌ¹ÌÁö¸¦ ³Ö±â À§ÇÑ ¸Ş¼Òµå
+	 * 8. ï¿½Û¾ï¿½ï¿½ï¿½
+	 * ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	 * */
 	public static int imgWrite(String imgName){
 		int result = 0;
@@ -189,8 +189,8 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 9. ±ÛÀĞ±â
-	 * ÀÌ¹ÌÁö, Áö¿ª, ±İ¾×, ±Û³»¿ë, id
+	 * 9. ï¿½ï¿½ï¿½Ğ±ï¿½
+	 * ï¿½Ì¹ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½İ¾ï¿½, ï¿½Û³ï¿½ï¿½ï¿½, id
 	 */
 	public static BorderDTO read(int borderNum) {
 		BorderDTO border = null;
@@ -205,8 +205,8 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 8. ÀÌ¹ÌÁöÀĞ±â
-	 * ÀÌ¹ÌÁö¸¦ ÀĞ±â À§ÇÑ ¸Ş¼Òµå
+	 * 8. ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½Ğ±ï¿½
+	 * ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ğ±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½
 	 * */
 	public static List<ImageDTO> imgRead(int borderNum){
 
@@ -223,10 +223,10 @@ public class ItemMarketService {
 
 
 	/**
-	 * 10-13À» ½ÇÇàÇÏ´Â ¸Ş¼Òµå (ÇÏ³ªÀÇ connectionÀ¸·Î ¿¬°áÇÑ´Ù.)
-	 * °Å·¡°¡ µÇ¸é, 1)°Å·¡ÀÚÀÇ ¸¶ÀÏ¸®Áö°¡ °¨¼ÒµÇ°í
-	 * 2) Áß°³ÀÚÀÇ ¸¶ÀÏ¸®Áö´Â Áõ°¡ÇÏ¸ç 
-	 * 3) °Å·¡ »óÅÂ°¡ º¯ÇÏ°í
+	 * 10-13ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½ (ï¿½Ï³ï¿½ï¿½ï¿½ connectionï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.)
+	 * ï¿½Å·ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½, 1)ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÒµÇ°ï¿½
+	 * 2) ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 
+	 * 3) ï¿½Å·ï¿½ ï¿½ï¿½ï¿½Â°ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½
 	 * */
 	public static void accountTransfer(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
 		Connection con= null;
@@ -241,10 +241,10 @@ public class ItemMarketService {
 			marketDAO.tradeStateChange(con, trade);
 			marketDAO.trading(con, id, money, border);
 			
-			con.setAutoCommit(true);//¿ÀÅäÄ¿¹ÔÀ» true·Î´Ù½Ãº¯°æ
-			con.commit(); // ¼º°ø
+			con.setAutoCommit(true);//ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ trueï¿½Î´Ù½Ãºï¿½ï¿½ï¿½
+			con.commit(); // ï¿½ï¿½ï¿½ï¿½
 		}catch(SQLException e){
-			con.rollback(); // ½ÇÆĞ
+			con.rollback(); // ï¿½ï¿½ï¿½ï¿½
 		}finally{
 			con.close();
 		}
@@ -252,8 +252,8 @@ public class ItemMarketService {
 
 
 	/**
-	 * 15-18À» ½ÇÇàÇÏ´Â ¸Ş¼Òµå (ÇÏ³ªÀÇ connectionÀ¸·Î ¿¬°áÇÑ´Ù.)
-	 * °Å·¡Áß¿¡¼­ °Å·¡¿Ï·á·Î ¹Ù²î´Â °úÁ¤ 
+	 * 15-18ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½ (ï¿½Ï³ï¿½ï¿½ï¿½ connectionï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.)
+	 * ï¿½Å·ï¿½ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½Å·ï¿½ï¿½Ï·ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	 * @throws SQLException 
 	 * */
 	public static void transferComplete(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
@@ -271,17 +271,17 @@ public class ItemMarketService {
 			marketDAO.completeTrade(con, trade);
 			marketDAO.updateCashHistory(con, id, border.getItemName(), money, currentCash);
 			
-			con.setAutoCommit(true);//¿ÀÅäÄ¿¹ÔÀ» true·Î´Ù½Ãº¯°æ
-			con.commit(); // ¼º°ø
+			con.setAutoCommit(true);//ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ trueï¿½Î´Ù½Ãºï¿½ï¿½ï¿½
+			con.commit(); // ï¿½ï¿½ï¿½ï¿½
 		}catch(SQLException e){
-			con.rollback(); // ½ÇÆĞ
+			con.rollback(); // ï¿½ï¿½ï¿½ï¿½
 		}finally{
 			con.close();
 		}
 	}
 	
 	/**
-	 * 20. À¯Àú °èÁ¤ Å»Åğ 
+	 * 20. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å»ï¿½ï¿½ 
 	 * */
 	public static int userDelete(String id, String pw){
 		int result =0;
@@ -293,20 +293,19 @@ public class ItemMarketService {
 		return result;
 	}
 	/**
-	 * 21. À¯Á¤ °èÁ¤ ¼öÁ¤
+	 * 21. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * */
 	public static int userUpdate(String id , String email,String tel,String location){
 		int result =0;
 		try{
 			result = marketDAO.userUpdate(id, email, tel, location);
 		}catch(Exception e){
-			e.printStackTrace();
-		}
+			e.printStackTrace();		}
 		return result;
 	}
 	
 	/**
-	 * 22. À¯Á¤ ºñ¹Ğ¹øÈ£ º¯°æ
+	 * 22. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ğ¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½
 	 * */
 	public static int userPasswordUpdate(String id , String password, String newPassword){
 		int result = 0;
@@ -317,5 +316,17 @@ public class ItemMarketService {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	/**
+	 * 23. ìœ ì € ë¹„ë°€ë²ˆí˜¸ ì²´í¬ + ì—…ë°ì´íŠ¸ ê°‘ ê°€ì ¸ì˜¤ê¸°
+	 * */
+	public static UserDTO userUpdateCheck(String id , String password){
+		UserDTO  userDTO  = new UserDTO();
+		try{			
+			userDTO= marketDAO.userUpdateCheck(id, password);			
+		}catch(SQLException e){		
+			e.printStackTrace();
+		}
+		return userDTO;
 	}
 }

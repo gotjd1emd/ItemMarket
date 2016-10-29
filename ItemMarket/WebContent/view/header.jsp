@@ -42,7 +42,7 @@
 	<div class="memberupdialog" title="회원가입">
 		<section id="memberup">
 			<div class="memberupform">
-				<form name="signForm" action="../front?command=signup" method="post"
+				<form name="signForm" action="<c:url value="/"/>front?command=signup" method="post"
 					onSubmit='return checkValid()'>
 					<ul>
 						<li>아이디</li>
@@ -72,7 +72,7 @@
 		<!-- 로그인 dialog -->
 		<div class="logindialog" title="로그인">
 			<section id="loginform">
-				<form name="login" action="../front?command=login" method="post">
+				<form name="login" action="<c:url value="/"/>front?command=login" method="post">
 					<ul>
 						<li>아이디</li>
 						<li><input type="text" id="id" name="id" placeholder="아이디를 입력해주세요"></li>

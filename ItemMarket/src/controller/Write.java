@@ -29,12 +29,12 @@ public class Write implements Action {
 				new DefaultFileRenamePolicy());
 		
 		String content = m.getParameter("content");
-		content = content.replace("\r\n", "<br>"); // ÁÙ¹Ù²Ş htmlÇü½ÄÀ¸·Î ÀúÀåÇØ¾ßÇÔ.
+		content = content.replace("\r\n", "<br>"); // ì¤„ë°”ê¿ˆ htmlí˜•ì‹ìœ¼ë¡œ ì €ì¥í•´ì•¼í•¨.
 		String title = m.getParameter("title");
 		int price = Integer.parseInt(m.getParameter("price").trim());
 		String category = m.getParameter("category");
 		String subcategory = m.getParameter("subcategory");
-		String itemState = "±¸¸Å´ë±âÁß";
+		String itemState = "êµ¬ë§¤ëŒ€ê¸°ì¤‘";
 		String files="";
 		String savefilename="";
 		 Enumeration<String> em=m.getFileNames();
@@ -47,7 +47,7 @@ public class Write implements Action {
 		if(ItemMarketService.write(borderDTO)>0){
 			
 			 while(em.hasMoreElements()){
-			        //Àü¼ÛµÈ fileÀÇ name¼Ó¼º(ÆÄ¶ó¹ÌÅÍÀÌ¸§) ¾ò¾î¿À±â
+			        //ì „ì†¡ëœ fileì˜ nameì†ì„±(íŒŒë¼ë¯¸í„°ì´ë¦„) ì–»ì–´ì˜¤ê¸°
 			        String fileName=em.nextElement();
 			        
 			       savefilename="/img/"+m.getFilesystemName(fileName);
@@ -58,7 +58,7 @@ public class Write implements Action {
 			response.sendRedirect("view/noticeboard.jsp");
 		}else{
 			out.println("<script>");
-			out.println("alert('±ÛÀÌ »ğÀÔµÇÁö ¾Ê¾Ò½À´Ï´Ù.')");
+			out.println("alert('ê¸€ì´ ì‚½ì…ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.')");
 			out.println("history.back()");
 			out.println("</script>");
 		}

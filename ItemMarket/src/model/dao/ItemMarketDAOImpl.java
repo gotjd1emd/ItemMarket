@@ -17,7 +17,7 @@ import util.DbUtil;
 
 public class ItemMarketDAOImpl implements ItemMarketDAO {
 
-	//1. �α���	
+	//1. 로그인	
 	@Override
 	public int login(String id, String password) throws SQLException {
 		Connection con = null;
@@ -45,8 +45,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 2. ȸ������
-	 * 1 - ����, 0 - ���Խ���
+	 * 2. 회원가입
+	 * 1 - 가입, 0 - 가입실패
 	 */
 	@Override
 	public int signUp(UserDTO userInfo) throws SQLException {
@@ -104,12 +104,12 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	
 	
 	/**
-	 * 4. �ŷ�����
-	 * �ŷ���¥, ������, �Ǹ���, �ŷ�����
+	 * 4. 거래내역
+	 * 거래날짜, 구매자, 판매자, 거래내용
 	 */
 	@Override
 	public List<TradeHistoryDTO> myHistory(String id) throws SQLException {
-		//id �ŷ� ����� ������ ��� ó��??????
+		//id 거래 결과가 없으면 어떻게 처리??????
 		Connection con = null; 
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -117,7 +117,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		try {
 			con = DbUtil.getConnection();
-			// id�� ���� ���ų���, �Ǹ� ���� ��� ����ϵ��� �Ѵ�.
+			// id에 따라 구매내역, 판매 내역 모두 출력하도록 한다.
 			ps = con.prepareStatement("select * from trade_history where buyer=? or seller=?");
 			ps.setString(1, id);
 			ps.setString(2, id);
@@ -144,8 +144,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 5. ���ϸ��� ���� ���
-	 * ������¥, ����ѳ�¥, ���� ���ϸ���
+	 * 5. 마일리지 내역 출력
+	 * 충전날짜, 사용한날짜, 남은 마일리지
 	 */
 	@Override
 	public List<CashHistoryDTO> selectAllCashHistory(String id) throws SQLException {
@@ -171,7 +171,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 6. ���ϸ��� ����
+	 * 6. 마일리지 충전
 	 */
 	public int addCash(String id, int cash) throws SQLException {
 		Connection con = null;
@@ -196,8 +196,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	
 	
 	/**
-	 * 6. �˻�
-	 * �Խù�
+	 * 6. 검색
+	 * 게시물
 	 * 
 	 * select * from borderinfo where category = ? and sub_category= ?" 
 	 */
@@ -260,8 +260,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 6-1. �˻� �� ����
-	 * ������ �� ���ϱ�
+	 * 6-1. 검색 행 개수
+	 * 페이지 수 구하기
 	 */
 	@Override
 	public int pageNumber(String word, String category, String subCategory) throws SQLException {
@@ -300,8 +300,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 7. �޽�����
-	 * �������, �����»��, ����
+	 * 7. 메신저함
+	 * 받은사람, 보내는사람, 내용
 	 */
 	@Override
 	public List<MemoDTO> memobox(String id) throws SQLException {
@@ -328,8 +328,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 8. �۾���
-	 * �̹���, ����, �ݾ�, �۳���, id
+	 * 8. 글쓰기
+	 * 이미지, 지역, 금액, 글내용, id
 	 */
 	@Override
 	public int write(BorderDTO border) throws SQLException {
@@ -356,8 +356,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 8. �۾���
-	 * �̹����� �ֱ� ���� �޼ҵ�
+	 * 8. 글쓰기
+	 * 이미지를 넣기 위한 메소드
 	 * */
 	@Override
 	public int imgWrite(String imgName) throws Exception {
@@ -377,8 +377,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 9. ���б�
-	 * �̹���, ����, �ݾ�, �۳���, id
+	 * 9. 글읽기
+	 * 이미지, 지역, 금액, 글내용, id
 	 */
 	@Override
 	public BorderDTO read(int borderNum) throws SQLException {
@@ -406,8 +406,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	  }
 	
 	/**
-	 * 8. ���б�
-	 * �̹����� �޾ƿ��� ���� �޼ҵ�
+	 * 8. 글읽기
+	 * 이미지를 받아오기 위한 메소드
 	 * */
 	@Override
 	public List<ImageDTO> imgRead(int borderNum) throws Exception {
@@ -433,8 +433,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return imagelist;
 	}
 	/**
-	 * 10. ������ ���ϸ����� �߰��ڿ���
-	 * 10, 11, 12, 13������ commit, rollback
+	 * 10. 구매자 마일리지를 중개자에게
+	 * 10, 11, 12, 13순서로 commit, rollback
 	 */
 	@Override
 	public int sendCashAgency(Connection con, String id, int money) throws SQLException {
@@ -454,8 +454,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 11. �߰��� ���ϸ����� �����ڿ��� ������ŭ ����
-	 * �߰��ڴ� user_info�� admin���� �߰��Ѵ�.
+	 * 11. 중개자 마일리지를 구매자에게 받은만큼 증가
+	 * 중개자는 user_info의 admin으로 추가한다.
 	 */
 	@Override
 	public int receiveCashAgency(Connection con,int money) throws SQLException {
@@ -472,8 +472,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 12-1. �Խù��� �ŷ� �����Ȳ�� ���������� ���� (�ŷ��������� ������ ��!!!- seller ���� �� �ٲ�.)
-	 * 10���� �������� borderStateChange�� �ؼ� ���������� �ٲٰ�, ��ư�� �������� �ŷ��Ϸ�� ����
+	 * 12-1. 게시물의 거래 진행상황을 진행중으로 변경 (거래내역에서 보여줄 것!!!- seller 기준 다 바뀜.)
+	 * 10번이 들어가기전에 borderStateChange를 해서 진행중으로 바꾸고, 버튼이 눌러지면 거래완료로 변경
 	 */
 	@Override
 	public int borderStateChange(Connection con,BorderDTO border) throws SQLException {
@@ -482,7 +482,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 	  ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
-	  ps.setString(1,"�ŷ���");
+	  ps.setString(1,"거래중");
 	  ps.setString(2, border.getId());
 	  result = ps.executeUpdate();
 	  
@@ -490,8 +490,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 12-2. �Խù��� �ŷ� �����Ȳ�� ���������� ���� (�Խ��ǿ��� ������ ��!!! - ������ ������ )
-	 * 10���� �������� borderStateChange�� �ؼ� ���������� �ٲٰ�, ��ư�� �������� �ŷ��Ϸ�� ����
+	 * 12-2. 게시물의 거래 진행상황을 진행중으로 변경 (게시판에서 보여줄 것!!! - 어차피 위에서 )
+	 * 10번이 들어가기전에 borderStateChange를 해서 진행중으로 바꾸고, 버튼이 눌러지면 거래완료로 변경
 	 */
 	@Override
 	public int tradeStateChange(Connection con, TradeHistoryDTO trade) throws SQLException {
@@ -500,7 +500,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 
 		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
-		ps.setString(1,"�ŷ���");
+		ps.setString(1,"거래중");
 		ps.setString(2, trade.getSeller());
 		result = ps.executeUpdate();
 			  
@@ -508,7 +508,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 13. �ŷ����೻�� �߰�
+	 * 13. 거래진행내역 추가
 	 */
 	@Override
 	public int trading(Connection con, String id, int money, BorderDTO border) throws SQLException {
@@ -518,8 +518,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 		con = DbUtil.getConnection();
 		ps = con.prepareStatement("insert into trade_history values (?,?,?,?,?,?,?)");
-		ps.setString(1, id);	//�����ϴ»��
-		ps.setString(2, border.getId()); // �Ĵ»��
+		ps.setString(1, id);	//구매하는사람
+		ps.setString(2, border.getId()); // 파는사람
 		ps.setString(3, border.getItemName());
 		ps.setInt(4, border.getMoney());
 		ps.setInt(5, border.getBorderNumber());
@@ -533,7 +533,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 15. �ش� �Խù��� ���� �ŷ����೻�� �˻�
+	 * 15. 해당 게시물에 대한 거래진행내역 검색
 	 */
 	@Override
 	public TradeHistoryDTO selectByBorderTrade(Connection con, int borderNumber) throws SQLException {
@@ -556,8 +556,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 16. �߰��� ���ϸ����� �Ǹ��ڿ���
-	 * 15, 16, 17, 18������ commit �Ǵ� rollback
+	 * 16. 중개소 마일리지를 판매자에게
+	 * 15, 16, 17, 18순서로 commit 또는 rollback
 	 */
 	@Override
 	public int sendCashSeller(Connection con, String id, int money) throws SQLException {
@@ -576,7 +576,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 17. �߰����� ���ϸ��� ����
+	 * 17. 중개소의 마일리지 감소
 	 */
 	@Override
 	public int receiveCashSeller(Connection con, int money) throws SQLException {
@@ -594,7 +594,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 18-1. ���ſϷ� ..  (�Խ��ǳ������� ������ ��!!!)
+	 * 18-1. 구매완료 ..  (게시판내역에서 보여줄 것!!!)
 	 */
 	@Override
 	public int completeBorder(Connection con, BorderDTO border) throws SQLException {
@@ -603,7 +603,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 		ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
-		ps.setString(1,"�ŷ��Ϸ�");
+		ps.setString(1,"거래완료");
 		ps.setString(2, border.getId());
 		result = ps.executeUpdate();
 
@@ -611,7 +611,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 18-2. ���ſϷ� ..  (�ŷ��������� ������ ��!!!- seller ���� �� �ٲ�.)
+	 * 18-2. 구매완료 ..  (거래내역에서 보여줄 것!!!- seller 기준 다 바뀜.)
 	 */
 	@Override
 	public int completeTrade(Connection con, TradeHistoryDTO trade) throws SQLException {
@@ -620,7 +620,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
-		ps.setString(1,"�ŷ��Ϸ�");
+		ps.setString(1,"거래완료");
 		ps.setString(2, trade.getSeller());
 		result = ps.executeUpdate();
 			  
@@ -628,7 +628,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 19. �ŷ��� ���ϸ��� ���� �߰�
+	 * 19. 거래중 마일리지 내역 추가
 	 * 
 	 */
 	@Override
@@ -639,8 +639,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		con = DbUtil.getConnection();
 		ps = con.prepareStatement("insert into cash_history values (?,?,?,sysdate,?)");
-		ps.setString(1, id);	//�����ϴ»��
-		ps.setString(2, itemName); // �Ĵ»��
+		ps.setString(1, id);	//구매하는사람
+		ps.setString(2, itemName); // 파는사람
 		ps.setInt(3, money);
 		ps.setInt(4, currentCash);
 		
@@ -649,7 +649,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return result;
 	}
 	/**
-	 * 20. ���� ���� Ż��
+	 * 20. 유저 계정 탈퇴
 	 * */
 	public int userDelete(String id, String pw) throws SQLException{
 		Connection con = DbUtil.getConnection();
@@ -666,7 +666,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return result;
 	}
 	/**
-	 * 21. ���� ���� ����
+	 * 21. 유저 계정 수정
 	 * */
 	@Override
 	public int userUpdate(String id , String email, String tel, String location) throws SQLException {
@@ -701,7 +701,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 			DbUtil.dbClose(con, ps, null);
 		}
 		return result;
-	}	/**
+	}
+	/**
 	 * 22. 유저 비밀번호 체크 + 업데이트 갑 넘기기
 	 * */
 

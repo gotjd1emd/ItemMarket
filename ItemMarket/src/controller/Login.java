@@ -28,7 +28,7 @@ public class Login implements Action {
 				
 		PrintWriter out = response.getWriter();
 		if(ItemMarketService.login(id, password)>0){
-			System.out.println("������ ��ġ�մϴ�.");
+			System.out.println("정보가 일치합니다.");
 			
 			UserDTO userProfile = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userProfile);
@@ -37,13 +37,13 @@ public class Login implements Action {
 				response.sendRedirect("view/index.jsp");
 			}
 		}else{
-			//Ȥ�� �α��� ���ִ°� �� �����Ű��.
+			//혹시 로그인 되있는거 다 만료시키기.
 			request.getSession().invalidate();
 			out.println("<script>");
-			out.println("alert('���Ե��� �ʾҽ��ϴ�.')");
+			out.println("alert('가입되지 않았습니다.')");
 			out.println("history.back()");
 			out.println("</script>");
-				throw new Exception("ȸ�������� �����ϴ�.");
+				throw new Exception("회원정보가 없습니다.");
 		}
 		
 		}catch (Exception e) {
@@ -53,4 +53,3 @@ public class Login implements Action {
 	}
 		
 }
-

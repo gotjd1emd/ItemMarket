@@ -13,18 +13,18 @@ import model.service.ItemMarketService;
 
 public class AccountTransfer implements Action {
 
-	/* °Å·¡½ÃÀÛºÎºĞ10-13À» ½ÇÇàÇÏ´Â ¸Ş¼Òµå (ÇÏ³ªÀÇ connectionÀ¸·Î ¿¬°áÇÑ´Ù.)
-	 * °Å·¡°¡ µÇ¸é, 1)°Å·¡ÀÚÀÇ ¸¶ÀÏ¸®Áö°¡ °¨¼ÒµÇ°í
-	 * 2) Áß°³ÀÚÀÇ ¸¶ÀÏ¸®Áö´Â Áõ°¡ÇÏ¸ç 
-	 * 3) °Å·¡ »óÅÂ°¡ º¯ÇÏ°í
- * String id, int money, BorderDTO border(°Ô½ÃÆÇ), TradeDTO trade(°Å·¡³»¿ª)
+	/* ê±°ë˜ì‹œì‘ë¶€ë¶„10-13ì„ ì‹¤í–‰í•˜ëŠ” ë©”ì†Œë“œ (í•˜ë‚˜ì˜ connectionìœ¼ë¡œ ì—°ê²°í•œë‹¤.)
+	 * ê±°ë˜ê°€ ë˜ë©´, 1)ê±°ë˜ìì˜ ë§ˆì¼ë¦¬ì§€ê°€ ê°ì†Œë˜ê³ 
+	 * 2) ì¤‘ê°œìì˜ ë§ˆì¼ë¦¬ì§€ëŠ” ì¦ê°€í•˜ë©° 
+	 * 3) ê±°ë˜ ìƒíƒœê°€ ë³€í•˜ê³ 
+ * String id, int money, BorderDTO border(ê²Œì‹œíŒ), TradeDTO trade(ê±°ë˜ë‚´ì—­)
 	 */
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		int cash = Integer.parseInt(request.getParameter("cash"));
 		
-		//border°´Ã¼¸¦ ¹Ş±â À§ÇØ 
+		//borderê°ì²´ë¥¼ ë°›ê¸° ìœ„í•´ 
 		int borderNumber = Integer.parseInt(request.getParameter("borderNumber"));
 		String content = request.getParameter("content");
 		String itemName = request.getParameter("itemName");
@@ -35,7 +35,7 @@ public class AccountTransfer implements Action {
 		
 		BorderDTO border = new BorderDTO(id, borderNumber, content, itemName, cash, dayDate, category, subcategory, itemState);
 		
-		//table_history °´Ã¼¸¦ ¹Ş±â À§ÇØ
+		//table_history ê°ì²´ë¥¼ ë°›ê¸° ìœ„í•´
 		String buyer = request.getParameter("buyer");
 
 		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, id, itemName, cash, borderNumber, dayDate, itemState);

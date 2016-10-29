@@ -19,21 +19,21 @@ public class Read implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// »óÇ°Á¤º¸¸¦ ¹Ş±â À§ÇØ ÇÊ¿äÇÑ °Í
+		// ìƒí’ˆì •ë³´ë¥¼ ë°›ê¸° ìœ„í•´ í•„ìš”í•œ ê²ƒ
 		
 		String borderNumber = request.getParameter("border_number");
 		
 		BorderDTO border = ItemMarketService.read(Integer.parseInt(borderNumber));
 		request.setAttribute("border", border);
 		
-		//ÆÇ¸ÅÀå Á¤º¸¸¦ ¾ò±â À§ÇØ ÇÊ¿äÇÑ °Í 
+		//íŒë§¤ì¥ ì •ë³´ë¥¼ ì–»ê¸° ìœ„í•´ í•„ìš”í•œ ê²ƒ 
 		String id = request.getParameter("id");
 		System.out.println(id);
 		UserDTO user = ItemMarketService.getProfile(id);
 		
 		request.setAttribute("user", user);
 		
-		//2. ÀúÀåÆú´õÀÇ ½ÇÁ¦ °æ·Î¸¦ ¾ò¾î¿À±â
+		//2. ì €ì¥í´ë”ì˜ ì‹¤ì œ ê²½ë¡œë¥¼ ì–»ì–´ì˜¤ê¸°
 
 		List<ImageDTO> imagelist = ItemMarketService.imgRead(Integer.parseInt(borderNumber));
 		
@@ -44,7 +44,7 @@ public class Read implements Action {
 		}
 		request.setAttribute("imagelist", imagelist);
 			
-		//»ó¼¼¼³¸íÀ¸·Î ÀÌµ¿.
+		//ìƒì„¸ì„¤ëª…ìœ¼ë¡œ ì´ë™.
 		request.getRequestDispatcher("view/Explanation.jsp").forward(request, response);		
 	}				
 }

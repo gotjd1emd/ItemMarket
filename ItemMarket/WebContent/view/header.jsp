@@ -50,8 +50,7 @@
 	<div class="memberupdialog" title="회원가입">
 		<section id="memberup">
 			<div class="memberupform">
-				<form name="signForm" action="<c:url value="/"/>front?command=signup" method="post"
-					onSubmit='return checkValid()'>
+				<form name="signForm" id="singForm" method="post">
 					<ul>
 						<li>아이디</li>
 						<li><input type="text" name="id" placeholder="아이디를 입력해주세요"><span
@@ -70,7 +69,7 @@
 					<input type="number" name="cash" readonly="readonly" value="0"
 						hidden="hidden">
 					<div class="memberupsubmit">
-						<input type="submit" value="전송"><input type="button"
+						<input type="button" value="전송"><input type="button"
 							value="취소">
 					</div>
 				</form>
@@ -80,7 +79,7 @@
 		<!-- 로그인 dialog -->
 		<div class="logindialog" title="로그인">
 			<section id="loginform">
-				<form name="login" action="<c:url value="/"/>front?command=login" method="post" onSubmit='return logincheckValid()'>
+				<form name="login"  id="login" method="post" >
 					<ul>
 						<li>아이디</li>
 						<li><input type="text" id="id" name="id" placeholder="아이디를 입력해주세요"></li>
@@ -89,7 +88,7 @@
 							placeholder="비밀번호를 입력해주세요"></li>
 					</ul>
 					<div class="loginsubmit">
-						<input type="submit" value="로그인">
+						<input type="button" value="로그인">
 					</div>
 				</form>
 			</section>
@@ -112,6 +111,7 @@
 			var f = window.document.signForm;
 			console.log(f.id.value);
 			console.log(f.password.value);
+	
 			if (f.id.value == "") {
 				alert("아이디를 입력해주세요.");
 				f.id.focus();
@@ -119,7 +119,7 @@
 			}
 			if (f.password.value == "") {
 				alert("비밀번호를 입력해주세요.");
-				f.pw.focus();
+				f.password.focus();
 				return false;
 			}
 			if (f.tel.value == "") {
@@ -139,28 +139,42 @@
 				f.addr.focus();
 				return false;
 			}
+			return true;
+		}
+		function idAndPwCheck(){
+			if($(".loginform ul li input[name=id]").val() == ""){
+				alert("아이디를 입력해주세요")
+				$(".loginform ul li input[name=id]").focus();
+				return false;
+			}
+			if($(".loginform ul li input[name=password]").val() == ""){
+				alert("비밀번호를 입력해주세요")
+				$(".loginform ul li input[name=password]").focus();
+				return false;
+			}
+			return true;
+		}
+		
+		function logincheckValid() {
+			var f2 = window.document.login;
+			console.log(f2.id.value);
+			console.log(f2.password.value);
+			if (f2.id.value == "") {
+				alert("아이디를 입력해주세요.");
+				f2.id.focus();
+				return false;
+			}
+			if (f2.password.value == "") {
+				alert("비밀번호를 입력해주세요.");
+				f2.pw.focus();
+				return false;
+			}
+			return true;
 		}
 
 	</script>
 	
-	<script type="text/javascript">
-		function logincheckValid() {
-			var f = window.document.login;
-			console.log(f.id.value);
-			console.log(f.password.value);
-			if (f.id.value == "") {
-				alert("아이디를 입력해주세요.");
-				f.id.focus();
-				return false;
-			}
-			if (f.password.value == "") {
-				alert("비밀번호를 입력해주세요.");
-				f.pw.focus();
-				return false;
-			}
-		}
-
-	</script>
+	
 </body>
 </html>
 

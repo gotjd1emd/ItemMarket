@@ -24,18 +24,11 @@ public class SignUp implements Action {
 		String location =request.getParameter("addr"); 
 		int cash =Integer.parseInt(request.getParameter("cash")); 
 		UserDTO userInfo = new UserDTO(id,password,tel,email,location,cash);
-		
+		int result = marketService.signUp(userInfo);
 		PrintWriter out = response.getWriter();
-	
-		
-		if(marketService.signUp(userInfo)>0){
-			response.sendRedirect("view/index.jsp");
-		}else{
-			//로그아웃..?
+		if(result == 0){
 			request.getSession().invalidate();
-			out.println("<script>");
-			out.println("alert('회원가입을 하지 못했습니다.')");
-			out.println("</script>");
 		}
+		out.println(result);
 	}
 }

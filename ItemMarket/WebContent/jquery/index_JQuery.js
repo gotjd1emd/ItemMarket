@@ -231,7 +231,83 @@
 	$("#logoutbtn").click(function(){
 		document.location.href="/ItemMarket/front?command=logout"
 	});
+		
+	/* 아이디 중복 체크 */
+	$(".memberupform ul li input[name=id]").keyup(function(){
+		$.ajax({
+			url: "/ItemMarket/front?command=userUpdateOnLoad",
+			type : "post",
+			data :  "id="+$(".memberupform ul li input[name=id]").val(),
+			dataType : "text",
+			success : function(result){
+				if(result == 0){
+					$(".memberupform ul li .check").text("사용 가능한 아이디 입니다.")
+				}else{
+					$(".memberupform ul li .check").text("중복입니다.")
+				}
+			},
+			error : function(err){
+				
+			}
+		});
+
+	});//아이디 중복 끝
 	
+	
+	/* 회원가입 버튼  */
+	$(document).on("click",".memberupsubmit input[value=전송]",function(){
+		if(checkValid() == true){
+			$.ajax({
+				url : "/ItemMarket/front?command=signup",
+				type: "post",
+				data : $("#singForm").serialize() ,
+				dataType : "text",
+				success: function(result){
+					if(result == 0){
+						alert("아이디가 중복입니다");
+						$(".memberupform input[name=id]").val("");
+						$(".memberupform input[name=password]").val("");
+						$(".memberupform input[name=tel]").val("");
+						$(".memberupform input[name=email]").val("");
+						$(".memberupform input[name=addr]").val("");
+					}else{
+						
+						alert("ItemMarket에 오신것을 환영합니다");
+						document.location.href="/ItemMarket/view/index.jsp"
+					}
+				},
+				error :function(err){
+					console.log(err);
+				}
+								
+				});
+			}
+		});//회원가입 버튼 끝
+	
+	/* 로그인 버튼 */
+	
+	$(document).on("click",".loginsubmit input[value=로그인]",function(){
+		if(logincheckValid() == true){
+			$.ajax({
+				url:"/ItemMarket/front?command=login",
+				type:"post",
+				data:$("#login").serialize(),
+				dataType:"text",
+				success:function(result){		
+					if(result == 0){
+						alert("등록되지 않은 아이디이거나,아이디 또는 비밀번호를 잘못 입력하셨습니다.");
+						$("#loginform input[name=id]").val("");
+						$("#loginform input[name=password]").val("");
+					}else{
+						document.location.href="/ItemMarket/view/index.jsp"
+					}
+				},
+				error:function(err){
+					console.log("err : "+ err)
+				}
+			});
+			}
+	});
 });
 	
 

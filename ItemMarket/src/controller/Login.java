@@ -16,38 +16,27 @@ public class Login implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		response.setContentType("text/html;charset=utf-8");
-		try {
+		
 
 		String id  = request.getParameter("id");		
 		String password = request.getParameter("password");
+		int result = ItemMarketService.login(id, password);
+		int checkpoint= 0;	
 		
-				
-		PrintWriter out = response.getWriter();
-		if(ItemMarketService.login(id, password)>0){
+		
 			System.out.println("삽입 됨.");
 			
 			UserDTO userProfile = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userProfile);
-			
-			if(userProfile!=null){
-				response.sendRedirect("view/index.jsp");
+			if(result == 0 && userProfile == null ){
+				checkpoint = 0;
+			}else{
+				checkpoint = 1;
 			}
-		}else{
-		
+			PrintWriter out = response.getWriter();
+			out.println(checkpoint);
 			
-			request.getSession().invalidate();
-			out.println("<script>");
-			out.println("alert('아이디와 비번이 일치하지 않습니다.')");
-
-			out.println("history.back()");
-			out.println("</script>");
-
-		}
-		
-		}catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-		}
+	
 	}
 		
-}
+	}

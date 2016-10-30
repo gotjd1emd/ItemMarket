@@ -23,7 +23,7 @@ public class ItemMarketService {
 	public static int login(String id, String pwd){
 		int result =0;
 		try{
-		 result =   marketDAO.login(id, pwd);
+		 result = marketDAO.login(id, pwd);
 		}catch(SQLException e){		
 			e.printStackTrace();
 		}return result;

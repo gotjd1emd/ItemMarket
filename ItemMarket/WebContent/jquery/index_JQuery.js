@@ -329,6 +329,32 @@
 			}
 	});//로그인 버튼 끝
 	
+	
+	/* 마일리지 버튼  */
+	$(document).on("click",".chargedialog input[value=충전]",function(){
+			$.ajax({
+				url : "/ItemMarket/front?command=insertCash",
+				type: "post",
+				data : "id="+$(".profilemenu ul li #saveId").text()+"&chargeNumber="+$(".chargedialog input[name=chargeNumber]").val(),
+				dataType : "text",
+				success: function(result){
+					if(result == 0){
+						alert("마일리지를 충전하지 못했습니다.");
+					}else{
+						
+						alert("마일리지를 충전하였습니다");
+						document.location.href="/ItemMarket/view/index.jsp"
+					}
+				},
+				error :function(err){
+					console.log(err);
+				}
+								
+				});
+			
+		});//마일리지 버튼 끝
+	
+	
 	/* 비밀번호 찾기 이동 */
 	$(".loginsubmit input[name=searchpassword]").click(function(){
 		document.location.href="/ItemMarket/view/passwordFind.jsp";

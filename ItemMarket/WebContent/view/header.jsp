@@ -69,6 +69,7 @@
 	<!-- 충전 dialog -->
 	<div class="chargedialog" title="마일리지 충전">
 		<section id="chargeform">
+			<h3>현재 ${sessionScope.userProfile.id}님의 마일리지  : ${sessionScope.userProfile.cash} </h3>
 			<input type="number" name="chargeNumber" placeholder="충전할 금액을 적어주십시오">
 			<input type="button" value="충전">
 			<input type="button" value="취소">

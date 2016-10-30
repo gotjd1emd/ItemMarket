@@ -170,9 +170,15 @@ $(document).ready(function(){
 			$(".search ul li select[name=subcategory]").append("<option value='스탠드'>스탠드</option>");
 			$(".search ul li select[name=subcategory]").append("<option value='옷장'>옷장</option>");
 		}else if($(".search ul li select[name=category]").val() == "의료,의약"){
-			
+			$(".search ul li select[name=subcategory]").empty();
+			$(".search ul li select[name=subcategory]").append("<option value='1'>==서브카테고리==</option>");
+			$(".search ul li select[name=subcategory]").append("<option value='의료기기'>의료기기</option>");
+			$(".search ul li select[name=subcategory]").append("<option value='다이어트 식품'>다이어트 식품</option>");
 		}else if($(".search ul li select[name=category]").val() == "사무용품"){
-			
+			$(".search ul li select[name=subcategory]").empty();
+			$(".search ul li select[name=subcategory]").append("<option value='1'>==서브카테고리==</option>");
+			$(".search ul li select[name=subcategory]").append("<option value='소모품'>소모품</option>");
+			$(".search ul li select[name=subcategory]").append("<option value='프린터'>프린터</option>");
 		}
 		category = "&category="+$(this).val();
 	});

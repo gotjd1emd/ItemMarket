@@ -26,7 +26,7 @@
 
 		<div class="searchmain">
 			<ul>
-				<li><input type="text"></li>
+				<li><input id="word" type="text"></li>
 				<li><span class="glyphicon glyphicon-search" ></span></li>
 				<li><span id="sub">카테고리</span></li>
 			</ul>

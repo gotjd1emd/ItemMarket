@@ -22,12 +22,13 @@ public class Search implements Action {
 				response.setContentType("text/html;charset=utf-8");
 				
 				String word = request.getParameter("word");
+				System.out.println(word);
 				String category = request.getParameter("category");
 				String subCategory = request.getParameter("subCategory");
 				String page = request.getParameter("page");
 				String bordernumber= request.getParameter("bordernumber");
 				
-				System.out.println("¹øÈ£ : "+bordernumber);
+				System.out.println("ï¿½ï¿½È£ : "+bordernumber);
 				int pageNum = Integer.parseInt(page);
 				if(pageNum == 0) {
 					pageNum = 1;

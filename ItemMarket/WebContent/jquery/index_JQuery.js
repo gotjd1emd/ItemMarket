@@ -4,6 +4,7 @@
 	var count = 0;
 	var subCategory = "";
 	var category = "";
+	var word="";
 	$(".category ul li").click(function(){
 		$(".sub_category ul").fadeIn("slow");
 		$(".searchmain").animate({top : '45%'});
@@ -76,7 +77,8 @@
 	}));
 
 	$(".searchmain .glyphicon.glyphicon-search").click(function(){ //임시로 주소갑 줌
-		document.location.href="../front?command=search"+category+subCategory+"&word="+$("[type=text]").val()+"&page=0";
+		word = $(".searchmain input[id=word]").val();
+		document.location.href="../front?command=search"+category+subCategory+"&word="+word+"&page=0";
 	});
 
 	

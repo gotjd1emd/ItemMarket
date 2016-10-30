@@ -100,23 +100,27 @@ create table img_Border(
 select * from borderinfo;
                                               -
 
-insert into img_Border(border_Number,img) values (1, 'samplemacbook.jpg');
-insert into img_Border(border_Number,img) values (2, 'samplemacbook2.jpg');
-insert into img_Border(border_Number,img) values (3, 'samplemacbook3.jpg');
-insert into img_Border(border_Number,img) values (4, 'samplemacbook4.jpg');
-insert into img_Border(border_Number,img) values (5, 'samplemacbook5.jpg');
-insert into img_Border(border_Number,img) values (6, 'sample6.jpg');
-insert into img_Border(border_Number,img) values (7, 'sample7.jpg');
-insert into img_Border(border_Number,img) values (8, 'sample8.jpg');
-insert into img_Border(border_Number,img) values (9, 'sample9.jpg');
-insert into img_Border(border_Number,img) values (10, 'sample10.jpg');
-
+insert into img_Border(border_Number,img) values (21, 'samplemacbook.jpg');
+insert into img_Border(border_Number,img) values (22, 'samplemacbook2.jpg');
+insert into img_Border(border_Number,img) values (23, 'samplemacbook3.jpg');
+insert into img_Border(border_Number,img) values (24, 'samplemacbook4.jpg');
+insert into img_Border(border_Number,img) values (25, 'samplemacbook5.jpg');
+insert into img_Border(border_Number,img) values (26, 'sample6.jpg');
+insert into img_Border(border_Number,img) values (27, 'sample7.jpg');
+insert into img_Border(border_Number,img) values (28, 'sample8.jpg');
+insert into img_Border(border_Number,img) values (29, 'sample9.jpg');
+insert into img_Border(border_Number,img) values (30, 'sample10.jpg');
 
 select * from img_Border;
 -- drop  table img_Border;
 --select * from img_Border;
 
+select ROWNUM num, id, border_number, content,itemName, money, dayDate, category, sub_Category, itemState from borderinfo
+where category = '가구' and sub_category = '침구' and itemName like '%안락%' order by daydate desc;
 
+
+select * from (select ROWNUM num, id, border_number, content, itemName, money, dayDate, category, sub_Category, itemState from borderinfo 
+where category = '가구' and sub_category = '침구' and itemName like '%안락%' order by daydate desc
 --
 create table  messenger(
   sender varchar2(20) not null constraint  sender_fk references userinfo(id) on delete cascade,  --

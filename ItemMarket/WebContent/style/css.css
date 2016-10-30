@@ -33,14 +33,17 @@ header .icon a{text-decoration:none; color: inherit; float:left; }
 
 
 #profile{width:100%; height:100%; float:left; position: absolute; overflow: hidden;}
-#profile .profilemenu{width:350px; height: 100%; background:#FFD54F; float:right; z-index:5; position: absolute; top:0 ; right:-350px; }
+#profile .profilemenu{width:350px; height: 100%; background:#FFD54F; float:right; z-index:5; position: absolute; top:0 ; right:-350px;  }
 #profile .profilemenu ul li{text-align:center; line-height:50px; border-bottom:1px solid #FF8F00; color:#FF8F00; transition:0.4s;}
-#profile .profilemenu ul li:nth-child(1) span{top:0; left:0; position: absolute; padding:10px	}
-#profile .profilemenu ul li:nth-child(7){cursor:pointer;}
-#profile .profilemenu ul li:nth-child(8){cursor:pointer;}
+#profile .profilemenu ul li #chatWindow{width:100%; float:left; overflow: scroll; overflow-x:hidden;}
+#profile .profilemenu ul li:nth-child(1){position: relative;}
+#profile .profilemenu ul #transactionsEvent{cursor:pointer;}
+#profile .profilemenu ul #cashTransactionsEvent{cursor:pointer;}
 #profile .profilemenu ul li a{text-decoration: none; color:inherit;}
 #profile .profilemenu ul li:hover{background:#FFCA28;}
 #profile .profilemenu img{border-radius:100%; padding-top:20px; border:1px solid #ff8f00}
+#profile .profilemenu .beaf img{border:none; position: absolute; top: 0 ; right:0; display:none; padding:10px; cursor: pointer;}
+
 #profile form ul{width:700px; height:300px; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); margin-top:50px;}
 #profile form ul li{float:left; }
 #profile form ul li:nth-child(odd){width:20%; background: #FFD54F; border:1px solid #FF8F00; color:#FF8F00; line-height:38px;}
@@ -100,10 +103,10 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #main .mainimg{width:40%; float:left; height: 417px;  margin-left:15px; background: #000; position: relative; overflow: hidden; }
 #main .mainimg>img{width:100%; height: 417px; position: absolute; left:-100%;}
 #main .mainimg>img:nth-child(1){ left: 0; top:0;}
-#main .subimg{width:138px; float:left; height: 400px;position: relative; border:1px solid #000; z-index: 100; overflow: hidden;}
+#main .subimg{width:138px; float:left; height: 417px;position: relative; border:1px solid #000; z-index: 100; overflow: hidden;}
 #main .subimg ul{float:left; width:100%; position: absolute; }
-#main .subimg ul li{ width: 138px; height: 100px; padding:0; }
-#main .subimg ul li img{width:138px; height:100px; cursor:pointer; border:1px solid #000;} 
+#main .subimg ul li{ width: 138px; height: 104px; padding:0; }
+#main .subimg ul li img{width:138px; height:104px; cursor:pointer; border:1px solid #000;} 
 #main .subimg .up{width:138px; height: 5%; float:left; background: #000; position: absolute; top:0; display: none; cursor: pointer; opacity: 0.4; z-index: 3; text-align:center;}
 #main .subimg .up img{z-index:4 ; background: #fff;  transition: 0.4s;}
 #main .subimg .up:hover img{background:#FFAB40;}
@@ -189,8 +192,8 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #loginform ul li:nth-child(even){width:80%;}
 #loginform ul li input{width:100%; height: 40px; background:#FFD54F; border:1px solid #FF8F00;}
 #loginform .loginsubmit{width:100%; height:40px; float:left}
-#loginform .loginsubmit input[type=button]{width:100%; height: 100%; background:#FFD54F; border:1px solid #FF8F00; color:#FF8F00; text-align: center; margin-top:50px; }
-
+#loginform .loginsubmit input[type=button]{width:100%; height: 100%; background:#FFD54F; border:1px solid #FF8F00; color:#FF8F00; text-align: center; margin-top:20px; }
+#loginform .loginsubmit input[name=searchpassword]{margin-top:10px;}
 /* 거래 내역 dialog */
 
  .Transactions{display:none;}
@@ -260,7 +263,8 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #passwordCheckform{width:100%; height: 100%; float:left; position: relative; }
 #passwordCheckform h1{width:100%; float:left; color:#555555; margin-top:15px; margin-bottom:15px; line-height:40px; text-align: center; position: relative; }
 #passwordCheckform img{background:#FFD54F; border-radius:100%; padding:5px; position: absolute;left:210px; top:0;}
-#passwordCheckform p{text-align:center;}
+#passwordCheckform p{text-align:center; color:#999;}
+#passwordCheckform p span{color:#FF8F00;}
 #passwordCheckform {width:100%; text-align: center; margin-top:30px;}
 #passwordCheckform input{height:30px; }
 #passwordCheckform #updateform{margin-top:30px;}
@@ -296,3 +300,26 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 .passwordchage .passwordchagesubmit input[type=button]{width:150px; height: 50px; background:#ffd54f; color:#FF8F00; border:1px solid #FF8F00; transition:0.4s; cursor:pointer;}
 .passwordchage .passwordchagesubmit input:first-child{width:150px; height: 50px; background:#ffd54f; color:#FF8F00; border:1px solid #FF8F00;  margin-right:40px; transition:0.4s; cursor:pointer;}
 .passwordchage .passwordchagesubmit input[type=button]:hover{background:#FFCA28;}
+
+
+/* 비밀번호 찾기 */
+#passwordFindForm{width:700px; height:500px;  box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+#passwordFindForm .passwordform{width:100%; height: 100%; float:left; position:relative; text-align:center; margin-top:122px;}
+#passwordFindForm .passwordform img{background:#FFD54F; border-radius:100%; padding:5px; position: absolute; left:227px; top:0;}
+#passwordFindForm h1{width:100%; float:left; color:#555555; margin-top:15px; margin-bottom:15px; line-height:40px; text-align: center; position: relative; }
+#passwordFindForm .passwordform p{color:#999;}
+#passwordFindForm .passwordform p span{color:#FF8F00;}
+#passwordFindForm .passwordform input{width:240px; height:45px; margin-top:50px; margin-right:30px;}
+#passwordFindForm .passwordform input[type=button]{width:120px; height:45px; background: #FFD54F; border:1px solid #FF8F00; color:#FF8F00; cursor:pointer; transition:0.4s;}
+#passwordFindForm .passwordform input[type=button]:hover{background:#FFCA28;}
+#passwordFindForm .passwordform button{width:120px; height:45px; background: #FFD54F; border:1px solid #FF8F00; color:#FF8F00; cursor:pointer; transition:0.4s; display:none;}
+#passwordFindForm .passwordform button:hover{background:#FFCA28;}
+#passwordFindForm .passwordform #passfind{width:100%; float:left; text-align:center; margin-top:10px;}
+
+/* 충전 dialog*/
+.chargedialog{display:none;}
+#chargeform{width:100%; height: 100%; float:left; text-align: center;}
+#chargeform input[type=number]{width:70%; height: 50px; float:left; margin:80px;}
+
+#chargeform input[type=button]{width:120px; height:45px; background: #FFD54F; border:1px solid #FF8F00; color:#FF8F00; cursor:pointer; transition:0.4s;}
+#chargeform input[type=button]:hover{background:#FFCA28;}

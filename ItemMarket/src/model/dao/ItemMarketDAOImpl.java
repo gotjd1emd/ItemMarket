@@ -738,4 +738,26 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 	}
 
+	/**
+	 * 23.��й�ȣ ã��
+	 * */
+
+	@Override
+	public String userPassWordFind(String id) throws SQLException {
+		Connection con = DbUtil.getConnection();
+		PreparedStatement ps =null;
+		ResultSet rs= null;
+		String message="";
+		try{
+			ps = con.prepareStatement("select password from userinfo where id = ?");
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()){
+				message = rs.getString("password");
+			}
+		}finally{
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return message;
+	}
 }

@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+		
+		
+</script>
+</head>
 <body>
 	<header>
 		<div class="menu">
@@ -16,8 +21,10 @@
 				<li id="loginbtn">로그인</li>
 				<li id="sigupbtn">회원가입</li>
 			</c:when>
-			<c:otherwise>		
+			<c:otherwise>
+			<li>${sessionScope.userProfile.id}님 안녕하세요	</li>
 				<li id="profilebtn">프로필</li>
+				<li id="charge">마일리지 충전</li>
 				<li id="logoutbtn">로그아웃</li>
 			</c:otherwise>	
 				</c:choose>
@@ -28,21 +35,45 @@
 	<section id="profile">
 		<div class="profilemenu">
 			<ul>
-				<li><img src="<c:url value="/"/>image/player.png" alt="myimg"><span
-					class="glyphicon glyphicon-remove"></span></li>
+			
+				<li><img src="<c:url value="/"/>image/player.png" alt="myimg"><span style="cursor: pointer; top:0; left:0; position: absolute; padding:10px"
+					class="glyphicon glyphicon-remove"></span>
+					<div class="beaf">
+					<img src="<c:url value="/"/>image/after.png" alt="before">
+					<img src="<c:url value="/"/>image/before.png" alt="after">
+					</div>
+					</li>
+				<div class="before">
 				<li>아이디 : <span id="saveId">${sessionScope.userProfile.id}</span></li>
 				<li>마일리지 : ${sessionScope.userProfile.cash}<span></span></li>
 				<li>전화번호 : <span> ${sessionScope.userProfile.tel}</span></li>
 				<li>이메일 : <span> ${sessionScope.userProfile.email}</span></li>
 				<li>주소 : <span>${sessionScope.userProfile.location}</span></li>
-				<li>거래내역확인</li>
-				<li>마일리지거래내역</li>
+			
+				<li>
+					<textarea id="chatWindow" rows="5" cols="50" readonly="readonly"></textarea><br>
+					<input type="text" id="partnerId" size="5" placeholder="귓속말 걸 상대를 입력해주세요"/>
+					<input type="text" id="message" size="20" placeholder="채팅을 입력해주세요"/>
+					<input type="button" id="submit" value="전송" onclick="sendCheck()"/>
+				</li>
+				</div>
+				<div class="after">
 				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp?id=${sessionScope.userProfile.id}">프로필수정</a></li>
+				<li id="transactionsEvent">거래내역확인</li>
+				<li id="cashTransactionsEvent">마일리지거래내역</li>
+				</div>
 			</ul>
 		</div>
 	</section>
 
-	
+	<!-- 충전 dialog -->
+	<div class="chargedialog" title="마일리지 충전">
+		<section id="chargeform">
+			<input type="number" name="chargeNumber" placeholder="충전할 금액을 적어주십시오">
+			<input type="button" value="충전">
+			<input type="button" value="취소">
+		</section>
+	</div>
 
 
 	<!-- 회원가입 dialog  -->
@@ -89,6 +120,7 @@
 					</ul>
 					<div class="loginsubmit">
 						<input type="button" value="로그인">
+						<input type="button" name="searchpassword" value="비밀번호찾기">
 					</div>
 				</form>
 			</section>		
@@ -172,6 +204,35 @@
 			return true;
 		}
 
+		var userID = '${sessionScope.userProfile.id}';
+		var textarea = document.getElementById("chatWindow");
+		var url = 'ws://localhost:8000/ItemMarket/webSocket/' + userID;
+		var webSocket = new WebSocket(url);
+		var partnerId = document.getElementById('partnerId');
+		var inputMessage = document.getElementById('message');
+		webSocket.onerror = function(event) {
+			onError(event)
+		};
+		webSocket.onopen = function(event) {
+			onOpen(event)
+		};
+		webSocket.onmessage = function(event) {
+			onMessage(event)
+		};
+		function onMessage(event) {
+			textarea.value += "상대 : " + event.data + "\n";
+		}
+		function onOpen(event) {
+			textarea.value += "연결 성공\n";
+		}
+		function onError(event) {
+			alert(event.data);
+		}
+		function send() {
+			textarea.value += inputMessage.value;
+			webSocket.send(inputMessage.value)+"\n";
+			inputMessage.value = "";
+		}
 	</script>
 	
 	

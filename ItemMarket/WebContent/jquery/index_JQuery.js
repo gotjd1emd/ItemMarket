@@ -115,6 +115,15 @@
 		$("#search").animate({"left":"50%"},1500)	;
 	});
 	
+	/* 충전 dialog */
+   $(document).on("click",".menu ul #charge",function(){
+	   $(".chargedialog").dialog({
+		  minWidth:500,
+		  minHeight :300,
+		  modal : true
+	   });
+   });
+	
 	/* 로그인 dialog */
    $(document).on("click",".menu ul #loginbtn",function(){
 	   	$(".logindialog").dialog({
@@ -157,7 +166,7 @@
 	});
 	
 	/* 거래내역 dialog */
-	$(document).on("click",".profilemenu ul li:nth-child(7)",function(){
+	$(document).on("click",".profilemenu ul #transactionsEvent",function(){
 				
 		$(".Transactions").dialog({
 			minWidth : 1070,
@@ -202,7 +211,7 @@
 	}); // 거래내역 끝
 	
 	/* 마일리지 거래내역 */
-	$(document).on("click",".profilemenu ul li:nth-child(8)",function(){
+	$(document).on("click",".profilemenu ul #cashTransactionsEvent",function(){
 		
 		$(".Mileagetransactions").dialog({
 			minWidth : 1070,
@@ -318,6 +327,47 @@
 				}
 			});
 			}
+	});//로그인 버튼 끝
+	
+	/* 비밀번호 찾기 이동 */
+	$(".loginsubmit input[name=searchpassword]").click(function(){
+		document.location.href="/ItemMarket/view/passwordFind.jsp";
+	});
+	
+	/* 채팅 유효성 검사  */
+	function sendCheck(){
+		if($("#partnerId").val() !=""){
+			
+		}
+	}
+	/* 앞 뒤 */
+	var pageNumber = 0;
+	pageCheck();
+	function pageCheck(){
+		
+
+		if(pageNumber == 0){
+			$(".beaf img:nth-child(1)").show();
+			$(".beaf img:nth-child(2)").hide();
+			$(".before").show();
+			$(".after").hide();
+		}else{
+			$(".beaf img:nth-child(1)").hide();
+			$(".beaf img:nth-child(2)").show();
+			$(".before").hide();
+			$(".after").show();
+		}
+	}
+	$(".beaf img:nth-child(1)").click(function(){
+		pageNumber++;
+		pageCheck();
+		console.log(pageNumber);
+	});
+	
+	$(".beaf img:nth-child(2)").click(function(){
+		pageNumber--;
+		pageCheck();
+		console.log(pageNumber);
 	});
 });
 	

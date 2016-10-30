@@ -120,7 +120,7 @@
 	   $(".chargedialog").dialog({
 		  minWidth:500,
 		  minHeight :300,
-		  modal : true
+		  modal : true						
 	   });
    });
 	
@@ -360,12 +360,7 @@
 		document.location.href="/ItemMarket/view/passwordFind.jsp";
 	});
 	
-	/* 채팅 유효성 검사  */
-	function sendCheck(){
-		if($("#partnerId").val() !=""){
-			
-		}
-	}
+	
 	/* 앞 뒤 */
 	var pageNumber = 0;
 	pageCheck();

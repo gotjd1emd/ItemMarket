@@ -74,6 +74,15 @@ function slide(a){
 
 }
 
+/* 구매 dialog */
+$(document).on("click",".mainEx button[name=purchase]",function(){
+	   $(".purchasedialog").dialog({
+		  minWidth:500,
+		  minHeight :300,
+		  modal : true						
+	   });
+});
+
 /* subslide 집에서 할거 */
 
 var subimgs = $(".subimg ul li");

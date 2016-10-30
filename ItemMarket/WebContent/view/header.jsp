@@ -51,10 +51,13 @@
 				<li>주소 : <span>${sessionScope.userProfile.location}</span></li>
 			
 				<li>
+				<form name="chatForm"  >
 					<textarea id="chatWindow" rows="5" cols="50" readonly="readonly"></textarea><br>
-					<input type="text" id="partnerId" size="5" placeholder="귓속말 걸 상대를 입력해주세요"/>
+					<input type="text" id="partnerId" name="partnerId" size="5" placeholder="귓속말 걸 상대를 입력해주세요"/>
 					<input type="text" id="message" size="20" placeholder="채팅을 입력해주세요"/>
-					<input type="button" id="submit" value="전송" onclick="sendCheck()"/>
+					<input type="button" id="submit" value="전송" onclick="chatIdCheck()"/>
+				</form>
+				
 				</li>
 				</div>
 				<div class="after">
@@ -203,6 +206,16 @@
 				return false;
 			}
 			return true;
+		}
+		function chatIdCheck(){
+			var f3 = window.document.chatForm;
+			if(f3.partnerId.value == ""){
+				alert("상대방의 ID를 입력해주세요");
+				return false;
+			}else{
+				send();
+			}
+			
 		}
 
 		var userID = '${sessionScope.userProfile.id}';

@@ -147,39 +147,47 @@
 	
 	/* 거래내역 dialog */
 	$(document).on("click",".profilemenu ul li:nth-child(7)",function(){
-		
+				
 		$(".Transactions").dialog({
 			minWidth : 1070,
 			minHeight : 530,
+			maxHeight : 530,
 			modal : true,
 		});
-		
 		$.ajax({
-			url:"../front?command=selectTrade",
-			type : "get",
+			url:"/ItemMarket/front?command=selectTrade",
+			type : "post",
+			data : "id="+$(".profilemenu ul li #saveId").text(),
 			dataType : "json",
 			
 			success : function(result) {
 				$('.Transactions section').empty();
-				$('.Transactions section').append("<ul><li>구매자</li><li>판매자</li><li>물품이름</li><li>지불액</li>"+
-						"<li>글번호</li><li>날짜</li><li>거래진행상황</li></ul>");
+				$('.Transactions section').append("<table><tr><td>구매자</td><td>판매자</td><td>물품이름</td><td>지불액</td><td>글번호</td><td>날짜</td><td>거래진행상황</td></tr>");
 				$.each(result, function(index, items) {
-					$('.Transactions section').append("<ul>"+
-						"<li><span>" + items.buyer + "</span></li>"+
-						"<li><span>" + items.seller + "</span></li>"+
-						"<li><span>" + items.itemName + "</span></li>"+
-						"<li><span>" + items.cash + "</span></li>"+
-						"<li><span>" + items.borderNumber + "</span></li>"+
-						"<li><span>" + items.dayDate + "</span></li>"+
-						"<li><span>" + items.tradeState + "</span></li></ul>"
+					$('.Transactions section table tbody').append("<tr>"+
+						"<td><span>" + items.buyer + "</span></td>"+
+						"<td><span>" + items.seller + "</span></td>"+
+						"<td><span>" + items.itemName + "</span></td>"+
+						"<td><span>" + items.cash + "</span></td>"+
+						"<td><span>" + items.borderNumber + "</span></td>"+
+						"<td><span>" + items.dayDate + "</span></td>"+
+						"<td><span>" + items.tradeState + "</span></td></tr>"
 					);  
 				});	
+							
+				
+				$('.Transactions section').append("</table>")
 			},
 			error : function(err) {
 				console.log("err : " + err);
 
 			}
 	});
+
+
+
+
+		
 	}); // 거래내역 끝
 	
 	/* 마일리지 거래내역 */
@@ -188,32 +196,35 @@
 		$(".Mileagetransactions").dialog({
 			minWidth : 1070,
 			minHeight : 530,
+			maxHeight : 530,
 			modal : true,
 		});
-		
 		$.ajax({
-			url:"../front?command=selectCash",
+			url:"/ItemMarket/front?command=selectCash",
 			type : "get",
+			data : "id="+$(".profilemenu ul li #saveId").text(),
 			dataType : "json",
 			
 			success : function(result) {
 				$('.Mileagetransactions section').empty();
-				$('.Mileagetransactions section').append("<ul><li>아이디</li><li>물품이름</li><li>마일리지</li><li>거래 당시 잔액</li><li>날짜</li></ul>");
+				$('.Mileagetransactions section').append("<table><tr><td>아이디</td><td>물품이름</td><td>마일리지</td><td>거래 당시 잔액</td><td>날짜</td></tr>");
 				
 				$.each(result, function(index, items) {
-					$('.Mileagetransactions section').append("<ul>"+
-						"<li><span>" + items.id + "</span></li>"+
-						"<li><span>" + items.itemName + "</span></li>"+
-						"<li><span>" + items.mileage + "</span></li>"+
-						"<li><span>" + items.currentCash + "</span></li>"+
-						"<li><span>" + items.saveDate + "</span></li></ul>"
+					$('.Mileagetransactions section table tbody').append("<tr>"+
+						"<td><span>" + items.id + "</span></td>"+
+						"<td><span>" + items.itemName + "</span></td>"+
+						"<td><span>" + items.mileage + "</span></td>"+
+						"<td><span>" + items.currentCash + "</span></td>"+
+						"<td><span>" + items.saveDate + "</span></td></tr>"
 					);  
 				});	
+				$('.Mileagetransactions section').append("</table>")
 			},
 			error : function(err) {
 				console.log("err : " + err);
 			}
-		});
+		}); // 마일리지 ajax
+	
 	}); // 마일리지 거래 내역 끝
 	
 	/*로그아웃 EVENT*/

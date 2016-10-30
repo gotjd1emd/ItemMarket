@@ -18,10 +18,10 @@ public class SelectTrade implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String id = (String) request.getSession().getAttribute("id");
-
+		String id = request.getParameter("id");
+		System.out.println("거래내역 : "+id);
 		List<TradeHistoryDTO> tradelist = ItemMarketService.myHistory(id);
-		
+
 		request.setAttribute("tradelist", tradelist);
 		
 		PrintWriter out = response.getWriter();

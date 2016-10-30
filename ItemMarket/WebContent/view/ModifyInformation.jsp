@@ -26,7 +26,7 @@
 		<p>보안을위해서 회원님의 비밀번호를 다시한번 입력해주세요</p>
 		<p>개인정보 변경에서는 비밀번호 변경 , 주소/전화번호 등의 정보를 확인, 수정하실 수 있습니다.</p>
 		<form name="updateform" method="post" id="updateform">
-		<input type="text" name="id" readonly="readonly" value="${sessionScope.id}"> 
+		<input type="text" name="id" readonly="readonly" value="${sessionScope.userProfile.id}"> 
 		<input type="password" name="password" placeholder="비밀번호를 입력해주세요">
 		 <input type="button" value="확인">
 		</form>
@@ -40,7 +40,7 @@
 		<p>보안을위해서 회원님의 비밀번호를 다시한번 입력해주세요</p>
 		<p>개인정보 변경에서는 비밀번호 변경 , 주소/전화번호 등의 정보를 확인, 수정하실 수 있습니다.</p>
 		<form name="deleteform" method="post" id="deleteform">
-		<input type="text" name="id" readonly="readonly" value="${sessionScope.id}">
+		<input type="text" name="id" readonly="readonly" value="${sessionScope.userProfile.id}">
 		 <input type="password" name="password" placeholder="비밀번호를 입력해주세요" >
 		  <input type="button" value="확인">
 		</form>

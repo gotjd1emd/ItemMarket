@@ -89,6 +89,7 @@
 					</ul>
 					<div class="loginsubmit">
 						<input type="button" value="로그인">
+						<input type="button" name="searchpassword" value="비밀번호찾기">
 					</div>
 				</form>
 			</section>

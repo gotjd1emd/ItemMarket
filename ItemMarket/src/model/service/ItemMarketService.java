@@ -295,6 +295,18 @@ public class ItemMarketService {
 		}
 		return userDTO;
 	}
+	/**
+	 * 23
+	 * */
+	public static String userPassWordFind(String id){
+		String message ="";
+		try{
+			message = marketDAO.userPassWordFind(id);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return message;
+	}
 	
 
 }

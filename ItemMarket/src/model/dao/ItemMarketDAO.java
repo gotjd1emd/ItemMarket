@@ -171,6 +171,11 @@ public interface ItemMarketDAO {
 	 * */
 	UserDTO userUpdateCheck(String id, String password) throws SQLException;
 	
+	
+	/**
+	 * passwordfind
+	 * */
+	String userPassWordFind(String id)throws SQLException;
 
 	
 }

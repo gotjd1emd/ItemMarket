@@ -23,7 +23,7 @@
 	<div class="passwordCheck" title="비밀번호 재확인">
 		<section id="passwordCheckform">	
  		<h1> <img src="<c:url value="/"/>image/lock.png" alt="자물쇠 아이콘">비밀번호 재확인</h1>
-		<p>보안을위해서 회원님의 비밀번호를 다시한번 입력해주세요</p>
+		<p><span>보안을위해서</span> 회원님의 <span>비밀번호</span>를 다시한번 입력해주세요</p>
 		<p>개인정보 변경에서는 비밀번호 변경 , 주소/전화번호 등의 정보를 확인, 수정하실 수 있습니다.</p>
 		<form name="updateform" method="post" id="updateform">
 		<input type="text" name="id" readonly="readonly" value="${sessionScope.userProfile.id}"> 

@@ -318,6 +318,12 @@
 				}
 			});
 			}
+	});//로그인 버튼 끝
+	
+	/* 비밀번호 찾기 이동 */
+	$(".loginsubmit input[name=searchpassword]").click(function(){
+	
+		document.location.href="/ItemMarket/view/passwordFind.jsp";
 	});
 });
 	

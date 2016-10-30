@@ -738,6 +738,28 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return userDTO;
 		
 	}
+	/**
+	 * 23.비밀번호 찾기
+	 * */
+
+	@Override
+	public String userPassWordFind(String id) throws SQLException {
+		Connection con = DbUtil.getConnection();
+		PreparedStatement ps =null;
+		ResultSet rs= null;
+		String message="";
+		try{
+			ps = con.prepareStatement("select password from userinfo where id = ?");
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()){
+				message = rs.getString("password");
+			}
+		}finally{
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return message;
+	}
 	
 
 }

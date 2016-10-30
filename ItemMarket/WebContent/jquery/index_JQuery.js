@@ -115,6 +115,15 @@
 		$("#search").animate({"left":"50%"},1500)	;
 	});
 	
+	/* 충전 dialog */
+   $(document).on("click",".menu ul #charge",function(){
+	   $(".chargedialog").dialog({
+		  minWidth:500,
+		  minHeight :300,
+		  modal : true
+	   });
+   });
+	
 	/* 로그인 dialog */
    $(document).on("click",".menu ul #loginbtn",function(){
 	   	$(".logindialog").dialog({

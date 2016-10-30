@@ -21,8 +21,10 @@
 				<li id="loginbtn">로그인</li>
 				<li id="sigupbtn">회원가입</li>
 			</c:when>
-			<c:otherwise>		
+			<c:otherwise>
+			<li>${sessionScope.userProfile.id}님 안녕하세요	</li>
 				<li id="profilebtn">프로필</li>
+				<li id="charge">마일리지 충전</li>
 				<li id="logoutbtn">로그아웃</li>
 			</c:otherwise>	
 				</c:choose>
@@ -64,7 +66,14 @@
 		</div>
 	</section>
 
-	
+	<!-- 충전 dialog -->
+	<div class="chargedialog" title="마일리지 충전">
+		<section id="chargeform">
+			<input type="number" name="chargeNumber" placeholder="충전할 금액을 적어주십시오">
+			<input type="button" value="충전">
+			<input type="button" value="취소">
+		</section>
+	</div>
 
 
 	<!-- 회원가입 dialog  -->

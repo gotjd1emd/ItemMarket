@@ -443,8 +443,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		PreparedStatement ps = null;
 		int result=0;
-		
-		 
+	
 		 ps = con.prepareStatement("update userinfo set cash=(select cash from userinfo where id=?)-? where id=?");
 		 ps.setString(1, id);
 		 ps.setInt(2, money);
@@ -499,9 +498,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		PreparedStatement ps = null;
 		int result=0;
-
-		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
-		ps.setString(1,"거래중");
+		ps = con.prepareStatement("update trade_history set trade_state = '거래중' where buyer=? or seller=?");
+		ps.setString(1, trade.getSeller());
 		ps.setString(2, trade.getSeller());
 		result = ps.executeUpdate();
 			  
@@ -516,13 +514,14 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		PreparedStatement ps= null;
 		int result = 0;
+		System.out.println(border.getId()+"," + id + "," + border.getItemName()+","+ money + "," + border.getBorderNumber() + "," + border.getItemState());
 
 		con = DbUtil.getConnection();
 		ps = con.prepareStatement("insert into trade_history values (?,?,?,?,?,sysdate,?)");
-		ps.setString(1, id);	//占쏙옙占싱듸옙
-		ps.setString(2, border.getId()); // 占쏙옙占싱듸옙
+		ps.setString(1, border.getId());	//占쏙옙占싱듸옙
+		ps.setString(2, id); // 占쏙옙占싱듸옙
 		ps.setString(3, border.getItemName());
-		ps.setInt(4, border.getMoney());
+		ps.setInt(4, money);
 		ps.setInt(5, border.getBorderNumber());
 		ps.setString(6, border.getItemState());
 			

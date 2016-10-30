@@ -128,9 +128,12 @@ $(document).on("click",".purchasedialog input[value=구매]",function(){
 	$.ajax({
 		url : "/ItemMarket/front?command=accountTransfer",
 		type: "post",
-		data : "&cash="+$(".purchasedialog input[name=purchaseNumber]").val(),
+		data : "buyer="+$(".purchasedialog input[name=buyer]").val()+"&cash="+$(".purchasedialog input[name=purchaseNumber]").val()
+		+"&borderNumber="+$(".purchasedialog input[name=borderNumber]").val()
+		+"&seller="+$(".purchasedialog input[name=seller]").val(),
 		dataType : "text",
 		success: function(result){
+			
 			if(result == 0){
 				alert("구매를 하지 못하였습니다.");
 			}else{

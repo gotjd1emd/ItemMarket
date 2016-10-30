@@ -58,6 +58,9 @@
 				</section>
 				<div class="purchasedialog" title="구매하기">
 					<section id="purchaseform">
+						<input type="text" name="buyer" value="${sessionScope.userProfile.id}"  hidden>
+						<input type="text" name="seller" value="${user.id}"  hidden>
+						<input type="number" name="borderNumber" value="${border.borderNumber}"  hidden>
 						<input type="number" name="purchaseNumber" placeholder="구매할 금액을 입력해주세요">
 						<input type="button" value="구매">
 						<input type="button" value="취소">

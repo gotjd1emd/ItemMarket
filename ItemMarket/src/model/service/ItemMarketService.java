@@ -204,13 +204,16 @@ public class ItemMarketService {
 			marketDAO.receiveCashAgency(con, money);
 			marketDAO.borderStateChange(con, border);
 			marketDAO.tradeStateChange(con, trade);
-			marketDAO.trading(con, id, money, border);
+			if(marketDAO.trading(con, id, money, border)>0){
+				System.out.println("됬다구");
+			}
 			
-			con.setAutoCommit(true);//�ڵ�Ŀ�Լ�������
-			con.commit(); // ����
+			con.commit(); 
 		}catch(SQLException e){
-			con.rollback(); // öȸ
+			System.out.println("ddd");
+			con.rollback();
 		}finally{
+			con.setAutoCommit(true);
 			con.close();
 		}
 	}

@@ -60,6 +60,7 @@
 				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp?id=${sessionScope.userProfile.id}">프로필수정</a></li>
 				<li id="transactionsEvent">거래내역확인</li>
 				<li id="cashTransactionsEvent">마일리지거래내역</li>
+				<li id="purchaseapply">구매신청란</li>
 				</div>
 			</ul>
 		</div>
@@ -106,7 +107,7 @@
 				</form>
 			</div>
 		</section>
-
+	</div>
 		<!-- 로그인 dialog -->
 		<div class="logindialog" title="로그인">
 			<section id="loginform">
@@ -125,17 +126,29 @@
 				</form>
 			</section>		
 		</div>
-	</div>
 	
+	<!-- 거래내역  -->
 	<div class="Transactions" title="거래내역">
 		<section id="Transactionsfrom">
 
 		</section>
 	</div>
-
+	<!-- 마일리지 거래내역 -->
 	<div class="Mileagetransactions" title="마일리지거래내역">
 		<section id="Mileagetransactionsform">
 		
+		</section>
+	</div>
+	<!-- 구매신청란 dialog -->
+	<div class="purchaselistdialog">
+		<section id="purchaselistform">
+		<table>
+			<td>글번호</td>
+			<td>물품이름</td>
+			<td>가격</td>
+			<td>확인</td>
+			<td>취소</td>
+		</table>
 		</section>
 	</div>
 	<script type="text/javascript">

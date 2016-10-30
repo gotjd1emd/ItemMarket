@@ -390,6 +390,16 @@
 		pageCheck();
 		console.log(pageNumber);
 	});
+	
+	/* 구매신청란 dialog */
+	$(document).on("click",".profilemenu ul #purchaseapply",function(){
+		$(".purchaselistdialog").dialog({
+			minWidth : 1070,
+			minHeight : 530,
+			maxHeight : 530,
+			modal : true,
+		});
+	});
 });
 	
 

@@ -17,7 +17,7 @@ import util.DbUtil;
 
 public class ItemMarketDAOImpl implements ItemMarketDAO {
 
-	//1. �α���
+	//1. 占싸깍옙占쏙옙
 	@Override
 	public int login(String id, String password) throws SQLException {
 		Connection con = null;
@@ -45,8 +45,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 2. ȸ������
-	 * 1 - ����, 0 - ���Խ���
+	 * 2. 회占쏙옙占쏙옙占쏙옙
+	 * 1 - 占쏙옙占쏙옙, 0 - 占쏙옙占쌉쏙옙占쏙옙
 	 */
 	@Override
 	public int signUp(UserDTO userInfo) throws SQLException {
@@ -104,8 +104,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	
 	
 	/**
-	 * 4. �ŷ�����
-	 * �ŷ���¥, ������, �Ǹ���, �ŷ�����
+	 * 4. 占신뤄옙占쏙옙占쏙옙
+	 * 占신뤄옙占쏙옙짜, 占쏙옙占쏙옙占쏙옙, 占실몌옙占쏙옙, 占신뤄옙占쏙옙占쏙옙
 	 */
 	@Override
 	public List<TradeHistoryDTO> myHistory(String id) throws SQLException {
@@ -144,8 +144,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 5. ���ϸ��� ���� ���
-	 * ������¥, ����ѳ�¥, ���� ���ϸ���
+	 * 5. 占쏙옙占싹몌옙占쏙옙 占쏙옙占쏙옙 占쏙옙占�
+	 * 占쏙옙占쏙옙占쏙옙짜, 占쏙옙占쏙옙碁占승�, 占쏙옙占쏙옙 占쏙옙占싹몌옙占쏙옙
 	 */
 	@Override
 	public List<CashHistoryDTO> selectAllCashHistory(String id) throws SQLException {
@@ -171,7 +171,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 6. ���ϸ��� ����
+	 * 6. 占쏙옙占싹몌옙占쏙옙 占쏙옙占쏙옙
 	 */
 	public int addCash(String id, int cash) throws SQLException {
 		Connection con = null;
@@ -215,18 +215,25 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		 */
 			con= DbUtil.getConnection();
 			if(word==null) {
-				ps = con.prepareStatement("select ROWNUM num, id, border_number, content,itemName, money, dayDate, category, sub_Category, itemState from borderinfo" +
-						" where category = ? and sub_category = ? order by daydate desc");
+				ps = con.prepareStatement("select * from (select ROWNUM num, id, border_number, content, "
+						+ "itemName, money, dayDate, category, sub_Category, itemState from borderinfo "
+						+ "where category = ? and sub_category = ? order by daydate desc) "
+						+ "where num BETWEEN ? and ?");
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
-				
+				ps.setInt(3, (page-1)*9+1);
+				ps.setInt(4, page*9);
 			}else {
-				ps = con.prepareStatement("select ROWNUM num, id, border_number, content,itemName, money, dayDate, category, sub_Category, itemState from borderinfo"+
-					" where category = ? and sub_category = ? and itemName like ? order by daydate desc");
+				ps = con.prepareStatement("select * from (select ROWNUM num, id, border_number, content, "
+						+ "itemName, money, dayDate, category, sub_Category, itemState from borderinfo "
+						+ "where category = ? and sub_category = ? and itemName like ? order by daydate desc) "
+						+ "where num BETWEEN ? and ?");
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
 				ps.setString(3, "%"+word.trim()+"%");
-				
+				ps.setString(3, "%"+word+"%");
+				ps.setInt(4, (page-1)*9+1);
+				ps.setInt(5, page*9);
 			}
 			rs  = ps.executeQuery();
 
@@ -292,8 +299,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 7. �޽�����
-	 * �������, �����»��, ����
+	 * 7. 占쌨쏙옙占쏙옙占쏙옙
+	 * 占쏙옙占쏙옙占쏙옙占�, 占쏙옙占쏙옙占승삼옙占�, 占쏙옙占쏙옙
 	 */
 	@Override
 	public List<MemoDTO> memobox(String id) throws SQLException {
@@ -320,8 +327,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 8. �۾���
-	 * �̹���, ����, �ݾ�, �۳���, id
+	 * 8. 占쌜억옙占쏙옙
+	 * 占싱뱄옙占쏙옙, 占쏙옙占쏙옙, 占쌥억옙, 占쌜놂옙占쏙옙, id
 	 */
 	@Override
 	public int write(BorderDTO border) throws SQLException {
@@ -348,8 +355,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 8. �۾���
-	 * �̹���
+	 * 8. 占쌜억옙占쏙옙
+	 * 占싱뱄옙占쏙옙
 	 */
 	@Override
 	public int imgWrite(String imgName) throws Exception {
@@ -369,8 +376,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 9. ���б�
-	 * �̹���, ����, �ݾ�, �۳���, id
+	 * 9. 占쏙옙占싻깍옙
+	 * 占싱뱄옙占쏙옙, 占쏙옙占쏙옙, 占쌥억옙, 占쌜놂옙占쏙옙, id
 	 */
 	@Override
 	public BorderDTO read(int borderNum) throws SQLException {
@@ -429,8 +436,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return imgList;
 	}
 	/**
-	 * 10. ������ ���ϸ����� �߰��ڿ���
-	 * 10, 11, 12, 13������ commit, rollback
+	 * 10. 占쏙옙占쏙옙占쏙옙 占쏙옙占싹몌옙占쏙옙占쏙옙 占쌩곤옙占쌘울옙占쏙옙
+	 * 10, 11, 12, 13占쏙옙占쏙옙占쏙옙 commit, rollback
 	 */
 	@Override
 	public int sendCashAgency(Connection con, String id, int money) throws SQLException {
@@ -451,8 +458,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 
 	/**
-	 * 11. �߰��� ���ϸ����� �����ڿ��� ������ŭ ����
-	 * �߰��ڴ� user_info�� admin���� �߰��Ѵ�.
+	 * 11. 占쌩곤옙占쏙옙 占쏙옙占싹몌옙占쏙옙占쏙옙 占쏙옙占쏙옙占쌘울옙占쏙옙 占쏙옙占쏙옙占쏙옙큼 占쏙옙占쏙옙
+	 * 占쌩곤옙占쌘댐옙 user_info占쏙옙 admin占쏙옙占쏙옙 占쌩곤옙占싼댐옙.
 	 */
 	@Override
 	public int receiveCashAgency(Connection con,int money) throws SQLException {
@@ -469,7 +476,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 12-1. �Խù��� �ŷ� �����Ȳ�� ������ �Ǵ� �ŷ��Ϸ�� ����(�Խ��ǿ��� �����ٰ�)
+	 * 12-1. 占쌉시뱄옙占쏙옙 占신뤄옙 占쏙옙占쏙옙占싫뀐옙占� 占쏙옙占쏙옙占쏙옙 占실댐옙 占신뤄옙占싹뤄옙占� 占쏙옙占쏙옙(占쌉쏙옙占실울옙占쏙옙 占쏙옙占쏙옙占쌕곤옙)
 	 */
 	@Override
 	public int borderStateChange(Connection con,BorderDTO border) throws SQLException {
@@ -478,7 +485,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 	  ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
-	  ps.setString(1,"�ŷ�������");
+	  ps.setString(1,"占신뤄옙占쏙옙占쏙옙占쏙옙");
 	  ps.setString(2, border.getId());
 	  result = ps.executeUpdate();
 	  
@@ -486,7 +493,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 12-2. �Խù��� �ŷ� �����Ȳ�� ������ �Ǵ� �ŷ��Ϸ�� ����(�ŷ��������� �����ٰ�)
+	 * 12-2. 占쌉시뱄옙占쏙옙 占신뤄옙 占쏙옙占쏙옙占싫뀐옙占� 占쏙옙占쏙옙占쏙옙 占실댐옙 占신뤄옙占싹뤄옙占� 占쏙옙占쏙옙(占신뤄옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쌕곤옙)
 	 */
 	@Override
 	public int tradeStateChange(Connection con, TradeHistoryDTO trade) throws SQLException {
@@ -495,7 +502,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 
 		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
-		ps.setString(1,"�ŷ�������");
+		ps.setString(1,"占신뤄옙占쏙옙占쏙옙占쏙옙");
 		ps.setString(2, trade.getSeller());
 		result = ps.executeUpdate();
 			  
@@ -503,7 +510,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 13. �ŷ����೻�� �߰�
+	 * 13. 占신뤄옙占쏙옙占썅내占쏙옙 占쌩곤옙
 	 */
 	@Override
 	public int trading(Connection con, String id, int money, BorderDTO border) throws SQLException {
@@ -513,8 +520,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 
 		con = DbUtil.getConnection();
 		ps = con.prepareStatement("insert into trade_history values (?,?,?,?,?,?,?)");
-		ps.setString(1, id);	//���̵�
-		ps.setString(2, border.getId()); // ���̵�
+		ps.setString(1, id);	//占쏙옙占싱듸옙
+		ps.setString(2, border.getId()); // 占쏙옙占싱듸옙
 		ps.setString(3, border.getItemName());
 		ps.setInt(4, border.getMoney());
 		ps.setInt(5, border.getBorderNumber());
@@ -528,7 +535,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 15. �ش� �Խù��� ���� �ŷ����೻�� �˻�
+	 * 15. 占쌔댐옙 占쌉시뱄옙占쏙옙 占쏙옙占쏙옙 占신뤄옙占쏙옙占썅내占쏙옙 占싯삼옙
 	 */
 	@Override
 	public TradeHistoryDTO selectByBorderTrade(Connection con, int borderNumber) throws SQLException {
@@ -551,8 +558,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 16. �߰��� ���ϸ����� �Ǹ��ڿ���
-	 * 15, 16, 17, 12, 18������ commit �Ǵ� rollback
+	 * 16. 占쌩곤옙占쏙옙 占쏙옙占싹몌옙占쏙옙占쏙옙 占실몌옙占쌘울옙占쏙옙
+	 * 15, 16, 17, 12, 18占쏙옙占쏙옙占쏙옙 commit 占실댐옙 rollback
 	 */
 	@Override
 	public int sendCashSeller(Connection con, String id, int money) throws SQLException {
@@ -571,7 +578,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 17. �߰����� ���ϸ��� ����
+	 * 17. 占쌩곤옙占쏙옙占쏙옙 占쏙옙占싹몌옙占쏙옙 占쏙옙占쏙옙
 	 */
 	@Override
 	public int receiveCashSeller(Connection con, int money) throws SQLException {
@@ -589,7 +596,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * 18-1. ���ſϷ� ���೻���� ����
+	 * 18-1. 占쏙옙占신완뤄옙 占쏙옙占썅내占쏙옙占쏙옙 占쏙옙占쏙옙
 	 */
 	@Override
 	public int completeBorder(Connection con, BorderDTO border) throws SQLException {
@@ -598,7 +605,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 		ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
-		ps.setString(1,"�ŷ��Ϸ�");
+		ps.setString(1,"占신뤄옙占싹뤄옙");
 		ps.setString(2, border.getId());
 		result = ps.executeUpdate();
 
@@ -606,7 +613,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * 18-2. ���ſϷ� ���೻���� ����(�ŷ��������� )
+	 * 18-2. 占쏙옙占신완뤄옙 占쏙옙占썅내占쏙옙占쏙옙 占쏙옙占쏙옙(占신뤄옙占쏙옙占쏙옙占쏙옙占쏙옙 )
 	 */
 	@Override
 	public int completeTrade(Connection con, TradeHistoryDTO trade) throws SQLException {
@@ -615,7 +622,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
-		ps.setString(1,"�ŷ��Ϸ�");
+		ps.setString(1,"占신뤄옙占싹뤄옙");
 		ps.setString(2, trade.getSeller());
 		result = ps.executeUpdate();
 			  
@@ -623,7 +630,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 
 	/**
-	 * �ŷ��� ���ϸ��� ���� �߰�
+	 * 占신뤄옙占쏙옙 占쏙옙占싹몌옙占쏙옙 占쏙옙占쏙옙 占쌩곤옙
 	 * 
 	 */
 	@Override
@@ -634,8 +641,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		con = DbUtil.getConnection();
 		ps = con.prepareStatement("insert into cash_history values (?,?,?,sysdate,?)");
-		ps.setString(1, id);	//���̵�
-		ps.setString(2, itemName); // �����̸�
+		ps.setString(1, id);	//占쏙옙占싱듸옙
+		ps.setString(2, itemName); // 占쏙옙占쏙옙占싱몌옙
 		ps.setInt(3, money);
 		ps.setInt(4, currentCash);
 		
@@ -644,7 +651,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return result;
 	}
 	/**
-	 * 20. �������������
+	 * 20. 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙占�
 	 * */
 	public int userDelete(String id, String pw) throws SQLException{
 		Connection con = DbUtil.getConnection();
@@ -661,7 +668,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return result;
 	}
 	/**
-	 * 21.��������� ����
+	 * 21.占쏙옙占쏙옙占쏙옙占쏙옙占� 占쏙옙占쏙옙
 	 * */
 	@Override
 	public int userUpdate(String id , String email, String tel, String location) throws SQLException {
@@ -698,7 +705,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return result;
 	}
 	/**
-	 * 22. ����� ���� ����
+	 * 22. 占쏙옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙占쏙옙
 	 * */
 
 	@Override

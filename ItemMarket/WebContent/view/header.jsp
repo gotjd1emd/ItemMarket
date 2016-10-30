@@ -33,22 +33,33 @@
 	<section id="profile">
 		<div class="profilemenu">
 			<ul>
-				<li><img src="<c:url value="/"/>image/player.png" alt="myimg"><span
-					class="glyphicon glyphicon-remove"></span></li>
+			
+				<li><img src="<c:url value="/"/>image/player.png" alt="myimg"><span style="cursor: pointer; top:0; left:0; position: absolute; padding:10px"
+					class="glyphicon glyphicon-remove"></span>
+					<div class="beaf">
+					<img src="<c:url value="/"/>image/after.png" alt="before">
+					<img src="<c:url value="/"/>image/before.png" alt="after">
+					</div>
+					</li>
+				<div class="before">
 				<li>아이디 : <span id="saveId">${sessionScope.userProfile.id}</span></li>
 				<li>마일리지 : ${sessionScope.userProfile.cash}<span></span></li>
 				<li>전화번호 : <span> ${sessionScope.userProfile.tel}</span></li>
 				<li>이메일 : <span> ${sessionScope.userProfile.email}</span></li>
 				<li>주소 : <span>${sessionScope.userProfile.location}</span></li>
-				<li>거래내역확인</li>
-				<li>마일리지거래내역</li>
-				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp?id=${sessionScope.userProfile.id}">프로필수정</a></li>
+			
 				<li>
 					<textarea id="chatWindow" rows="5" cols="50" readonly="readonly"></textarea><br>
-					<input type="text" id="partnerId" size="5"/>
-					<input type="text" id="message" size="20"/>
-					<input type="button" id="submit" value="전송" onclick="send()"/>
+					<input type="text" id="partnerId" size="5" placeholder="귓속말 걸 상대를 입력해주세요"/>
+					<input type="text" id="message" size="20" placeholder="채팅을 입력해주세요"/>
+					<input type="button" id="submit" value="전송" onclick="sendCheck()"/>
 				</li>
+				</div>
+				<div class="after">
+				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp?id=${sessionScope.userProfile.id}">프로필수정</a></li>
+				<li id="transactionsEvent">거래내역확인</li>
+				<li id="cashTransactionsEvent">마일리지거래내역</li>
+				</div>
 			</ul>
 		</div>
 	</section>
@@ -209,8 +220,8 @@
 			alert(event.data);
 		}
 		function send() {
-			textarea.value += inputMessage.value + "\n";
-			webSocket.send(inputMessage.value);
+			textarea.value += inputMessage.value;
+			webSocket.send(inputMessage.value)+"\n";
 			inputMessage.value = "";
 		}
 	</script>

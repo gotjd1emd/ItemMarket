@@ -87,7 +87,7 @@
 			
 		<footer>
 	
-		<c:if test="${sessionScope.id != null}">
+		<c:if test="${sessionScope.userProfile.id  != null}">
 			<div class="noticeboardsubmit"><button type="button">게시물 올리기</button></div>
 		</c:if>
 		</footer>

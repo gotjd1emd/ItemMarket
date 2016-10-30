@@ -52,6 +52,7 @@
 
 	<script type="text/javascript"  src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript"	src="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="<c:url value="/"/>jquery/smoothscroll-for-websites-master/SmoothScroll.js"></script>
 	<script type="text/javascript"	src="<c:url value="/"/>jquery/index_JQuery.js"></script>
 
 </body>

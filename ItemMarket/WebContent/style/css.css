@@ -116,7 +116,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #main .mainEx h1{text-align: center;}
 #main .mainEx ul{text-align: center;}
 #main .mainEx button{width:124px; height: 50px; border:none; background:inherit; border:1px solid #000;  transition: 0.4s;} 
- #main .mainEx button:nth-child(5){margin-left:25%;} 
+#main .mainEx button:nth-child(5){margin-left:25%;} 
 #main .mainEx button:hover{background: #000; color:#fff;}
 #main .content{width:100%; height: 500px; float:left ; margin-top:35px; overflow:scroll; box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5); }
 #main .content h1{text-align: center;}
@@ -192,21 +192,24 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 
 /* 거래 내역 dialog */
 
-.Transactions{display:none;}
-#Transactionsfrom{ width:100%; height: 100%; float:left;   position: relative;}
-#Transactionsfrom ul{width:100%; height:30px; text-align:center;}
-#Transactionsfrom ul:nth-child(1){box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5);}
-
-#Transactionsfrom ul li{width:15%; height:30px;float:left}
-#Transactionsfrom ul li:nth-child(5){width:10%;}
+ .Transactions{display:none;}
+#Transactionsfrom{ width:100%; height:530px; float:left;   position: relative; }
+#Transactionsfrom table{width:100%; float:left;  }
+#Transactionsfrom table tr{width:100%; height:30px;text-align:center;}
+#Transactionsfrom table tr:nth-child(1){box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); font-weight: bold;   }
+#Transactionsfrom table tr:nth-child(1) td{height: 50px; line-height: 50px;}
+#Transactionsfrom table tr td{width:15%; height:30px ;line-height:30px;  float:left;}
+#Transactionsfrom table tr td:nth-child(5){width:10%;} 
 
 /* 마일리지 내역 dialog */
 .Mileagetransactions{display:none}
 
-#Mileagetransactionsform{width:100%; height: 100%; float:left ; position: relative;}
-#Mileagetransactionsform ul{width:100%; height: 30px; text-align: center;}
-#Mileagetransactionsform ul:nth-child(1){box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5);}
-#Mileagetransactionsform ul li{width:20%; height: 30px; float:left}
+#Mileagetransactionsform{width:100%; height:530px; float:left;   position: relative;  }
+#Mileagetransactionsform table{width:100%; float:left;}
+#Mileagetransactionsform table tr{width:100%; height: 40px; text-align: center;}
+#Mileagetransactionsform table tr:nth-child(1){box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); font-weight: bold;  height: 50px; line-height: 50px; }
+#Mileagetransactionsform table tr:nth-child(1) td{height: 50px; line-height: 50px;}
+#Mileagetransactionsform table tr td{width:20%; height:40px; line-height:40px; float:left} 
 
 /* ModifyInformation */
 

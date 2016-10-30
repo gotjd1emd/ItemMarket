@@ -18,8 +18,8 @@ public class SelectCash implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id = (String) request.getSession().getAttribute("id");
-
+		String id = request.getParameter("id");
+		System.out.println("마일리지 :" + id);
 		List<CashHistoryDTO> cashlist = ItemMarketService.selectAllCashHistory(id);
 		
 		request.setAttribute("cashlist", cashlist);

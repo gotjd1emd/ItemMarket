@@ -60,7 +60,7 @@ itemState varchar2(30)
 
 drop table borderInfo;
 
-
+ 
 insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('aaa',borderInfo_seq.nextval,'▶▶급매◀◀','갤럭시S6',1000,sysdate,'디지털/가전제품','휴대폰','구매대기중');
 insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('bbb',borderInfo_seq.nextval,'▶▶당일처분급구◀◀','T-100',44000,sysdate,'스포츠','alton','구매대기중');
 insert into borderInfo (id,border_number,content,itemName,money,dayDate,category,sub_Category,itemState) values ('ccc',borderInfo_seq.nextval,'▶최저가 판매◀','CalvinKlein',3300,sysdate,'의류','청바지','구매대기중');
@@ -99,7 +99,6 @@ create table img_Border(
 --borderifo border_Number        
 select * from borderinfo;
                                               -
-<<<<<<< HEAD
 
 insert into img_Border(border_Number,img) values (1, 'samplemacbook.jpg');
 insert into img_Border(border_Number,img) values (2, 'samplemacbook2.jpg');
@@ -145,11 +144,11 @@ drop table trade_history;
 
 --상호간 필요한 정보 
 create table trade_history (
-  buyer constraint  trading_Buyer_fk references userInfo(id), -- 구매자 
-  seller constraint trading_Seller_fk references userInfo(id),  -- 판매자
+  buyer constraint  trading_Buyer_fk references userInfo(id) on delete cascade, -- 구매자 
+  seller constraint trading_Seller_fk references userInfo(id) on delete cascade,  -- 판매자
   itemName varchar2(20), -- 제품이름
   cash number(7),  -- 지불액
-  border_number constraint trading_bordernumber_fk references borderinfo(border_number) primary key, --글 게시 번호
+  border_number constraint trading_bordernumber_fk references borderinfo(border_number) on delete cascade primary key, --글 게시 번호
   daydate date not null, -- 날짜 
   trade_state varchar2(40) -- 거래 진행 상황
   
@@ -159,12 +158,12 @@ create table trade_history (
 select * from borderInfo;    
 select * from trade_history;
                                                                                                                            --  ▼   
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'aaa','갤럭시S6',2000,1,'2016-10-24','거래완료');
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('ddd', 'bbb','T-100',3000,2,'2016-10-24','거래완료');
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('eee', 'ccc','CalvinKlein',4400,3,'2016-10-24','거래완료');                                                                               --  ▼
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','갤럭시S6',2000,166,'2016-10-24','거래완료');
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','T-100',3000,167,'2016-10-24','거래완료');
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'ccc','CalvinKlein',4400,168,'2016-10-24','거래완료');                                                                               --  ▼
                                                                                                           --  ▼
-  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('bbb','eee','목도리',120000,4,sysdate,'거래완료');
-  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('ccc','iii','텀블러',200000,7,sysdate,'거래완료');
+  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','eee','목도리',120000,169,sysdate,'거래완료');
+  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','iii','텀블러',200000,170,sysdate,'거래완료');
 
 --drop table borderinfo;
 
@@ -173,7 +172,7 @@ select * from trade_history;
 
 --cash_history table   id, 구매내역 -receiver 구매자 
 create table cash_history (
-  id varchar2(20) constraint cash_history_id_fk references userinfo  (id),  -- id 
+  id varchar2(20) constraint cash_history_id_fk references userinfo  (id)  on delete cascade,  -- id 
   itemName varchar2(20),  -- 물품 이름
   mileage number(6), -- 마일리지 - 후 충전 판매 구매 
   saveDate date not null, -- 마일리지 적립일(최종구입일or상태=구매완료시점) 
@@ -185,9 +184,9 @@ create table cash_history (
 
   select * from trade_history;
 
-
+insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('aaa','갤럭시S6',20,'2016-10-25',588000); 
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('fff','갤럭시S6',20,'2016-10-25',588000); 
-insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('ddd','T-100',30,'2016-10-25',287000); 
+insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('bbb','T-100',30,'2016-10-25',287000); 
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('eee','CalvinKlein',44,'2016-10-25',485600); 
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('bbb','목도리',1200,'2016-10-25',170000);
 insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('ccc','텀블러',2000,'2016-10-25',190000); 

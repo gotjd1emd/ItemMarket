@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+		
+		
+</script>
+</head>
 <body>
 	<header>
 		<div class="menu">
@@ -38,6 +43,12 @@
 				<li>거래내역확인</li>
 				<li>마일리지거래내역</li>
 				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp?id=${sessionScope.userProfile.id}">프로필수정</a></li>
+				<li>
+					<textarea id="chatWindow" rows="5" cols="50" readonly="readonly"></textarea><br>
+					<input type="text" id="partnerId" size="5"/>
+					<input type="text" id="message" size="20"/>
+					<input type="button" id="submit" value="전송" onclick="send()"/>
+				</li>
 			</ul>
 		</div>
 	</section>
@@ -173,6 +184,35 @@
 			return true;
 		}
 
+		var userID = '${sessionScope.userProfile.id}';
+		var textarea = document.getElementById("chatWindow");
+		var url = 'ws://localhost:8000/ItemMarket/webSocket/' + userID;
+		var webSocket = new WebSocket(url);
+		var partnerId = document.getElementById('partnerId');
+		var inputMessage = document.getElementById('message');
+		webSocket.onerror = function(event) {
+			onError(event)
+		};
+		webSocket.onopen = function(event) {
+			onOpen(event)
+		};
+		webSocket.onmessage = function(event) {
+			onMessage(event)
+		};
+		function onMessage(event) {
+			textarea.value += "상대 : " + event.data + "\n";
+		}
+		function onOpen(event) {
+			textarea.value += "연결 성공\n";
+		}
+		function onError(event) {
+			alert(event.data);
+		}
+		function send() {
+			textarea.value += inputMessage.value + "\n";
+			webSocket.send(inputMessage.value);
+			inputMessage.value = "";
+		}
 	</script>
 	
 	

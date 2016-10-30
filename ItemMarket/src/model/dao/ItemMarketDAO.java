@@ -46,7 +46,7 @@ public interface ItemMarketDAO {
 	/**
 	 * 6. ���ϸ��� ����
 	 */
-	int addCash(String id, int cash) throws SQLException;
+	int addCash(Connection con, String id, int cash) throws SQLException;
 	
 	/**
 	 * 6. �˻�

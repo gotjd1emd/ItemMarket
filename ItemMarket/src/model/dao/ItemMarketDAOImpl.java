@@ -173,26 +173,19 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	/**
 	 * 6. 占쏙옙占싹몌옙占쏙옙 占쏙옙占쏙옙
 	 */
-	public int addCash(String id, int cash) throws SQLException {
-		Connection con = null;
+	public int addCash(Connection con, String id, int cash) throws SQLException {
 		PreparedStatement ps = null;
 		int result=0;
 	
-		try{
-			con = DbUtil.getConnection();
-			
-			ps=con.prepareStatement("update userinfo set cash = (select cash from userinfo where id=?) + ? where id=?");
-			ps.setString(1, id);
-			ps.setInt(2, cash);
-			ps.setString(3, id);
+		ps=con.prepareStatement("update userinfo set cash = (select cash from userinfo where id=?) + ? where id=?");
+		ps.setString(1, id);
+		ps.setInt(2, cash);
+		ps.setString(3, id);
 
-			result = ps.executeUpdate();
-		
-		}finally{
-			DbUtil.dbClose(con, ps, null);
-		}
+		result = ps.executeUpdate();
+
 		return result;
-}
+	}
 	
 	
 	/**

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -29,7 +30,9 @@ public class AccountTransfer implements Action {
 		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, seller, border.getItemName(), cash, borderNumber, "", border.getItemState());
 		 
 		try {
-			ItemMarketService.accountTransfer(buyer,cash,border,trade);
+			int result = ItemMarketService.accountTransfer(buyer,cash,border,trade);
+			PrintWriter out = response.getWriter();
+			out.println(result);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

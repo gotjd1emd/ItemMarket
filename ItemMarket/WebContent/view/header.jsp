@@ -142,13 +142,7 @@
 	<!-- 구매신청란 dialog -->
 	<div class="purchaselistdialog">
 		<section id="purchaselistform">
-		<table>
-			<td>글번호</td>
-			<td>물품이름</td>
-			<td>가격</td>
-			<td>확인</td>
-			<td>취소</td>
-		</table>
+		
 		</section>
 	</div>
 	<script type="text/javascript">

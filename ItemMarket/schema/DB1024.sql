@@ -200,6 +200,12 @@ insert into cash_history (id,itemName,mileage,saveDate,current_cash) values ('cc
 
 select * from cash_history;
 
+create table request_trade(
+	buyer varchar2(20) constraint request_trade_buyer_id_fk references userinfo  (id)  on delete cascade,	
+	seller varchar2(20) constraint request_trade_seller_id_fk references userinfo  (id)  on delete cascade,
+	cash number(7),
+	border_number constraint request_trade_border_number_fk references borderinfo(border_number) on delete cascade
+);
 
 drop table myhistory;
 drop table img_Border;
@@ -208,5 +214,6 @@ drop table borderInfo;
 drop table userInfo;
 drop table trade_history;
 drop table cash_History;
+drop table request_trade;
 
 commit;

@@ -126,7 +126,7 @@ $(".subimg .up").click(function(){
 $(document).on("click",".purchasedialog input[value=구매]",function(){
 	
 	$.ajax({
-		url : "/ItemMarket/front?command=accountTransfer",
+		url : "/ItemMarket/front?command=requestTrade",
 		type: "post",
 		data : "buyer="+$(".purchasedialog input[name=buyer]").val()+"&cash="+$(".purchasedialog input[name=purchaseNumber]").val()
 		+"&borderNumber="+$(".purchasedialog input[name=borderNumber]").val()
@@ -135,10 +135,10 @@ $(document).on("click",".purchasedialog input[value=구매]",function(){
 		success: function(result){
 			
 			if(result == 0){
-				alert("구매를 하지 못하였습니다.");
+				alert("구매신청을 하지 못하였습니다.");
 			}else{
 				
-				alert("구매하였습니다");
+				alert("구매신청을 하였습니다");
 				document.location.href="/ItemMarket/view/index.jsp"
 			}
 		},
@@ -146,7 +146,7 @@ $(document).on("click",".purchasedialog input[value=구매]",function(){
 			console.log(err);
 		}
 						
-		});
+	});
 });
 
 

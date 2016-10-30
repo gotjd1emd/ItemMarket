@@ -1,7 +1,7 @@
 package model.dto;
 
 public class TradeHistoryDTO {
-	//¤¾ÇöÀç°Å·¡Áß trading 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å·ï¿½ï¿½ï¿½ trading 
 	private String buyer;
 	private String seller;
 	private String itemName;
@@ -9,6 +9,13 @@ public class TradeHistoryDTO {
 	private int borderNumber;
 	private String dayDate;
 	private String tradeState;
+	
+	public TradeHistoryDTO(String buyer, String seller, int cash, int borderNumber) {
+		this.buyer = buyer;
+		this.seller = seller;
+		this.cash = cash;
+		this.borderNumber = borderNumber;
+	}
 
 	public TradeHistoryDTO(String buyer, String seller, String itemName, int cash, int borderNumber, String dayDate, String tradeState) {
 		super();

@@ -751,4 +751,55 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		}
 		return message;
 	}
+	
+	/**
+	 * requestTrade
+	 */
+	@Override
+	public int requestTrade(String buyer, String seller, int cash, int borderNumber) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement("insert into request_trade(buyer, seller, cash, border_number) "
+					+ "values(?, ?, ?, ?)");
+			ps.setString(1, buyer);
+			ps.setString(2, seller);
+			ps.setInt(3, cash);
+			ps.setInt(4, borderNumber);
+			
+			result = ps.executeUpdate();
+		}finally {
+			DbUtil.dbClose(con, ps, null);
+		}
+		return result;
+	}
+	
+	/**
+	 * selectRequestTrade
+	 */
+	@Override
+	public List<TradeHistoryDTO> selectRequestTrade(String seller) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<TradeHistoryDTO> list = new ArrayList<>();
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement("select buyer, seller, cash, border_number from request_trade "
+					+ "where seller = ?");
+			ps.setString(1, seller);
+			
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(new TradeHistoryDTO(rs.getString("buyer"), rs.getString("seller"),
+						rs.getInt("cash"), rs.getInt("border_number")));
+			}
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return list;
+	}
 }

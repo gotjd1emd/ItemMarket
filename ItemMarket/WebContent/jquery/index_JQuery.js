@@ -249,6 +249,67 @@
 	
 	}); // 마일리지 거래 내역 끝
 	
+	/*구매신청내역*/
+	$(document).on("click",".profilemenu ul #purchaseapply",function(){
+		
+		$(".purchaselistdialog").dialog({
+			minWidth : 1070,
+			minHeight : 530,
+			maxHeight : 530,
+			modal : true,
+		});
+		$.ajax({
+			url:"/ItemMarket/front?command=selectRequestTrade",
+			type : "get",
+			data : "id="+$(".profilemenu ul li #saveId").text(),
+			dataType : "json",
+			
+			success : function(result) {
+				$('.purchaselistdialog section').empty();
+				$('.purchaselistdialog section').append(
+						"<table><tr><td>글번호</td><td>제시금액</td>" +
+						"<td>구매신청자</td><td>확인버튼</td></tr>");
+				
+				$.each(result, function(index, items) {
+					$('.purchaselistdialog section table tbody').append("<tr>"+
+						"<td><span name='borderNumber'>" + items.borderNumber + "</span></td>"+
+						"<td><span name='cash'>" + items.cash + "</span></td>"+
+						"<td><span name='buyer'>" + items.buyer + "</span></td>"+
+						"<td><span><input type='button' value='확인' name='sell'/></span></td></tr>");
+				});	
+				$('.purchaselistdialog section').append("</table>")
+			},
+			error : function(err) {
+				console.log("err : " + err);
+			}
+		}); // 구매신청내역 ajax
+	
+	}); // 구매신청내역 내역 끝
+	
+	$(".purchaselistdialog section").on("click", "input[name=sell]", function() {
+		alert($(this).parents("tr").children("td").children("[name=borderNumber]").text());
+		$.ajax({
+			url:"/ItemMarket/front?command=accountTransfer",
+			type : "post",
+			data : "buyer="+$(this).parents("tr").children("td").children("[name=buyer]").text()+
+					"$cash="+$(this).parents("tr").children("td").children("[name=cash]").text()+
+					"$borderNumber="+$(this).parents("tr").children("td").children("[name=borderNumber]").text(),
+			dataType : "text",
+			
+			success : function(result) {
+				if(result==1) {
+					alert($(this).parents("tr").children("td").children("[name=buyer]").text()+"님과 거래를 시작합니다.");
+					document.location.href="/ItemMarket/view/index.jsp";
+				}else {
+					alert("거래가 실패하였습니다.");
+				}
+			},
+			error : function(err) {
+				console.log("err : " + err);
+			}
+		}); // 구매신청확인 ajax
+	});
+	
 	/*로그아웃 EVENT*/
 	$("#logoutbtn").click(function(){
 		document.location.href="/ItemMarket/front?command=logout"

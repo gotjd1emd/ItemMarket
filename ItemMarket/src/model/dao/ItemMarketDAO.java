@@ -175,7 +175,15 @@ public interface ItemMarketDAO {
 	/**
 	 * passwordfind
 	 * */
-	String userPassWordFind(String id)throws SQLException;
-
+	String userPassWordFind(String id) throws SQLException;
 	
+	/**
+	 * requestTrade
+	 */
+	int requestTrade(String buyer, String seller, int cash, int borderNumber) throws SQLException;
+	
+	/**
+	 * selectRequestTrade
+	 */
+	List<TradeHistoryDTO> selectRequestTrade(String seller) throws SQLException;
 }

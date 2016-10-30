@@ -6,11 +6,11 @@
 <head>
   <meta charset="UTF-8">
   <title>ItemMarket</title>
- 	 <link rel="stylesheet" href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">
-     <link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
+ 	<link rel="stylesheet" href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">
+    <link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="<c:url value="/"/>style/css.css">
 
-		<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp" flush="false"></jsp:include>
 </head>
 <body>
 

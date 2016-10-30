@@ -6,10 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-		
-		
-</script>
+<script type="text/javascript"  src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 	<header>
@@ -25,7 +22,7 @@
 				<li id="profilebtn">프로필</li>
 				<li id="logoutbtn">로그아웃</li>
 			</c:otherwise>	
-				</c:choose>
+			</c:choose>
 			</ul>
 		</div>
 	</header>
@@ -47,7 +44,7 @@
 					<textarea id="chatWindow" rows="5" cols="50" readonly="readonly"></textarea><br>
 					<input type="text" id="partnerId" size="5"/>
 					<input type="text" id="message" size="20"/>
-					<input type="button" id="submit" value="전송" onclick="send()"/>
+					<input type="button" id="submit" value="전송"/>
 				</li>
 			</ul>
 		</div>
@@ -184,38 +181,49 @@
 			return true;
 		}
 
-		var userID = '${sessionScope.userProfile.id}';
-		var textarea = document.getElementById("chatWindow");
-		var url = 'ws://localhost:8000/ItemMarket/webSocket/' + userID;
-		var webSocket = new WebSocket(url);
-		var partnerId = document.getElementById('partnerId');
-		var inputMessage = document.getElementById('message');
-		webSocket.onerror = function(event) {
-			onError(event)
-		};
-		webSocket.onopen = function(event) {
-			onOpen(event)
-		};
-		webSocket.onmessage = function(event) {
-			onMessage(event)
-		};
-		function onMessage(event) {
-			textarea.value += "상대 : " + event.data + "\n";
-		}
-		function onOpen(event) {
-			textarea.value += "연결 성공\n";
-		}
-		function onError(event) {
-			alert(event.data);
-		}
-		function send() {
-			textarea.value += inputMessage.value + "\n";
-			webSocket.send(inputMessage.value);
-			inputMessage.value = "";
-		}
+		$(document).ready(function() {
+			var userID =  $("#saveId").text();
+			var url = 'ws://localhost:8000/ItemMarket/webSocket/' + userID;
+			var partnerId = document.getElementById('partnerId');
+			var inputMessage = document.getElementById('message');
+			var textarea = document.getElementById("chatWindow");
+			var webSocket;
+			console.log("loginCheck :" + $("#loginCheck").val());
+			console.log("session login : ${sessionScope.loginCheck}");
+			if('${sessionScope.loginCheck}' == '1') {
+				webSocket = new WebSocket(url);	
+			}
+			
+			if(webSocket!=null) {
+				webSocket.onerror = function(event) {
+					onError(event)
+				};
+				webSocket.onopen = function(event) {
+					onOpen(event)
+				};
+				webSocket.onmessage = function(event) {
+					onMessage(event)
+				};
+			}
+			function onMessage(event) {
+				textarea.value += "상대 : " + event.data + "\n";
+			}
+			function onOpen(event) {
+				textarea.value += "연결 성공\n";
+			}
+			function onError(event) {
+				alert(event.data);
+			}
+			$("#submit").click(function() {
+				send();
+			});
+			function send() {
+				$("#chatWindow").value += ("#message").value + "\n";
+				webSocket.send(inputMessage.value);
+				inputMessage.value = "";
+			}
+		});
 	</script>
-	
-	
 </body>
 </html>
 

@@ -35,9 +35,11 @@ public class WebSocketServer {
 
 		System.out.println(session);
 		System.out.println(userID + "님께서 로그인하셨습니다.");
+		
 		this.session = session;
 		this.userID = userID;
 		clients.add(this);
+		System.out.println("현재 접속자 수 : " + clients.size());
 	}
 
 	@OnClose
@@ -58,10 +60,11 @@ public class WebSocketServer {
 						client.session.getBasicRemote().sendText(you + " : " + message);
 					}catch (IOException e) {
 						clients.remove(this);
+						System.out.println("삭제");
 						try {
 							client.session.close();
 						}catch(IOException e1) {
-
+							e1.printStackTrace();
 						}
 						System.out.println(userID + "님 연결종료");
 					}

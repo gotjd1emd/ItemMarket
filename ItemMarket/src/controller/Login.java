@@ -23,10 +23,11 @@ public class Login implements Action {
 		int result = ItemMarketService.login(id, password);
 		int checkpoint= 0;	
 		
-			System.out.println("»ðÀÔ µÊ.");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.");
 			
 			UserDTO userProfile = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userProfile);
+			request.getSession().setAttribute("loginCheck", result);
 			if(result == 0 && userProfile == null ){
 				checkpoint = 0;
 			}else{

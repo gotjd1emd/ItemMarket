@@ -212,7 +212,6 @@
 			},
 			error : function(err) {
 				console.log("err : " + err);
-
 			}
 		});
 	}); // 마일리지 거래 내역 끝

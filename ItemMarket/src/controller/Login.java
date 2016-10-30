@@ -24,7 +24,7 @@ public class Login implements Action {
 				
 		PrintWriter out = response.getWriter();
 		if(ItemMarketService.login(id, password)>0){
-			System.out.println("»ğÀÔ µÊ.");
+			System.out.println("ë¡œê·¸ì¸ ì„±ê³µ");
 			
 			UserDTO userProfile = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userProfile);
@@ -37,7 +37,7 @@ public class Login implements Action {
 			
 			request.getSession().invalidate();
 			out.println("<script>");
-			out.println("alert('¾ÆÀÌµğ¿Í ºñ¹øÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.')");
+			out.println("alert('ë¡œê·¸ì¸ì„ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.')");
 
 			out.println("history.back()");
 			out.println("</script>");

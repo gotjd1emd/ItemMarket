@@ -107,7 +107,6 @@
 				<li>날짜</li>
 				<li>거래진행상황</li>
 			</ul>
-
 			<c:forEach var='list' items="${requestScope.tradelist}">
 				<ul>
 					<li><span>${tradelist.buyer}</span></li>

@@ -484,7 +484,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 	  ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
-	  ps.setString(1,"占신뤄옙占쏙옙占쏙옙占쏙옙");
+	  ps.setString(1,"거래중");
 	  ps.setString(2, border.getId());
 	  result = ps.executeUpdate();
 	  
@@ -501,7 +501,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 
 		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
-		ps.setString(1,"占신뤄옙占쏙옙占쏙옙占쏙옙");
+		ps.setString(1,"거래중");
 		ps.setString(2, trade.getSeller());
 		result = ps.executeUpdate();
 			  
@@ -518,14 +518,13 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result = 0;
 
 		con = DbUtil.getConnection();
-		ps = con.prepareStatement("insert into trade_history values (?,?,?,?,?,?,?)");
+		ps = con.prepareStatement("insert into trade_history values (?,?,?,?,?,sysdate,?)");
 		ps.setString(1, id);	//占쏙옙占싱듸옙
 		ps.setString(2, border.getId()); // 占쏙옙占싱듸옙
 		ps.setString(3, border.getItemName());
 		ps.setInt(4, border.getMoney());
 		ps.setInt(5, border.getBorderNumber());
-		ps.setString(6, border.getDayDate());
-		ps.setString(7, border.getItemState());
+		ps.setString(6, border.getItemState());
 			
 		result = ps.executeUpdate();
 

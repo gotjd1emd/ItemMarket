@@ -120,7 +120,7 @@
 	   $(".chargedialog").dialog({
 		  minWidth:500,
 		  minHeight :300,
-		  modal : true						
+		  modal : true
 	   });
    });
 	
@@ -360,7 +360,12 @@
 		document.location.href="/ItemMarket/view/passwordFind.jsp";
 	});
 	
-	
+	/* 채팅 유효성 검사  */
+	function sendCheck(){
+		if($("#partnerId").val() !=""){
+			
+		}
+	}
 	/* 앞 뒤 */
 	var pageNumber = 0;
 	pageCheck();
@@ -389,16 +394,6 @@
 		pageNumber--;
 		pageCheck();
 		console.log(pageNumber);
-	});
-	
-	/* 구매신청란 dialog */
-	$(document).on("click",".profilemenu ul #purchaseapply",function(){
-		$(".purchaselistdialog").dialog({
-			minWidth : 1070,
-			minHeight : 530,
-			maxHeight : 530,
-			modal : true,
-		});
 	});
 });
 	

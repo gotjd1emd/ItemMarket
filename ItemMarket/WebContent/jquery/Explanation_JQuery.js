@@ -118,5 +118,28 @@ $(".subimg .up").click(function(){
 	condition();
 });
 
+$(document).on("click",".purchasedialog input[value=구매]",function(){
+	
+	$.ajax({
+		url : "/ItemMarket/front?command=accountTransfer",
+		type: "post",
+		data : "&cash="+$(".purchasedialog input[name=purchaseNumber]").val(),
+		dataType : "text",
+		success: function(result){
+			if(result == 0){
+				alert("구매를 하지 못하였습니다.");
+			}else{
+				
+				alert("구매하였습니다");
+				document.location.href="/ItemMarket/view/index.jsp"
+			}
+		},
+		error :function(err){
+			console.log(err);
+		}
+						
+		});
+});
+
 
 

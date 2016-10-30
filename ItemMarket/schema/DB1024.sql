@@ -26,7 +26,8 @@ insert into userinfo (id,password,tel,email,location,cash) values ('iii','1234',
 insert into userinfo (id,password,tel,email,location,cash) values ('jjj','1234','01078784343','jjj@hanmail.net','서울시 중랑구',750000);
 insert into userinfo (id,password,tel,email,location,cash) values ('kkk','1234','01087879898','kkk@naver.com','서울시 서초구',640000);
 insert into userinfo (id,password,tel,email,location,cash) values ('lll','1234','01013133535','lll@gmail.com','서울시 관악구',180000);
-
+insert into userinfo (id,password,tel,email,location,cash) values ('admin','admin','02123123','admin@gmail.com','서울시 관악구',0);
+ 
 
 
 select * from  userinfo; 

@@ -16,22 +16,18 @@ public class AccountTransfer implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
+		System.out.println("id는" + id);
 		int cash = Integer.parseInt(request.getParameter("cash"));
-		
+		System.out.println(cash);
 		int borderNumber = Integer.parseInt(request.getParameter("borderNumber"));
-		String content = request.getParameter("content");
-		String itemName = request.getParameter("itemName");
-		String dayDate = request.getParameter("dayDate");
-		String category = request.getParameter("category");
-		String subcategory = request.getParameter("subcategory");
-		String itemState = request.getParameter("itemState");
 		
-		BorderDTO border = new BorderDTO(id, borderNumber, content, itemName, cash, dayDate, category, subcategory, itemState);
+		String buyer = request.getParameter("buyer");
+		
+		
+		BorderDTO border = ItemMarketService.read(borderNumber);
 		
 		//table_history
-		String buyer = request.getParameter("buyer");
-
-		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, id, itemName, cash, borderNumber, dayDate, itemState);
+		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, id, border.getItemName(), cash, borderNumber, "", border.getItemState());
 		 
 		try {
 			ItemMarketService.accountTransfer(id,cash,border,trade);

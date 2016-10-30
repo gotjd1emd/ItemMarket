@@ -82,6 +82,11 @@ $(document).on("click",".mainEx button[name=purchase]",function(){
 		  modal : true						
 	   });
 });
+/* 구매 취소 dialog */
+$("#purchaseform input[value=취소]").click(function(){
+	  $(".purchasedialog").dialog("close");
+});
+
 
 /* subslide 집에서 할거 */
 

@@ -114,6 +114,7 @@
 		$(".menu ul li").animate({"right":"0"},1500);
 		$("#search").animate({"left":"50%"},1500)	;
 	});
+
 	
 	/* 충전 dialog */
    $(document).on("click",".menu ul #charge",function(){
@@ -123,6 +124,7 @@
 		  modal : true
 	   });
    });
+
 	
 	/* 로그인 dialog */
    $(document).on("click",".menu ul #loginbtn",function(){
@@ -329,6 +331,20 @@
 			}
 	});//로그인 버튼 끝
 	
+	/* 마일리지 충전 dialog */
+	   $(document).on("click",".menu ul #charge",function(){
+		   $(".chargedialog").dialog({
+			  minWidth:500,
+			  minHeight :300,
+			  modal : true						
+		   });
+	   });
+	 
+	/* 마일리지 취소 버튼 */
+	  $("#chargeform input[value=취소]").click(function(){
+		  $(".chargedialog").dialog("close");
+	  });
+	
 	
 	/* 마일리지 버튼  */
 	$(document).on("click",".chargedialog input[value=충전]",function(){
@@ -395,6 +411,18 @@
 		pageCheck();
 		console.log(pageNumber);
 	});
+
+	/* 구매신청란 dialog */
+	$(document).on("click",".profilemenu ul #purchaseapply",function(){
+		$(".purchaselistdialog").dialog({
+			minWidth : 1070,
+			minHeight : 530,
+			maxHeight : 530,
+			modal : true,
+		});
+	});
+
+
 });
 	
 

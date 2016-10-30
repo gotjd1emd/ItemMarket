@@ -28,7 +28,7 @@ public class Login implements Action {
 			UserDTO userProfile = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userProfile);
 			request.getSession().setAttribute("loginCheck", result);
-			if(result == 0 && userProfile == null ){
+			if(result == 0 || userProfile == null ){
 				checkpoint = 0;
 			}else{
 				checkpoint = 1;

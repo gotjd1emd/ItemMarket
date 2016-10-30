@@ -44,7 +44,7 @@
 	</li>
 	</ul> 
 	<div class="passwordchagesubmit">
-	<input type="submit" value="확인"><input type="button" value="취소">
+	<input type="button" value="확인"><input type="button" value="취소">
 	</div>
 	</div>
 	<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>

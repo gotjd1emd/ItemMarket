@@ -74,12 +74,31 @@ public class ItemMarketService {
 	}
 	
 	public static int addCash(String id, int cash) {
-		
+		Connection con = null;
 		int result=0;
 		try {
-			result=marketDAO.addCash(id, cash);
+			con = DbUtil.getConnection();
+			con.setAutoCommit(false);
+			result = marketDAO.addCash(con, id, cash);
+			UserDTO userDTO = marketDAO.getProfile(id);
+			result = marketDAO.updateCashHistory(con, id, "마일리지 충전", cash, userDTO.getCash());
+			
+			con.setAutoCommit(true);
+			if(result==1) {
+				con.commit();
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			try {
+			con.rollback();
+			}catch(Exception e1) {
+				e1.printStackTrace();
+			}
+		}finally {
+			try {
+			con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return result;
 	}
@@ -204,13 +223,16 @@ public class ItemMarketService {
 			marketDAO.receiveCashAgency(con, money);
 			marketDAO.borderStateChange(con, border);
 			marketDAO.tradeStateChange(con, trade);
-			marketDAO.trading(con, id, money, border);
+			if(marketDAO.trading(con, id, money, border)>0){
+				System.out.println("됬다구");
+			}
 			
-			con.setAutoCommit(true);//�ڵ�Ŀ�Լ�������
-			con.commit(); // ����
+			con.commit(); 
 		}catch(SQLException e){
-			con.rollback(); // öȸ
+			System.out.println("ddd");
+			con.rollback();
 		}finally{
+			con.setAutoCommit(true);
 			con.close();
 		}
 	}

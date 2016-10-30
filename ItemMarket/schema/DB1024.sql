@@ -28,10 +28,10 @@ insert into userinfo (id,password,tel,email,location,cash) values ('kkk','1234',
 insert into userinfo (id,password,tel,email,location,cash) values ('lll','1234','01013133535','lll@gmail.com','서울시 관악구',180000);
 insert into userinfo (id,password,tel,email,location,cash) values ('admin','admin','02123123','admin@gmail.com','서울시 관악구',0);
  
-
+update trade_history set trade_state = '거래중' where buyer='bbb' or seller='bbb'
 
 select * from  userinfo; 
-  
+  update userinfo set cash=(select cash from userinfo where id='bbb')-15000 where id='bbb'
 --
 grant create sequence to admin;   --
 
@@ -158,6 +158,8 @@ create table trade_history (
   trade_state varchar2(40) -- 거래 진행 상황
   
 );
+
+insert into trade_history values ('aaa','bbb','갤럭시S10',4000,29,sysdate,'구매대기중')
 
 --  border Info 검색후 border-number 숫자를 변경해 주세요                                               										  
 select * from borderInfo;    

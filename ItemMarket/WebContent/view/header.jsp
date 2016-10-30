@@ -47,14 +47,14 @@
 				<li>이메일 : <span> ${sessionScope.userProfile.email}</span></li>
 				<li>주소 : <span>${sessionScope.userProfile.location}</span></li>
 			
-				<li>
+			
 				<form name="chatForm"  >
-					<textarea id="chatWindow" rows="5" cols="50" readonly="readonly"></textarea><br>
-					<input type="text" id="partnerId" name="partnerId" size="5" placeholder="귓속말 걸 상대를 입력해주세요"/>
-					<input type="text" id="message" size="20" placeholder="채팅을 입력해주세요"/>
-					<input type="button" id="submit" value="전송" onclick="chatIdCheck()"/>
+					<li><textarea id="chatWindow" rows="5" cols="50" readonly="readonly"></textarea></li>
+					<li><input type="text" id="partnerId" name="partnerId" size="5" placeholder="귓속말 걸 상대를 입력해주세요"/></li>
+					<li><input type="text" id="message" size="20" placeholder="채팅을 입력해주세요"/></li>
+					<li><input type="button" id="submit" value="전송" onclick="chatIdCheck()"/></li>
 				</form>
-				</li>
+			
 				</div>
 				<div class="after">
 				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp?id=${sessionScope.userProfile.id}">프로필수정</a></li>

@@ -72,7 +72,7 @@
 
 	$(".sub_category ul").on("click","li", (function() {
 		$(".sub_category ul li").css({color:"#000", background:"#ffffff"});
-		$(this).css({color:"#fff", background:"#0000ff"});
+		$(this).css({color:"#fff", background:"#FFB300"});
 		subCategory = "&subCategory="+$(this).text();
 	}));
 
@@ -263,9 +263,9 @@
 			dataType : "text",
 			success : function(result){
 				if(result == 0){
-					$(".memberupform ul li .check").text("사용 가능한 아이디 입니다.")
+					$(".memberupform ul li #check").text("사용 가능한 아이디 입니다.")
 				}else{
-					$(".memberupform ul li .check").text("중복입니다.")
+					$(".memberupform ul li #check").text("중복입니다.")
 				}
 			},
 			error : function(err){

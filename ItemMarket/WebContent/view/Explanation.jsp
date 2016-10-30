@@ -35,7 +35,7 @@
 		<div class="mainEx">
 			<h1>&lt상품정보&gt</h1>
 			<ul>
-			
+				
 				<li>제품 : <span>${border.itemName}</span></li>
 				<li>가격 : <span>${border.money}원</span>
 				<li>등록날짜 : <span>${border.dayDate}</span>		
@@ -58,6 +58,7 @@
 				</section>
 				<div class="purchasedialog" title="구매하기">
 					<section id="purchaseform">
+						<input type="number" name="borderNumber" value="${border.borderNumber}"  hidden readonly="readonly">
 						<input type="number" name="purchaseNumber" placeholder="구매할 금액을 입력해주세요">
 						<input type="button" value="구매">
 						<input type="button" value="취소">

@@ -9,6 +9,7 @@
 		$(".searchmain").animate({top : '45%'});
 		$(".category").dialog("close");
 		category = $(this).text();
+		alert(category);
 		if(category == "전자제품") {
 			$(".sub_category ul").empty();
 			$(".sub_category ul").append("<li>컴퓨터</li>");
@@ -23,10 +24,10 @@
 			$(".sub_category ul").append("<li>캐쥬얼</li>");
 			$(".sub_category ul").append("<li>영/유아</li>");
 			$(".sub_category ul").append("<li>악세서리</li>");
-		}else if(category == "생활") {
+		}else if(category == "의료,의약") {
 			$(".sub_category ul").empty();
-			$(".sub_category ul").append("<li>잡화</li>");
-			$(".sub_category ul").append("<li>주방</li>");
+			$(".sub_category ul").append("<li>의료기기</li>");
+			$(".sub_category ul").append("<li>다이어트 식품</li>");
 		}else if(category == "가구") {
 			$(".sub_category ul").empty();
 			$(".sub_category ul").append("<li>침구</li>");
@@ -34,7 +35,15 @@
 			$(".sub_category ul").append("<li>의자</li>");
 			$(".sub_category ul").append("<li>스탠드</li>");
 			$(".sub_category ul").append("<li>옷장</li>");
-		}
+		}else if(category == "생활") {
+			$(".sub_category ul").empty();
+			$(".sub_category ul").append("<li>침구</li>");
+			$(".sub_category ul").append("<li>인테리어</li>");
+		}else if(category == "사무용품") {
+			$(".sub_category ul").empty();
+			$(".sub_category ul").append("<li>소모품</li>");
+			$(".sub_category ul").append("<li>프린터</li>");
+		} 
 		category = "&category="+category;
 	});
 

@@ -31,11 +31,15 @@ public class SignUp implements Action {
 		if(marketService.signUp(userInfo)>0){
 			response.sendRedirect("view/index.jsp");
 		}else{
-			//·Î±×¾Æ¿ô..?
+
 			request.getSession().invalidate();
 			out.println("<script>");
-			out.println("alert('È¸¿ø°¡ÀÔÀ» ÇÏÁö ¸øÇß½À´Ï´Ù.')");
+			out.println("alert('íšŒì›ê°€ì…ì„ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.')");
+			out.println("history.back()");
+			
 			out.println("</script>");
+
 		}
-	}
+		}
+	
 }

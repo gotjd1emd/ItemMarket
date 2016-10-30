@@ -294,7 +294,7 @@ public class ItemMarketService {
 			e.printStackTrace();
 		}
 		return userDTO;
-	}
+	}	
+}
 	
 
-}

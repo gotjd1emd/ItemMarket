@@ -53,8 +53,8 @@
 				<form name="signForm" id="singForm" method="post">
 					<ul>
 						<li>아이디</li>
-						<li><input type="text" name="id" placeholder="아이디를 입력해주세요"><span
-							class="check"></span></li>
+						<li><input type="text" name="id" placeholder="아이디를 입력해주세요""><span
+							id="check"></span></li>
 						<li>비밀번호</li>
 						<li><input type="password" name="password"
 							placeholder="비밀번호를 입력해주세요"></li>
@@ -91,10 +91,10 @@
 						<input type="button" value="로그인">
 					</div>
 				</form>
-			</section>
+			</section>		
 		</div>
 	</div>
-
+	
 	<div class="Transactions" title="거래내역">
 		<section id="Transactionsfrom">
 

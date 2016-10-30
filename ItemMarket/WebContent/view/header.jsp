@@ -226,14 +226,14 @@
 			}
 			
 		}
-
+		var webSocket;
 		$(document).ready(function() {
 			var userID =  $("#saveId").text();
 			var url = 'ws://localhost:8000/ItemMarket/webSocket/' + userID;
 			var partnerId = document.getElementById('partnerId');
 			var inputMessage = document.getElementById('message');
 			var textarea = document.getElementById("chatWindow");
-			var webSocket;
+			
 			console.log("loginCheck :" + $("#loginCheck").val());
 			console.log("session login : ${sessionScope.loginCheck}");
 			if('${sessionScope.loginCheck}' == '1') {
@@ -252,7 +252,7 @@
 				};
 			}
 			function onMessage(event) {
-				textarea.value += "상대 : " + event.data + "\n";
+				textarea.value += event.data + "\n";
 			}
 			function onOpen(event) {
 				textarea.value += "연결 성공\n";
@@ -260,12 +260,12 @@
 			function onError(event) {
 				alert(event.data);
 			}
-			function send() {
-				$("#chatWindow").value += ("#message").value + "\n";
-				webSocket.send(inputMessage.value);
-				inputMessage.value = "";
-			}
 		});
+		function send() {
+			$("#chatWindow").val($("#chatWindow").val() + "본인 : " + $("#message").val() + "\n");
+			webSocket.send($("#partnerId").val()+"|"+$("#message").val());
+			$("#message").val("");
+		}
 	</script>
 </body>
 </html>

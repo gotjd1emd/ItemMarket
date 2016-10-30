@@ -24,7 +24,7 @@ public class WebSocketServer {
 
 		StringTokenizer token = new StringTokenizer(message, "|");
 		String you = token.nextToken();
-		String sendMessage = token.nextToken();
+		String sendMessage = userID + " : " + token.nextToken();
 		System.out.println(you + "님에게 전송 : " + sendMessage);
 		sendMessage(sendMessage, you);
 	}
@@ -53,11 +53,13 @@ public class WebSocketServer {
 	}
 
 	private void sendMessage(String message, String you) {
+		boolean flag = true;
 		for(WebSocketServer client : clients) {
 			if(client.getUserID().equals(you)) {
 				synchronized (client) {
 					try {
-						client.session.getBasicRemote().sendText(you + " : " + message);
+						client.session.getBasicRemote().sendText(message);
+						flag = false;
 					}catch (IOException e) {
 						clients.remove(this);
 						System.out.println("삭제");
@@ -69,6 +71,20 @@ public class WebSocketServer {
 						System.out.println(userID + "님 연결종료");
 					}
 				}
+			}
+		}
+		if(flag) {
+			for(WebSocketServer client : clients) {
+				synchronized (client) {
+					try {
+						if(client.getUserID().equals(this.userID)) {
+							client.session.getBasicRemote().sendText(you+"님은 접속해있지 않습니다.");
+						}
+					}catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				
 			}
 		}
 	}

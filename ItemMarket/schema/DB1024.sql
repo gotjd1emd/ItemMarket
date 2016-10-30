@@ -158,12 +158,12 @@ create table trade_history (
 select * from borderInfo;    
 select * from trade_history;
                                                                                                                            --  ▼   
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','갤럭시S6',2000,166,'2016-10-24','거래완료');
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','T-100',3000,167,'2016-10-24','거래완료');
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'ccc','CalvinKlein',4400,168,'2016-10-24','거래완료');                                                                               --  ▼
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','갤럭시S6',2000,1,'2016-10-24','거래완료');
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','T-100',3000,2,'2016-10-24','거래완료');
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'ccc','CalvinKlein',4400,3,'2016-10-24','거래완료');                                                                               --  ▼
                                                                                                           --  ▼
-  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','eee','목도리',120000,169,sysdate,'거래완료');
-  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','iii','텀블러',200000,170,sysdate,'거래완료');
+  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','eee','목도리',120000,4,sysdate,'거래완료');
+  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','iii','텀블러',200000,5,sysdate,'거래완료');
 
 --drop table borderinfo;
 

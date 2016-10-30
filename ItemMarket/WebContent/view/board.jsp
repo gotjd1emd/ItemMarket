@@ -20,7 +20,7 @@
 
 		<div class="container">
 			<section id="mainboard">
-			<form name="write" action="../front?command=write" method="post" onSubmit="return checkValid()"
+			<form name="write" action="../front?command=write&id=${sessionScope.userProfile.id}" method="post" onSubmit="return checkValid()"
 				enctype="multipart/form-data">
 				<ul>
 					<li>카테고리</li>
@@ -93,11 +93,19 @@
 				return false;
 			}
 			if (!$("input[type=radio]:checked").val()) {
-				alert("서브카테고리르 선택해주세요");
+				alert("서브카테고리를 선택해주세요");
 				return false;
 			}
-			if ($("input[name=sale]").val() == "") {
-				alert("판매 방식을 선택해주세요");
+			if ($("input[name=title]").val() == "") {
+				alert("제품 이름을 입력해주세요");
+				return false;
+			}
+			if ($("input[name=price]").val() == "") {
+				alert("가격을 입력해주세요");
+				return false;
+			}
+			if ($("input[name=phone]").val() == "") {
+				alert("연락처를 입력해주세요");
 				return false;
 			}
 		}

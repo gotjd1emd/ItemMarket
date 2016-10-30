@@ -26,9 +26,11 @@ public class SignUp implements Action {
 		UserDTO userInfo = new UserDTO(id,password,tel,email,location,cash);
 		int result = marketService.signUp(userInfo);
 		PrintWriter out = response.getWriter();
+
 		if(result == 0){
 			request.getSession().invalidate();
 		}
 		out.println(result);
 	}
+
 }

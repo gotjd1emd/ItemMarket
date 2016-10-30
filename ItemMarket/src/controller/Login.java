@@ -23,7 +23,6 @@ public class Login implements Action {
 		int result = ItemMarketService.login(id, password);
 		int checkpoint= 0;	
 		
-		
 			System.out.println("»ðÀÔ µÊ.");
 			
 			UserDTO userProfile = ItemMarketService.getProfile(id);
@@ -36,7 +35,10 @@ public class Login implements Action {
 			PrintWriter out = response.getWriter();
 			out.println(checkpoint);
 			
-	
-	}
+
+
+		}
 		
 	}
+		
+	

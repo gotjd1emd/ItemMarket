@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +19,8 @@ public class Write implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		String id = (String) request.getSession().getAttribute("id");
+		
+		String id = request.getParameter("id");
 		String saveDir=request.getServletContext().getRealPath("/img/");
 		int maxSize=1024*1024*100; // 100M
 		String encoding="UTF-8";
@@ -40,7 +41,6 @@ public class Write implements Action {
 		 
 		
 		BorderDTO borderDTO = new BorderDTO(id, content, title, price, "", category, subcategory, itemState);
-		
 		
 		PrintWriter out = response.getWriter();
 		if(ItemMarketService.write(borderDTO)>0){

@@ -119,9 +119,9 @@ select ROWNUM num, id, border_number, content,itemName, money, dayDate, category
 where category = '가구' and sub_category = '침구' and itemName like '%안락%' order by daydate desc;
 
 
-select * from (select ROWNUM num, id, border_number, content, itemName, money, dayDate, category, sub_Category, itemState from borderinfo 
+select * from (select ROWNUM num, id, border_number, content, itemName, money, dayDate, category, sub_Category, itemState from borderinfo
 where category = '가구' and sub_category = '침구' and itemName like '%안락%' order by daydate desc
---
+
 create table  messenger(
   sender varchar2(20) not null constraint  sender_fk references userinfo(id) on delete cascade,  --
   receiver varchar2(20) not null constraint receiver_fk references userinfo(id) on delete cascade,  -- 

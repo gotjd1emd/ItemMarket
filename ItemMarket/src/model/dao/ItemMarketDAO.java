@@ -14,43 +14,43 @@ import model.dto.UserDTO;
 public interface ItemMarketDAO {
 
 	/**
-	 * 1. ·Î±×ÀÎ
-	 * 1 - ·Î±×ÀÎ, 0 - ·Î±×ÀÎ½ÇÆÐ
+	 * 1. ï¿½Î±ï¿½ï¿½ï¿½
+	 * 1 - ï¿½Î±ï¿½ï¿½ï¿½, 0 - ï¿½Î±ï¿½ï¿½Î½ï¿½ï¿½ï¿½
 	 */
 	int login(String id, String pwd) throws SQLException;
 	
 	/**
-	 * 2. È¸¿ø°¡ÀÔ
-	 * 1 - °¡ÀÔ, 0 - °¡ÀÔ½ÇÆÐ
+	 * 2. È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * 1 - ï¿½ï¿½ï¿½ï¿½, 0 - ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½
 	 */
 	int signUp(UserDTO userInfo) throws SQLException;
 	
 	/**
-	 * 3. ÇÁ·ÎÇÊ
-	 * ID, ÀÌ¸§, ¿¬¶ôÃ³, ¸ÞÀÏ, Áö¿ª, ½Å¿ëµî±Þ, ¸¶ÀÏ¸®Áö
+	 * 3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ID, ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½ï¿½Ã³, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Å¿ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½
 	 */
 	UserDTO getProfile(String id) throws SQLException;
 	
 	/**
-	 * 4. °Å·¡³»¿ª
-	 * °Å·¡³¯Â¥, ±¸¸ÅÀÚ, ÆÇ¸ÅÀÚ, °Å·¡³»¿ë
+	 * 4. ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½Å·ï¿½ï¿½ï¿½Â¥, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ç¸ï¿½ï¿½ï¿½, ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	List<TradeHistoryDTO> myHistory(String id) throws SQLException;
 	
 	/**
-	 * 5. ¸¶ÀÏ¸®Áö ³»¿ª Ãâ·Â
-	 * ÃæÀü³¯Â¥, »ç¿ëÇÑ³¯Â¥, ³²Àº ¸¶ÀÏ¸®Áö
+	 * 5. ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¥, ï¿½ï¿½ï¿½ï¿½Ñ³ï¿½Â¥, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½
 	 */
 	List<CashHistoryDTO> selectAllCashHistory(String id) throws SQLException;
 	
 	/**
-	 * 6. ¸¶ÀÏ¸®Áö ÃæÀü
+	 * 6. ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	int addCash(String id, int cash) throws SQLException;
 	
 	/**
-	 * 6. °Ë»ö
-	 * °Ô½Ã¹°
+	 * 6. ï¿½Ë»ï¿½
+	 * ï¿½Ô½Ã¹ï¿½
 	 */
 	List<BorderDTO> search(String word, String category, String subCategory, int page) throws SQLException;
 	
@@ -60,114 +60,114 @@ public interface ItemMarketDAO {
 	int pageNumber(String word, String category, String subCategory) throws SQLException;
 	
 	/**
-	 * 7. ¸Þ½ÅÀúÇÔ
-	 * ¹ÞÀº»ç¶÷, º¸³»´Â»ç¶÷, ³»¿ë
+	 * 7. ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
 	 */
 	List<MemoDTO> memobox(String id) throws SQLException;
 	
 	/**
-	 * 8. ±Û¾²±â
-	 * ÀÌ¹ÌÁö, Áö¿ª, ±Ý¾×, ±Û³»¿ë, id
+	 * 8. ï¿½Û¾ï¿½ï¿½ï¿½
+	 * ï¿½Ì¹ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Ý¾ï¿½, ï¿½Û³ï¿½ï¿½ï¿½, id
 	 */
 	int write(BorderDTO border) throws SQLException;
 	
 	/**
-	 * 8. ±Û¾²±â
-	 * ÀÌ¹ÌÁö¸¦ ³Ö±â À§ÇÑ ¸Þ¼Òµå
+	 * 8. ï¿½Û¾ï¿½ï¿½ï¿½
+	 * ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	 * */
 	int imgWrite(String imgName) throws Exception;
 	
 	/**
-	 * 9. ±ÛÀÐ±â
-	 * ÀÌ¹ÌÁö, Áö¿ª, ±Ý¾×, ±Û³»¿ë, id
+	 * 9. ï¿½ï¿½ï¿½Ð±ï¿½
+	 * ï¿½Ì¹ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Ý¾ï¿½, ï¿½Û³ï¿½ï¿½ï¿½, id
 	 */
 	BorderDTO read(int borderNum) throws SQLException;
 	
 	/**
-	 * 9. ±ÛÀÐ±â
-	 *  ÀÌ¹ÌÁö¸¦ ³Ö±â À§ÇÑ ¸Þ¼Òµå
+	 * 9. ï¿½ï¿½ï¿½Ð±ï¿½
+	 *  ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	 */
 	List<String> imgRead(int borderNum) throws Exception;
 
 	/**
-	 * 10. ±¸¸ÅÀÚ ¸¶ÀÏ¸®Áö¸¦ Áß°³ÀÚ¿¡°Ô
-	 * 10, 11, 12, 13¼ø¼­·Î commit, rollback
+	 * 10. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½
+	 * 10, 11, 12, 13ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ commit, rollback
 	 */
 	int sendCashAgency(Connection con,String id, int money) throws SQLException;
 	
 	/**
-	 * 11. Áß°³ÀÚ ¸¶ÀÏ¸®Áö¸¦ ±¸¸ÅÀÚ¿¡°Ô ¹ÞÀº¸¸Å­ Áõ°¡
-	 * Áß°³ÀÚ´Â user_infoÀÇ adminÀ¸·Î Ãß°¡ÇÑ´Ù.
+	 * 11. ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½ß°ï¿½ï¿½Ú´ï¿½ user_infoï¿½ï¿½ adminï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	 */
 	int receiveCashAgency(Connection con,int money) throws SQLException;
 	
 	/**
-	 * 12-1. °Ô½Ã¹°ÀÇ °Å·¡ ÁøÇà»óÈ²À» ÁøÇàÁß ¶Ç´Â °Å·¡¿Ï·á·Î º¯°æ(°Ô½ÃÆÇ¿¡¼­ º¸¿©ÁÙ°Í)
+	 * 12-1. ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½Å·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½Å·ï¿½ï¿½Ï·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Ô½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù°ï¿½)
 	 */
 	int borderStateChange(Connection con,BorderDTO border) throws SQLException;
 	
 	/**
-	 * 12-2. °Ô½Ã¹°ÀÇ °Å·¡ ÁøÇà»óÈ²À» ÁøÇàÁß ¶Ç´Â °Å·¡¿Ï·á·Î º¯°æ(°Å·¡³»¿ª¿¡¼­ º¸¿©ÁÙ°Í)
+	 * 12-2. ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½Å·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½Å·ï¿½ï¿½Ï·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù°ï¿½)
 	 */
 	int tradeStateChange(Connection con,TradeHistoryDTO trade) throws SQLException;
 	
 	/**
-	 * 13. °Å·¡ÁøÇà³»¿ª Ãß°¡
+	 * 13. ï¿½Å·ï¿½ï¿½ï¿½ï¿½à³»ï¿½ï¿½ ï¿½ß°ï¿½
 	 */
 	int trading(Connection con,String id, int money, BorderDTO border) throws SQLException;
 	
 	
 	/**
-	 * 15. ÇØ´ç °Ô½Ã¹°¿¡ ´ëÇÑ °Å·¡ÁøÇà³»¿ª °Ë»ö
+	 * 15. ï¿½Ø´ï¿½ ï¿½Ô½Ã¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å·ï¿½ï¿½ï¿½ï¿½à³»ï¿½ï¿½ ï¿½Ë»ï¿½
 	 */
 	TradeHistoryDTO selectByBorderTrade(Connection con, int borderNumber) throws SQLException;
 	
 	/**
-	 * 16. Áß°³¼Ò ¸¶ÀÏ¸®Áö¸¦ ÆÇ¸ÅÀÚ¿¡°Ô
-	 * 15, 16, 17, 12, 18¼ø¼­·Î commit ¶Ç´Â rollback
+	 * 16. ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½
+	 * 15, 16, 17, 12, 18ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ commit ï¿½Ç´ï¿½ rollback
 	 */
 	int sendCashSeller(Connection con, String id, int money) throws SQLException;
 	
 	/**
-	 * 17. Áß°³¼ÒÀÇ ¸¶ÀÏ¸®Áö °¨¼Ò
+	 * 17. ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	int receiveCashSeller(Connection con, int money) throws SQLException;
 	
 	/**
-	 * 18-1. ±¸¸Å¿Ï·á ÁøÇà³»¿ª¿¡ »èÁ¦
+	 * 18-1. ï¿½ï¿½ï¿½Å¿Ï·ï¿½ ï¿½ï¿½ï¿½à³»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	int completeBorder(Connection con,BorderDTO border) throws SQLException;
 	/**
-	 * 18-2. ±¸¸Å¿Ï·á ÁøÇà³»¿ª¿¡ »èÁ¦(°Å·¡³»¿ª¿¡¼­ )
+	 * 18-2. ï¿½ï¿½ï¿½Å¿Ï·ï¿½ ï¿½ï¿½ï¿½à³»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ )
 	 */
 	int completeTrade(Connection con,TradeHistoryDTO trade) throws SQLException;
 	
 	
 	/**
-	 * °Å·¡Áß ¸¶ÀÏ¸®Áö ³»¿ª Ãß°¡
+	 * ï¿½Å·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 	 * 
 	 */
 	int updateCashHistory(Connection con, String id, String itemName, int money, int currentCash) throws SQLException;
 	
 	/**
-	 * »ç¿ëÀÚ Á¤º¸ »èÁ¦
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * */
 	int userDelete(String id, String pw) throws SQLException;
 
 	
 	
 	/**
-	 * »ç¿ëÀÚ Á¤º¸ ¼öÁ¤
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * */
 	int userUpdate(String id , String email, String tel, String location) throws SQLException;
 	
 	/**
-	 * ºñ¹Ð¹øÈ£ °íÄ¡±â
+	 * ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½Ä¡ï¿½ï¿½
 	 * */
 	int userPasswordUpdate(String id, String password , String newPassword) throws SQLException;
 
 	/**
-	 *  id,password °íÄ¡±â
+	 *  id,password ï¿½ï¿½Ä¡ï¿½ï¿½
 	 * */
 	UserDTO userUpdateCheck(String id, String password) throws SQLException;
 	

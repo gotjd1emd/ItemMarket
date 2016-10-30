@@ -18,8 +18,10 @@
 				<li id="loginbtn">로그인</li>
 				<li id="sigupbtn">회원가입</li>
 			</c:when>
-			<c:otherwise>		
+			<c:otherwise>
+			<li>${sessionScope.userProfile.id}님 안녕하세요	</li>
 				<li id="profilebtn">프로필</li>
+				<li id="charge">마일리지 충전</li>
 				<li id="logoutbtn">로그아웃</li>
 			</c:otherwise>	
 			</c:choose>
@@ -30,27 +32,48 @@
 	<section id="profile">
 		<div class="profilemenu">
 			<ul>
-				<li><img src="<c:url value="/"/>image/player.png" alt="myimg"><span
-					class="glyphicon glyphicon-remove"></span></li>
+			
+				<li><img src="<c:url value="/"/>image/player.png" alt="myimg"><span style="cursor: pointer; top:0; left:0; position: absolute; padding:10px"
+					class="glyphicon glyphicon-remove"></span>
+					<div class="beaf">
+					<img src="<c:url value="/"/>image/after.png" alt="before">
+					<img src="<c:url value="/"/>image/before.png" alt="after">
+					</div>
+					</li>
+				<div class="before">
 				<li>아이디 : <span id="saveId">${sessionScope.userProfile.id}</span></li>
 				<li>마일리지 : ${sessionScope.userProfile.cash}<span></span></li>
 				<li>전화번호 : <span> ${sessionScope.userProfile.tel}</span></li>
 				<li>이메일 : <span> ${sessionScope.userProfile.email}</span></li>
 				<li>주소 : <span>${sessionScope.userProfile.location}</span></li>
-				<li>거래내역확인</li>
-				<li>마일리지거래내역</li>
-				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp?id=${sessionScope.userProfile.id}">프로필수정</a></li>
+			
 				<li>
+				<form name="chatForm"  >
 					<textarea id="chatWindow" rows="5" cols="50" readonly="readonly"></textarea><br>
-					<input type="text" id="partnerId" size="5"/>
-					<input type="text" id="message" size="20"/>
-					<input type="button" id="submit" value="전송"/>
+					<input type="text" id="partnerId" name="partnerId" size="5" placeholder="귓속말 걸 상대를 입력해주세요"/>
+					<input type="text" id="message" size="20" placeholder="채팅을 입력해주세요"/>
+					<input type="button" id="submit" value="전송" onclick="chatIdCheck()"/>
+				</form>
 				</li>
+				</div>
+				<div class="after">
+				<li><a href="<c:url value="/"/>view/ModifyInformation.jsp?id=${sessionScope.userProfile.id}">프로필수정</a></li>
+				<li id="transactionsEvent">거래내역확인</li>
+				<li id="cashTransactionsEvent">마일리지거래내역</li>
+				</div>
 			</ul>
 		</div>
 	</section>
 
-	
+	<!-- 충전 dialog -->
+	<div class="chargedialog" title="마일리지 충전">
+		<section id="chargeform">
+			<h3>현재 ${sessionScope.userProfile.id}님의 마일리지  : ${sessionScope.userProfile.cash} </h3>
+			<input type="number" name="chargeNumber" placeholder="충전할 금액을 적어주십시오">
+			<input type="button" value="충전">
+			<input type="button" value="취소">
+		</section>
+	</div>
 
 
 	<!-- 회원가입 dialog  -->
@@ -61,8 +84,8 @@
 				<form name="signForm" id="singForm" method="post">
 					<ul>
 						<li>아이디</li>
-						<li><input type="text" name="id" placeholder="아이디를 입력해주세요"><span
-							class="check"></span></li>
+						<li><input type="text" name="id" placeholder="아이디를 입력해주세요""><span
+							id="check"></span></li>
 						<li>비밀번호</li>
 						<li><input type="password" name="password"
 							placeholder="비밀번호를 입력해주세요"></li>
@@ -100,10 +123,10 @@
 						<input type="button" name="searchpassword" value="비밀번호찾기">
 					</div>
 				</form>
-			</section>
+			</section>		
 		</div>
 	</div>
-
+	
 	<div class="Transactions" title="거래내역">
 		<section id="Transactionsfrom">
 
@@ -180,6 +203,16 @@
 			}
 			return true;
 		}
+		function chatIdCheck(){
+			var f3 = window.document.chatForm;
+			if(f3.partnerId.value == ""){
+				alert("상대방의 ID를 입력해주세요");
+				return false;
+			}else{
+				send();
+			}
+			
+		}
 
 		$(document).ready(function() {
 			var userID =  $("#saveId").text();
@@ -214,9 +247,6 @@
 			function onError(event) {
 				alert(event.data);
 			}
-			$("#submit").click(function() {
-				send();
-			});
 			function send() {
 				$("#chatWindow").value += ("#message").value + "\n";
 				webSocket.send(inputMessage.value);

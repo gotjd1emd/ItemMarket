@@ -294,7 +294,9 @@ public class ItemMarketService {
 			e.printStackTrace();
 		}
 		return userDTO;
-	}
+
+	}	
+
 	/**
 	 * 23
 	 * */
@@ -307,6 +309,6 @@ public class ItemMarketService {
 		}
 		return message;
 	}
-	
-
 }
+
+

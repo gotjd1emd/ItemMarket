@@ -231,7 +231,6 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 				ps.setString(1, category);
 				ps.setString(2, subCategory);
 				ps.setString(3, "%"+word.trim()+"%");
-				ps.setString(3, "%"+word+"%");
 				ps.setInt(4, (page-1)*9+1);
 				ps.setInt(5, page*9);
 			}
@@ -738,8 +737,9 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		return userDTO;
 		
 	}
+
 	/**
-	 * 23.ºñ¹Ð¹øÈ£ Ã£±â
+	 * 23.ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½ï¿½
 	 * */
 
 	@Override
@@ -760,6 +760,4 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		}
 		return message;
 	}
-	
-
 }

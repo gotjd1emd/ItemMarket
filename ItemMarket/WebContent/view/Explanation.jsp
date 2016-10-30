@@ -35,7 +35,7 @@
 		<div class="mainEx">
 			<h1>&lt상품정보&gt</h1>
 			<ul>
-				<li hidden></li>
+			
 				<li>제품 : <span>${border.itemName}</span></li>
 				<li>가격 : <span>${border.money}원</span>
 				<li>등록날짜 : <span>${border.dayDate}</span>		
@@ -46,16 +46,23 @@
 							<li>판매지역 : <span>${user.location}</span></li>
 							<li>연락처 : <span>${user.tel}</span> </li>
 						</ul>
-						
-						<button type="button">구매하기</button>
+						<div class="purchasebtn">
+						<button type="button" name="purchase" >구매하기</button>
 						<button type="button">뒤로가기</button>
-
+						</div>
 					</div>
 					<div class="content">
 						<h1>설명</h1>
 						<h3>${border.content}</h3>
 					</div>
 				</section>
+				<div class="purchasedialog" title="구매하기">
+					<section id="purchaseform">
+						<input type="number" name="purchaseNumber" placeholder="구매할 금액을 입력해주세요">
+						<input type="button" value="구매">
+						<input type="button" value="취소">
+					</section>
+				</div>
 				<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-1.8.3.min.js"></script>
 				<script type="text/javascript" src="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 				<link rel="stylesheet" href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">

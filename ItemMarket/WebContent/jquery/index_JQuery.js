@@ -14,6 +14,7 @@
 		if(category == "전자제품") {
 			$(".sub_category ul").empty();
 			$(".sub_category ul").append("<li>컴퓨터</li>");
+			$(".sub_category ul").append("<li>가전제품</li>");
 			$(".sub_category ul").append("<li>휴대폰</li>");
 			$(".sub_category ul").append("<li>멀티미디어</li>");
 			$(".sub_category ul").append("<li>프린터</li>");
@@ -22,28 +23,30 @@
 			$(".sub_category ul").append("<li>여성의류</li>");
 			$(".sub_category ul").append("<li>남성의류</li>");
 			$(".sub_category ul").append("<li>신발</li>");
-			$(".sub_category ul").append("<li>캐쥬얼</li>");
 			$(".sub_category ul").append("<li>영/유아</li>");
 			$(".sub_category ul").append("<li>악세서리</li>");
-		}else if(category == "의료,의약") {
+		}else if(category == "의학 용품") {
 			$(".sub_category ul").empty();
-			$(".sub_category ul").append("<li>의료기기</li>");
-			$(".sub_category ul").append("<li>다이어트 식품</li>");
+			$(".sub_category ul").append("<li>진찰기</li>");
+			$(".sub_category ul").append("<li>교정기</li>");
+			$(".sub_category ul").append("<li>걸음보정기</li>");
+			$(".sub_category ul").append("<li>붕대,거즈,밴드..</li>");
 		}else if(category == "가구") {
 			$(".sub_category ul").empty();
 			$(".sub_category ul").append("<li>침구</li>");
+			$(".sub_category ul").append("<li>벽장</li>");
 			$(".sub_category ul").append("<li>테이블</li>");
-			$(".sub_category ul").append("<li>의자</li>");
-			$(".sub_category ul").append("<li>스탠드</li>");
-			$(".sub_category ul").append("<li>옷장</li>");
+			$(".sub_category ul").append("<li>소파</li>");
 		}else if(category == "생활") {
 			$(".sub_category ul").empty();
-			$(".sub_category ul").append("<li>침구</li>");
 			$(".sub_category ul").append("<li>인테리어</li>");
+			$(".sub_category ul").append("<li>부억</li>");
+			$(".sub_category ul").append("<li>공구</li>");
 		}else if(category == "사무용품") {
 			$(".sub_category ul").empty();
-			$(".sub_category ul").append("<li>소모품</li>");
-			$(".sub_category ul").append("<li>프린터</li>");
+			$(".sub_category ul").append("<li>문구류</li>");
+			$(".sub_category ul").append("<li>종이</li>");
+			$(".sub_category ul").append("<li>기타</li>");
 		} 
 		category = "&category="+category;
 	});

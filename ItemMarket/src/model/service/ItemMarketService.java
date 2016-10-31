@@ -231,7 +231,7 @@ public class ItemMarketService {
 			marketDAO.borderStateChange(con, border);
 			marketDAO.tradeStateChange(con, trade);
 			if(marketDAO.trading(con, id, money, border)>0){
-				System.out.println("됬다구");
+				System.out.println("�맟�떎援�");
 			}
 			
 			con.commit();
@@ -266,10 +266,10 @@ public class ItemMarketService {
 			marketDAO.completeTrade(con, trade);
 			marketDAO.updateCashHistory(con, id, border.getItemName(), money, currentCash);
 			
-			con.setAutoCommit(true);//�ڵ�Ŀ�Լ�������
-			con.commit(); // ����
+			con.setAutoCommit(true);//占쌘듸옙커占쌉쇽옙占쏙옙占쏙옙占쏙옙
+			con.commit(); // 占쏙옙占쏙옙
 		}catch(SQLException e){
-			con.rollback(); // öȸ
+			con.rollback(); // 철회
 		}finally{
 			con.close();
 		}

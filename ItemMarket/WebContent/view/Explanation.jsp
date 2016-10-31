@@ -10,6 +10,15 @@
 	<title>ItemMarket</title>
 	<link rel="stylesheet" href="<c:url value="/"/>style/bootstrap-3.3.7-dist/css/bootstrap.css">
 	<link rel="stylesheet" href="<c:url value="/"/>style/css.css">
+	<jsp:include page="header.jsp" flush="false"></jsp:include>
+	<style>
+	 	header .menu{
+	 		position: relative;
+	 	}
+		#profile{height: 1064px; }
+		
+		#profile .profilemenu{overflow: visible;}
+	</style>
 </head>
 <body>
 	<section id ="main">
@@ -37,8 +46,9 @@
 			<ul>
 				
 				<li>제품 : <span>${border.itemName}</span></li>
-				<li>가격 : <span>${border.money}원</span>
-				<li>등록날짜 : <span>${border.dayDate}</span>		
+				<li>가격 : <span>${border.money}원</span></li>
+				<li>등록날짜 : <span>${border.dayDate}</span></li>
+				<li>거래상태 : <span id="itemstate">${border.itemState}</span></li>		
 						</ul>	
 						<h1>&lt판매자 정보&gt</h1>
 						<ul>
@@ -73,6 +83,7 @@
 				<link rel="stylesheet" href="<c:url value="/"/>jquery/jquery-ui-1.11.4.custom/jquery-ui.min.css">
 				<script type="text/javascript" src="<c:url value="/"/>jquery/smoothscroll-for-websites-master/SmoothScroll.js"></script>
 				<script type="text/javascript" src="<c:url value="/"/>jquery/Explanation_JQuery.js"></script>
+				<script type="text/javascript" src="<c:url value="/"/>jquery/index_JQuery.js"></script>
 				<script type="text/javascript">
 				$(".mainEx button:last-child()").click(function(){
 					document.location.href="<c:url value="/view/"/>index.jsp"

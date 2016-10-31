@@ -35,6 +35,11 @@ $(document).ready(function(){
 		});
 	});//수정 이벤트 마지막 부분
 	
+	/* 수정 취소 */
+	$(".memberupdatesubmit input[value=취소]").click(function(){
+		document.location.href="index.jsp";
+	});
+	
 	$(document).on("click",".passwordchagesubmit input[value=확인]",function(){
 		if($(".passwordchage input[name=newpassword]").val() != $(".passwordchage input[name=newpassowrd2]").val()){
 			alert("변경된 비밀번호가 갖지 않습니다 다시 입력해 주십시오");
@@ -58,4 +63,9 @@ $(document).ready(function(){
 			});
 		}
 	});///비밀번호 변경 마지막 부분
+	
+	/* 비밀번호 취소 */
+	$(".passwordchagesubmit input[value=취소]").click(function(){
+		document.location.href="index.jsp";
+	});
 });

@@ -89,6 +89,7 @@ insert into borderInfo (id,border_number,content,itemName,money,dayDate,category
 select * from borderInfo;
 
 
+
 create table img_Border( 
    border_Number number(5) constraint img_Bordernumber_fk references borderinfo(border_Number) on delete cascade,   -- borderinfo 野꺜�혢혵甕걔�혱 
   img varchar2(200)  -- 
@@ -165,12 +166,12 @@ insert into trade_history values ('aaa','bbb','갤럭시S10',4000,29,sysdate,'�
 select * from borderInfo;    
 select * from trade_history;
                                                                                                                            --  ▼   
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','갤럭시S6',2000,1,'2016-10-24','거래완료');
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','T-100',3000,2,'2016-10-24','거래완료');
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'ccc','CalvinKlein',4400,3,'2016-10-24','거래완료');                                                                               --  ▼
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','갤럭시S6',2000,63,'2016-10-24','거래완료');
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','T-100',3000,64,'2016-10-24','거래완료');
+  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'ccc','CalvinKlein',4400,65,'2016-10-24','거래완료');                                                                               --  ▼
                                                                                                           --  ▼
-  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','eee','목도리',120000,4,sysdate,'거래완료');
-  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','iii','텀블러',200000,5,sysdate,'거래완료');
+  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','eee','목도리',120000,66,sysdate,'거래완료');
+  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','iii','텀블러',200000,67,sysdate,'거래완료');
 
 --drop table borderinfo;
 

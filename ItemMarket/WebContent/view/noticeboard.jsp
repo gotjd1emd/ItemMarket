@@ -72,7 +72,7 @@
 					<option value="의류">의류</option>	
 					<option value="생활">생활</option>	
 					<option value="가구">가구</option>	
-					<option value="의료,의약">의료,의약</option>	
+					<option value="의학 용품">의학 용품</option>	
 					<option value="사무용품">사무용품</option>								
 					</select></li>
 					<li><select name="subcategory">

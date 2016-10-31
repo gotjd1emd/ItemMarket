@@ -23,12 +23,13 @@ public class Login implements Action {
 		int result = ItemMarketService.login(id, password);
 		int checkpoint= 0;	
 		
-			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.");
+		System.out.println("»ðÀÔ µÊ.");
 			
 			UserDTO userProfile = ItemMarketService.getProfile(id);
 			request.getSession().setAttribute("userProfile", userProfile);
 			request.getSession().setAttribute("loginCheck", result);
 			if(result == 0 || userProfile == null ){
+				request.getSession().invalidate();
 				checkpoint = 0;
 			}else{
 				checkpoint = 1;

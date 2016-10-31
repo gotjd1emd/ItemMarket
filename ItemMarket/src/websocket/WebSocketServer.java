@@ -25,7 +25,7 @@ public class WebSocketServer {
 		StringTokenizer token = new StringTokenizer(message, "|");
 		String you = token.nextToken();
 		String sendMessage = userID + " : " + token.nextToken();
-		System.out.println(you + "ë‹˜ì—ê²Œ ì „ì†¡ : " + sendMessage);
+		System.out.println(you + "´Ô¿¡°Ô Àü¼Û : " + sendMessage);
 		sendMessage(sendMessage, you);
 	}
 
@@ -34,12 +34,12 @@ public class WebSocketServer {
 		// Add Session to the connected sessions set
 
 		System.out.println(session);
-		System.out.println(userID + "ë‹˜ê»˜ì„œ ë¡œê·¸ì¸í•˜ì…¨ìŠµë‹ˆë‹¤.");
+		System.out.println(userID + "´Ô²²¼­ ·Î±×ÀÎÇÏ¼Ì½À´Ï´Ù.");
 		
 		this.session = session;
 		this.userID = userID;
 		clients.add(this);
-		System.out.println("í˜„ì¬ ì ‘ì†ì ìˆ˜ : " + clients.size());
+		System.out.println("ÇöÀç Á¢¼ÓÀÚ ¼ö : " + clients.size());
 	}
 
 	@OnClose
@@ -62,13 +62,13 @@ public class WebSocketServer {
 						flag = false;
 					}catch (IOException e) {
 						clients.remove(this);
-						System.out.println("ì‚­ì œ");
+						System.out.println("»èÁ¦");
 						try {
 							client.session.close();
 						}catch(IOException e1) {
 							e1.printStackTrace();
 						}
-						System.out.println(userID + "ë‹˜ ì—°ê²°ì¢…ë£Œ");
+						System.out.println(userID + "´Ô ¿¬°áÁ¾·á");
 					}
 				}
 			}
@@ -78,7 +78,7 @@ public class WebSocketServer {
 				synchronized (client) {
 					try {
 						if(client.getUserID().equals(this.userID)) {
-							client.session.getBasicRemote().sendText(you+"ë‹˜ì€ ì ‘ì†í•´ìˆì§€ ì•ŠìŠµë‹ˆë‹¤.");
+							client.session.getBasicRemote().sendText(you+"´ÔÀº Á¢¼ÓÇØÀÖÁö ¾Ê½À´Ï´Ù.");
 						}
 					}catch (IOException e) {
 						e.printStackTrace();

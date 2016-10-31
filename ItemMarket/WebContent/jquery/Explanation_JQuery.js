@@ -35,7 +35,9 @@ var timer2 = null;
 
 
 function move(){
-	
+	if(imgs.length <= 1){
+		return;
+	}else{
 	$(imgs[sno]).animate({"left":"100%"},1500,function(){
 		$(this).css({"left":"-100%"},1000);
 	});
@@ -45,13 +47,15 @@ function move(){
 	$(imgs[sno]).animate({"left":"0"},1500,function(){
 		time();
 	});
+	}
 }
 
 function time(){
 	timer2 = setTimeout(function(){
 		move();
-	},1500);
-}
+		},1500);
+	}
+
 function slide(a){
 	if($(imgs[sno]).is(":animated") || a-1 == sno)return;
 	var no , type;
@@ -92,9 +96,14 @@ $("#purchaseform input[value=취소]").click(function(){
 
 var subimgs = $(".subimg ul li");
 var count = 0;
-var max = subimgs.length-3;
+var max =0;
+if(subimgs.length <= 4){
+	 max = subimg.length;
+}else{
+     max = subimgs.length-3;
+	 }
 function condition(){
-
+	console.log(max);
 	if(count == 0){
 		$(".subimg .up").hide();
 		$(".subimg .down").show();
@@ -124,7 +133,9 @@ $(".subimg .up").click(function(){
 });
 
 $(document).on("click",".purchasedialog input[value=구매]",function(){
-	
+	if($(".mainEX ul li #itemstate").text() == "거래중" || $(".mainEX ul li #itemstate").text() =="거래완료"){
+		alert("구매못합니다...");
+	}else{
 	$.ajax({
 		url : "/ItemMarket/front?command=requestTrade",
 		type: "post",
@@ -147,6 +158,7 @@ $(document).on("click",".purchasedialog input[value=구매]",function(){
 		}
 						
 	});
+	}
 });
 
 

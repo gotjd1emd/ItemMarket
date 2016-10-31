@@ -29,7 +29,7 @@ public class Write implements Action {
 				new DefaultFileRenamePolicy());
 		
 		String content = m.getParameter("content");
-		content = content.replace("\r\n", "<br>"); // 엔터 html태그로 변환
+		content = content.replace("\r\n", "<br>"); // �뿏�꽣 html�깭洹몃줈 蹂��솚
 		String title = m.getParameter("title");
 		int price = Integer.parseInt(m.getParameter("price").trim());
 		String category = m.getParameter("category");
@@ -46,7 +46,7 @@ public class Write implements Action {
 		if(ItemMarketService.write(borderDTO)>0){
 			
 			 while(em.hasMoreElements()){
-			        //파일 여러개 들어왔을
+			        //�뙆�씪 �뿬�윭媛� �뱾�뼱�솕�쓣혢혳
 			        String fileName=em.nextElement();
 			        
 			       savefilename=m.getFilesystemName(fileName);

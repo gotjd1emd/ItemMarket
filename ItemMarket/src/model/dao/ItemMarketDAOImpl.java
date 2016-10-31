@@ -476,7 +476,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result=0;
 		
 	  ps = con.prepareStatement("update borderInfo set itemState = ? where border_number=?");
-	  ps.setString(1,"거래중");
+	  ps.setString(1, border.getItemState());
 	  ps.setInt(2, border.getBorderNumber());
 	  result = ps.executeUpdate();
 	  System.out.println("borderStateChange : " + result);

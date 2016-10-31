@@ -31,7 +31,7 @@ public class AccountTransfer implements Action {
 		
 		//table_history
 		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, seller, border.getItemName(), cash, borderNumber, "거래중");
-		
+		border.setItemState(trade.getTradeState());
 		try {
 			int result = ItemMarketService.accountTransfer(buyerDTO,cash,border,trade);
 			if(result>0) {

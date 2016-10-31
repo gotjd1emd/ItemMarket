@@ -223,7 +223,7 @@
 		var webSocket;
 		$(document).ready(function() {
 			var userID =  $("#saveId").text();
-			var url = 'ws://localhost:8000/ItemMarket/webSocket/' + userID;
+			var url = 'ws://192.168.0.178:8000/ItemMarket/webSocket/' + userID;
 			var partnerId = document.getElementById('partnerId');
 			var inputMessage = document.getElementById('message');
 			var textarea = document.getElementById("chatWindow");

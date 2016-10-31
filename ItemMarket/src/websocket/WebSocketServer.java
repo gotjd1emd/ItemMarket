@@ -25,7 +25,7 @@ public class WebSocketServer {
 		StringTokenizer token = new StringTokenizer(message, "|");
 		String you = token.nextToken();
 		String sendMessage = userID + " : " + token.nextToken();
-		System.out.println(you + "님에게 전송 : " + sendMessage);
+		System.out.println(you + "에게 : " + sendMessage);
 		sendMessage(sendMessage, you);
 	}
 
@@ -34,12 +34,12 @@ public class WebSocketServer {
 		// Add Session to the connected sessions set
 
 		System.out.println(session);
-		System.out.println(userID + "님께서 로그인하셨습니다.");
+		System.out.println(userID + "님이 접속하셨습니다..");
 		
 		this.session = session;
 		this.userID = userID;
 		clients.add(this);
-		System.out.println("현재 접속자 수 : " + clients.size());
+		System.out.println("접속자 수 : " + clients.size());
 	}
 
 	@OnClose
@@ -62,13 +62,13 @@ public class WebSocketServer {
 						flag = false;
 					}catch (IOException e) {
 						clients.remove(this);
-						System.out.println("삭제");
+						System.out.println("접속종료");
 						try {
 							client.session.close();
 						}catch(IOException e1) {
 							e1.printStackTrace();
 						}
-						System.out.println(userID + "님 연결종료");
+						System.out.println(userID + "종료");
 					}
 				}
 			}
@@ -78,7 +78,7 @@ public class WebSocketServer {
 				synchronized (client) {
 					try {
 						if(client.getUserID().equals(this.userID)) {
-							client.session.getBasicRemote().sendText(you+"님은 접속해있지 않습니다.");
+							client.session.getBasicRemote().sendText(you+"님이 접속해 있지 않습니다.");
 						}
 					}catch (IOException e) {
 						e.printStackTrace();

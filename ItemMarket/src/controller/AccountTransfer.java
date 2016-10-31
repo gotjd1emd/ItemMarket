@@ -18,14 +18,15 @@ public class AccountTransfer implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String buyer = request.getParameter("buyer");
+		String seller = request.getParameter("seller");
 		int cash = Integer.parseInt(request.getParameter("cash"));
 		int borderNumber = Integer.parseInt(request.getParameter("borderNumber"));
-		String seller = request.getParameter("seller");
-
+		
 		UserDTO buyerDTO = ItemMarketService.getProfile(buyer);
 		BorderDTO border = ItemMarketService.read(borderNumber);
 		System.out.println("buyerDTO.getId(): " + buyer);
 		System.out.println("seller: " + seller);
+		
 		//table_history
 		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, seller, border.getItemName(), cash, borderNumber, "거래중");
 		

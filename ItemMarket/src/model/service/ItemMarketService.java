@@ -250,28 +250,31 @@ public class ItemMarketService {
 	 * 15-18
 	 * @throws SQLException 
 	 * */
-	public static void transferComplete(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
+	public static int transferComplete(UserDTO buyerDTO, UserDTO sellerDTO, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
 		Connection con = null;
+		int result = 0;
 		try{
 			con = DbUtil.getConnection();
 			con.setAutoCommit(false);
 			
-			int currentCash = marketDAO.getProfile(id).getCash();
-			marketDAO.selectByBorderTrade(con, border.getBorderNumber());
-			marketDAO.sendCashSeller(con, id, money);
-			marketDAO.receiveCashSeller(con, money);
+			marketDAO.sendCashSeller(con, sellerDTO.getId(), money);//판매자 마일리지 증가
+			marketDAO.receiveCashSeller(con, money);//중개자 마일리지 감소
+			marketDAO.completeBorder(con, border);//게시물 상태변경
+			marketDAO.completeTrade(con, trade);//거래내역 거래상태 변경
+			marketDAO.updateCashHistory(con, border.getId(), border.getItemName(), money, sellerDTO.getCash()+money);//판매자의 마일리지내역추가
+			marketDAO.deleteRequestTrade(con, border.getBorderNumber());//구매자의 신청내역 삭제
 			
-			marketDAO.completeBorder(con, border);
-			marketDAO.completeTrade(con, trade);
-			marketDAO.updateCashHistory(con, id, border.getItemName(), money, currentCash);
-			
-			con.setAutoCommit(true);//�ڵ�Ŀ�Լ�������
-			con.commit(); // ����
+			result = 1;
+			con.commit();
 		}catch(SQLException e){
-			con.rollback(); // öȸ
+			e.printStackTrace();
+			result = 0;
+			con.rollback();
 		}finally{
+			con.setAutoCommit(true);
 			con.close();
 		}
+		return result;
 	}
 	
 	/**

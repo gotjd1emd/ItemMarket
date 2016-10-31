@@ -304,6 +304,7 @@
 		console.log($(this).parents("tr").children("td").children("[name=buyer]").text());
 		console.log($(this).parents("tr").children("td").children("[name=cash]").text());
 		console.log($(this).parents("tr").children("td").children("[name=state]").text());
+		var buyer = $(this).parents("tr").children("td").children("[name=buyer]").text();
 		$.ajax({
 			url:"/ItemMarket/front?command=accountTransfer",
 			type : "post",
@@ -314,7 +315,7 @@
 			dataType : "text",
 			success : function(result) {
 				if(result==1) {
-					alert($(this).parents("tr").children("td").children("[name=buyer]").text()+"님과 거래를 시작합니다.");
+					alert(buyer+"님과 거래를 시작합니다.");
 					$(".purchaselistdialog").dialog("close");
 				}else {
 					alert("거래가 실패하였습니다.");
@@ -324,6 +325,34 @@
 				console.log("err : " + err);
 			}
 		}); // 구매신청확인 ajax
+	});
+	
+	$(".purchaselistdialog section").on("click", "input[name=buy]", function() {
+		console.log($(this).parents("tr").children("td").children("[name=borderNumber]").text());
+		console.log($(this).parents("tr").children("td").children("[name=buyer]").text());
+		console.log($(this).parents("tr").children("td").children("[name=cash]").text());
+		console.log($(this).parents("tr").children("td").children("[name=state]").text());
+		var seller = $(this).parents("tr").children("td").children("[name=seller]").text();
+		$.ajax({
+			url:"/ItemMarket/front?command=transferComplete",
+			type : "post",
+			data : "buyer="+$(this).parents("tr").children("td").children("[name=buyer]").text()+
+					"&seller="+$(this).parents("tr").children("td").children("[name=seller]").text()+
+					"&cash="+$(this).parents("tr").children("td").children("[name=cash]").text()+
+					"&borderNumber="+$(this).parents("tr").children("td").children("[name=borderNumber]").text(),
+			dataType : "text",
+			success : function(result) {
+				if(result==1) {
+					alert(seller+"님과 거래를 완료합니다.");
+					$(".purchaselistdialog").dialog("close");
+				}else {
+					alert("거래가 실패하였습니다.");
+				}
+			},
+			error : function(err) {
+				console.log("err : " + err);
+			}
+		}); // 판매신청확인 ajax
 	});
 	
 	/*로그아웃 EVENT*/

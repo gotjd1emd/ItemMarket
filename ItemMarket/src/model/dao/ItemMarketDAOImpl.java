@@ -556,15 +556,16 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		PreparedStatement ps = null;
 		int result=0;
+		System.out.println("id : " + id);
+		System.out.println("money : " + money);
+		ps = con.prepareStatement("update userinfo set cash=(select cash from userinfo where id=?)+? where id=?");
+		ps.setString(1, id);
+		ps.setInt(2, money);
+		ps.setString(3, id);
 		
-		 ps = con.prepareStatement("update userinfo set cash=(select cash from userinfo where id=?)+? where id=?");
-		 ps.setString(1, id);
-		 ps.setInt(2, money);
-		 ps.setString(3, id);
-		  
-		 result = ps.executeUpdate();
-	
-		 return result;
+		result = ps.executeUpdate();
+		System.out.println("sendCashSeller : " + result);
+		return result;
 	}
 
 	/**
@@ -581,7 +582,8 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		ps.setInt(1, money);
 		  
 		result = ps.executeUpdate();
-			  
+		
+		System.out.println("receiveCashSeller : " + result);
 		return result;
 	}
 
@@ -594,11 +596,12 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		PreparedStatement ps = null;
 		int result=0;
 		
-		ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
-		ps.setString(1,"占신뤄옙占싹뤄옙");
-		ps.setString(2, border.getId());
+		ps = con.prepareStatement("update borderInfo set itemState = ? where border_number=?");
+		ps.setString(1, border.getItemState());
+		ps.setInt(2, border.getBorderNumber());
 		result = ps.executeUpdate();
-
+		
+		System.out.println("completeBorder : " + result);
 		return result;
 	}
 	
@@ -611,11 +614,12 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		PreparedStatement ps = null;
 		int result=0;
 		
-		ps = con.prepareStatement("update trade_history set itemState = ? where id=?");
-		ps.setString(1,"占신뤄옙占싹뤄옙");
-		ps.setString(2, trade.getSeller());
+		ps = con.prepareStatement("update trade_history set trade_state = ? where border_number=?");
+		ps.setString(1, trade.getTradeState());
+		ps.setInt(2, trade.getBorderNumber());
 		result = ps.executeUpdate();
 			  
+		System.out.println("completeTrade : " + result);
 		return result;
 	}
 

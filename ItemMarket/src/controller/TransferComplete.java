@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -9,35 +10,32 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.dto.BorderDTO;
 import model.dto.TradeHistoryDTO;
+import model.dto.UserDTO;
 import model.service.ItemMarketService;
 
 public class TransferComplete implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String buyer = request.getParameter("buyer");
+		String seller = request.getParameter("seller");
+		int cash = Integer.parseInt(request.getParameter("cash"));
 		int borderNumber = Integer.parseInt(request.getParameter("borderNumber"));
 		
-		String id = request.getParameter("id");
-		int money = Integer.parseInt(request.getParameter("money"));
-		
-		//border³»¿ë
-		String content = request.getParameter("content");
-		String itemName = request.getParameter("itemName");
-		String dayDate = request.getParameter("dayDate");
-		String category = request.getParameter("category");
-		String subCategory = request.getParameter("subCategory");
-		String itemState = request.getParameter("itemState");
-		
-		BorderDTO border = new BorderDTO(id, borderNumber, content, itemName, money, dayDate, category, subCategory, itemState);
-		
-		//trade³»¿ë
-		String buyer = request.getParameter("buyer");
-		
-		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, id, itemName, money, borderNumber, dayDate, itemState);
+		UserDTO buyerDTO = ItemMarketService.getProfile(buyer);
+		UserDTO sellerDTO = ItemMarketService.getProfile(seller);
+		BorderDTO border = ItemMarketService.read(borderNumber);
+		System.out.println("buyerDTO.getId(): " + buyer);
+		System.out.println("seller: " + seller);
+		//tradeï¿½ï¿½ï¿½ï¿½
+		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, seller, border.getItemName(), cash, borderNumber, "ê±°ëž˜ì™„ë£Œ");
+		border.setItemState(trade.getTradeState());
 		
 		try {
-			ItemMarketService.transferComplete(id,money,border,trade);
+			int result = ItemMarketService.transferComplete(buyerDTO, sellerDTO, cash, border, trade);
+			
+			PrintWriter out = response.getWriter();
+			out.println(result);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

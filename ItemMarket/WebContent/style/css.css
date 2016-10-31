@@ -39,7 +39,7 @@ header .icon a{text-decoration:none; color: inherit; float:left; }
 #profile .profilemenu ul li #chatWindow{width:100%; float:left; color:#000; overflow: scroll; overflow-x:hidden; font-size:14px;}
 #profile .profilemenu ul li #submit{line-height: 40px;}
 
-#profile .profilemenu ul li #partnerId{background: #fff; color:black; font-size:14px;}
+#profile .profilemenu ul li #partnerId{background:#fff; color:black; font-size:14px;}
 #profile .profilemenu ul li #message{background: #fff; color:black;font-size:14px;}
 
 #profile .profilemenu ul li:nth-child(1){position: relative;}

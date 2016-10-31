@@ -17,6 +17,8 @@ public class AccountTransfer implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("utf-8");
 		String buyer = request.getParameter("buyer");
 		String seller = request.getParameter("seller");
 		int cash = Integer.parseInt(request.getParameter("cash"));
@@ -33,7 +35,7 @@ public class AccountTransfer implements Action {
 		try {
 			int result = ItemMarketService.accountTransfer(buyerDTO,cash,border,trade);
 			if(result>0) {
-				ItemMarketService.requestTrade(buyer, seller, cash, borderNumber, "buy");//구매자에게 확인버튼 전송
+				ItemMarketService.requestTrade(buyer, seller, cash, borderNumber, "buy");//援щℓ�옄�뿉寃� �솗�씤踰꾪듉 �쟾�넚
 			}
 			PrintWriter out = response.getWriter();
 			out.println(result);

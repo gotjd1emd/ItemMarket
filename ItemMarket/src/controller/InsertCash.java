@@ -19,7 +19,7 @@ public class InsertCash implements Action {
 		int chargeNumber = Integer.parseInt(request.getParameter("chargeNumber"));
 		System.out.println("chargeNumber"+chargeNumber);
 		int result = ItemMarketService.addCash(id,chargeNumber);
-		System.out.println("결과"+result);
+		//System.out.println("결과"+result);
 		
 		UserDTO userProfile = ItemMarketService.getProfile(id);
 		request.getSession().setAttribute("userProfile", userProfile);

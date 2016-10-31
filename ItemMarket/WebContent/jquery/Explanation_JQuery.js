@@ -80,11 +80,15 @@ function slide(a){
 
 /* 구매 dialog */
 $(document).on("click",".mainEx button[name=purchase]",function(){
-	   $(".purchasedialog").dialog({
-		  minWidth:500,
-		  minHeight :300,
-		  modal : true						
-	   });
+	if($("#itemstate").text() == "거래중" || $("#itemstate").text() =="거래완료"){
+		alert("거래중이거나 거래완료이기 때문에 구매가 불가능합니다.");	
+		}else{
+			   $(".purchasedialog").dialog({
+				  minWidth:500,
+				  minHeight :300,
+				  modal : true						
+			   });
+		}
 });
 /* 구매 취소 dialog */
 $("#purchaseform input[value=취소]").click(function(){
@@ -98,7 +102,7 @@ var subimgs = $(".subimg ul li");
 var count = 0;
 var max =0;
 if(subimgs.length <= 4){
-	 max = subimg.length;
+	 max = subimgs.length;
 }else{
      max = subimgs.length-3;
 	 }
@@ -133,9 +137,6 @@ $(".subimg .up").click(function(){
 });
 
 $(document).on("click",".purchasedialog input[value=구매]",function(){
-	if($(".mainEX ul li #itemstate").text() == "거래중" || $(".mainEX ul li #itemstate").text() =="거래완료"){
-		alert("구매못합니다...");
-	}else{
 	$.ajax({
 		url : "/ItemMarket/front?command=requestTrade",
 		type: "post",
@@ -159,7 +160,7 @@ $(document).on("click",".purchasedialog input[value=구매]",function(){
 		}
 						
 	});
-	}
+	
 });
 
 

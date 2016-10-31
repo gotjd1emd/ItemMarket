@@ -175,15 +175,7 @@ insert into trade_history values ('aaa','bbb','媛ㅻ윮�떆S10',4000,29,sysda
 --  border Info 寃��깋�썑 border-number �닽�옄瑜� 蹂�寃쏀빐 二쇱꽭�슂                                               										  
 select * from borderInfo;    
 select * from trade_history;
-<<<<<<< HEAD
-                                                                                                                           --  ▼   
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','갤럭시S6',2000,63,'2016-10-24','거래완료');
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','T-100',3000,64,'2016-10-24','거래완료');
-  insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'ccc','CalvinKlein',4400,65,'2016-10-24','거래완료');                                                                               --  ▼
-                                                                                                          --  ▼
-  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','eee','목도리',120000,66,sysdate,'거래완료');
-  insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','iii','텀블러',200000,67,sysdate,'거래완료');
-=======
+
                                                                                                                            --  �뼹   
   insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','媛ㅻ윮�떆S6',2000,1,'2016-10-24','嫄곕옒�셿猷�');
   insert into trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff', 'bbb','T-100',3000,2,'2016-10-24','嫄곕옒�셿猷�');
@@ -191,7 +183,6 @@ select * from trade_history;
                                                                                                           --  �뼹
   insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','eee','紐⑸룄由�',120000,4,sysdate,'嫄곕옒�셿猷�');
   insert into  trade_history (buyer,seller,itemName,cash,border_number,daydate,trade_state) values ('fff','iii','��釉붾윭',200000,5,sysdate,'嫄곕옒�셿猷�');
->>>>>>> origin/master
 
 --drop table borderinfo;
 

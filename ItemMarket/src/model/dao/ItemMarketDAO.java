@@ -180,10 +180,20 @@ public interface ItemMarketDAO {
 	/**
 	 * requestTrade
 	 */
-	int requestTrade(String buyer, String seller, int cash, int borderNumber) throws SQLException;
+	int requestTrade(String buyer, String seller, int cash, int borderNumber, String state) throws SQLException;
 	
 	/**
-	 * selectRequestTrade
+	 * sellRequestTrade
 	 */
-	List<TradeHistoryDTO> selectRequestTrade(String seller) throws SQLException;
+	List<TradeHistoryDTO> sellRequestTrade(String seller) throws SQLException;
+	
+	/**
+	 * buyRequestTrade
+	 */
+	List<TradeHistoryDTO> buyRequestTrade(String buyer) throws SQLException;
+	
+	/**
+	 * deleteRequestTrade
+	 */
+	int deleteRequestTrade(Connection con, int borderNumber) throws SQLException;
 }

@@ -19,8 +19,9 @@ public class RequestTrade implements Action {
 		String seller = request.getParameter("seller");
 		int cash = Integer.parseInt(request.getParameter("cash"));
 		int borderNumber = Integer.parseInt(request.getParameter("borderNumber"));
+		String state = request.getParameter("state");
 		
-		int result = ItemMarketService.requestTrade(buyer, seller, cash, borderNumber);
+		int result = ItemMarketService.requestTrade(buyer, seller, cash, borderNumber, state);
 		
 		PrintWriter out = response.getWriter();
 		out.println(result);

@@ -443,7 +443,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		 ps.setString(3, id);
 		  
 		 result = ps.executeUpdate();
-		 
+		 System.out.println("sendCashAgency : " + result);
 		 return result;
 	}
 
@@ -462,7 +462,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		ps.setInt(1, money);
 	  
 		result = ps.executeUpdate();
-  
+		System.out.println("receiveCashAgency : " + result);
 		return result;
 	}
 
@@ -475,11 +475,11 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		PreparedStatement ps = null;
 		int result=0;
 		
-	  ps = con.prepareStatement("update borderInfo set itemState = ? where id=?");
+	  ps = con.prepareStatement("update borderInfo set itemState = ? where border_number=?");
 	  ps.setString(1,"거래중");
-	  ps.setString(2, border.getId());
+	  ps.setInt(2, border.getBorderNumber());
 	  result = ps.executeUpdate();
-	  
+	  System.out.println("borderStateChange : " + result);
 	  return result;
 	}
 	
@@ -509,17 +509,17 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		int result = 0;
 		System.out.println(border.getId()+"," + id + "," + border.getItemName()+","+ money + "," + border.getBorderNumber() + "," + border.getItemState());
 
-		con = DbUtil.getConnection();
-		ps = con.prepareStatement("insert into trade_history values (?,?,?,?,?,sysdate,?)");
-		ps.setString(1, border.getId());	//占쏙옙占싱듸옙
-		ps.setString(2, id); // 占쏙옙占싱듸옙
+		ps = con.prepareStatement("insert into trade_history values(?,?,?,?,?,sysdate,?)");
+		System.out.println("trading check1");
+		ps.setString(1, id);	//buyer
+		ps.setString(2, border.getId()); //seller
 		ps.setString(3, border.getItemName());
 		ps.setInt(4, money);
 		ps.setInt(5, border.getBorderNumber());
 		ps.setString(6, border.getItemState());
-			
+		System.out.println("trading check2");
 		result = ps.executeUpdate();
-
+		System.out.println("trading : " + result);
 		return result;
 		
 	}
@@ -637,7 +637,7 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		ps.setInt(4, currentCash);
 		
 		result = ps.executeUpdate();
-
+		System.out.println("updateCashHistory : " + result);
 		return result;
 	}
 	/**
@@ -756,18 +756,19 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	 * requestTrade
 	 */
 	@Override
-	public int requestTrade(String buyer, String seller, int cash, int borderNumber) throws SQLException {
+	public int requestTrade(String buyer, String seller, int cash, int borderNumber, String state) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into request_trade(buyer, seller, cash, border_number) "
-					+ "values(?, ?, ?, ?)");
+			ps = con.prepareStatement("insert into request_trade(buyer, seller, cash, border_number, state) "
+					+ "values(?, ?, ?, ?, ?)");
 			ps.setString(1, buyer);
 			ps.setString(2, seller);
 			ps.setInt(3, cash);
 			ps.setInt(4, borderNumber);
+			ps.setString(5, state);
 			
 			result = ps.executeUpdate();
 		}finally {
@@ -777,10 +778,10 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 	}
 	
 	/**
-	 * selectRequestTrade
+	 * sellRequestTrade 판매확인
 	 */
 	@Override
-	public List<TradeHistoryDTO> selectRequestTrade(String seller) throws SQLException {
+	public List<TradeHistoryDTO> sellRequestTrade(String seller) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -788,18 +789,58 @@ public class ItemMarketDAOImpl implements ItemMarketDAO {
 		
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("select buyer, seller, cash, border_number from request_trade "
-					+ "where seller = ?");
+			ps = con.prepareStatement("select buyer, seller, cash, border_number, state from request_trade "
+					+ "where seller = ? and state='sell'");
 			ps.setString(1, seller);
 			
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(new TradeHistoryDTO(rs.getString("buyer"), rs.getString("seller"),
-						rs.getInt("cash"), rs.getInt("border_number")));
+						rs.getInt("cash"), rs.getInt("border_number"), rs.getString("state")));
 			}
 		}finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
 		return list;
+	}
+	
+	/**
+	 * buyRequestTrade 구매확인
+	 */
+	@Override
+	public List<TradeHistoryDTO> buyRequestTrade(String buyer) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<TradeHistoryDTO> list = new ArrayList<>();
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement("select buyer, seller, cash, border_number, state from request_trade "
+					+ "where buyer = ? and state='buy'");
+			ps.setString(1, buyer);
+			
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(new TradeHistoryDTO(rs.getString("buyer"), rs.getString("seller"),
+						rs.getInt("cash"), rs.getInt("border_number"), rs.getString("state")));
+			}
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		return list;
+	}
+	
+	@Override
+	public int deleteRequestTrade(Connection con, int borderNumber) throws SQLException {
+		PreparedStatement ps = null;
+		int result = 0;
+		
+		ps = con.prepareStatement("delete from request_trade where border_number=?");
+		ps.setInt(1, borderNumber);
+		
+		result = ps.executeUpdate();
+		System.out.println("deleteRequestTrade : " + result);
+		return result;
 	}
 }

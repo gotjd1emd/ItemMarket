@@ -10,11 +10,22 @@ public class TradeHistoryDTO {
 	private String dayDate;
 	private String tradeState;
 	
-	public TradeHistoryDTO(String buyer, String seller, int cash, int borderNumber) {
+	public TradeHistoryDTO(String buyer, String seller, int cash, int borderNumber, String tradeState) {
 		this.buyer = buyer;
 		this.seller = seller;
 		this.cash = cash;
 		this.borderNumber = borderNumber;
+		this.tradeState = tradeState;
+	}
+	
+	public TradeHistoryDTO(String buyer, String seller, String itemName, int cash, int borderNumber, String tradeState) {
+		super();
+		this.buyer = buyer;
+		this.seller = seller;
+		this.itemName = itemName;
+		this.cash = cash;
+		this.borderNumber = borderNumber;
+		this.tradeState = tradeState;
 	}
 
 	public TradeHistoryDTO(String buyer, String seller, String itemName, int cash, int borderNumber, String dayDate, String tradeState) {

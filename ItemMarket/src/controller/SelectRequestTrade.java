@@ -16,10 +16,14 @@ public class SelectRequestTrade implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String seller = request.getParameter("id");
+		String id = request.getParameter("id");
 		
-		List<TradeHistoryDTO> list = ItemMarketService.selectRequestTrade(seller);
-		
+		List<TradeHistoryDTO> list = ItemMarketService.sellRequestTrade(id);
+		List<TradeHistoryDTO> temp = ItemMarketService.buyRequestTrade(id);
+		for(TradeHistoryDTO tHistory : temp) {
+			list.add(tHistory);
+		}
+ 		
 		PrintWriter out = response.getWriter();
 		JSONArray jsonArray = JSONArray.fromObject(list);
 		

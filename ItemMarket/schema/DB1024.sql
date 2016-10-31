@@ -214,7 +214,8 @@ create table request_trade(
 	buyer varchar2(20) constraint request_trade_buyer_id_fk references userinfo  (id)  on delete cascade,	
 	seller varchar2(20) constraint request_trade_seller_id_fk references userinfo  (id)  on delete cascade,
 	cash number(7),
-	border_number constraint request_trade_border_number_fk references borderinfo(border_number) on delete cascade
+	border_number number(5) constraint request_trade_border_number_fk references borderinfo(border_number) on delete cascade,
+	state varchar2(10) --buy or sell
 );
 
 select * from request_trade

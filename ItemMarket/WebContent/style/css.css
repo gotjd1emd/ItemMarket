@@ -350,7 +350,8 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #purchaselistform table tr:nth-child(1){box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); font-weight: bold;  height: 50px; line-height: 50px; }
 #purchaselistform table tr:nth-child(1) td{height: 50px; line-height: 50px;}
 #purchaselistform table tr td{width:20%; height:40px; line-height:40px; float:left} 
-
+#purchaselistform table tr td:nth-child(1){width:10%;}
+#purchaselistform table tr td:nth-child(5){width:10%;}
 @media(max-width:1020px){
 	#main .mainEx{width:40%; height: 417px; float:right; margin-left:0; box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5); }
 }

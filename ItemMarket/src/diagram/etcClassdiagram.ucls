@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.10" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="filter.EncFilter" project="ItemMarket" 
+    file="/ItemMarket/src/filter/EncFilter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="93" y="172"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="2" language="java" name="filter" project="ItemMarket" file="/ItemMarket/src/filter" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-3" y="45"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="util" project="ItemMarket" file="/ItemMarket/src/util" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-8" y="293"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="4" language="java" name="util.DbUtil" project="ItemMarket" file="/ItemMarket/src/util/DbUtil.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="71" y="405"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="util.ActionMappingListener" project="ItemMarket" 
+    file="/ItemMarket/src/util/ActionMappingListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="334" y="398"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="6" language="java" name="websocket" project="ItemMarket" file="/ItemMarket/src/websocket" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="551" y="44"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="7" language="java" name="websocket.WebSocketServer" project="ItemMarket" 
+    file="/ItemMarket/src/websocket/WebSocketServer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="594" y="192"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="8">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="9" name="clients"/>      
+      <multiplicity id="10" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

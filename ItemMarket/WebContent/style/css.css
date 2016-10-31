@@ -1,4 +1,4 @@
-*{padding:0; margin:0 auto; list-style:none; font-family: "�������"}
+*{padding:0; margin:0 auto; list-style:none; font-family: "맑은고딕"}
 html,body{height: 100%}
 
 .ui-widget-overlay{background:#000}	
@@ -26,7 +26,7 @@ header .menu ul li:nth-child(1):hover::before{top:-100%;}
 header .icon{width: 143px; float:left;}
 header .icon a{text-decoration:none; color: inherit; float:left; }
 
-/* ī�׷α�  dialog */
+/* 카占쌓로깍옙  dialog */
 .category{width:100%; height: 100%; float:left; position: relative; display:none;}
 .category ul{text-align:center;  padding: 0;}
 .category ul li{width:195px; height: 200px; line-height:200px; border:1px solid #FF8F00;  float:left; font-size:26px;  color:#fff; background:#FFCA28;  cursor:pointer; transition:0.4s;  font-weight: bold;}
@@ -38,13 +38,10 @@ header .icon a{text-decoration:none; color: inherit; float:left; }
 #profile .profilemenu ul li{text-align:center; line-height:50px; border-bottom:1px solid #FF8F00; color:#fff; font-size:18px;font-weight:bold;transition:0.4s;}
 #profile .profilemenu ul li #chatWindow{width:100%; float:left; color:#000; overflow: scroll; overflow-x:hidden; font-size:14px;}
 #profile .profilemenu ul li #submit{line-height: 40px;}
-<<<<<<< HEAD
-#profile .profilemenu ul li #partnerId{background: #fff;color:#000; font-size:14px;}
-#profile .profilemenu ul li #message{background: #fff; color:#000; font-size:14px;}
-=======
+
 #profile .profilemenu ul li #partnerId{background: #fff; color:black; font-size:14px;}
 #profile .profilemenu ul li #message{background: #fff; color:black;font-size:14px;}
->>>>>>> origin/master
+
 #profile .profilemenu ul li:nth-child(1){position: relative;}
 #profile .profilemenu ul #transactionsEvent{cursor:pointer;}
 #profile .profilemenu ul #cashTransactionsEvent{cursor:pointer;}
@@ -201,7 +198,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #loginform .loginsubmit{width:100%; height:40px; float:left; font-size:18px;font-weight:bold;}
 #loginform .loginsubmit input[type=button]{width:100%; height: 100%; background:#FFCA28; border:1px solid #FF8F00; color:#fff; text-align: center; margin-top:20px; }
 #loginform .loginsubmit input[name=searchpassword]{margin-top:10px;}
-/* �ŷ� ���� dialog */
+/* 占신뤄옙 占쏙옙占쏙옙 dialog */
 
  .Transactions{display:none;}
 #Transactionsfrom{ width:100%; height:530px; float:left;   position: relative; }
@@ -212,7 +209,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #Transactionsfrom table tr td{width:15%; height:30px ;line-height:30px;  float:left;}
 #Transactionsfrom table tr td:nth-child(5){width:10%;} 
 
-/* ���ϸ��� ���� dialog */
+/* 占쏙옙占싹몌옙占쏙옙 占쏙옙占쏙옙 dialog */
 .Mileagetransactions{display:none}
 
 #Mileagetransactionsform{width:100%; height:530px; float:left;   position: relative;  }
@@ -266,7 +263,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 	background:#FFB300;
 }
 
-/* ��й�ȣ Ȯ�� dialog */
+/* 占쏙옙橘占싫� 확占쏙옙 dialog */
 .passwordCheck{display:none;}
 .userDelete{display:none;}
 #passwordCheckform{width:100%; height: 100%; float:left; position: relative; }
@@ -312,7 +309,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 .passwordchage .passwordchagesubmit input[type=button]:hover{background:#FFB300;}
 
 
-/* ��й�ȣ ã�� */
+/* 占쏙옙橘占싫� 찾占쏙옙 */
 #passwordFindForm{width:700px; height:500px;  box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
 #passwordFindForm .passwordform{width:100%; height: 100%; float:left; position:relative; text-align:center; margin-top:122px; }
 #passwordFindForm .passwordform img{background:#FFD54F; border-radius:100%; padding:5px; position: absolute; left:227px; top:0;}
@@ -326,7 +323,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #passwordFindForm .passwordform button:hover{background:#FFCA28; font-size:18px;}
 #passwordFindForm .passwordform #passfind{width:100%; float:left; font-size:18px;text-align:center; margin-top:10px;}
 
-/* ���ϸ��� ���� dialog*/
+/* 占쏙옙占싹몌옙占쏙옙 占쏙옙占쏙옙 dialog*/
 .chargedialog{display:none;}
 #chargeform{width:100%; height: 100%; float:left; text-align: center;}
 #chargeform input[type=number]{width:70%; height: 50px; float:left; margin:80px;font-size:18px;}
@@ -334,7 +331,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #chargeform input[type=button]{width:120px; height:45px; background: #FFCA28; border:1px solid #FF8F00; color:#fff; cursor:pointer; transition:0.4s; margin-bottom:45px;font-weight:bold;font-size:18px;}
 #chargeform input[type=button]:hover{background:#FFB300;}
 
-/* ���� dialog */
+/* 占쏙옙占쏙옙 dialog */
 .purchasedialog{display:none;}
 #purchaseform{width:100%; height: 100%; float:left; text-align: center;}
 #purchaseform input[type=number]{width:70%; height: 50px; float:left; margin:80px;}
@@ -342,7 +339,7 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 #purchaseform input[type=button]{width:120px; height:45px; background: #FFCA28; border:1px solid #FF8F00; color:#fff; cursor:pointer; transition:0.4s; margin-bottom:45px;}
 #purchaseform input[type=button]:hover{background:#FFB300;}
 
-/* ���� ��û�� dialog */
+/* 占쏙옙占쏙옙 占쏙옙청占쏙옙 dialog */
 .purchaselistdialog{display:none}
 
 #purchaselistform{width:100%; height:530px; float:left;   position: relative;  }
@@ -356,6 +353,6 @@ footer> .noticeboardsubmit>button:hover{background:#000; color:#fff;}
 @media(max-width:1020px){
 	#main .mainEx{width:40%; height: 417px; float:right; margin-left:0; box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.5); }
 }
-@media(max-height:638px){
+@media(max-height:820px){
   #profile .profilemenu{overflow: scroll; overflow-x:hidden;}
 }

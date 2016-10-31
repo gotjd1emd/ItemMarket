@@ -24,7 +24,12 @@ public class WebSocketServer {
 
 		StringTokenizer token = new StringTokenizer(message, "|");
 		String you = token.nextToken();
-		String sendMessage = userID + " : " + token.nextToken();
+		String sendMessage = "";
+		if(token.hasMoreTokens()) {
+			sendMessage = userID + " : " + token.nextToken();
+		}else {
+			sendMessage = userID + " : ";
+		}
 		System.out.println(you + "¿¡°Ô : " + sendMessage);
 		sendMessage(sendMessage, you);
 	}

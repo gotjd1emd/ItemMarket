@@ -225,12 +225,12 @@ public class ItemMarketService {
 			con = DbUtil.getConnection();
 			con.setAutoCommit(false);
 			
-			marketDAO.sendCashAgency(con, buyerDTO.getId(), money);//중개자에게 마일리지전송
-			marketDAO.receiveCashAgency(con, money);//판매자에게 마일리지 받음
-			marketDAO.borderStateChange(con, border);//게시물 거래상태 변경
-			marketDAO.trading(con, buyerDTO.getId(), money, border);//거래내역에 추가
+			marketDAO.sendCashAgency(con, buyerDTO.getId(), money);//以묎컻�옄�뿉寃� 留덉씪由ъ��쟾�넚
+			marketDAO.receiveCashAgency(con, money);//�뙋留ㅼ옄�뿉寃� 留덉씪由ъ� 諛쏆쓬
+			marketDAO.borderStateChange(con, border);//寃뚯떆臾� 嫄곕옒�긽�깭 蹂�寃�
+			marketDAO.trading(con, buyerDTO.getId(), money, border);//嫄곕옒�궡�뿭�뿉 異붽�
 			marketDAO.updateCashHistory(con, buyerDTO.getId(), border.getItemName(), money, buyerDTO.getCash()-money);
-			marketDAO.deleteRequestTrade(con, border.getBorderNumber());//구매신청내역 모두삭제
+			marketDAO.deleteRequestTrade(con, border.getBorderNumber());//援щℓ�떊泥��궡�뿭 紐⑤몢�궘�젣
 
 			con.commit();
 			result = 1;
@@ -257,12 +257,12 @@ public class ItemMarketService {
 			con = DbUtil.getConnection();
 			con.setAutoCommit(false);
 			
-			marketDAO.sendCashSeller(con, sellerDTO.getId(), money);//판매자 마일리지 증가
-			marketDAO.receiveCashSeller(con, money);//중개자 마일리지 감소
-			marketDAO.completeBorder(con, border);//게시물 상태변경
-			marketDAO.completeTrade(con, trade);//거래내역 거래상태 변경
-			marketDAO.updateCashHistory(con, border.getId(), border.getItemName(), money, sellerDTO.getCash()+money);//판매자의 마일리지내역추가
-			marketDAO.deleteRequestTrade(con, border.getBorderNumber());//구매자의 신청내역 삭제
+			marketDAO.sendCashSeller(con, sellerDTO.getId(), money);//�뙋留ㅼ옄 留덉씪由ъ� 利앷�
+			marketDAO.receiveCashSeller(con, money);//以묎컻�옄 留덉씪由ъ� 媛먯냼
+			marketDAO.completeBorder(con, border);//寃뚯떆臾� �긽�깭蹂�寃�
+			marketDAO.completeTrade(con, trade);//嫄곕옒�궡�뿭 嫄곕옒�긽�깭 蹂�寃�
+			marketDAO.updateCashHistory(con, border.getId(), border.getItemName(), money, sellerDTO.getCash()+money);//�뙋留ㅼ옄�쓽 留덉씪由ъ��궡�뿭異붽�
+			marketDAO.deleteRequestTrade(con, border.getBorderNumber());//援щℓ�옄�쓽 �떊泥��궡�뿭 �궘�젣
 			result = 1;
 			con.commit();
 		}catch(SQLException e){

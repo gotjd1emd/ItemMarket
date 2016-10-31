@@ -191,8 +191,7 @@ public class ItemMarketService {
 		BorderDTO border = null;
 		
 		try {
-			ItemMarketDAOImpl dao = new ItemMarketDAOImpl();
-			border = dao.read(borderNum);
+			border = marketDAO.read(borderNum);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -219,24 +218,24 @@ public class ItemMarketService {
 	/**
 	 * 10-13
 	 * */
-	public static int accountTransfer(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
+	public static int accountTransfer(UserDTO buyerDTO, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
 		Connection con= null;
 		int result = 0;
 		try{
 			con = DbUtil.getConnection();
 			con.setAutoCommit(false);
 			
-			marketDAO.sendCashAgency(con, id, money);
-			marketDAO.receiveCashAgency(con, money);
-			marketDAO.borderStateChange(con, border);
-			marketDAO.tradeStateChange(con, trade);
-			if(marketDAO.trading(con, id, money, border)>0){
-				System.out.println("�맟�떎援�");
-			}
-			
+			marketDAO.sendCashAgency(con, buyerDTO.getId(), money);//중개자에게 마일리지전송
+			marketDAO.receiveCashAgency(con, money);//판매자에게 마일리지 받음
+			marketDAO.borderStateChange(con, border);//게시물 거래상태 변경
+			marketDAO.trading(con, buyerDTO.getId(), money, border);//거래내역에 추가
+			marketDAO.updateCashHistory(con, buyerDTO.getId(), border.getItemName(), money, buyerDTO.getCash()-money);
+			marketDAO.deleteRequestTrade(con, border.getBorderNumber());//구매신청내역 모두삭제
+
 			con.commit();
 			result = 1;
 		}catch(SQLException e){
+			e.printStackTrace();
 			result = 0;
 			con.rollback();
 		}finally{
@@ -251,28 +250,31 @@ public class ItemMarketService {
 	 * 15-18
 	 * @throws SQLException 
 	 * */
-	public static void transferComplete(String id, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
+	public static int transferComplete(UserDTO buyerDTO, UserDTO sellerDTO, int money, BorderDTO border, TradeHistoryDTO trade) throws SQLException {
 		Connection con = null;
+		int result = 0;
 		try{
 			con = DbUtil.getConnection();
 			con.setAutoCommit(false);
 			
-			int currentCash = marketDAO.getProfile(id).getCash();
-			marketDAO.selectByBorderTrade(con, border.getBorderNumber());
-			marketDAO.sendCashSeller(con, id, money);
-			marketDAO.receiveCashSeller(con, money);
-			
-			marketDAO.completeBorder(con, border);
-			marketDAO.completeTrade(con, trade);
-			marketDAO.updateCashHistory(con, id, border.getItemName(), money, currentCash);
-			
-			con.setAutoCommit(true);//占쌘듸옙커占쌉쇽옙占쏙옙占쏙옙占쏙옙
-			con.commit(); // 占쏙옙占쏙옙
+			marketDAO.sendCashSeller(con, sellerDTO.getId(), money);//판매자 마일리지 증가
+			marketDAO.receiveCashSeller(con, money);//중개자 마일리지 감소
+			marketDAO.completeBorder(con, border);//게시물 상태변경
+			marketDAO.completeTrade(con, trade);//거래내역 거래상태 변경
+			marketDAO.updateCashHistory(con, border.getId(), border.getItemName(), money, sellerDTO.getCash()+money);//판매자의 마일리지내역추가
+			marketDAO.deleteRequestTrade(con, border.getBorderNumber());//구매자의 신청내역 삭제
+			result = 1;
+			con.commit();
 		}catch(SQLException e){
-			con.rollback(); // 철회
+			e.printStackTrace();
+			result = 0;
+			con.rollback();
+
 		}finally{
+			con.setAutoCommit(true);
 			con.close();
 		}
+		return result;
 	}
 	
 	/**
@@ -344,11 +346,11 @@ public class ItemMarketService {
 	/**
 	 * 24 requestTrade
 	 */
-	public static int requestTrade(String buyer, String seller, int cash, int borderNumber) {
+	public static int requestTrade(String buyer, String seller, int cash, int borderNumber, String state) {
 		int result = 0;
 		
 		try {
-			result = marketDAO.requestTrade(buyer, seller, cash, borderNumber);
+			result = marketDAO.requestTrade(buyer, seller, cash, borderNumber, state);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -356,13 +358,28 @@ public class ItemMarketService {
 	}
 	
 	/**
-	 * 25 selectRequestTrade
+	 * 25 sellRequestTrade
 	 */
-	public static List<TradeHistoryDTO> selectRequestTrade(String seller) {
+	public static List<TradeHistoryDTO> sellRequestTrade(String seller) {
 		List<TradeHistoryDTO> list = null;
 		
 		try {
-			list = marketDAO.selectRequestTrade(seller);
+			list = marketDAO.sellRequestTrade(seller);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	/**
+	 * 26 buyRequestTrade
+	 */
+	public static List<TradeHistoryDTO> buyRequestTrade(String buyer) {
+		List<TradeHistoryDTO> list = null;
+		
+		try {
+			list = marketDAO.buyRequestTrade(buyer);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

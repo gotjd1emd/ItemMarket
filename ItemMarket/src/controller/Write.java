@@ -37,7 +37,7 @@ public class Write implements Action {
 		String itemState = "거래대기중";
 		String files="";
 		String savefilename="";
-		 Enumeration<String> em=m.getFileNames();
+		Enumeration<String> em=m.getFileNames();
 		 
 		
 		BorderDTO borderDTO = new BorderDTO(id, content, title, price, "", category, subcategory, itemState);

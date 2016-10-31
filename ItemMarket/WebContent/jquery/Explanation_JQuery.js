@@ -141,7 +141,8 @@ $(document).on("click",".purchasedialog input[value=구매]",function(){
 		type: "post",
 		data : "buyer="+$(".purchasedialog input[name=buyer]").val()+"&cash="+$(".purchasedialog input[name=purchaseNumber]").val()
 		+"&borderNumber="+$(".purchasedialog input[name=borderNumber]").val()
-		+"&seller="+$(".purchasedialog input[name=seller]").val(),
+		+"&seller="+$(".purchasedialog input[name=seller]").val()
+		+"&state=sell",
 		dataType : "text",
 		success: function(result){
 			

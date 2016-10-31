@@ -28,7 +28,7 @@ public class TransferComplete implements Action {
 		System.out.println("buyerDTO.getId(): " + buyer);
 		System.out.println("seller: " + seller);
 		//tradeï¿½ï¿½ï¿½ï¿½
-		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, seller, border.getItemName(), cash, borderNumber, "ê±°ëž˜ì™„ë£Œ");
+		TradeHistoryDTO trade = new TradeHistoryDTO(buyer, seller, border.getItemName(), cash, borderNumber, "°Å·¡¿Ï·á");
 		border.setItemState(trade.getTradeState());
 		
 		try {

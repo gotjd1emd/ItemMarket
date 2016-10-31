@@ -35,7 +35,7 @@ public class AccountTransfer implements Action {
 		try {
 			int result = ItemMarketService.accountTransfer(buyerDTO,cash,border,trade);
 			if(result>0) {
-				ItemMarketService.requestTrade(buyer, seller, cash, borderNumber, "buy");//援щℓ�옄�뿉寃� �솗�씤踰꾪듉 �쟾�넚
+				ItemMarketService.requestTrade(buyer, seller, cash, borderNumber, "buy");//�뤃�됤꼻占쎌쁽占쎈퓠野껓옙 占쎌넇占쎌뵥甕곌쑵�뱣 占쎌읈占쎈꽊
 			}
 			PrintWriter out = response.getWriter();
 			out.println(result);

@@ -57,8 +57,11 @@
 							<li>연락처 : <span>${user.tel}</span> </li>
 						</ul>
 						<div class="purchasebtn">
+				
+						<c:if test="${sessionScope.userProfile.id != null}">
 						<button type="button" name="purchase" >구매하기</button>
 						<button type="button">뒤로가기</button>
+						</c:if>
 						</div>
 					</div>
 					<div class="content">
